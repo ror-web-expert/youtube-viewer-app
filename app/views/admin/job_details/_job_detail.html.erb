@@ -1,0 +1,37 @@
+<div id="<%= dom_id job_detail %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Job listing:</strong>
+    <%= job_detail.job_listing_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Title:</strong>
+    <%= job_detail.title %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Scraped url:</strong>
+    <%= job_detail.scraped_url %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Is scrap:</strong>
+    <%= job_detail.is_scrap %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Status:</strong>
+    <%= job_detail.status %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Response data:</strong>
+    <%= job_detail.response_data %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this job detail", admin_job_detail_path(job_detail), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this job detail', edit_admin_job_detail_path(job_detail), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

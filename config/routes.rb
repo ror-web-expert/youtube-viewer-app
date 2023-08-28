@@ -13,5 +13,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :dashboard, only: [:index]
+    resources :job_listings do
+      member do
+        get 'scrape_jobs'
+      end
+    end
+    resources :job_details
   end
 end
