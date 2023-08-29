@@ -5,7 +5,7 @@ class CreateJobDetails < ActiveRecord::Migration[7.0]
       t.string :title
       t.string :scraped_url
       t.boolean :is_scrap, default: 0
-      t.integer :status, default: :pending
+      t.string :status, default: "pending"
       t.jsonb :response_data, default: {}
 
       t.timestamps

@@ -16,7 +16,7 @@ class Admin::JobListingsController < Admin::BaseController
     scrapper = ScrapperService.new(@job_listing)
     scrapper.scrape_and_parse
 
-    redirect_to @job_listing, notice: 'Job detail was successfully scraped and saved.'
+    redirect_to admin_job_listings_path, notice: 'Job detail was successfully scraped and saved.'
   end
 
   def edit
@@ -64,6 +64,6 @@ class Admin::JobListingsController < Admin::BaseController
     end
 
     def job_listing_params
-      params.require(:job_listing).permit(:title, :source_url, :is_scrap, :listing_selector, :detail_selector)
+      params.require(:job_listing).permit(:title, :source_url, :listing_selector, :detail_selector)
     end
 end

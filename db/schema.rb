@@ -47,7 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_28_134802) do
     t.string "title"
     t.string "scraped_url"
     t.boolean "is_scrap", default: false
-    t.integer "status"
+    t.string "status", default: "pending"
     t.jsonb "response_data", default: {}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -57,7 +57,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_28_134802) do
   create_table "job_listings", force: :cascade do |t|
     t.string "title"
     t.string "source_url"
-    t.boolean "is_scrap", default: false
     t.jsonb "listing_selector", default: {}
     t.jsonb "detail_selector", default: {}
     t.datetime "created_at", null: false
