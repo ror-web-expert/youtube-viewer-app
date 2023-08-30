@@ -13,7 +13,7 @@ class Admin::JobListingsController < Admin::BaseController
   end
 
   def scrape_jobs
-    scrapper = ScrapperService.new(@job_listing)
+    scrapper = JobListingScrapperService.new(@job_listing)
     scrapper.scrape_and_parse
 
     redirect_to admin_job_listings_path, notice: 'Job detail was successfully scraped and saved.'

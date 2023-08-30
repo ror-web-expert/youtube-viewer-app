@@ -1,14 +1,23 @@
-class ScrapperService
-  def initialize(job_listing)
-    @job_listing = job_listing
-    @url = job_listing.source_url
-    @selectors = JSON.parse(job_listing.listing_selector)
+class JobListingScrapperService
+  def initialize(job, scrap_for)
+    @scrape_for = scrap_for
+    if @scrape_for == "Listing"
+      @job_listing = job
+      @url = job.source_url
+      @selectors = JSON.parse(job.listing_selector)
+    else
+      @job_listing = job
+      @url = job.source_url
+      @job_listing = job.job_listing
+      @selectors = JSON.parse(job.listing_selector)
+    end
     @session = Capybara::Session.new(:selenium)
   end
 
   def scrape_and_parse
     @session.visit @url
-    apply_search_filters
+    apply_search_filters if @selectors["search"].present?
+
     sleep(2)
 
     page = Nokogiri::HTML(@session.body)
@@ -41,8 +50,23 @@ class ScrapperService
 
   def apply_search_filters
     search_selector = @selectors["search"]
-    @session.find(search_selector["id"]).set(search_selector["value"])
-    @session.find('.keyword-search .job-search-button').click
+    search_input = search_selector['search_input']
+    search_btn = search_selector['search_button']
+
+    find_and_set(search_input)
+    find_and_send(search_btn)
+  end
+
+  private
+
+  def find_and_set(element_info)
+    element = @session.find(element_info["id"])
+    element.set(element_info["value"])
+  end
+
+  def find_and_send(element_info)
+    element = @session.find(element_info["id"])
+    element.send(element_info["value"])
   end
 
   def base_url(source_url)
