@@ -1,36 +1,22 @@
-class JobListingScrapperService
-  def initialize(job, scrap_for)
-    @scrape_for = scrap_for
-    if @scrape_for == "Listing"
-      @job_listing = job
-      @url = job.source_url
-      @selectors = JSON.parse(job.listing_selector)
-    else
-      @job_listing = job
-      @url = job.source_url
-      @job_listing = job.job_listing
-      @selectors = JSON.parse(job.listing_selector)
-    end
+class JobDetailScrapperService
+  def initialize(job_detail)
+    @job_detail = job_detail
+    @url = @job_detail.scraped_url
+    @job_listing = @job_detail.job_listing
+    @selectors = JSON.parse(@job_listing.detail_selector) if @job_listing.detail_selector.present?
     @session = Capybara::Session.new(:selenium)
   end
 
   def scrape_and_parse
     @session.visit @url
-    apply_search_filters if @selectors["search"].present?
 
     sleep(2)
 
     page = Nokogiri::HTML(@session.body)
-
-    page.css(@selectors["job-container-list"]).each do |job_card|
-      main_selector_hash = extract_data_from_selector(job_card, @selectors["main_selector"])
-      response_data = extract_data_from_selector(job_card, @selectors["response_selector"])
-
-      @job_listing.job_details.create!(
-        title: main_selector_hash["title"],
-        scraped_url: main_selector_hash["source_url"],
-        response_data: response_data
-      )
+    page.css(@selectors["job-detail-container"]).each do |job_detail|
+      response_data = extract_data_from_selector(job_detail, @selectors["response_selector"])
+      response_data = @job_detail.response_data.merge(response_data)
+      @job_detail.update(response_data: response_data)
     end
 
     close_browser
@@ -38,36 +24,14 @@ class JobListingScrapperService
 
   def extract_data_from_selector(element, selector)
     data_hash = {}
-
     selector.keys.each do |index|
-      data_hash[index] = index.include?("source_url") ?
-                           "#{base_url(@url)}#{element.css(selector[index]).attr("href").value}" :
-                           element.css(selector[index]).text
+      data_hash[index] = element.css(selector[index]&.squish).text
     end
 
     data_hash
   end
 
-  def apply_search_filters
-    search_selector = @selectors["search"]
-    search_input = search_selector['search_input']
-    search_btn = search_selector['search_button']
-
-    find_and_set(search_input)
-    find_and_send(search_btn)
-  end
-
   private
-
-  def find_and_set(element_info)
-    element = @session.find(element_info["id"])
-    element.set(element_info["value"])
-  end
-
-  def find_and_send(element_info)
-    element = @session.find(element_info["id"])
-    element.send(element_info["value"])
-  end
 
   def base_url(source_url)
     parsed_url = URI.parse(source_url)

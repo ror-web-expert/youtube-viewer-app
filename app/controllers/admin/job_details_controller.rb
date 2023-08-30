@@ -1,5 +1,5 @@
 class Admin::JobDetailsController < Admin::BaseController
-  before_action :set_job_detail, only: %i[ show edit update destroy ]
+  before_action :set_job_detail, only: %i[ show edit update destroy scrape_jobs ]
 
   def index
     @job_details = JobDetail.all
@@ -13,6 +13,13 @@ class Admin::JobDetailsController < Admin::BaseController
   end
 
   def edit
+  end
+
+  def scrape_jobs
+    job_detail = JobDetail.find(params[:id])
+    JobDetailScraperJob.perform_async(job_detail.id)
+
+    redirect_to admin_job_detail_path(job_detail), notice: 'Job detail scraping has been initiated.'
   end
 
   def create

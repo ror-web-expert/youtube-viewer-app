@@ -13,10 +13,11 @@ class Admin::JobListingsController < Admin::BaseController
   end
 
   def scrape_jobs
-    scrapper = JobListingScrapperService.new(@job_listing)
-    scrapper.scrape_and_parse
+    job_listing = JobListing.find(params[:id])
+    JobListingScraperJob.perform_async(job_listing.id)
 
-    redirect_to admin_job_listings_path, notice: 'Job detail was successfully scraped and saved.'
+    redirect_to admin_job_listings_path, notice: 'Job listing scraping has been initiated.'
+
   end
 
   def edit

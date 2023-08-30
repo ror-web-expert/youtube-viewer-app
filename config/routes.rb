@@ -18,6 +18,10 @@ Rails.application.routes.draw do
         get 'scrape_jobs'
       end
     end
-    resources :job_details
+    resources :job_details do
+      member do
+        get 'scrape_jobs'
+      end
+    end
   end
 end
