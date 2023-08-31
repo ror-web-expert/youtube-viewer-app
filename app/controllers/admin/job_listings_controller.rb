@@ -14,7 +14,7 @@ class Admin::JobListingsController < Admin::BaseController
 
   def scrape_jobs
     job_listing = JobListing.find(params[:id])
-    JobListingScraperJob.perform_async(job_listing.id)
+    BoardScraperJob.perform_async(job_listing.id)
 
     redirect_to admin_job_listings_path, notice: 'Job listing scraping has been initiated.'
 

@@ -21,7 +21,13 @@
 
   <p class="my-5">
     <strong class="block font-medium mb-1">Response data:</strong>
-    <%= job_detail.response_data %>
+    <%#= job_detail.response_data %>
+    <% job_detail.response_data.each do |key, value| %>
+    <div class="mb-4">
+      <h2 class="text-lg font-semibold mb-2 font-bold"><%= key.titleize %> : </h2>
+      <p><%= value&.html_safe %></p>
+    </div>
+  <% end %>
   </p>
 
   <% if action_name != "show" %>

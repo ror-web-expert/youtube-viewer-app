@@ -1,4 +1,4 @@
-class JobListingScrapperService
+class BoardScraperService
   def initialize(job_listing)
     @job_listing = job_listing
     @url = job_listing.source_url

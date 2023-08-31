@@ -16,10 +16,8 @@ class Admin::JobDetailsController < Admin::BaseController
   end
 
   def scrape_jobs
-    job_detail = JobDetail.find(params[:id])
-    JobDetailScraperJob.perform_async(job_detail.id)
-
-    redirect_to admin_job_detail_path(job_detail), notice: 'Job detail scraping has been initiated.'
+    PostScraperJob.perform_async(@job_detail.id)
+    redirect_to admin_job_detail_path(@job_detail), notice: 'Job detail scraping has been initiated.'
   end
 
   def create
