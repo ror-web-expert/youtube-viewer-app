@@ -1,9 +1,10 @@
 class BoardScraperJob
   include Sidekiq::Job
+  sidekiq_options retry: 4
 
-  def perform(job_listing_id)
-    job_listing = JobListing.find(job_listing_id)
-    scrapper = BoardScraperService.new(job_listing)
+  def perform(board_id)
+    board = Board.find(board_id)
+    scrapper = BoardScraperService.new(board)
     scrapper.scrape_and_parse
   end
 end

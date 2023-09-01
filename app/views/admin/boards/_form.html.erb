@@ -1,10 +1,10 @@
-<%= form_with(model: [:admin, job_listing], class: "contents") do |form| %>
-  <% if job_listing.errors.any? %>
+<%= form_with(model: [:admin, board], class: "contents") do |form| %>
+  <% if board.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(job_listing.errors.count, "error") %> prohibited this job_listing from being saved:</h2>
+      <h2><%= pluralize(board.errors.count, "error") %> prohibited this board from being saved:</h2>
 
       <ul>
-        <% job_listing.errors.each do |error| %>
+        <% board.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>

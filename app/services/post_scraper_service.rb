@@ -1,9 +1,9 @@
 class PostScraperService
-  def initialize(job_detail)
-    @job_detail = job_detail
-    @url = @job_detail.scraped_url
-    @job_listing = @job_detail.job_listing
-    @selectors = JSON.parse(@job_listing.detail_selector) if @job_listing.detail_selector.present?
+  def initialize(post)
+    @post = post
+    @url = @post.scraped_url
+    @board = @post.board
+    @selectors = JSON.parse(@board.detail_selector) if @board.detail_selector.present?
     @session = Capybara::Session.new(:selenium)
   end
 
@@ -13,10 +13,10 @@ class PostScraperService
     sleep(2)
 
     page = Nokogiri::HTML(@session.body)
-    page.css(@selectors["job-detail-container"]).each do |job_detail|
-      response_data = extract_data_from_selector(job_detail, @selectors["response_selector"])
-      response_data = @job_detail.response_data.merge(response_data)
-      @job_detail.update(response_data: response_data)
+    page.css(@selectors["job-detail-container"]).each do |post|
+      response_data = extract_data_from_selector(post, @selectors["response_selector"])
+      response_data = @post.response_data.merge(response_data)
+      @post.update(response_data: response_data)
     end
 
     close_browser

@@ -1,8 +1,8 @@
 class BoardScraperService
-  def initialize(job_listing)
-    @job_listing = job_listing
-    @url = job_listing.source_url
-    @selectors = JSON.parse(job_listing.listing_selector)
+  def initialize(board)
+    @board = board
+    @url = board.source_url
+    @selectors = JSON.parse(board.listing_selector)
     @session = Capybara::Session.new(:selenium)
   end
 
@@ -28,7 +28,7 @@ class BoardScraperService
     page.css(@selectors["job-container-list"]).each do |job_card|
       main_selector_hash = extract_data_from_selector(job_card, @selectors["main_selector"])
       response_data = extract_data_from_selector(job_card, @selectors["response_selector"])
-      create_job_details(main_selector_hash, response_data)
+      create_posts(main_selector_hash, response_data)
     end
   end
 
@@ -51,8 +51,8 @@ class BoardScraperService
     apply_search_filters if @selectors["search"].present?
   end
 
-  def create_job_details(main_data, response_data)
-    @job_listing.job_details.create!(
+  def create_posts(main_data, response_data)
+    @board.posts.create!(
       title: main_data["title"],
       scraped_url: full_url(main_data["source_url"]),
       response_data: response_data

@@ -42,8 +42,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_28_134802) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "job_details", force: :cascade do |t|
-    t.bigint "job_listing_id", null: false
+  create_table "boards", force: :cascade do |t|
+    t.string "title"
+    t.string "source_url"
+    t.jsonb "listing_selector", default: {}
+    t.jsonb "detail_selector", default: {}
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.bigint "board_id", null: false
     t.string "title"
     t.string "scraped_url"
     t.boolean "is_scrap", default: false
@@ -51,16 +60,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_28_134802) do
     t.jsonb "response_data", default: {}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["job_listing_id"], name: "index_job_details_on_job_listing_id"
-  end
-
-  create_table "job_listings", force: :cascade do |t|
-    t.string "title"
-    t.string "source_url"
-    t.jsonb "listing_selector", default: {}
-    t.jsonb "detail_selector", default: {}
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["board_id"], name: "index_posts_on_board_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -77,5 +77,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_28_134802) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "job_details", "job_listings"
+  add_foreign_key "posts", "boards"
 end

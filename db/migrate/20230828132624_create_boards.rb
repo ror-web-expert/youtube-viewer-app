@@ -1,6 +1,6 @@
-class CreateJobListings < ActiveRecord::Migration[7.0]
+class CreateBoards < ActiveRecord::Migration[7.0]
   def change
-    create_table :job_listings do |t|
+    create_table :boards do |t|
       t.string :title
       t.string :source_url
       t.jsonb :listing_selector, default: {}

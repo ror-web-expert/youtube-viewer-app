@@ -1,7 +1,7 @@
-class CreateJobDetails < ActiveRecord::Migration[7.0]
+class CreatePosts < ActiveRecord::Migration[7.0]
   def change
-    create_table :job_details do |t|
-      t.references :job_listing, null: false, foreign_key: true
+    create_table :posts do |t|
+      t.references :board, null: false, foreign_key: true
       t.string :title
       t.string :scraped_url
       t.boolean :is_scrap, default: 0

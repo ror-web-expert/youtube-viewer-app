@@ -1,9 +1,10 @@
 class PostScraperJob
   include Sidekiq::Job
+  sidekiq_options retry: 4
 
-  def perform(job_detail_id)
-    job_detail = JobDetail.find(job_detail_id)
-    scrapper = PostScraperService.new(job_detail)
+  def perform(post_id)
+    post = Post.find(post_id)
+    scrapper = PostScraperService.new(post)
     scrapper.scrape_and_parse
   end
 end
