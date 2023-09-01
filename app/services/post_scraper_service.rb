@@ -48,6 +48,8 @@ class PostScraperService
         split_data = split_data.first.split(match.to_s)
         split_data.send(value["need_text"])
       end
+    elsif value.key?("get_paragraph") && value.key?("next_element") && value.key?("next_element_css")
+      split_data = element.at_css(value["get_paragraph"]).next_element.css(value["next_element_css"]).map { |lu| { "#{lu.previous_sibling&.previous_sibling&.text}": lu.text } }.to_s
     end
   end
 
