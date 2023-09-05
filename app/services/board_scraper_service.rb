@@ -8,13 +8,16 @@ class BoardScraperService
 
   def scrape_and_parse
     visit_and_apply_filters
+
     scroll_page if scrolling_enabled?
+    sleep(2)
     accept_cookies if cookies_modal_present?
+    scrape_and_parse_page(@session.body)
 
     while has_next_page?
       scrape_and_parse_page(@session.body)
       click_next_page
-      sleep(1)
+      sleep(2)
     end
 
     close_browser
@@ -117,8 +120,9 @@ class BoardScraperService
   def scroll_page
     scroll_count = @selectors['scrolling']['scroll_count'].to_i
     scroll_count.times do
-      @session.execute_script('window.scrollTo(0, document.body.scrollHeight);')
-      sleep(4)
+      @session.execute_script('window.scrollTo(5, document.body.scrollHeight);')
+      sleep(5)
+      @session.execute_script('window.scrollTo(0, 0);')
     end
   end
 end

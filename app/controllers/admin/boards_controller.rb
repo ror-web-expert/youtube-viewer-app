@@ -13,10 +13,7 @@ class Admin::BoardsController < Admin::BaseController
   end
 
   def scrape_jobs
-    # BoardScraperJob.perform_async(@board.id)
-    scrapper = BoardScraperService.new(@board)
-    scrapper.scrape_and_parse
-
+    BoardScraperJob.perform_async(@board.id)
     redirect_to admin_boards_path, notice: 'Board scraping has been initiated.'
 
   end

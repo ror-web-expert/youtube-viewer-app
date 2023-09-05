@@ -29,7 +29,13 @@ class PostScraperService
       if value.is_a?(Hash)
         data_hash[index] = extract_data_with_hash(element, value)
       else
-        data_hash[index] = extract_data_without_hash(element, value)
+        if index.include?('_url')
+          data_hash[index] = element.css(value).attr('href').value
+        elsif index.include?("job_description_details")
+          data_hash[index] = element.css(value&.squish).inner_html
+        else
+          data_hash[index] = extract_data_without_hash(element, value)
+        end
       end
     end
 
@@ -50,6 +56,11 @@ class PostScraperService
       end
     elsif value.key?("get_paragraph") && value.key?("next_element") && value.key?("next_element_css")
       split_data = element.at_css(value["get_paragraph"]).next_element.css(value["next_element_css"]).map { |lu| { "#{lu.previous_sibling&.previous_sibling&.text}": lu.text } }.to_s
+    elsif value.key?("list_attribute") && value.key?("list_attribute_css")
+      split_data = {}
+      element.css('ul.meta-data-options li').map do |li|
+        split_data[li.attr("data-label")] = li.css("span").text
+      end
     end
   end
 
