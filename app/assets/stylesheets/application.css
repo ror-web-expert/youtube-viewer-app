@@ -13,3 +13,35 @@
  *= require_tree .
  *= require_self
  */
+.pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+}
+
+/* Style the individual pagination items */
+.pagination li {
+    margin: 0 5px; /* Add spacing between pagination items */
+    display: inline-block;
+}
+
+/* Style the pagination links */
+.pagination a {
+    padding: 5px 10px;
+    background-color: #007bff; /* Background color */
+    color: #fff; /* Text color */
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+/* Style the current page link */
+.pagination .active a {
+    background-color: red;
+}
+
+/* Style the previous and next links */
+.pagination .prev,
+.pagination .next {
+    font-weight: bold;
+}

@@ -1,4 +1,6 @@
 class PostScraperService
+  include GenericFunctionality
+
   def initialize(post)
     @post = post
     @url = @post.scraped_url
@@ -11,7 +13,8 @@ class PostScraperService
     @session.visit @url
 
     sleep(2)
-
+    accept_cookies if cookies_modal_present?
+    sleep(2)
     page = Nokogiri::HTML(@session.body)
     page.css(@selectors["job-detail-container"]).each do |post|
       response_data = extract_data_from_selector(post, @selectors["response_selector"])
@@ -74,9 +77,5 @@ class PostScraperService
   def base_url(source_url)
     parsed_url = URI.parse(source_url)
     "#{parsed_url.scheme}://#{parsed_url.host}"
-  end
-
-  def close_browser
-    @session.driver.quit
   end
 end

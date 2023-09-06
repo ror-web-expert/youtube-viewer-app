@@ -11,4 +11,7 @@
   <div id="posts" class="min-w-full">
     <%= render @posts %>
   </div>
+  <div class="pagination mb-4 mt-3">
+    <%= will_paginate @posts, previous_label: "Previous", next_label: "Next", class: "flex items-center justify-center space-x-2" %>
+  </div>
 </div>

@@ -1,4 +1,6 @@
 class BoardScraperService
+  include GenericFunctionality
+
   def initialize(board)
     @board = board
     @url = board.source_url
@@ -33,10 +35,6 @@ class BoardScraperService
 
   def scrolling_enabled?
     @selectors['scrolling'] && @selectors['scrolling']['scroll_count'].to_i.positive?
-  end
-
-  def cookies_modal_present?
-    @selectors['cookies_modal'] && @session.has_css?(@selectors['cookies_modal']['id'], wait: 10)
   end
 
   def scrape_and_parse_page(html)
@@ -92,10 +90,6 @@ class BoardScraperService
     URI.join(@url, path).to_s
   end
 
-  def close_browser
-    @session.driver.quit
-  end
-
   def extract_data_from_selector(element, selector)
     data_hash = {}
     selector.each do |key, value|
@@ -104,23 +98,21 @@ class BoardScraperService
     data_hash
   end
 
-  def accept_cookies
-    cookies_modal = @selectors['cookies_modal']
-    @session.click_button(cookies_modal['button_text']) if cookies_modal_present?
-  end
-
   def create_posts(main_data, response_data)
-    @board.posts.create!(
-      title: main_data['title'],
-      scraped_url: full_url(main_data['source_url']),
-      response_data: response_data
-    )
+    scraped_url = full_url(main_data['source_url'])
+
+    @board.posts.find_or_initialize_by(scraped_url: scraped_url).tap do |post|
+      post.update!(
+        title: main_data['title'],
+        response_data: response_data
+      )
+    end
   end
 
   def scroll_page
     scroll_count = @selectors['scrolling']['scroll_count'].to_i
     scroll_count.times do
-      @session.execute_script('window.scrollTo(5, document.body.scrollHeight);')
+      @session.execute_script('window.scrollTo(0, document.body.scrollHeight);')
       sleep(5)
       @session.execute_script('window.scrollTo(0, 0);')
     end

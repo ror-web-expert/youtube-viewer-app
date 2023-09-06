@@ -2,7 +2,7 @@ class Admin::PostsController < Admin::BaseController
   before_action :set_post, only: %i[ show edit update destroy scrape_jobs ]
 
   def index
-    @posts = Post.all
+    @posts = Post.paginate(page: page, per_page: per_page)
   end
 
   def show
