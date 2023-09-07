@@ -12,14 +12,13 @@ class BoardScraperService
     visit_and_apply_filters
 
     scroll_page if scrolling_enabled?
-    sleep(2)
     accept_cookies if cookies_modal_present?
+    show_all_button_click if show_all_selector_present?
     scrape_and_parse_page(@session.body)
 
     while has_next_page?
-      scrape_and_parse_page(@session.body)
       click_next_page
-      sleep(2)
+      scrape_and_parse_page(@session.body)
     end
 
     close_browser
@@ -57,14 +56,30 @@ class BoardScraperService
     @selectors['pagination']
   end
 
+  def show_all_selector_present?
+    show_all_button && @session.has_css?(show_all_button['show_all_button'])
+  end
+
   def pagination
     @pagination ||= @selectors['pagination']
+  end
+
+  def show_all_button
+    @show_all_button ||= @selectors['pagination_show_all']
   end
 
   def click_next_page
     return unless pagination_present?
     next_button = @session.find(pagination['next_button'])
     next_button.click
+    sleep(2)
+  end
+
+  def show_all_button_click
+    return unless show_all_selector_present?
+    show_button = @session.find(show_all_button['show_all_button'])
+    show_button.click
+    sleep(2)
   end
 
   def visit_and_apply_filters
@@ -116,5 +131,6 @@ class BoardScraperService
       sleep(5)
       @session.execute_script('window.scrollTo(0, 0);')
     end
+    sleep(2)
   end
 end
