@@ -3,24 +3,25 @@
 <div class = 'container mx-auto flex justify-between'>
   <div class = 'text-2xl font-bold' >Jobs List</div>
   <div>
-   <a href='#' class = "text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 "  >Admin</a>
-    <a href='#' class = "text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 "  >Board</a>
+   <a href='<%= admin_posts_path %>' class = "text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 "  >Admin</a>
+    <a href='<%= admin_boards_path %>' class = "text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 "  >Board</a>
   </div>
 </div>
 </nav>
 
 
 <div class = 'ml-5'>
+  <% @posts.each do | post| %>
 <div class = 'container px-4 mt-3 mx-auto'>
  <div class = 'flex flex-col' >
   <a href="#" class=" w-1/2 block relative max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
       <div class = 'flex justify-between'>
-       <h5 class="text-2xl font-bold tracking-tight text-gray-900">Travel Agent</h5>
+       <h5 class="text-2xl font-bold tracking-tight text-gray-900"><%= post.title&.titleize %></h5>
       </div>
-       <span class = 'absolute right-[15px] top-[15px]' > 
+    <% post.response_data.each do |key, value| %>
+       <span class = 'absolute right-[15px] top-[15px]' >
        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
        </span>
-
       <div >
         <p class="text-slate-400">Sufi Travel & Tours(UK)</p>
         <p class="text-slate-400">
@@ -60,239 +61,11 @@
       </div>
 
       <div class = 'text-slate-400 text-xs' >Visited 22 hours ago</div>
+<% end %>
 
   </a>
  </div>
+</div><% end %>
 </div>
-
-
-
-<div class = 'container px-4 mt-3 mx-auto'>
- <div class = 'flex flex-col' >
-  <a href="#" class=" w-1/2 block relative max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
-      <div class = 'flex justify-between'>
-       <h5 class="text-2xl font-bold tracking-tight text-gray-900">Travel Agent</h5>
-      </div>
-       <span class = 'absolute right-[15px] top-[15px]' > 
-       <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-       </span>
-
-      <div >
-        <p class="text-slate-400">Sufi Travel & Tours(UK)</p>
-        <p class="text-slate-400">
-          <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-          <span>Lahore</span>
-        </p>
-      </div>
-
-      <div class="flex flex-wrap gap-1 mt-2">
-        <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold">Rs 40,000 - Rs 70,000 a month</span>
-        <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold">Full-time</span>
-        <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold">Fluent English</span>
-        <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold">Call center/relevant: 2 years</span>
-      </div>
-
-    <div class = 'flex w-full flex-wrap mt-2 gap-2' >
-      <div class = 'flex'>
-        <span class = 'mr-2 text-blue-400 text-xs '><i class="fa fa-paper-plane" aria-hidden="true"></i></span>
-        <span class='text-xs text-400'>Easy Apply</span>
-      </div>
-       <div class = 'flex'>
-      <span class='ml-2 mr-1 text-red-400 text-xs' ><i class="fa fa-clock-o" aria-hidden="true"></i></span>
-      <span class='text-xs text-400'>Urgent Hiring</span>
-      </div>
-       <div class = 'flex'>
-      <span class='mr-2 text-red-500 text-sm' ><i class="fa fa-user-plus" aria-hidden="true"></i></span>
-      <span class='text-xs text-400'>Hiring multiple candidates</span>
-      </div>
-    </div>
-
-      <div class = 'mt-2' >
-       <ul class = 'list-disc pl-2' >
-       <li class="text-slate-400 text-sm">
-          You will be responsible for accurately and efficiently handling inbound requests and provide with flight bookings, customer servicing and up-selling of related…
-       </li>
-       </ul>
-      </div>
-
-      <div class = 'text-slate-400 text-xs' >Visited 22 hours ago</div>
-
-  </a>
- </div>
-</div>
-
-
-
-
-
-<div class = 'container px-4 mt-3 mx-auto'>
- <div class = 'flex flex-col' >
-  <a href="#" class=" w-1/2 block relative max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
-      <div class = 'flex justify-between'>
-       <h5 class="text-2xl font-bold tracking-tight text-gray-900">Travel Agent</h5>
-      </div>
-       <span class = 'absolute right-[15px] top-[15px]' > 
-       <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-       </span>
-
-      <div >
-        <p class="text-slate-400">Sufi Travel & Tours(UK)</p>
-        <p class="text-slate-400">
-          <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-          <span>Lahore</span>
-        </p>
-      </div>
-
-      <div class="flex flex-wrap gap-1 mt-2">
-        <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold">Rs 40,000 - Rs 70,000 a month</span>
-        <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold">Full-time</span>
-        <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold">Fluent English</span>
-        <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold">Call center/relevant: 2 years</span>
-      </div>
-
-    <div class = 'flex w-full flex-wrap mt-2 gap-2' >
-      <div class = 'flex'>
-        <span class = 'mr-2 text-blue-400 text-xs '><i class="fa fa-paper-plane" aria-hidden="true"></i></span>
-        <span class='text-xs text-400'>Easy Apply</span>
-      </div>
-       <div class = 'flex'>
-      <span class='ml-2 mr-1 text-red-400 text-xs' ><i class="fa fa-clock-o" aria-hidden="true"></i></span>
-      <span class='text-xs text-400'>Urgent Hiring</span>
-      </div>
-       <div class = 'flex'>
-      <span class='mr-2 text-red-500 text-sm' ><i class="fa fa-user-plus" aria-hidden="true"></i></span>
-      <span class='text-xs text-400'>Hiring multiple candidates</span>
-      </div>
-    </div>
-
-      <div class = 'mt-2' >
-       <ul class = 'list-disc pl-2' >
-       <li class="text-slate-400 text-sm">
-          You will be responsible for accurately and efficiently handling inbound requests and provide with flight bookings, customer servicing and up-selling of related…
-       </li>
-       </ul>
-      </div>
-
-      <div class = 'text-slate-400 text-xs' >Visited 22 hours ago</div>
-
-  </a>
- </div>
-</div>
-
-
-
-
-<div class = 'container px-4 mt-3 mx-auto'>
- <div class = 'flex flex-col' >
-  <a href="#" class=" w-1/2 block relative max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
-      <div class = 'flex justify-between'>
-       <h5 class="text-2xl font-bold tracking-tight text-gray-900">Travel Agent</h5>
-      </div>
-       <span class = 'absolute right-[15px] top-[15px]' > 
-       <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-       </span>
-
-      <div >
-        <p class="text-slate-400">Sufi Travel & Tours(UK)</p>
-        <p class="text-slate-400">
-          <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-          <span>Lahore</span>
-        </p>
-      </div>
-
-      <div class="flex flex-wrap gap-1 mt-2">
-        <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold">Rs 40,000 - Rs 70,000 a month</span>
-        <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold">Full-time</span>
-        <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold">Fluent English</span>
-        <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold">Call center/relevant: 2 years</span>
-      </div>
-
-    <div class = 'flex w-full flex-wrap mt-2 gap-2' >
-      <div class = 'flex'>
-        <span class = 'mr-2 text-blue-400 text-xs '><i class="fa fa-paper-plane" aria-hidden="true"></i></span>
-        <span class='text-xs text-400'>Easy Apply</span>
-      </div>
-       <div class = 'flex'>
-      <span class='ml-2 mr-1 text-red-400 text-xs' ><i class="fa fa-clock-o" aria-hidden="true"></i></span>
-      <span class='text-xs text-400'>Urgent Hiring</span>
-      </div>
-       <div class = 'flex'>
-      <span class='mr-2 text-red-500 text-sm' ><i class="fa fa-user-plus" aria-hidden="true"></i></span>
-      <span class='text-xs text-400'>Hiring multiple candidates</span>
-      </div>
-    </div>
-
-      <div class = 'mt-2' >
-       <ul class = 'list-disc pl-2' >
-       <li class="text-slate-400 text-sm">
-          You will be responsible for accurately and efficiently handling inbound requests and provide with flight bookings, customer servicing and up-selling of related…
-       </li>
-       </ul>
-      </div>
-
-      <div class = 'text-slate-400 text-xs' >Visited 22 hours ago</div>
-
-  </a>
- </div>
-</div>
-
-
-
-
-<div class = 'container px-4 mt-3 mx-auto'>
- <div class = 'flex flex-col' >
-  <a href="#" class=" w-1/2 block relative max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
-      <div class = 'flex justify-between'>
-       <h5 class="text-2xl font-bold tracking-tight text-gray-900">Travel Agent</h5>
-      </div>
-       <span class = 'absolute right-[15px] top-[15px]' > 
-       <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-       </span>
-
-      <div >
-        <p class="text-slate-400">Sufi Travel & Tours(UK)</p>
-        <p class="text-slate-400">
-          <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-          <span>Lahore</span>
-        </p>
-      </div>
-
-      <div class="flex flex-wrap gap-1 mt-2">
-        <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold">Rs 40,000 - Rs 70,000 a month</span>
-        <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold">Full-time</span>
-        <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold">Fluent English</span>
-        <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold">Call center/relevant: 2 years</span>
-      </div>
-
-    <div class = 'flex w-full flex-wrap mt-2 gap-2' >
-      <div class = 'flex'>
-        <span class = 'mr-2 text-blue-400 text-xs '><i class="fa fa-paper-plane" aria-hidden="true"></i></span>
-        <span class='text-xs text-400'>Easy Apply</span>
-      </div>
-       <div class = 'flex'>
-      <span class='ml-2 mr-1 text-red-400 text-xs' ><i class="fa fa-clock-o" aria-hidden="true"></i></span>
-      <span class='text-xs text-400'>Urgent Hiring</span>
-      </div>
-       <div class = 'flex'>
-      <span class='mr-2 text-red-500 text-sm' ><i class="fa fa-user-plus" aria-hidden="true"></i></span>
-      <span class='text-xs text-400'>Hiring multiple candidates</span>
-      </div>
-    </div>
-
-      <div class = 'mt-2' >
-       <ul class = 'list-disc pl-2' >
-       <li class="text-slate-400 text-sm">
-          You will be responsible for accurately and efficiently handling inbound requests and provide with flight bookings, customer servicing and up-selling of related…
-       </li>
-       </ul>
-      </div>
-
-      <div class = 'text-slate-400 text-xs' >Visited 22 hours ago</div>
-
-  </a>
- </div>
-</div>
-</div>
-
 </div>
 
