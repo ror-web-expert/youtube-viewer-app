@@ -10,5 +10,6 @@ module GenericFunctionality
   def accept_cookies
     cookies_modal = @selectors['cookies_modal']
     @session.click_button(cookies_modal['button_text']) if cookies_modal_present?
+    sleep(2)
   end
 end
