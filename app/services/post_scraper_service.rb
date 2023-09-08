@@ -18,6 +18,8 @@ class PostScraperService
     page = Nokogiri::HTML(@session.body)
     page.css(@selectors["job-detail-container"]).each do |post|
       response_data = extract_data_from_selector(post, @selectors["response_selector"])
+      specialities = { specialities: filter_by_title(@post.title.squish) }
+      response_data = response_data.merge(specialities) if specialities.present?
       response_data = @post.response_data.merge(response_data)
       @post.update(response_data: response_data)
     end
@@ -77,5 +79,16 @@ class PostScraperService
   def base_url(source_url)
     parsed_url = URI.parse(source_url)
     "#{parsed_url.scheme}://#{parsed_url.host}"
+  end
+
+  def filter_by_title(title)
+    Speciality_List.each do |speciality, details|
+      abbreviation = details["Abbreviation"] || details[:Abbreviation]
+      other_names = details["OtherNames"] || details[:OtherNames]
+      if title.include?(abbreviation) || (abbreviation && title.include?(abbreviation)) || other_names&.any? { |name| title.downcase.include?(name.downcase) }
+        return speciality.to_s
+      end
+    end
+    return ""
   end
 end
