@@ -18,7 +18,7 @@
   <div class='grid grid-cols-1 md:grid-cols-2 gap-x-3 items-start'>
     <div class='flex flex-col'>
       <% @posts.each do |post| %>
-        <a href="#" class="relative p-4 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
+        <a href="#" class="relative mt-3 p-4 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
           <div class='flex justify-between'>
             <h5 class="text-2xl font-bold tracking-tight text-gray-900"><%= post.title&.titleize %></h5>
           </div>
@@ -29,16 +29,16 @@
             </span>
 
             <div>
-              <p class="text-slate-400"><%= @response_data["location"] if @response_data["location"] %></p>
+              <p class="text-slate-400"><%= post&.board&.title %></p>
               <p class="text-slate-400">
                 <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-                <span><%= @response_data["state"] if @response_data["state"] %></span>
+                <span><%= @response_data["location"] if @response_data["location"] %></span>
               </p>
             </div>
 
             <div class="flex flex-wrap gap-1 mt-2">
               <% if @response_data["hourly_rate"].present? %>
-                <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["salary"] %></span>
+                <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["hourly_rate"] %></span>
               <% end %>
               <% if @response_data["job-payrange"].present? %>
                 <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["job-payrange"] %></span>
@@ -47,8 +47,8 @@
                 <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["job_type"] %></span>
               <% end %>
 
-              <% if @response_data["shifts"] %>
-                <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["shifts"] %></span>
+              <% if @response_data["shift_time"] %>
+                <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["shift_time"] %></span>
               <% end %>
 
               <% if @response_data["specialities"] %>
@@ -59,7 +59,7 @@
             <div class='flex w-full flex-wrap mt-2 gap-2'>
               <div class='flex'>
                 <%# if @response_data["apply_now_url"].present? %>
-                <span class = 'mr-2 text-blue-400 text-xs '><i class="fa fa-paper-plane" aria-hidden="true"></i></span>
+                <span class='mr-2 text-blue-400 text-xs '><i class="fa fa-paper-plane" aria-hidden="true"></i></span>
                 <span class='text-xs text-400'>Easily Apply</span>
                 <%# end %>
               </div>
@@ -75,7 +75,7 @@
 
             <div class='mt-2'>
               <ul class='list-disc pl-2'>
-                <%= @response_data["paragraph_description_at_css"]&.slice(0, 300) %>
+                <%= @response_data["short_description"]&.slice(0, 300) %>
               </ul>
             </div>
 
