@@ -66,6 +66,8 @@ class PostScraperService
       element.css('ul.meta-data-options li').map do |li|
         split_data[li.attr("data-label")] = li.css("span").text
       end
+    elsif value.key?("next_sibling") && value.key?("next_element")
+      element.at(value["element_css"]).next_element&.next_element&.next_sibling&.text&.squish
     end
   end
 

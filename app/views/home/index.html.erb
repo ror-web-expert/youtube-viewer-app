@@ -1,79 +1,103 @@
-  <nav class = 'w-full border-b-[2px]'>
-    <div class = 'container flex w-full px-4 justify-between items-center h-16'>
-      <div class = 'text-2xl font-bold py-5' >Jobs List</div>
-      <div class='flex items-center h-full'>
-        <div class='grid grid-cols-3 gap-x-4 mr-4 h-full items-center'>
-          <i class="fa fa-commenting hover:bg-purple-100 hover:border-b-2 hover:border-purple-500 border-b-2 border-transparent ease-in duration-300 px-4 !text-lg hover:bg-violet cursor-pointer !flex items-center h-full" aria-hidden="true"></i>
-          <i class="fa fa-user hover:bg-purple-100 hover:border-b-2 hover:border-purple-500 border-b-2 px-4 border-transparent ease-in duration-300 !text-lg !flex hover:bg-violet cursor-pointer items-center h-full" aria-hidden="true"></i>
-          <i class="fa fa-bell hover:bg-purple-100 hover:border-b-2 hover:border-purple-500 border-b-2 px-4 border-transparent ease-in duration-300 !text-lg !flex hover:bg-violet cursor-pointer items-center h-full" aria-hidden="true"></i>
-        </div>
-        <a href='#' class = "ease-in duration-300 hover:text-slate-700 text-slate-500 border-l-2 border-indigo-500 font-medium text-sm px-5 py-1"  >Employee/Post Job</a>
+<nav class='w-full border-b-[2px]'>
+  <div class='container flex w-full px-4 justify-between items-center h-16'>
+    <div class='text-2xl font-bold py-5'>Jobs List</div>
+    <div class='flex items-center h-full'>
+      <div class='grid grid-cols-3 gap-x-4 mr-4 h-full items-center'>
+        <i class="fa fa-commenting hover:bg-purple-100 hover:border-b-2 hover:border-purple-500 border-b-2 border-transparent ease-in duration-300 px-4 !text-lg hover:bg-violet cursor-pointer !flex items-center h-full" aria-hidden="true"></i>
+        <i class="fa fa-user hover:bg-purple-100 hover:border-b-2 hover:border-purple-500 border-b-2 px-4 border-transparent ease-in duration-300 !text-lg !flex hover:bg-violet cursor-pointer items-center h-full" aria-hidden="true"></i>
+        <i class="fa fa-bell hover:bg-purple-100 hover:border-b-2 hover:border-purple-500 border-b-2 px-4 border-transparent ease-in duration-300 !text-lg !flex hover:bg-violet cursor-pointer items-center h-full" aria-hidden="true"></i>
       </div>
+      <a href='<%= admin_posts_path %>' class="ease-in duration-300 hover:text-slate-700 text-slate-500 border-l-2 border-indigo-500 font-medium text-sm px-5 py-1">Post
+        Job</a>
+      <a href='<%= admin_boards_path %>' class="ease-in duration-300 hover:text-slate-700 text-slate-500 border-l-2 border-indigo-500 font-medium text-sm px-5 py-1">Boards
+        Job</a>
     </div>
-  </nav>
-  <div class = 'container mt-3 mx-auto w-11/12 md:w-9/12'>
-    <div class = 'grid grid-cols-1 md:grid-cols-2 gap-x-3' >
+  </div>
+</nav>
+<div class='container mt-3 mx-auto w-11/12 md:w-9/12'>
+  <% @posts.each do |post| %>
+  <div class='grid grid-cols-1 md:grid-cols-2 gap-x-3'>
       <a href="#" class="relative p-4 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
-          <div class = 'flex justify-between'>
-          <h5 class="text-2xl font-bold tracking-tight text-gray-900">Travel Agent</h5>
-          </div>
-          <span class = 'absolute right-[15px] top-[15px]' > 
+        <div class='flex justify-between'>
+          <h5 class="text-2xl font-bold tracking-tight text-gray-900"><%= post.title&.titleize %></h5>
+        </div>
+        <% @response_data = post.response_data %>
+        <% if @response_data.present? %>
+          <span class='absolute right-[15px] top-[15px]'>
           <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
           </span>
 
-          <div >
-            <p class="text-slate-400">Sufi Travel & Tours(UK)</p>
+          <div>
+            <p class="text-slate-400"><%= @response_data["location"] if @response_data["location"] %></p>
             <p class="text-slate-400">
               <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-              <span>Lahore</span>
+              <span><%= @response_data["state"] if @response_data["state"] %></span>
             </p>
           </div>
 
           <div class="flex flex-wrap gap-1 mt-2">
-            <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold">Rs 40,000 - Rs 70,000 a month</span>
-            <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold">Full-time</span>
-            <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold">Fluent English</span>
-            <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold">Call center/relevant: 2 years</span>
+            <% if @response_data["hourly_rate"].present? %>
+              <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["salary"] %></span>
+            <% end %>
+            <% if @response_data["job-payrange"].present? %>
+              <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["job-payrange"] %></span>
+            <% end %>
+            <% if @response_data["job_type"] %>
+              <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["job_type"] %></span>
+            <% end %>
+
+            <% if @response_data["shifts"] %>
+              <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["shifts"] %></span>
+            <% end %>
+
+            <% if @response_data["specialities"] %>
+              <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["specialities"] %></span>
+            <% end %>
           </div>
 
-        <div class = 'flex w-full flex-wrap mt-2 gap-2' >
-          <div class = 'flex'>
-            <span class = 'mr-2 text-blue-400 text-xs '><i class="fa fa-paper-plane" aria-hidden="true"></i></span>
-            <span class='text-xs text-400'>Easy Apply</span>
-          </div>
-          <div class = 'flex'>
-          <span class='ml-2 mr-1 text-red-400 text-xs' ><i class="fa fa-clock-o" aria-hidden="true"></i></span>
-          <span class='text-xs text-400'>Urgent Hiring</span>
-          </div>
-          <div class = 'flex'>
-          <span class='mr-2 text-red-500 text-sm' ><i class="fa fa-user-plus" aria-hidden="true"></i></span>
-          <span class='text-xs text-400'>Hiring multiple candidates</span>
-          </div>
-        </div>
-
-          <div class = 'mt-2' >
-          <ul class = 'list-disc pl-2' >
-          <li class="text-slate-400 text-sm">
-              You will be responsible for accurately and efficiently handling inbound requests and provide with flight bookings, customer servicing and up-selling of related…
-          </li>
-          </ul>
+          <div class='flex w-full flex-wrap mt-2 gap-2'>
+            <div class='flex'>
+              <%# if @response_data["apply_now_url"].present? %>
+              <span class = 'mr-2 text-blue-400 text-xs '><i class="fa fa-paper-plane" aria-hidden="true"></i></span>
+              <span class='text-xs text-400'>Easily Apply</span>
+              <%# end %>
+            </div>
+            <div class='flex'>
+              <span class='ml-2 mr-1 text-red-400 text-xs'><i class="fa fa-clock-o" aria-hidden="true"></i></span>
+              <span class='text-xs text-400'>Urgent Hiring</span>
+            </div>
+            <div class='flex'>
+              <span class='mr-2 text-red-500 text-sm'><i class="fa fa-user-plus" aria-hidden="true"></i></span>
+              <span class='text-xs text-400'>Hiring multiple candidates</span>
+            </div>
           </div>
 
-          <div class = 'text-slate-400 text-xs' >Visited 22 hours ago</div>
+          <div class='mt-2'>
+            <ul class='list-disc pl-2'>
+              <%= @response_data["paragraph_description_at_css"]&.slice(0, 300) %>
+            </ul>
+          </div>
 
+          <% if @response_data["posted_date"].present? %>
+            <div class='text-slate-400 text-xs'><%= @response_data["posted_date"] %></div>
+          <% end %>
+        <% end %>
       </a>
-      <div class='border rounded-lg hidden md:block'>
-        <div class=' pt-5 pb-4 px-4 flex flex-col items-start shadow-md'>
-          <h3 class='font-extrabold mb-3'>Customer Service Representative</h3>
-          <a class='decoration-blue-600 mb-3 text-blue-600 text-xs border-b border-blue-600' href="#">Voyager Global Mobility</a>
-          <span class='text-xs text-slate-500 mb-2'>Lahore</span>
-          <div class="text-xs text-gray-500">
-            <span>Rs 60,000</span> - <span>Rs 90,000</span><span> a month</span>
-          </div>
-          <div class="mt-4">
-            <button class=' bg-sky-700 rounded py-2 px-2 text-white font-semibold'>Apply Now</button>
-            <button class="bg-slate-400 py-2 px-3 rounded"><i class="fa fa-bookmark-o text-white !text-md" aria-hidden="true"></i></button>
-          </div>
+  </div>
+  <% end %>
+    <div class='border rounded-lg hidden md:block'>
+      <div class=' pt-5 pb-4 px-4 flex flex-col items-start shadow-md'>
+        <h3 class='font-extrabold mb-3'>Customer Service Representative</h3>
+        <a class='decoration-blue-600 mb-3 text-blue-600 text-xs border-b border-blue-600' href="#">Voyager Global
+          Mobility</a>
+        <span class='text-xs text-slate-500 mb-2'>Lahore</span>
+        <div class="text-xs text-gray-500">
+          <span>Rs 60,000</span> - <span>Rs 90,000</span><span> a month</span>
+        </div>
+        <div class="mt-4">
+          <button class=' bg-sky-700 rounded py-2 px-2 text-white font-semibold'>Apply Now</button>
+          <button class="bg-slate-400 py-2 px-3 rounded">
+            <i class="fa fa-bookmark-o text-white !text-md" aria-hidden="true"></i></button>
         </div>
       </div>
     </div>
