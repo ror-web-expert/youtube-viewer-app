@@ -100,6 +100,8 @@ GEM
     et-orbi (1.2.7)
       tzinfo
     ffi (1.15.5)
+    friendly_id (5.4.2)
+      activerecord (>= 4.0.0)
     fugit (1.8.1)
       et-orbi (~> 1, >= 1.2.7)
       raabro (~> 1.4)
@@ -279,6 +281,7 @@ DEPENDENCIES
   capybara
   debug
   devise
+  friendly_id (~> 5.4.0)
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
