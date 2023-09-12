@@ -2,14 +2,13 @@ require 'sidekiq/web'
 require 'sidekiq/cron/web'
 
 Rails.application.routes.draw do
-
   mount Sidekiq::Web => '/sidekiq'
 
   devise_for :users
 
-  root 'home#index'
+  root 'jobs#index'
 
-  resources :home, only: [:index]
+  resources :jobs, only: %i[index show]
 
   namespace :admin do
     resources :dashboard, only: [:index]
