@@ -9,7 +9,8 @@
       </div>
       <a href='<%= admin_posts_path %>' class="ease-in duration-300 hover:text-slate-700 text-slate-500 border-l-2 border-indigo-500 font-medium text-sm px-5 py-1">Post
         Job</a>
-      <a href='<%= admin_boards_path %>' class="ease-in duration-300 hover:text-slate-700 text-slate-500 border-l-2 border-indigo-500 font-medium text-sm px-5 py-1">Boards Job</a>
+      <a href='<%= admin_boards_path %>' class="ease-in duration-300 hover:text-slate-700 text-slate-500 border-l-2 border-indigo-500 font-medium text-sm px-5 py-1">Boards
+        Job</a>
     </div>
   </div>
 </nav>
@@ -24,9 +25,8 @@
           <% @response_data = job.response_data %>
           <% if @response_data.present? %>
             <span class='absolute right-[15px] top-[15px]'>
-            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
             </span>
-
             <div>
               <p class="text-slate-400"><%= job&.board&.title %></p>
               <p class="text-slate-400">
@@ -34,7 +34,6 @@
                 <span><%= @response_data["location"] if @response_data["location"] %></span>
               </p>
             </div>
-
             <div class="flex flex-wrap gap-1 mt-2">
               <% if @response_data["hourly_rate"].present? %>
                 <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["hourly_rate"] %></span>
@@ -45,16 +44,13 @@
               <% if @response_data["job_type"] %>
                 <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["job_type"] %></span>
               <% end %>
-
               <% if @response_data["shift_time"] %>
                 <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["shift_time"] %></span>
               <% end %>
-
               <% if @response_data["specialities"] %>
                 <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["specialities"] %></span>
               <% end %>
             </div>
-
             <div class='flex w-full flex-wrap mt-2 gap-2'>
               <div class='flex'>
                 <%# if @response_data["apply_now_url"].present? %>
@@ -71,13 +67,11 @@
                 <span class='text-xs text-400'>Hiring multiple candidates</span>
               </div>
             </div>
-
             <div class='mt-2'>
               <ul class='list-disc pl-2'>
                 <%= @response_data["short_description"]&.slice(0, 300) %>
               </ul>
             </div>
-
             <% if @response_data["posted_date"].present? %>
               <div class='text-slate-400 text-xs'><%= @response_data["posted_date"] %></div>
             <% end %>
@@ -100,10 +94,26 @@
             <i class="fa fa-bookmark-o text-white !text-md" aria-hidden="true"></i></button>
         </div>
       </div>
+      <div class='p-5  pt-5 pb-4 px-4 flex flex-col items-start shadow-md'>
+        <p><b>Job details</b></p>
+        <div>
+          <span class='text-xs text-slate-500'>Here’s how the job details align with your job preferences.</span>
+          <span class='text-xs text-slate-500'>Manage job preferences anytime in your
+            <a href='#' class='text-xs text-slate-500'>profile</a>
+          </span>
+        </div>
+        <span><i class="fa fa-money" aria-hidden="true"></i></span>
+        <span><b>Pay</b></span>
+        <p>Rs 20,000 a month</p>
+        <span><i class="fa fa-briefcase" aria-hidden="true"></i></span>
+        <span><b>Job Type</b></span>
+        <p>Full-time
+        <p>
+      </div>
     </div>
   </div>
 </div>
-
 <div class="pagination mb-4 mt-3">
   <%= will_paginate @jobs, previous_label: "Previous", next_label: "Next", class: "flex items-center justify-center space-x-2" %>
 </div>
+
