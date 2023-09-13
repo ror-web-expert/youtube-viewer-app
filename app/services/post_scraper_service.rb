@@ -21,7 +21,7 @@ class PostScraperService
       specialities = { specialities: filter_by_title(@post.title.squish) }
       response_data = response_data.merge(specialities) if specialities.present?
       response_data = @post.response_data.merge(response_data)
-      @post.update(response_data: response_data)
+      @post.update(response_data: response_data, is_scrap: true)
     end
 
     close_browser
@@ -67,20 +67,13 @@ class PostScraperService
         split_data[li.attr("data-label")] = li.css("span").text
       end
     elsif value.key?("next_sibling") && value.key?("next_element")
-      element.at(value["element_css"]).next_element&.next_element&.next_sibling&.text&.squish
+      element.at(value["element_css"])&.next_element&.next_element&.next_sibling&.text&.squish || ""
     end
   end
 
   def extract_data_without_hash(element, value)
     selected_elements = element.css(value&.squish)
     selected_elements.empty? ? nil : selected_elements.text.sub(':', '')
-  end
-
-  private
-
-  def base_url(source_url)
-    parsed_url = URI.parse(source_url)
-    "#{parsed_url.scheme}://#{parsed_url.host}"
   end
 
   def filter_by_title(title)
@@ -92,5 +85,12 @@ class PostScraperService
       end
     end
     return ""
+  end
+
+  private
+
+  def base_url(source_url)
+    parsed_url = URI.parse(source_url)
+    "#{parsed_url.scheme}://#{parsed_url.host}"
   end
 end

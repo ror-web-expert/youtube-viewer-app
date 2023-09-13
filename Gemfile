@@ -59,6 +59,10 @@ gem 'friendly_id', '~> 5.4.0'
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem "pry-rails"
+  gem "rspec-rails"
+  gem "factory_bot_rails"
+  gem "faker"
+
 end
 
 group :development do
