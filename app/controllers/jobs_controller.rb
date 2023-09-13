@@ -12,6 +12,6 @@ class JobsController < ApplicationController
   private
 
   def set_post
-    @job = Post.find(params[:id])
+    @job = Post.friendly.find(params[:id])
   end
 end

@@ -15,7 +15,6 @@ class Admin::BoardsController < Admin::BaseController
   def scrape_jobs
     BoardScraperJob.perform_async(@board.id)
     redirect_to admin_boards_path, notice: 'Board scraping has been initiated.'
-
   end
 
   def edit
@@ -59,7 +58,7 @@ class Admin::BoardsController < Admin::BaseController
   private
 
     def set_board
-      @board = Board.find(params[:id])
+      @board = Board.friendly.find(params[:id])
     end
 
     def board_params
