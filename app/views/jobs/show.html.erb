@@ -1,36 +1,82 @@
-<div class="mx-auto md:w-2/3 w-full flex">
+<div class="container mt-4 mx-auto w-11/12 md:w-9/12">
   <div class="mx-auto">
     <div id="<%= dom_id @job %>">
-      <p class="my-5">
-        <strong class="block font-medium mb-1">Board:</strong>
-        <%= @job.board&.title %>
-      </p>
-
-      <p class="my-5">
-        <strong class="block font-medium mb-1">Title:</strong>
-        <%= @job.title %>
-      </p>
-
-      <p class="my-5">
-        <strong class="block font-medium mb-1">Scraped url:</strong>
-        <%= @job.scraped_url %>
-      </p>
-
-      <p class="my-5">
-        <strong class="block font-medium mb-1">Status:</strong>
-        <%= @job.status %>
-      </p>
-
-      <p class="my-5">
-        <strong class="block font-medium mb-1">Response data:</strong>
-        <%#= post.response_data %>
-        <% @job.response_data.each do |key, value| %>
-        <div class="mb-4">
-          <h2 class="text-lg font-semibold mb-2 font-bold"><%= key.titleize %> : </h2>
-          <p><%= value&.html_safe %></p>
+      <div class=' pt-5 pb-4 px-4 flex flex-col items-start'>
+        <h3 class='font-bold text-2xl mb-3'>Customer Service Representative</h3>
+        <a class='decoration-blue-600 mb-3 text-blue-600 text-xs border-b border-blue-600' href="#">Voyager Global
+          Mobility</a>
+        <span class='text-sm text-slate-500 mb-2'>Lahore</span>
+        <div class="text-sm">
+          <span>Rs 60,000</span> - <span>Rs 90,000</span><span> a month</span>
         </div>
-      <% end %>
-      </p>
+        <div class="mt-4">
+          <button class=' bg-sky-700 rounded py-2.5 px-2.5 text-white font-semibold'>Apply Now</button>
+          <button class="bg-slate-400 py-2 px-3 rounded">
+            <i class="fa fa-bookmark-o text-white !text-lg" aria-hidden="true"></i></button>
+        </div>
+      </div>
+      <div class = 'p-4'>
+        <p class = 'text-lg' ><b>Job details</b></p>
+        <div>
+          <span class = 'block text-xs text-slate-500 italic' >Here’s how the job details align with your job preferences.</span>
+          <span class = 'block text-xs text-slate-500 italic' >Manage job preferences anytime in your 
+            <a href = '#' class = 'text-xs text-slate-500' >profile</a>
+          </span>
+        </div>
+        <div class = 'mt-4 mb-6'>
+          <div class='flex items-center space-x-4 '>
+            <span><i class="fa fa-money text-stone-400" aria-hidden="true"></i></span>
+            <span class = 'text-sm font-semibold ml-2 block' >Pay</span>
+          </div>
+          <p class = 'text-xs font-semibold ml-8 text-[#595959] bg-stone-100 p-1 inline px-2 border rounded-lg' >Rs 20,000 - Rs 20,000 a month</p>
+          <div class='flex items-center space-x-4 mt-4'>
+            <span><i class="fa fa-briefcase text-stone-400" aria-hidden="true"></i></span>
+            <span class = 'text-sm font-semibold ml-2 block' >Job Type</span>
+          </div>
+          <p class = 'text-xs font-semibold ml-8 text-[#595959] bg-stone-100 p-1 inline px-2 border rounded-lg' >Full-time</p>
+        </div>
+        <div class="border border-gray-100 h-px w-full"></div>
+        <div class='overflow-hidden'>
+          <div class='mt-4 h-96 overflow-y-auto'>
+            <p class = 'text-sm text-[#2d2d2d] ' >We're looking for Sales Reps who are fluent in English, looking to excel in their careers, earn commission and progress. Enthusiasm and willingness to learn and do well is key.</p>
+            <ul class = 'list-disc pl-8 text-sm text-[#2d2d2d] mt-3 mb-4 ' >
+              <li >In this role, you will receive Pre-Set appointments/leads and you need to educate American Clients about the benefits of Solar Energy Solutions, make more sales, and be a part of a rapidly growing company.</li>
+              <li>You will find an equal opportunity for growth and earn the most rewarding commissions.</li>
+            </ul>
+            <p class = 'text-lg font-semibold' >Job Requirements</p>
+            <ul class = 'list-disc pl-8  text-sm text-[#2d2d2d] mt-3 mb-4'>
+              <li>Grow and develop the sales through effective and consistent outbound activity including phone and email.</li>
+              <li>Achieving and exceeding targets set by the company</li>
+              <li>Call companies generate leads prodiminantly in the UK</li>
+              <li>Development a strong outbound pipeline of clients.</li>
+              <li>Minatain reports for clients.</li>
+              <li>Work effectively with internal and external departments to promote sales</li>
+              <li>Identifying and reporting on business opportunities in target markets</li>
+              <li>Respond to all allocated requests (live chat, phone or email) for quotes within agreed SLAs.</li>
+              <li>Provider cover for team members during periods of absence and/or busy periods.</li>
+            </ul>
+            <p class = 'text-lg font-semibold' >Salary & Benefits</p>
+            <ul class = 'list-disc pl-8  text-sm text-[#2d2d2d] mt-3 mb-4'>
+              <li><b>Salary</b>: 50k + OTE 150k</li>
+              <li>Additional length of service holiday allowance</li>
+            </ul>
+            <p class = 'text-sm text-[#2d2d2d] '>12pm to 9pm</p>
+            <p class = 'text-sm text-[#2d2d2d] '>Job Type: Full-time</p>
+            <p class = 'text-sm text-[#2d2d2d] '>Salary: Rs50,000.00 - Rs80,000.00 per month</p>
+            <p class = 'text-sm text-[#2d2d2d] '>Ability to commute/relocate:</p>
+            <ul class = 'list-disc pl-8  text-sm text-[#2d2d2d] mt-3 mb-4'>
+              <li>Lahore: Reliably commute or planning to relocate before starting work (Preferred)</li>
+            </ul>
+            <p class = 'text-sm text-[#2d2d2d] '>Application Deadline: 01/07/2023</p>
+            <div>
+              <button class=' bg-stone-200 rounded p-3 mt-4 font-semibold'>
+                <span><i class="fa fa-flag text-black !text-lg" aria-hidden="true"></i></span>
+                Report job
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

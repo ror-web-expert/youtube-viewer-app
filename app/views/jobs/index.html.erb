@@ -1,103 +1,74 @@
 <div class='container mt-3 mx-auto w-11/12 md:w-9/12'>
-  <div class='grid grid-cols-1 md:grid-cols-2 gap-x-3 items-start'>
-    <div class='flex flex-col'>
-      <% @jobs.each do |job| %>
-        <a href="<%= job_path(job) %>" class="relative mt-3 p-4 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
-          <div class='flex justify-between'>
-            <h5 class="text-2xl font-bold tracking-tight text-gray-900"><%= job.title&.titleize %></h5>
-          </div>
-          <% @response_data = job.response_data %>
-          <% if @response_data.present? %>
-            <span class='absolute right-[15px] top-[15px]'>
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </span>
-            <div>
-              <p class="text-slate-400"><%= job&.board&.title %></p>
-              <p class="text-slate-400">
-                <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-                <span><%= @response_data["location"] if @response_data["location"] %></span>
-              </p>
-            </div>
-            <div class="flex flex-wrap gap-1 mt-2">
-              <% if @response_data["hourly_rate"].present? %>
-                <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["hourly_rate"] %></span>
-              <% end %>
-              <% if @response_data["job-payrange"].present? %>
-                <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["job-payrange"] %></span>
-              <% end %>
-              <% if @response_data["job_type"] %>
-                <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["job_type"] %></span>
-              <% end %>
-              <% if @response_data["shift_time"] %>
-                <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["shift_time"] %></span>
-              <% end %>
-              <% if @response_data["specialities"] %>
-                <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["specialities"] %></span>
-              <% end %>
-            </div>
-            <div class='flex w-full flex-wrap mt-2 gap-2'>
-              <div class='flex'>
-                <%# if @response_data["apply_now_url"].present? %>
-                <span class='mr-2 text-blue-400 text-xs '><i class="fa fa-paper-plane" aria-hidden="true"></i></span>
-                <span class='text-xs text-400'>Easily Apply</span>
-                <%# end %>
-              </div>
-              <div class='flex'>
-                <span class='ml-2 mr-1 text-red-400 text-xs'><i class="fa fa-clock-o" aria-hidden="true"></i></span>
-                <span class='text-xs text-400'>Urgent Hiring</span>
-              </div>
-              <div class='flex'>
-                <span class='mr-2 text-red-500 text-sm'><i class="fa fa-user-plus" aria-hidden="true"></i></span>
-                <span class='text-xs text-400'>Hiring multiple candidates</span>
-              </div>
-            </div>
-            <div class='mt-2'>
-              <ul class='list-disc pl-2'>
-                <%= @response_data["short_description"]&.slice(0, 300) %>
-              </ul>
-            </div>
-            <% if @response_data["posted_date"].present? %>
-              <div class='text-slate-400 text-xs'><%= @response_data["posted_date"] %></div>
-            <% end %>
-          <% end %>
-        </a>
-      <% end %>
-    </div>
-    <div class='border rounded-lg hidden md:block'>
-      <div class=' pt-5 pb-4 px-4 flex flex-col items-start shadow-md'>
-        <h3 class='font-extrabold mb-3'>Customer Service Representative</h3>
-        <a class='decoration-blue-600 mb-3 text-blue-600 text-xs border-b border-blue-600' href="#">Voyager Global
-          Mobility</a>
-        <span class='text-xs text-slate-500 mb-2'>Lahore</span>
-        <div class="text-xs text-gray-500">
-          <span>Rs 60,000</span> - <span>Rs 90,000</span><span> a month</span>
+  <div class='grid grid-cols-1 md:grid-cols-2 gap-4'>
+    <% @jobs.each do |job| %>
+      <a href="<%= job_path(job) %>" class="relative p-4  bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
+        <div class='flex justify-between'>
+          <h5 class="text-lg font-bold tracking-tight text-gray-900"><%= job.title&.titleize %></h5>
         </div>
-        <div class="mt-4">
-          <button class=' bg-sky-700 rounded py-2 px-2 text-white font-semibold'>Apply Now</button>
-          <button class="bg-slate-400 py-2 px-3 rounded">
-            <i class="fa fa-bookmark-o text-white !text-md" aria-hidden="true"></i></button>
-        </div>
-      </div>
-      <div class='p-5  pt-5 pb-4 px-4 flex flex-col items-start shadow-md'>
-        <p><b>Job details</b></p>
-        <div>
-          <span class='text-xs text-slate-500'>Here’s how the job details align with your job preferences.</span>
-          <span class='text-xs text-slate-500'>Manage job preferences anytime in your
-            <a href='#' class='text-xs text-slate-500'>profile</a>
+        <% @response_data = job.response_data %>
+        <% if @response_data.present? %>
+          <span class='absolute right-[15px] top-[15px]'>
+            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
           </span>
-        </div>
-        <span><i class="fa fa-money" aria-hidden="true"></i></span>
-        <span><b>Pay</b></span>
-        <p>Rs 20,000 a month</p>
-        <span><i class="fa fa-briefcase" aria-hidden="true"></i></span>
-        <span><b>Job Type</b></span>
-        <p>Full-time
-        <p>
-      </div>
-    </div>
+          <div>
+            <p class="text-slate-400"><%= job&.board&.title %></p>
+            <p class="text-slate-400">
+              <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+              <span><%= @response_data["location"] if @response_data["location"] %></span>
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-1 mt-2">
+            <% if @response_data["hourly_rate"].present? %>
+              <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["hourly_rate"] %></span>
+            <% end %>
+            <% if @response_data["job-payrange"].present? %>
+              <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["job-payrange"] %></span>
+            <% end %>
+            <% if @response_data["job_type"] %>
+              <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["job_type"] %></span>
+            <% end %>
+            <% if @response_data["shift_time"] %>
+              <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["shift_time"] %></span>
+            <% end %>
+            <% if @response_data["specialities"] %>
+              <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["specialities"] %></span>
+            <% end %>
+          </div>
+          <div class='mt-2'>
+            <ul class='list-disc pl-2'>
+              <%= @response_data["short_description"]&.slice(0, 300) %>
+            </ul>
+          </div>
+          <% if @response_data["posted_date"].present? %>
+            <div class='text-slate-400 text-xs'><%= @response_data["posted_date"] %></div>
+          <% end %>
+        <% end %>
+      </a>
+    <% end %>
   </div>
 </div>
-<div class="pagination mb-4 mt-3">
-  <%= will_paginate @jobs, previous_label: "Previous", next_label: "Next", class: "flex items-center justify-center space-x-2" %>
-</div>
-
+<nav>
+  <ul class="flex items-center justify-center -space-x-px text-sm mt-4 mb-4">
+    <li>
+      <a href="#" class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
+    </li>
+    <li>
+      <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
+    </li>
+    <li>
+      <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
+    </li>
+    <li>
+      <a href="#" aria-current="page" class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>
+    </li>
+    <li>
+      <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
+    </li>
+    <li>
+      <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
+    </li>
+    <li>
+      <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
+    </li>
+  </ul>
+</nav>
