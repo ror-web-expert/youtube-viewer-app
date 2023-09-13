@@ -3,7 +3,7 @@
     <% @jobs.each do |job| %>
       <a href="<%= job_path(job) %>" class="relative p-4  bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
         <div class='flex justify-between'>
-          <h5 class="text-lg font-bold tracking-tight text-gray-900"><%= job.title&.titleize %></h5>
+          <h5 class="text-lg font-bold tracking-tight text-gray-900"><%= job.title %></h5>
         </div>
         <% @response_data = job.response_data %>
         <% if @response_data.present? %>
@@ -14,7 +14,7 @@
             <p class="text-slate-400"><%= job&.board&.title %></p>
             <p class="text-slate-400">
               <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-              <span><%= @response_data["location"] if @response_data["location"] %></span>
+              <span><%= @response_data["location"].gsub(/location\s*:?/i, ' ') if @response_data["location"] %></span>
             </p>
           </div>
           <div class="flex flex-wrap gap-1 mt-2">
@@ -40,35 +40,41 @@
             </ul>
           </div>
           <% if @response_data["posted_date"].present? %>
-            <div class='text-slate-400 text-xs'><%= @response_data["posted_date"] %></div>
+            <div class='text-slate-400 text-xs mt-2'><span class="text-blue-500 font-bold">Posted Date:</span> <%= @response_data["posted_date"] %></div>
           <% end %>
         <% end %>
       </a>
     <% end %>
   </div>
 </div>
-<nav>
-  <ul class="flex items-center justify-center -space-x-px text-sm mt-4 mb-4">
-    <li>
-      <a href="#" class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
-    </li>
-    <li>
-      <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
-    </li>
-    <li>
-      <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
-    </li>
-    <li>
-      <a href="#" aria-current="page" class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>
-    </li>
-    <li>
-      <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
-    </li>
-    <li>
-      <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
-    </li>
-    <li>
-      <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
-    </li>
-  </ul>
-</nav>
+
+<div class="pagination mb-4 mt-3">
+  <%= will_paginate @jobs, previous_label: "Previous", next_label: "Next", class: "flex items-center justify-center space-x-2" %>
+</div>
+
+
+<!--<nav>-->
+<!--  <ul class="flex items-center justify-center -space-x-px text-sm mt-4 mb-4">-->
+<!--    <li>-->
+<!--      <a href="#" class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>-->
+<!--    </li>-->
+<!--    <li>-->
+<!--      <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>-->
+<!--    </li>-->
+<!--    <li>-->
+<!--      <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>-->
+<!--    </li>-->
+<!--    <li>-->
+<!--      <a href="#" aria-current="page" class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>-->
+<!--    </li>-->
+<!--    <li>-->
+<!--      <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>-->
+<!--    </li>-->
+<!--    <li>-->
+<!--      <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>-->
+<!--    </li>-->
+<!--    <li>-->
+<!--      <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>-->
+<!--    </li>-->
+<!--  </ul>-->
+<!--</nav>-->

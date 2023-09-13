@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
-  def per_page
-    @per_page ||= 15
+  def per_page(total = 15)
+    @per_page ||= total
   end
 
   def page
