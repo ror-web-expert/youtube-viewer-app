@@ -81,10 +81,10 @@ class PostScraperService
       abbreviation = details["Abbreviation"] || details[:Abbreviation]
       other_names = details["OtherNames"] || details[:OtherNames]
       if title.include?(abbreviation) || (abbreviation && title.include?(abbreviation)) || other_names&.any? { |name| title.downcase.include?(name.downcase) }
-        return speciality.to_s
+        return (details["Abbreviation"] || details[:Abbreviation])
       end
     end
-    return ""
+    return nil
   end
 
   private

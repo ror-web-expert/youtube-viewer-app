@@ -24,13 +24,13 @@
             <% if @response_data["job-payrange"].present? %>
               <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["job-payrange"] %></span>
             <% end %>
-            <% if @response_data["job_type"] %>
+            <% if @response_data["job_type"].present? %>
               <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["job_type"] %></span>
             <% end %>
-            <% if @response_data["shift_time"] %>
+            <% if @response_data["shift_time"].present? %>
               <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["shift_time"] %></span>
             <% end %>
-            <% if @response_data["specialities"] %>
+            <% if @response_data["specialities"].present? %>
               <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["specialities"] %></span>
             <% end %>
           </div>

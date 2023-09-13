@@ -134,6 +134,10 @@ Speciality_List = {
   "Pain Management Nursing": {
     "Abbreviation": "PMN",
     "OtherNames": ["Pain Care Nursing", "Pain Nurse Specialist"]
+  },
+  "Progressive Care Unit": {
+    "Abbreviation": "PCU",
+    "OtherNames": ["Progressive Care Unit"]
   }
 }
 
