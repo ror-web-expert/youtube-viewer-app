@@ -17,11 +17,11 @@ Speciality_List = {
   },
   "Oncology Nursing": {
     "Abbreviation": "ON",
-    "OtherNames": ["Cancer Nursing", "Oncologic Nursing"]
+    "OtherNames": ["Cancer Nursing", "Oncologic Nursing", "Medical Oncology Ortho"]
   },
   "Obstetric Nursing": {
     "Abbreviation": "OB",
-    "OtherNames": ["Maternity Nursing", "Labor and Delivery Nursing"]
+    "OtherNames": ["Maternity Nursing", "Labor and Delivery Nursing", "Labor & Delivery"]
   },
   "Geriatric Nursing": {
     "Abbreviation": "GN",
@@ -140,5 +140,4 @@ Speciality_List = {
     "OtherNames": ["Progressive Care Unit"]
   }
 }
-
 
