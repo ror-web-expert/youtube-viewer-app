@@ -18,12 +18,10 @@ class PostScraperService
     page = Nokogiri::HTML(@session.body)
     page.css(@selectors["job-detail-container"]).each do |post|
       response_data = extract_data_from_selector(post, @selectors["response_selector"])
-      specialities = { specialities: filter_by_title(@post.title.squish) }
-      response_data = response_data.merge(specialities) if specialities.present?
+      response_data["speciality"] = filter_by_title(response_data["speciality"].present? ? response_data["speciality"] : @post.title.squish)
       response_data = @post.response_data.merge(response_data)
       @post.update(response_data: response_data, is_scrap: true)
     end
-
     close_browser
   end
 
@@ -37,13 +35,14 @@ class PostScraperService
         if index.include?('_url')
           data_hash[index] = element.css(value).attr('href').value
         elsif index.include?("job_description_details")
-          data_hash[index] = element.css(value&.squish).inner_html
+          data_hash[index] = element.css(value&.squish)&.inner_html
+        elsif index.include?("speciality")
+          data_hash[index] = extract_data_without_hash(element, value)&.gsub(/Department\s*:?/i, ' ')&.squish&.split("-")&.first
         else
-          data_hash[index] = extract_data_without_hash(element, value)
+          data_hash[index] = extract_data_without_hash(element, value)&.gsub(/Shifts|Pay|Posted|Schedule|Facility|Job Reference|#\s*:?/i, ' ')&.squish
         end
       end
     end
-
     data_hash
   end
 
@@ -55,9 +54,25 @@ class PostScraperService
       if split_data.length > 1
         split_data.send(value["need_text"])
       else
-        match = split_data.first.match(/hourly (pay )?rate:?\s*\$([\d.]+)/i)
-        split_data = split_data.first.split(match.to_s)
-        split_data.send(value["need_text"])
+        if split_data.first.present?
+          match = split_data.first.match(/hourly (pay )?rate:?\s*\$([\d.]+)/i)
+          split_data = split_data.first.split(match.to_s)
+          split_data.send(value["need_text"])
+        end
+      end
+    elsif value.key?("get_paragraph") && value.key?("next_element") && value.key?("inner_html")
+      split_data = element.at_css(value["get_paragraph"]).next_element.inner_html
+      if split_data.length < 200 && value["get_paragraph"].include?("descHeader")
+        input1 = element.at('input[type="hidden"]#descHeader')
+        input2 = element.at('input[type="hidden"]#descFooter')
+        inner_html_content = ""
+
+        current_element = input1.next_element
+        while current_element && current_element != input2
+          inner_html_content += current_element.to_s
+          current_element = current_element.next_element
+        end
+        split_data = inner_html_content
       end
     elsif value.key?("get_paragraph") && value.key?("next_element") && value.key?("next_element_css")
       split_data = element.at_css(value["get_paragraph"]).next_element.css(value["next_element_css"]).map { |lu| { "#{lu.previous_sibling&.previous_sibling&.text}": lu.text } }.to_s
@@ -80,8 +95,8 @@ class PostScraperService
     Speciality_List.each do |speciality, details|
       abbreviation = details["Abbreviation"] || details[:Abbreviation]
       other_names = details["OtherNames"] || details[:OtherNames]
-      if title.include?(abbreviation) || (abbreviation && title.include?(abbreviation)) || other_names&.any? { |name| title.downcase.include?(name.downcase) }
-        return (details["Abbreviation"] || details[:Abbreviation])
+      if title.include?(abbreviation) || (abbreviation && title.include?(abbreviation)) || other_names&.any? { |name| name.downcase.include?(title.downcase) }
+        return abbreviation
       end
     end
     return nil

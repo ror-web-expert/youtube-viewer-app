@@ -21,26 +21,26 @@
             <% if @response_data["hourly_rate"].present? %>
               <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["hourly_rate"] %></span>
             <% end %>
-            <% if @response_data["job-payrange"].present? %>
-              <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["job-payrange"] %></span>
+            <% if @response_data["salary_range"].present? %>
+              <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["salary_range"] %></span>
             <% end %>
             <% if @response_data["job_type"].present? %>
               <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["job_type"] %></span>
             <% end %>
-            <% if @response_data["shift_time"].present? %>
-              <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["shift_time"] %></span>
+            <% if @response_data["shift_type"].present? %>
+              <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["shift_type"].gsub(/shifts\s*:?/i, ' ')  %></span>
             <% end %>
-            <% if @response_data["specialities"].present? %>
-              <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["specialities"] %></span>
+            <% if @response_data["speciality"].present? %>
+              <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["speciality"] %></span>
             <% end %>
           </div>
           <div class='mt-2'>
             <ul class='list-disc pl-2'>
-              <%= @response_data["short_description"]&.slice(0, 300) %>
+              <%= strip_tags(@response_data["job_description_details"]).slice(0,300) if @response_data["job_description_details"].present? %>
             </ul>
           </div>
           <% if @response_data["posted_date"].present? %>
-            <div class='text-slate-400 text-xs mt-2'><span class="text-blue-500 font-bold">Posted Date:</span> <%= @response_data["posted_date"] %></div>
+            <div class='text-slate-400 text-xs mt-2'><span class="text-blue-500 font-bold">Posted Date:</span> <%= @response_data["posted_date"].gsub(/Date posted\s*:?/i, ' ') %></div>
           <% end %>
         <% end %>
       </a>

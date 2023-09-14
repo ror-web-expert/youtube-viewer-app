@@ -6,7 +6,7 @@ class Post < ApplicationRecord
 
   enum status: { pending: 'pending', published: 'published',  expire: 'expire' },  _default: :pending
 
-  scope :order_by_id, -> {order(id: :desc)}
+  scope :order_by_id, -> { order(id: :desc) }
   scope :scraped, -> { where(is_scrap: true) }
   scope :not_scraped, -> { where(is_scrap: false) }
 end
