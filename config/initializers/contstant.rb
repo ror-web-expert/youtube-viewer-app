@@ -15,6 +15,30 @@ Speciality_List = {
     "Abbreviation": "EN",
     "OtherNames": ["ER Nursing", "Trauma Nursing"]
   },
+  "Emergency Department": {
+    "Abbreviation": "ED",
+    "OtherNames": ["Emergency Department", "Emergency Department Nurse", "Emergency Department Nursing"]
+  },
+  "Registered Nurse": {
+    "Abbreviation": "RN",
+    "OtherNames": ["Registered Nurse", "Registered Nursing"]
+  },
+  "certified diabetes care and education specialist": {
+    "Abbreviation": "CDCES",
+    "OtherNames": ["Certified Diabetes", "Certified Diabetes Educators", "certified diabetes care and education specialist"]
+  },
+  "central service": {
+    "Abbreviation": "CS",
+    "OtherNames": ["sterile processing technicians", "central service"]
+  },
+  "clinical assistant": {
+    "Abbreviation": "CA",
+    "OtherNames": ["Medical Assistant", "clinical assistant"]
+  },
+  "clinical assistant": {
+    "Abbreviation": "PCT",
+    "OtherNames": ["patient care technician", "clinical assistant"]
+  },
   "Oncology Nursing": {
     "Abbreviation": "ON",
     "OtherNames": ["Cancer Nursing", "Oncologic Nursing", "Medical Oncology Ortho"]
@@ -47,9 +71,70 @@ Speciality_List = {
     "Abbreviation": "CN",
     "OtherNames": ["Heart Nursing", "Cardiology Nursing"]
   },
-  "Surgical Nursing": {
-    "Abbreviation": "SN",
+  "Operating Room": {
+    "Abbreviation": "OR",
     "OtherNames": ["Operating Room Nursing", "Perioperative Nursing"]
+  },
+
+  "Surgical Tech":{
+    "Abbreviation": "Surg-Tech",
+    "OtherNames": ["Scrub tech", "Surgical Ttechnician", "Operating Room Technician","Surgical Assistant"]
+  },
+  "Radiologic Technologist":{
+    "Abbreviation": "X-ray Tech",
+    "OtherNames": ["Radiographer", "Radiologic Technician"]
+  },
+  "Patient Access Specialist (Pool)":{
+    "Abbreviation": "PAS",
+    "OtherNames": ["Patient Services Coordinator", "Patient service representatives"]
+  },
+  "CT Technologist POOL":{
+    "Abbreviation": "CT-Tech",
+    "OtherNames": ["CAT Scan Technologist", "Radiologic CT Technician"]
+  },
+  "Behavioral Health Technician":{
+    "Abbreviation": "BHT",
+    "OtherNames": ["Mental Health Technician", "Psychiatric Technician"]
+  },
+  "Sonographer":{
+    "Abbreviation": "Sonographer",
+    "OtherNames": ["Ultrasound Technologist", "Medical Sonographer"]
+  },
+  "Recreation Therapy Assistant":{
+    "Abbreviation": "RTA",
+    "OtherNames": ["Therapeutic Recreation Assistant", "Activity Therapy Assistant"]
+  },
+  "SICU Clinical Nurse": {
+    "Abbreviation": "SICU",
+    "OtherNames": ["Surgical Intensive Care Unit", "SICU"]
+  },
+  "Health Unit Coordinator": {
+    "Abbreviation": "HUC",
+    "OtherNames": ["Unit Secretary", "Ward Clerk"]
+  },
+  "Progressive Care Unit": {
+    "Abbreviation": "PCU",
+    "OtherNames": ["Progressive Care Unit", "Progressive Care"]
+  },
+  "Sr HIM Integrity Specialist": {
+    "Abbreviation": "HIM",
+    "OtherNames": ["Senior Health Information Management Integrity Specialist"]
+  },
+  "Coder III": {
+    "Abbreviation": "Coder III",
+    "OtherNames": ["Medical Coder Level III", "Senior Medical Coder"]
+  },
+  "X-ray Tech Clinic": {
+    "Abbreviation": "X-ray Tech",
+    "OtherNames": ["Radiologic Technologist in Clinic"]
+  },
+  "Certified Nursing Assistant": {
+    "Abbreviation": "CNA",
+    "OtherNames": ["Nursing Assistant", "Patient Care Assistant"]
+  },
+  "Registered Nurse Psychiatric": {
+    "Abbreviation": " RPNs",
+    "OtherNames": ["Psychiatric Nurse", "Mental Health Nurse"]
   },
   "Wound Care Nursing": {
     "Abbreviation": "WCN",
@@ -140,4 +225,3 @@ Speciality_List = {
     "OtherNames": ["Progressive Care Unit"]
   }
 }
-

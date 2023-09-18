@@ -18,7 +18,7 @@ class PostScraperService
     page = Nokogiri::HTML(@session.body)
     page.css(@selectors["job-detail-container"]).each do |post|
       response_data = extract_data_from_selector(post, @selectors["response_selector"])
-      response_data["speciality"] = filter_by_title(response_data["speciality"].present? ? response_data["speciality"] : @post.title.squish)
+      response_data["speciality"] = filter_by_title(@post.title.squish)
       response_data = @post.response_data.merge(response_data)
       @post.update(response_data: response_data, is_scrap: true)
     end
@@ -36,7 +36,7 @@ class PostScraperService
           data_hash[index] = element.css(value).attr('href').value
         elsif index.include?("job_description_details")
           data_hash[index] = element.css(value&.squish)&.inner_html
-        elsif index.include?("speciality")
+        elsif index.include?("department")
           data_hash[index] = extract_data_without_hash(element, value)&.gsub(/Department\s*:?/i, ' ')&.squish&.split("-")&.first
         else
           data_hash[index] = extract_data_without_hash(element, value)&.gsub(/Shifts|Pay|Posted|Schedule|Facility|Job Reference|#\s*:?/i, ' ')&.squish
@@ -99,7 +99,7 @@ class PostScraperService
         return abbreviation
       end
     end
-    return nil
+    return "RN"
   end
 
   private

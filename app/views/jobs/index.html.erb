@@ -1,7 +1,8 @@
 <div class='container mt-3 mx-auto w-11/12 md:w-9/12'>
   <div class='grid grid-cols-1 md:grid-cols-2 gap-4'>
     <% @jobs.each do |job| %>
-      <a href="<%= job_path(job) %>" class="relative p-4  bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
+      <div class="relative p-4  bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
+      <a href="<%= job_path(job) %>" class="p-2">
         <div class='flex justify-between'>
           <h5 class="text-lg font-bold tracking-tight text-gray-900"><%= job.title %></h5>
         </div>
@@ -36,7 +37,8 @@
           </div>
           <div class='mt-2'>
             <ul class='list-disc pl-2'>
-              <%= strip_tags(@response_data["job_description_details"]).slice(0,300) if @response_data["job_description_details"].present? %>
+              <b>Department:</b>
+              <%= @response_data["department"] %>
             </ul>
           </div>
           <% if @response_data["posted_date"].present? %>
@@ -44,6 +46,8 @@
           <% end %>
         <% end %>
       </a>
+      <a href="<%= job.scraped_url %>" target="_blank"><button class=' bg-sky-700 rounded pt-2 px-2 text-white font-semibold'>Easily Apply</button></a>
+    </div>
     <% end %>
   </div>
 </div>
