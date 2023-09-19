@@ -6,7 +6,7 @@ class PostScraperService
     @url = @post.scraped_url
     @board = @post.board
     @selectors = JSON.parse(@board.detail_selector) if @board.detail_selector.present?
-    @session = Capybara::Session.new(:selenium)
+    @session = Capybara::Session.new(:selenium_chrome_headless)
   end
 
   def scrape_and_parse
@@ -38,6 +38,8 @@ class PostScraperService
           data_hash[index] = element.css(value&.squish)&.inner_html
         elsif index.include?("department")
           data_hash[index] = extract_data_without_hash(element, value)&.gsub(/Department\s*:?/i, ' ')&.squish&.split("-")&.first
+        elsif index.include?("shift_type")
+          data_hash[index] = extract_data_without_hash(element, value)&.gsub(/\d+\s*-\s*([a-zA-Z]+)/) { $1 }&.squish&.gsub(/Shifts|#\s*:?/i, ' ')&.squish
         else
           data_hash[index] = extract_data_without_hash(element, value)&.gsub(/Shifts|Pay|Posted|Schedule|Facility|Job Reference|#\s*:?/i, ' ')&.squish
         end
@@ -61,8 +63,7 @@ class PostScraperService
         end
       end
     elsif value.key?("get_paragraph") && value.key?("next_element") && value.key?("inner_html")
-      split_data = element.at_css(value["get_paragraph"]).next_element.inner_html
-      if split_data.length < 200 && value["get_paragraph"].include?("descHeader")
+      if value["get_paragraph"].include?("descHeader")
         input1 = element.at('input[type="hidden"]#descHeader')
         input2 = element.at('input[type="hidden"]#descFooter')
         inner_html_content = ""
@@ -73,7 +74,10 @@ class PostScraperService
           current_element = current_element.next_element
         end
         split_data = inner_html_content
+      else
+        split_data = element.at_css(value["get_paragraph"]).next_element.inner_html
       end
+      split_data
     elsif value.key?("get_paragraph") && value.key?("next_element") && value.key?("next_element_css")
       split_data = element.at_css(value["get_paragraph"]).next_element.css(value["next_element_css"]).map { |lu| { "#{lu.previous_sibling&.previous_sibling&.text}": lu.text } }.to_s
     elsif value.key?("list_attribute") && value.key?("list_attribute_css")

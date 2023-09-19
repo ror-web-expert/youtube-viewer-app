@@ -108,7 +108,13 @@ class BoardScraperService
   def extract_data_from_selector(element, selector)
     data_hash = {}
     selector.each do |key, value|
-      data_hash[key] = key.include?('source_url') ? full_url(element.css(value).attr('href').value) : element.css(value).text.squish
+      if key.include?('source_url')
+        data_hash[key] = full_url(element.css(value).attr('href').value)
+      elsif key.include?('job_type')
+      data_hash[key] = element.css(value)&.text&.gsub(/Regular\s*:?/i, ' ')&.squish
+      else
+        data_hash[key] = element.css(value).text.squish
+      end
     end
     data_hash
   end
