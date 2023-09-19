@@ -5,7 +5,7 @@ class BoardScraperService
     @board = board
     @url = board.source_url
     @selectors = JSON.parse(board.listing_selector)
-    @session = Capybara::Session.new(:selenium)
+    @session = start_chrome_headless_session
   end
 
   def scrape_and_parse

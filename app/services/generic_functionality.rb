@@ -12,4 +12,8 @@ module GenericFunctionality
     @session.click_button(cookies_modal['button_text']) if cookies_modal_present?
     sleep(2)
   end
+
+  def start_chrome_headless_session
+    Capybara::Session.new(:selenium_chrome_headless)
+  end
 end

@@ -6,7 +6,7 @@ class PostScraperService
     @url = @post.scraped_url
     @board = @post.board
     @selectors = JSON.parse(@board.detail_selector) if @board.detail_selector.present?
-    @session = Capybara::Session.new(:selenium_chrome_headless)
+    @session = start_chrome_headless_session
   end
 
   def scrape_and_parse
