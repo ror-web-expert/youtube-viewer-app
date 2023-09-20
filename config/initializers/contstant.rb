@@ -3,6 +3,7 @@ Speciality_List = {
     "Abbreviation": "CCN",
     "OtherNames": ["Intensive Care Nursing", "ICU Nursing"]
   },
+
   "Pediatric Nursing": {
     "Abbreviation": "PN",
     "OtherNames": ["Child Health Nursing", "Pediatric Care Nursing"]
@@ -11,10 +12,102 @@ Speciality_List = {
     "Abbreviation": "PMHN",
     "OtherNames": ["Behavioral Health Nursing", "Mental Health Nursing"]
   },
-  "Emergency Nursing": {
-    "Abbreviation": "EN",
-    "OtherNames": ["ER Nursing", "Trauma Nursing"]
+  "Perioperative PACU RN": {
+    "Abbreviation": "Preop/PACU",
+    "OtherNames": ["Preop/PACU", "Preop/PACU RN"]
   },
+  "Stroke Care": {
+    "Abbreviation": "Stroke Care",
+    "OtherNames": ["Registered Nurse Med/Surg5D", "Med/Surg5D", "Med/Surg", "RN Med/Surg", "RN Emergency", "Patient care", "RN Interventional Radiology"]
+  },
+
+  "Patient care": {
+    "Abbreviation": "Patient care",
+    "OtherNames": ["Patient care", "RN Interventional Radiology"]
+  },
+
+  "Nursing Practice": {
+    "Abbreviation": "Nurs. Pract",
+    "OtherNames": ["Nursing Practice", "RN Tele/ Oncology", "Tele/ Oncology"]
+  },
+
+  "Cath Lab Rad Tech": {
+    "Abbreviation": "Cath Lab",
+    "OtherNames": ["Cath Lab Rad Tech", "Cath Lab Rad Tech"]
+  },
+
+  "PD - Med Surg": {
+    "Abbreviation": "PD - Med Surg",
+    "OtherNames": ["RN PD Med/Surg Pediatric Acute", "PD Med/Surg"]
+  },
+  "Physiotherapy or physical therapy": {
+    "Abbreviation": "PT",
+    "OtherNames": ["Physiotherapy", "physical therapy", "RN (PT) Emergency", "PT Emergency"]
+  },
+  "Cardiac Cath Lab": {
+    "Abbreviation": "RN-BC",
+    "OtherNames": ["Cardiac Cath Lab Nurse", "Cardiac Cath Lab"]
+  },
+
+  "Nurse Anesthetist": {
+    "Abbreviation": "CRNA",
+    "OtherNames": ["Nurse Anesthetist", "CRNA"]
+  },
+  "perioperative care": {
+    "Abbreviation": "OR",
+    "OtherNames": ["perioperative care", "Operating Room"]
+  },
+  "Post Cardiac Cath Unit": {
+    "Abbreviation": "PCCU",
+    "OtherNames": ["Post Cardiac Cath Unit", "Progressive Cardiac Care Unit", "Progressive Cardiac Care"]
+  },
+
+  "PICU Registered Nurse": {
+    "Abbreviation": "PICU",
+    "OtherNames": ["Pediatric ICU"]
+  },
+  "Graduate Nurse Program": {
+    "Abbreviation": "G.N.",
+    "OtherNames": ["Transition to Professional Practice", "Transition to Professional Practice Programs"]
+  },
+  "RN Burn Center": {
+    "Abbreviation": "BCU",
+    "OtherNames": ["Burn Ward", "Burn Unit"]
+  },
+  "RN Burn ICU": {
+    "Abbreviation": "BICU",
+    "OtherNames": ["Burn ICU Ward", "Burn ICU Unit"]
+  },
+  "PreOp PACU RN": {
+    "Abbreviation": "Perioperative PACU",
+    "OtherNames": ["Preoperative/Post-Anesthesia Care Unit Registered Nurse"]
+  },
+  "Emergency Department (ED) Tech": {
+    "Abbreviation": "ED Tech",
+    "OtherNames": ["ER Technician", "Emergency Room Technician"]
+  },
+  "Nurse Supervisor Eye Clinic": {
+    "Abbreviation": "Ophthalmic Nurse Supervisor",
+    "OtherNames": ["Ophthalmology Clinic Nurse Supervisor"]
+  },
+  "Advanced Clinical Nurse": {
+    "Abbreviation": "CNS",
+    "OtherNames": ["Clinical Nurse Specialist (CNS)", "Nurse Practitioner (NP)", "Advanced Clinical Practice Nurse (ACPN)","Advanced Practice Registered Nurse (APRN)"]
+  },
+  "MICU Registered Nurse": {
+    "Abbreviation": "MICU RN",
+    "OtherNames": ["Medical ICU Nurse"]
+  },
+  "Orthopedic Technician": {
+    "Abbreviation": "Ortho Tech",
+    "OtherNames": ["Orthopedic Technologists", "Orthopedic Assistant"]
+  },
+  "Health Unit Coordinator": {
+    "Abbreviation": "HUC",
+    "OtherNames": ["Unit Secretary", "Ward Clerk"]
+  },
+
+
   "Emergency Department": {
     "Abbreviation": "ED",
     "OtherNames": ["Emergency Department", "Emergency Department Nurse", "Emergency Department Nursing"]
@@ -34,10 +127,6 @@ Speciality_List = {
   "clinical assistant": {
     "Abbreviation": "CA",
     "OtherNames": ["Medical Assistant", "clinical assistant"]
-  },
-  "clinical assistant": {
-    "Abbreviation": "PCT",
-    "OtherNames": ["patient care technician", "clinical assistant"]
   },
   "Oncology Nursing": {
     "Abbreviation": "ON",
@@ -107,10 +196,6 @@ Speciality_List = {
   "SICU Clinical Nurse": {
     "Abbreviation": "SICU",
     "OtherNames": ["Surgical Intensive Care Unit", "SICU"]
-  },
-  "Health Unit Coordinator": {
-    "Abbreviation": "HUC",
-    "OtherNames": ["Unit Secretary", "Ward Clerk"]
   },
   "Progressive Care Unit": {
     "Abbreviation": "PCU",
@@ -219,9 +304,5 @@ Speciality_List = {
   "Pain Management Nursing": {
     "Abbreviation": "PMN",
     "OtherNames": ["Pain Care Nursing", "Pain Nurse Specialist"]
-  },
-  "Progressive Care Unit": {
-    "Abbreviation": "PCU",
-    "OtherNames": ["Progressive Care Unit"]
   }
 }

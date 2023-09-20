@@ -37,7 +37,7 @@ class PostScraperService
         elsif index.include?("job_description_details")
           data_hash[index] = element.css(value&.squish)&.inner_html
         elsif index.include?("department")
-          data_hash[index] = extract_data_without_hash(element, value)&.gsub(/Department\s*:?/i, ' ')&.squish&.split("-")&.first
+          data_hash[index] = extract_data_without_hash(element, value)&.gsub(/Department\s*:?/i, ' ')&.squish
         elsif index.include?("shift_type")
           data_hash[index] = extract_data_without_hash(element, value)&.gsub(/\d+\s*-\s*([a-zA-Z]+)/) { $1 }&.squish&.gsub(/Shifts|#\s*:?/i, ' ')&.squish
         else
@@ -99,11 +99,11 @@ class PostScraperService
     Speciality_List.each do |speciality, details|
       abbreviation = details["Abbreviation"] || details[:Abbreviation]
       other_names = details["OtherNames"] || details[:OtherNames]
-      if title.include?(abbreviation) || (abbreviation && title.include?(abbreviation)) || other_names&.any? { |name| name.downcase.include?(title.downcase) }
+      if title.include?(abbreviation) || (abbreviation && title.include?(abbreviation)) || other_names&.any? { |name| title.downcase.include?(name.downcase) }
         return abbreviation
       end
     end
-    return "RN"
+    return nil
   end
 
   private
