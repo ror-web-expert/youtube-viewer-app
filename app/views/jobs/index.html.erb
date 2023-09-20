@@ -1,64 +1,65 @@
 <div class='container mt-3 mx-auto w-11/12 md:w-9/12'>
   <div class='grid grid-cols-1 md:grid-cols-2 gap-4'>
     <% @jobs.each do |job| %>
-      <div class="relative p-4  bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
-      <a href="<%= job_path(job) %>" class="p-2">
-        <div class='flex justify-between'>
-          <h5 class="text-lg font-bold tracking-tight text-gray-900"><%= job.title %></h5>
-        </div>
-        <% @response_data = job.response_data %>
-        <% if @response_data.present? %>
-          <span class='absolute right-[15px] top-[15px]'>
-            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-          </span>
-          <div>
-            <p class="text-slate-400"><%= job&.board&.title %></p>
-            <p class="text-slate-400">
-              <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-              <span><%= @response_data["location"].gsub(/location\s*:?/i, ' ') if @response_data["location"] %></span>
-            </p>
+      <div class="relative p-4 flex flex-col justify-between bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
+        <a href="<%= job_path(job) %>" class="p-2">
+          <div class='flex justify-between'>
+            <h5 class="text-lg font-bold tracking-tight text-gray-900"><%= job.title %></h5>
           </div>
-          <div class="flex flex-wrap gap-1 mt-2">
-            <% if @response_data["hourly_rate"].present? %>
-              <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["hourly_rate"] %></span>
-            <% end %>
-            <% if @response_data["salary_range"].present? %>
-              <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["salary_range"] %></span>
-            <% end %>
-            <% if @response_data["job_type"].present? %>
-              <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["job_type"] %></span>
-            <% end %>
-            <% if @response_data["shift_type"].present? %>
-              <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["shift_type"].gsub(/shifts\s*:?/i, ' ')  %></span>
-            <% end %>
-            <% if @response_data["speciality"].present? %>
-              <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["speciality"] %></span>
-            <% end %>
-          </div>
-          <% if @response_data["department"].present? %>
-            <div class='mt-2'>
-              <ul class='list-disc pl-2'>
-                <b>Department:</b>
-                <%= @response_data["department"] %>
-              </ul>
+          <% @response_data = job.response_data %>
+          <% if @response_data.present? %>
+            <span class='absolute right-[15px] top-[15px]'>
+              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+            </span>
+            <div>
+              <p class="text-slate-400"><%= job&.board&.title %></p>
+              <p class="text-slate-400">
+                <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                <span><%= @response_data["location"].gsub(/location\s*:?/i, ' ') if @response_data["location"] %></span>
+              </p>
             </div>
-          <% end %>  
-          <% if @response_data["posted_date"].present? %>
-            <div class='text-slate-400 text-xs mt-2'><span class="text-blue-500 font-bold">Posted Date:</span> <%= @response_data["posted_date"].gsub(/Date posted\s*:?/i, ' ') %></div>
+            <div class="flex flex-wrap gap-1 mt-2">
+              <% if @response_data["hourly_rate"].present? %>
+                <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["hourly_rate"] %></span>
+              <% end %>
+              <% if @response_data["salary_range"].present? %>
+                <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["salary_range"] %></span>
+              <% end %>
+              <% if @response_data["job_type"].present? %>
+                <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["job_type"] %></span>
+              <% end %>
+              <% if @response_data["shift_type"].present? %>
+                <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["shift_type"].gsub(/shifts\s*:?/i, ' ')  %></span>
+              <% end %>
+              <% if @response_data["speciality"].present? %>
+                <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["speciality"] %></span>
+              <% end %>
+            </div>
+            <% if @response_data["department"].present? %>
+              <div class='mt-2'>
+                <ul class='list-disc pl-2'>
+                  <b>Department:</b>
+                  <%= @response_data["department"] %>
+                </ul>
+              </div>
+            <% end %>
+            <% if @response_data["posted_date"].present? %>
+              <div class='text-slate-400 text-xs mt-2'><span class="text-blue-500 font-bold">Posted Date:</span> <%= @response_data["posted_date"].gsub(/Date posted\s*:?/i, ' ') %></div>
+            <% end %>
           <% end %>
-        <% end %>
-      </a>
-      <a href="<%= job.scraped_url %>" target="_blank"><button class='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 bsolute right-0'>Apply Now</button></a>
-    </div>
+        </a>
+        <a href="<%= job.scraped_url %>" class='text-right' target="_blank">
+          <button class='text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5'>
+            Apply Now
+          </button>
+        </a>
+      </div>
     <% end %>
   </div>
 </div>
-
 <div class="pagination mb-4 mt-3">
   <%= will_paginate @jobs, previous_label: "Previous", next_label: "Next", class: "flex items-center justify-center space-x-2" %>
 </div>
-
-
 <!--<nav>-->
 <!--  <ul class="flex items-center justify-center -space-x-px text-sm mt-4 mb-4">-->
 <!--    <li>-->
