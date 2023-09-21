@@ -376,9 +376,5 @@ Speciality_List = {
   "Pain Management Nursing": {
     "Abbreviation": "PMN",
     "OtherNames": ["Pain Care Nursing", "Pain Nurse Specialist"]
-  },
-  "Registered Nurse": {
-    "Abbreviation": "RN",
-    "OtherNames": ["Registered Nurse", "Registered Nursing"]
   }
 }
