@@ -1,9 +1,9 @@
 Speciality_List = {
+  # Start Honor Health site
   "Critical Care Nursing": {
     "Abbreviation": "CCN",
     "OtherNames": ["Intensive Care Nursing", "ICU Nursing"]
   },
-
   "Pediatric Nursing": {
     "Abbreviation": "PN",
     "OtherNames": ["Child Health Nursing", "Pediatric Care Nursing"]
@@ -16,24 +16,22 @@ Speciality_List = {
     "Abbreviation": "Preop/PACU",
     "OtherNames": ["Preop/PACU", "Preop/PACU RN"]
   },
-  "Stroke Care": {
-    "Abbreviation": "Stroke Care",
-    "OtherNames": ["Registered Nurse Med/Surg5D", "Med/Surg5D", "Med/Surg", "RN Med/Surg", "RN Emergency", "Patient care", "RN Interventional Radiology"]
+  "Medical Surgical": {
+    "Abbreviation": "Med/Surg",
+    "OtherNames": ["Registered Nurse Med/Surg5D", "Med/Surg5D", "RN Med/Surg", "Patient care", "RN Interventional Radiology"]
   },
-
   "Patient care": {
     "Abbreviation": "Patient care",
     "OtherNames": ["Patient care", "RN Interventional Radiology"]
   },
-
   "Nursing Practice": {
-    "Abbreviation": "Nurs. Pract",
-    "OtherNames": ["Nursing Practice", "RN Tele/ Oncology", "Tele/ Oncology"]
+    "Abbreviation": "Tele/Oncol.",
+    "OtherNames": ["RN Tele/ Oncology", "Tele/ Oncology", "Tele/Oncology"]
   },
 
   "Cath Lab Rad Tech": {
-    "Abbreviation": "Cath Lab",
-    "OtherNames": ["Cath Lab Rad Tech", "Cath Lab Rad Tech"]
+    "Abbreviation": "CCL",
+    "OtherNames": ["Cath Lab Rad Tech", "cardiac cath lab technologist", "cardiac catheterization laboratory", "Cardiac Cath Lab Nurse", "Cardiac Cath Lab"]
   },
 
   "PD - Med Surg": {
@@ -44,11 +42,101 @@ Speciality_List = {
     "Abbreviation": "PT",
     "OtherNames": ["Physiotherapy", "physical therapy", "RN (PT) Emergency", "PT Emergency"]
   },
-  "Cardiac Cath Lab": {
-    "Abbreviation": "RN-BC",
-    "OtherNames": ["Cardiac Cath Lab Nurse", "Cardiac Cath Lab"]
+  "Telemetry": {
+    "Abbreviation": "ECG",
+    "OtherNames": ["RN Telemetry", "Telemetry", "electrocardiogram"]
   },
 
+  "Clinical Nurse Educator": {
+    "Abbreviation": "CNEs",
+    "OtherNames": ["Clinical Nurse Educator", "CNE"]
+  },
+
+  "Home Health": {
+    "Abbreviation": "HH",
+    "OtherNames": ["Home Health", "RN HH Complete Care", "Paramedic Complete Care", "Infusion Authorization Coordinator", "Complete Care"]
+  },
+  "Gastroenterology and Hepatology": {
+    "Abbreviation": "CGH",
+    "OtherNames": ["Endoscopy", "Gastroenterology and Hepatology", "Gastroenterology", "Hepatology"]
+  },
+
+  "Observation and Response Chart (ORC)": {
+    "Abbreviation": "ORC",
+    "OtherNames": ["Adult Observation", "Observation and Response Chart", "Observation and Response Chart (ORC)", "Observation Unit"]
+  },
+
+  "orthopedics": {
+    "Abbreviation": "Orthopedics",
+    "OtherNames": ["RN Orthopedics", "Orthopedics"]
+  },
+
+  "Pathologist": {
+    "Abbreviation": "Pathol.",
+    "OtherNames": ["pathologist", "Speech Language Pathologist", "Pathologist"]
+  },
+
+  "Innovation Care Partners ": {
+    "Abbreviation": "ICP",
+    "OtherNames": ["Innovation Care Partners", "Speech Language Pathologist", "Pathologist"]
+  },
+  "clinical nurse specialist": {
+    "Abbreviation": "CNS",
+    "OtherNames": ["clinical nurse specialist"]
+  },
+  "Surgical neurology": {
+    "Abbreviation": "Surg. Neurol.",
+    "OtherNames": ["Med/Surg Neurology", "Nursing Supervisor Med/Surg Neurology"]
+  },
+
+  "Surgical Orthopedics": {
+    "Abbreviation": "Surg. Ortho.",
+    "OtherNames": ["RN Med/Surg Orthopedics", "Med/Surg Orthopedics"]
+  },
+  "Surgical oncology": {
+    "Abbreviation": "Surg. Oncol.",
+    "OtherNames": ["Med/Surg Oncology", "Surgical oncology", "Med/Surg Surg Oncolog"]
+  },
+  "PRN - CVOR": {
+    "Abbreviation": "PRN - CVOR",
+    "OtherNames": ["PRN - CVOR", "RN PRN - CVOR"]
+  },
+
+  "RN PRN": {
+    "Abbreviation": "PRN",
+    "OtherNames": ["RN PRN", "RN PRN Nights Med Surg Network Float Pool"]
+  },
+
+  "cardiovascular operating room": {
+    "Abbreviation": "CVOR",
+    "OtherNames": ["cardiovascular patients", "cardiovascular operating room", "RN CVOR"]
+  },
+
+  "care management coordinator": {
+    "Abbreviation": "CM-COORD",
+    "OtherNames": ["care management coordinator", "RN Care Management Coordinator"]
+  },
+
+  "Neurology Care Unit": {
+    "Abbreviation": "neuro-ICUs",
+    "OtherNames": ["RN Neurology Care Unit", "Neurologist", "RN Stroke/Neuro Care"]
+  },
+  "Obstetrics and Gynecology": {
+    "Abbreviation": "OB-GYN",
+    "OtherNames": ["Labor & Delivery", "obstetrics and gynecology", "RN Labor & Delivery", "Labor and Delivery Nursing"]
+  },
+  "Stroke/Neuro Care": {
+    "Abbreviation": "Stroke/Neuro",
+    "OtherNames": ["RN Stroke/Neuro Care", "Stroke/Neuro Care"]
+  },
+  "Clinical Decision Unit": {
+    "Abbreviation": "CDU",
+    "OtherNames": ["Clinical Decision Unit", "RN Clinical Decision Unit"]
+  },
+  "intensive care unit": {
+    "Abbreviation": "ICU",
+    "OtherNames": ["intensive care unit", "RN ICU", "Med/Extended", "Acute Care"]
+  },
   "Nurse Anesthetist": {
     "Abbreviation": "CRNA",
     "OtherNames": ["Nurse Anesthetist", "CRNA"]
@@ -64,7 +152,7 @@ Speciality_List = {
 
   "PICU Registered Nurse": {
     "Abbreviation": "PICU",
-    "OtherNames": ["Pediatric ICU"]
+    "OtherNames": ["Pediatric ICU", "RN NICU/PICU/Peds"]
   },
   "Graduate Nurse Program": {
     "Abbreviation": "G.N.",
@@ -78,6 +166,7 @@ Speciality_List = {
     "Abbreviation": "BICU",
     "OtherNames": ["Burn ICU Ward", "Burn ICU Unit"]
   },
+  # END Honor Health site
   "PreOp PACU RN": {
     "Abbreviation": "Perioperative PACU",
     "OtherNames": ["Preoperative/Post-Anesthesia Care Unit Registered Nurse"]
@@ -92,7 +181,7 @@ Speciality_List = {
   },
   "Advanced Clinical Nurse": {
     "Abbreviation": "CNS",
-    "OtherNames": ["Clinical Nurse Specialist (CNS)", "Nurse Practitioner (NP)", "Advanced Clinical Practice Nurse (ACPN)","Advanced Practice Registered Nurse (APRN)"]
+    "OtherNames": ["Clinical Nurse Specialist (CNS)", "Nurse Practitioner (NP)", "Advanced Clinical Practice Nurse (ACPN)", "Advanced Practice Registered Nurse (APRN)"]
   },
   "MICU Registered Nurse": {
     "Abbreviation": "MICU RN",
@@ -106,16 +195,11 @@ Speciality_List = {
     "Abbreviation": "HUC",
     "OtherNames": ["Unit Secretary", "Ward Clerk"]
   },
-
-
   "Emergency Department": {
     "Abbreviation": "ED",
-    "OtherNames": ["Emergency Department", "Emergency Department Nurse", "Emergency Department Nursing"]
+    "OtherNames": ["Emergency Department", "Emergency Department Nurse", "Emergency Department Nursing", "RN Emergency", "SONORAN CROSSING"]
   },
-  "Registered Nurse": {
-    "Abbreviation": "RN",
-    "OtherNames": ["Registered Nurse", "Registered Nursing"]
-  },
+
   "certified diabetes care and education specialist": {
     "Abbreviation": "CDCES",
     "OtherNames": ["Certified Diabetes", "Certified Diabetes Educators", "certified diabetes care and education specialist"]
@@ -131,10 +215,6 @@ Speciality_List = {
   "Oncology Nursing": {
     "Abbreviation": "ON",
     "OtherNames": ["Cancer Nursing", "Oncologic Nursing", "Medical Oncology Ortho"]
-  },
-  "Obstetric Nursing": {
-    "Abbreviation": "OB",
-    "OtherNames": ["Maternity Nursing", "Labor and Delivery Nursing", "Labor & Delivery"]
   },
   "Geriatric Nursing": {
     "Abbreviation": "GN",
@@ -165,31 +245,31 @@ Speciality_List = {
     "OtherNames": ["Operating Room Nursing", "Perioperative Nursing"]
   },
 
-  "Surgical Tech":{
+  "Surgical Tech": {
     "Abbreviation": "Surg-Tech",
-    "OtherNames": ["Scrub tech", "Surgical Ttechnician", "Operating Room Technician","Surgical Assistant"]
+    "OtherNames": ["Scrub tech", "Surgical Ttechnician", "Operating Room Technician", "Surgical Assistant"]
   },
-  "Radiologic Technologist":{
+  "Radiologic Technologist": {
     "Abbreviation": "X-ray Tech",
     "OtherNames": ["Radiographer", "Radiologic Technician"]
   },
-  "Patient Access Specialist (Pool)":{
+  "Patient Access Specialist (Pool)": {
     "Abbreviation": "PAS",
     "OtherNames": ["Patient Services Coordinator", "Patient service representatives"]
   },
-  "CT Technologist POOL":{
+  "CT Technologist POOL": {
     "Abbreviation": "CT-Tech",
     "OtherNames": ["CAT Scan Technologist", "Radiologic CT Technician"]
   },
-  "Behavioral Health Technician":{
+  "Behavioral Health Technician": {
     "Abbreviation": "BHT",
     "OtherNames": ["Mental Health Technician", "Psychiatric Technician"]
   },
-  "Sonographer":{
+  "Sonographer": {
     "Abbreviation": "Sonographer",
     "OtherNames": ["Ultrasound Technologist", "Medical Sonographer"]
   },
-  "Recreation Therapy Assistant":{
+  "Recreation Therapy Assistant": {
     "Abbreviation": "RTA",
     "OtherNames": ["Therapeutic Recreation Assistant", "Activity Therapy Assistant"]
   },
@@ -245,10 +325,6 @@ Speciality_List = {
     "Abbreviation": "CCLN",
     "OtherNames": ["Cath Lab Nursing", "Catheterization Lab Nursing"]
   },
-  "Rehabilitation Nursing": {
-    "Abbreviation": "RN",
-    "OtherNames": ["Rehab Nursing", "Physical Rehabilitation Nursing"]
-  },
   "Public Health Nursing": {
     "Abbreviation": "PHN",
     "OtherNames": ["Community Health Nursing", "PH Nursing"]
@@ -265,9 +341,9 @@ Speciality_List = {
     "Abbreviation": "ICN",
     "OtherNames": ["Infectious Disease Nursing", "Infection Prevention Nursing"]
   },
-  "Trauma Nursing": {
-    "Abbreviation": "TN",
-    "OtherNames": ["Emergency Trauma Nursing", "Trauma Care Nursing"]
+  "Trauma Care Unit": {
+    "Abbreviation": "TCU",
+    "OtherNames": ["Emergency Trauma Nursing", "Trauma Care Nursing", "Injury Prevention Coordinator", "Trauma Care Unit"]
   },
   "Diabetes Nursing": {
     "Abbreviation": "DN",
@@ -297,12 +373,12 @@ Speciality_List = {
     "Abbreviation": "ACN",
     "OtherNames": ["Outpatient Nursing", "Ambulatory Nursing"]
   },
-  "Travel Nursing": {
-    "Abbreviation": "TN",
-    "OtherNames": ["Traveler Nursing", "Traveling Nurse"]
-  },
   "Pain Management Nursing": {
     "Abbreviation": "PMN",
     "OtherNames": ["Pain Care Nursing", "Pain Nurse Specialist"]
+  },
+  "Registered Nurse": {
+    "Abbreviation": "RN",
+    "OtherNames": ["Registered Nurse", "Registered Nursing"]
   }
 }
