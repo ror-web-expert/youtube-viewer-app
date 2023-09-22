@@ -14,7 +14,7 @@ Speciality_List = {
   },
   "Perioperative PACU RN": {
     "Abbreviation": "Preop/PACU",
-    "OtherNames": ["Preop/PACU", "Preop/PACU RN"]
+    "OtherNames": ["Preop/PACU", "Preop/PACU RN", "Preop PACU"]
   },
   "Medical Surgical": {
     "Abbreviation": "Med/Surg",
@@ -138,7 +138,7 @@ Speciality_List = {
   },
   "Pediatric Intensive Care Unit": {
     "Abbreviation": "PICU",
-    "OtherNames": ["Pediatric Intensive Care Unit", "RN ICU", "Med/Extended", "Acute Care"]
+    "OtherNames": ["Pediatric Intensive Care Unit", "Med/Extended", "Acute Care"]
   },
   "Neonatal Intensive Care Unit": {
     "Abbreviation": "NICU",
@@ -146,7 +146,8 @@ Speciality_List = {
   },
   "intensive care unit": {
     "Abbreviation": "ICU",
-    "OtherNames": ["intensive care unit", "RN ICU", "Med/Extended", "Acute Care"]
+    "OtherNames": ["intensive 
+     unit", "Med/Extended", "Acute Care"]
   },
   "Nurse Anesthetist": {
     "Abbreviation": "CRNA",
@@ -169,13 +170,9 @@ Speciality_List = {
     "Abbreviation": "G.N.",
     "OtherNames": ["Transition to Professional Practice", "Transition to Professional Practice Programs"]
   },
-  "RN Burn Center": {
-    "Abbreviation": "BCU",
-    "OtherNames": ["Burn Ward", "Burn Unit", "Nurse Extern Burn"]
-  },
   "RN Burn ICU": {
     "Abbreviation": "BICU",
-    "OtherNames": ["Burn ICU Ward", "Burn ICU Unit"]
+    "OtherNames": ["Burn ICU Ward", "Burn ICU Unit", "RN Burn Center", "Burn", "Burn Ward", "Burn Unit", "Nurse Extern Burn"]
   },
   # END Honor Health site
   "PreOp PACU RN": {
@@ -362,7 +359,7 @@ Speciality_List = {
   },
   "Trauma Care Unit": {
     "Abbreviation": "TCU",
-    "OtherNames": ["Emergency Trauma Nursing", "Trauma Care Nursing", "Injury Prevention Coordinator", "Trauma Care Unit", "Surgical Trauma"]
+    "OtherNames": ["Emergency Trauma Nursing", "Trauma Care Nursing", "Injury Prevention Coordinator", "Trauma Care Unit", "Surgical Trauma", "Surg Trauma"]
   },
   "Diabetes Nursing": {
     "Abbreviation": "DN",

@@ -96,17 +96,25 @@ class PostScraperService
   end
 
   def filter_by_title(title)
+    temp_title = remove_standard_words(title)
     Speciality_List.each do |speciality, details|
       abbreviation = details["Abbreviation"] || details[:Abbreviation]
       other_names = details["OtherNames"] || details[:OtherNames]
-      if title.include?(abbreviation) || (abbreviation && title.include?(abbreviation)) || other_names&.any? { |name| title.downcase.include?(name.downcase) }
+      if temp_title.include?(abbreviation) || (abbreviation && temp_title.include?(abbreviation)) || other_names&.any? { |name| temp_title.downcase.include?(name.downcase) }
         return abbreviation
       end
     end
-    return nil
+      return title.include?("ICU") ? "ICU" : nil
   end
 
   private
+
+  def remove_standard_words(title)
+    standard_words = ["Nursing", "ICU", "Nurse", "RN", "Registered"]
+    words_to_remove = standard_words.map { |word| Regexp.escape(word) }
+    pattern = Regexp.new("\\b(?:#{words_to_remove.join('|')})\\b", Regexp::IGNORECASE)
+    title.gsub(pattern, '')
+  end
 
   def base_url(source_url)
     parsed_url = URI.parse(source_url)
