@@ -18,11 +18,11 @@ Speciality_List = {
   },
   "Medical Surgical": {
     "Abbreviation": "Med/Surg",
-    "OtherNames": ["Registered Nurse Med/Surg5D", "Med/Surg5D", "RN Med/Surg", "Patient care", "RN Interventional Radiology"]
+    "OtherNames": ["Registered Nurse Med/Surg5D", "Med/Surg5D", "RN Med/Surg", "Patient care", "RN Interventional Radiology", "(RN) Interventional Radiology", "MedSurg"]
   },
   "Patient care": {
     "Abbreviation": "Patient care",
-    "OtherNames": ["Patient care", "RN Interventional Radiology"]
+    "OtherNames": ["Patient care", "RN Interventional Radiology", "(RN) Interventional Radiology "]
   },
   "Nursing Practice": {
     "Abbreviation": "Tele/Oncol.",
@@ -33,7 +33,6 @@ Speciality_List = {
     "Abbreviation": "CCL",
     "OtherNames": ["Cath Lab Rad Tech", "cardiac cath lab technologist", "cardiac catheterization laboratory", "Cardiac Cath Lab Nurse", "Cardiac Cath Lab"]
   },
-
   "PD - Med Surg": {
     "Abbreviation": "PD - Med Surg",
     "OtherNames": ["RN PD Med/Surg Pediatric Acute", "PD Med/Surg"]
@@ -48,8 +47,8 @@ Speciality_List = {
   },
 
   "Clinical Nurse Educator": {
-    "Abbreviation": "CNEs",
-    "OtherNames": ["Clinical Nurse Educator", "CNE"]
+    "Abbreviation": "CNE",
+    "OtherNames": ["Clinical Nurse Educator", "Clinical Practice Educator"]
   },
 
   "Home Health": {
@@ -63,12 +62,16 @@ Speciality_List = {
 
   "Observation and Response Chart (ORC)": {
     "Abbreviation": "ORC",
-    "OtherNames": ["Adult Observation", "Observation and Response Chart", "Observation and Response Chart (ORC)", "Observation Unit"]
+    "OtherNames": ["Adult Observation", "Observation and Response Chart", "Observation and Response Chart (ORC)", "Observation Unit", "(RN) - Observation"]
   },
 
   "orthopedics": {
     "Abbreviation": "Orthopedics",
     "OtherNames": ["RN Orthopedics", "Orthopedics"]
+  },
+  "Simultaneous pancreas and kidney": {
+    "Abbreviation": "SPK",
+    "OtherNames": ["kidney transplantation", "Simultaneous pancreas and kidney", " (RN) - Post-Kidney/Pancreas", " Post-Kidney/Pancreas"]
   },
 
   "Pathologist": {
@@ -86,7 +89,7 @@ Speciality_List = {
   },
   "Surgical neurology": {
     "Abbreviation": "Surg. Neurol.",
-    "OtherNames": ["Med/Surg Neurology", "Nursing Supervisor Med/Surg Neurology"]
+    "OtherNames": ["Med/Surg Neurology", "Nursing Supervisor Med/Surg Neurology", "Neurosurgery"]
   },
 
   "Surgical Orthopedics": {
@@ -95,7 +98,7 @@ Speciality_List = {
   },
   "Surgical oncology": {
     "Abbreviation": "Surg. Oncol.",
-    "OtherNames": ["Med/Surg Oncology", "Surgical oncology", "Med/Surg Surg Oncolog"]
+    "OtherNames": ["Med/Surg Oncology", "Surgical oncology", "Med/Surg Surg Oncolog", "Registered Nurse Oncology"]
   },
   "PRN - CVOR": {
     "Abbreviation": "PRN - CVOR",
@@ -109,7 +112,7 @@ Speciality_List = {
 
   "cardiovascular operating room": {
     "Abbreviation": "CVOR",
-    "OtherNames": ["cardiovascular patients", "cardiovascular operating room", "RN CVOR"]
+    "OtherNames": ["cardiovascular patients", "cardiovascular operating room", "RN CVOR", "Cardiovascular Surgery"]
   },
 
   "care management coordinator": {
@@ -123,7 +126,7 @@ Speciality_List = {
   },
   "Obstetrics and Gynecology": {
     "Abbreviation": "OB-GYN",
-    "OtherNames": ["Labor & Delivery", "obstetrics and gynecology", "RN Labor & Delivery", "Labor and Delivery Nursing"]
+    "OtherNames": ["Labor & Delivery", "obstetrics and gynecology", "RN Labor & Delivery", "Labor and Delivery Nursing", "Labor and Delivery"]
   },
   "Stroke/Neuro Care": {
     "Abbreviation": "Stroke/Neuro",
@@ -132,6 +135,14 @@ Speciality_List = {
   "Clinical Decision Unit": {
     "Abbreviation": "CDU",
     "OtherNames": ["Clinical Decision Unit", "RN Clinical Decision Unit"]
+  },
+  "Pediatric Intensive Care Unit": {
+    "Abbreviation": "PICU",
+    "OtherNames": ["Pediatric Intensive Care Unit", "RN ICU", "Med/Extended", "Acute Care"]
+  },
+  "Neonatal Intensive Care Unit": {
+    "Abbreviation": "NICU",
+    "OtherNames": ["Neonatal Intensive Care Unit", "RN NICU"]
   },
   "intensive care unit": {
     "Abbreviation": "ICU",
@@ -160,7 +171,7 @@ Speciality_List = {
   },
   "RN Burn Center": {
     "Abbreviation": "BCU",
-    "OtherNames": ["Burn Ward", "Burn Unit"]
+    "OtherNames": ["Burn Ward", "Burn Unit", "Nurse Extern Burn"]
   },
   "RN Burn ICU": {
     "Abbreviation": "BICU",
@@ -195,9 +206,17 @@ Speciality_List = {
     "Abbreviation": "HUC",
     "OtherNames": ["Unit Secretary", "Ward Clerk"]
   },
+  "ear, nose, and throat doctor": {
+    "Abbreviation": "ENT",
+    "OtherNames": ["ear, nose, and throat doctor","(MA), ENT"]
+  },
   "Emergency Department": {
     "Abbreviation": "ED",
     "OtherNames": ["Emergency Department", "Emergency Department Nurse", "Emergency Department Nursing", "RN Emergency", "SONORAN CROSSING"]
+  },
+  "physician assistant": {
+    "Abbreviation": "Urol.",
+    "OtherNames": ["Nurse Practitioner", " Physician Assistant", "Urology"]
   },
 
   "certified diabetes care and education specialist": {
@@ -263,7 +282,7 @@ Speciality_List = {
   },
   "Behavioral Health Technician": {
     "Abbreviation": "BHT",
-    "OtherNames": ["Mental Health Technician", "Psychiatric Technician"]
+    "OtherNames": ["Mental Health Technician", "Psychiatric Technician", "Psychiatric Adolescent"]
   },
   "Sonographer": {
     "Abbreviation": "Sonographer",
@@ -343,7 +362,7 @@ Speciality_List = {
   },
   "Trauma Care Unit": {
     "Abbreviation": "TCU",
-    "OtherNames": ["Emergency Trauma Nursing", "Trauma Care Nursing", "Injury Prevention Coordinator", "Trauma Care Unit"]
+    "OtherNames": ["Emergency Trauma Nursing", "Trauma Care Nursing", "Injury Prevention Coordinator", "Trauma Care Unit", "Surgical Trauma"]
   },
   "Diabetes Nursing": {
     "Abbreviation": "DN",
@@ -365,10 +384,6 @@ Speciality_List = {
     "Abbreviation": "HIV/AIDS RN",
     "OtherNames": ["Infectious Disease Nursing", "HIV Care Nursing"]
   },
-  "Otolaryngology Nursing": {
-    "Abbreviation": "ON",
-    "OtherNames": ["Ear, Nose, and Throat Nursing", "ENT Nursing"]
-  },
   "Ambulatory Care Nursing": {
     "Abbreviation": "ACN",
     "OtherNames": ["Outpatient Nursing", "Ambulatory Nursing"]
@@ -376,5 +391,5 @@ Speciality_List = {
   "Pain Management Nursing": {
     "Abbreviation": "PMN",
     "OtherNames": ["Pain Care Nursing", "Pain Nurse Specialist"]
-  }
+  },
 }

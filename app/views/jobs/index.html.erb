@@ -22,8 +22,8 @@
               <% if @response_data["hourly_rate"].present? %>
                 <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["hourly_rate"] %></span>
               <% end %>
-              <% if @response_data["salary_range"].present? %>
-                <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["salary_range"] %></span>
+              <% if @response_data["salary_range"].present? &&  @response_data["salary_range"].include?("$") %>
+                <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["salary_range"]&.split(';')&.first&.split(":")&.first%></span>
               <% end %>
               <% if @response_data["job_type"].present? %>
                 <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["job_type"] %></span>
