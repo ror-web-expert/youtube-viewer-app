@@ -49,46 +49,69 @@ class PostScraperService
   end
 
   def extract_data_with_hash(element, value)
-    if value.key?("get_paragraph") && value.key?("split_base") && value.key?("need_text")
-      selected_element = element.at_css(value["get_paragraph"])
-      return nil unless selected_element
-      split_data = selected_element.next_element.text.split(/#{Regexp.escape(value["split_base"])}/i)
-      if split_data.length > 1
-        split_data.send(value["need_text"])
-      else
-        if split_data.first.present?
-          match = split_data.first.match(/hourly (pay )?rate:?\s*\$([\d.]+)/i)
-          split_data = split_data.first.split(match.to_s)
-          split_data.send(value["need_text"])
-        end
-      end
-    elsif value.key?("get_paragraph") && value.key?("next_element") && value.key?("inner_html")
-      if value["get_paragraph"].include?("descHeader")
-        input1 = element.at('input[type="hidden"]#descHeader')
-        input2 = element.at('input[type="hidden"]#descFooter')
-        inner_html_content = ""
-
-        current_element = input1.next_element
-        while current_element && current_element != input2
-          inner_html_content += current_element.to_s
-          current_element = current_element.next_element
-        end
-        split_data = inner_html_content
-      else
-        split_data = element.at_css(value["get_paragraph"]).next_element.inner_html
-      end
-      split_data
-    elsif value.key?("get_paragraph") && value.key?("next_element") && value.key?("next_element_css")
-      split_data = element.at_css(value["get_paragraph"]).next_element.css(value["next_element_css"]).map { |lu| { "#{lu.previous_sibling&.previous_sibling&.text}": lu.text } }.to_s
-    elsif value.key?("list_attribute") && value.key?("list_attribute_css")
-      split_data = {}
-      element.css('ul.meta-data-options li').map do |li|
-        split_data[li.attr("data-label")] = li.css("span").text
-      end
-    elsif value.key?("next_sibling") && value.key?("next_element")
-      element.at(value["element_css"])&.next_element&.next_element&.next_sibling&.text&.squish || ""
+    case
+    when value.key?("get_paragraph") && value.key?("split_base") && value.key?("need_text")
+      extract_text_from_paragraph(element, value)
+    when value.key?("get_paragraph") && value.key?("next_element") && value.key?("inner_html")
+      extract_inner_html(element, value)
+    when value.key?("get_paragraph") && value.key?("next_element") && value.key?("next_element_css")
+      extract_next_element_css(element, value)
+    when value.key?("list_attribute") && value.key?("list_attribute_css")
+      extract_list_attributes(element)
+    when value.key?("next_sibling") && value.key?("next_element")
+      extract_next_sibling_text(element, value)
+    else
+      nil
     end
   end
+
+  def extract_text_from_paragraph(element, value)
+    selected_element = element.at_css(value["get_paragraph"])
+    return nil unless selected_element
+
+    split_data = selected_element.next_element.text.split(/#{Regexp.escape(value["split_base"])}/i)
+    return nil if split_data.empty?
+
+    split_data.send(value["need_text"])
+  end
+
+  def extract_inner_html(element, value)
+    if value["get_paragraph"].include?("descHeader")
+      input1 = element.at('input[type="hidden"]#descHeader')
+      input2 = element.at('input[type="hidden"]#descFooter')
+      inner_html_content = ""
+
+      current_element = input1.next_element
+      while current_element && current_element != input2
+        inner_html_content += current_element.to_s
+        current_element = current_element.next_element
+      end
+    else
+      inner_html_content = element.at_css(value["get_paragraph"]).next_element.inner_html
+    end
+
+    inner_html_content
+  end
+
+  def extract_next_element_css(element, value)
+    selected_element = element.at_css(value["get_paragraph"])
+    return nil unless selected_element
+
+    selected_element.next_element.css(value["next_element_css"]).map { |lu| { "#{lu.previous_sibling&.previous_sibling&.text}": lu.text } }.to_s
+  end
+
+  def extract_list_attributes(element)
+    split_data = {}
+    element.css('ul.meta-data-options li').map do |li|
+      split_data[li.attr("data-label")] = li.css("span").text
+    end
+    split_data
+  end
+
+  def extract_next_sibling_text(element, value)
+    element.at(value["element_css"])&.next_element&.next_element&.next_sibling&.text&.squish || ""
+  end
+
 
   def extract_data_without_hash(element, value)
     selected_elements = element.css(value&.squish)

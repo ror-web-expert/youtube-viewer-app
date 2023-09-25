@@ -6,11 +6,11 @@ Speciality_List = {
   },
   "Pediatric Nursing": {
     "Abbreviation": "PN",
-    "OtherNames": ["Child Health Nursing", "Pediatric Care Nursing"]
+    "OtherNames": ["Child Health Nursing", "Pediatric Care Nursing", "Womens and Childrens Services"]
   },
   "Psychiatric-Mental Health Nursing": {
     "Abbreviation": "PMHN",
-    "OtherNames": ["Behavioral Health Nursing", "Mental Health Nursing"]
+    "OtherNames": ["Behavioral Health Nursing", "Mental Health Nursing", "Registered Nurse Psychiatric", "Psychiatric", "Behavioral Health"]
   },
   "Perioperative PACU RN": {
     "Abbreviation": "Preop/PACU",
@@ -18,11 +18,7 @@ Speciality_List = {
   },
   "Medical Surgical": {
     "Abbreviation": "Med/Surg",
-    "OtherNames": ["Registered Nurse Med/Surg5D", "Med/Surg5D", "RN Med/Surg", "Patient care", "RN Interventional Radiology", "(RN) Interventional Radiology", "MedSurg"]
-  },
-  "Patient care": {
-    "Abbreviation": "Patient care",
-    "OtherNames": ["Patient care", "RN Interventional Radiology", "(RN) Interventional Radiology "]
+    "OtherNames": ["Registered Nurse Med/Surg5D", "Med/Surg5D", "RN Med/Surg", "Patient care", "Interventional Radiology", "(RN) Interventional Radiology", "MedSurg", "Patient Safety", "Medical Surgical"]
   },
   "Nursing Practice": {
     "Abbreviation": "Tele/Oncol.",
@@ -35,7 +31,7 @@ Speciality_List = {
   },
   "PD - Med Surg": {
     "Abbreviation": "PD - Med Surg",
-    "OtherNames": ["RN PD Med/Surg Pediatric Acute", "PD Med/Surg"]
+    "OtherNames": ["RN PD Med/Surg Pediatric Acute", "PD Med/Surg", "Peds Acute"]
   },
   "Physiotherapy or physical therapy": {
     "Abbreviation": "PT",
@@ -98,7 +94,7 @@ Speciality_List = {
   },
   "Surgical oncology": {
     "Abbreviation": "Surg. Oncol.",
-    "OtherNames": ["Med/Surg Oncology", "Surgical oncology", "Med/Surg Surg Oncolog", "Registered Nurse Oncology"]
+    "OtherNames": ["Med/Surg Oncology", "Surgical oncology", "Med/Surg Surg Oncolog", "Registered Nurse Oncology", "Oncology"]
   },
   "PRN - CVOR": {
     "Abbreviation": "PRN - CVOR",
@@ -126,7 +122,7 @@ Speciality_List = {
   },
   "Obstetrics and Gynecology": {
     "Abbreviation": "OB-GYN",
-    "OtherNames": ["Labor & Delivery", "obstetrics and gynecology", "RN Labor & Delivery", "Labor and Delivery Nursing", "Labor and Delivery"]
+    "OtherNames": ["Labor & Delivery", "obstetrics and gynecology", "RN Labor & Delivery", "Labor and Delivery Nursing", "Labor and Delivery", "Post Partum", "Postpartum and Antepartum", "L&D"]
   },
   "Stroke/Neuro Care": {
     "Abbreviation": "Stroke/Neuro",
@@ -146,7 +142,7 @@ Speciality_List = {
   },
   "intensive care unit": {
     "Abbreviation": "ICU",
-    "OtherNames": ["intensive 
+    "OtherNames": ["intensive
      unit", "Med/Extended", "Acute Care"]
   },
   "Nurse Anesthetist": {
@@ -168,11 +164,15 @@ Speciality_List = {
   },
   "Graduate Nurse Program": {
     "Abbreviation": "G.N.",
-    "OtherNames": ["Transition to Professional Practice", "Transition to Professional Practice Programs"]
+    "OtherNames": ["Transition to Professional Practice", "Transition to Professional Practice Programs", "Graduate Program"]
+  },
+  "RN Burn Center": {
+    "Abbreviation": "BCU",
+    "OtherNames": ["Burn Ward", "Burn Unit", "Nurse Extern Burn"]
   },
   "RN Burn ICU": {
     "Abbreviation": "BICU",
-    "OtherNames": ["Burn ICU Ward", "Burn ICU Unit", "RN Burn Center", "Burn", "Burn Ward", "Burn Unit", "Nurse Extern Burn"]
+    "OtherNames": ["Burn ICU Ward", "Burn ICU Unit"]
   },
   # END Honor Health site
   "PreOp PACU RN": {
@@ -189,7 +189,7 @@ Speciality_List = {
   },
   "Advanced Clinical Nurse": {
     "Abbreviation": "CNS",
-    "OtherNames": ["Clinical Nurse Specialist (CNS)", "Nurse Practitioner (NP)", "Advanced Clinical Practice Nurse (ACPN)", "Advanced Practice Registered Nurse (APRN)"]
+    "OtherNames": ["Clinical Nurse Specialist (CNS)", "Nurse Practitioner (NP)", "Advanced Clinical Practice Nurse (ACPN)", "Advanced Practice Registered Nurse (APRN)", "Advanced Clinical"]
   },
   "MICU Registered Nurse": {
     "Abbreviation": "MICU RN",
@@ -205,20 +205,24 @@ Speciality_List = {
   },
   "ear, nose, and throat doctor": {
     "Abbreviation": "ENT",
-    "OtherNames": ["ear, nose, and throat doctor","(MA), ENT"]
+    "OtherNames": ["ear, nose, and throat doctor","(MA), ENT", "Eye Clinic"]
   },
   "Emergency Department": {
     "Abbreviation": "ED",
-    "OtherNames": ["Emergency Department", "Emergency Department Nurse", "Emergency Department Nursing", "RN Emergency", "SONORAN CROSSING"]
+    "OtherNames": ["Emergency Department", "Emergency Department Nurse", "Emergency Department Nursing", "Emergency", "SONORAN CROSSING"]
   },
   "physician assistant": {
     "Abbreviation": "Urol.",
     "OtherNames": ["Nurse Practitioner", " Physician Assistant", "Urology"]
   },
+  "Supplemental Work and Transition": {
+    "Abbreviation": "SWAT",
+    "OtherNames": ["SWAT", "Supplemental Work and Transition"]
+  },
 
-  "certified diabetes care and education specialist": {
-    "Abbreviation": "CDCES",
-    "OtherNames": ["Certified Diabetes", "Certified Diabetes Educators", "certified diabetes care and education specialist"]
+  "diabetes care and education specialist": {
+    "Abbreviation": "DCES",
+    "OtherNames": ["Certified Diabetes", "Certified Diabetes Educators", "certified diabetes care and education specialist", "Diabetes Educator"]
   },
   "central service": {
     "Abbreviation": "CS",
@@ -263,7 +267,11 @@ Speciality_List = {
 
   "Surgical Tech": {
     "Abbreviation": "Surg-Tech",
-    "OtherNames": ["Scrub tech", "Surgical Ttechnician", "Operating Room Technician", "Surgical Assistant"]
+    "OtherNames": ["Scrub tech", "Surgical Ttechnician", "Operating Room Technician", "Surgical Assistant", "Surgical Technologist"]
+  },
+  "Burn Technician": {
+    "Abbreviation": "Burn-Tech",
+    "OtherNames": ["Burn Technician"]
   },
   "Radiologic Technologist": {
     "Abbreviation": "X-ray Tech",
@@ -312,10 +320,6 @@ Speciality_List = {
   "Certified Nursing Assistant": {
     "Abbreviation": "CNA",
     "OtherNames": ["Nursing Assistant", "Patient Care Assistant"]
-  },
-  "Registered Nurse Psychiatric": {
-    "Abbreviation": " RPNs",
-    "OtherNames": ["Psychiatric Nurse", "Mental Health Nurse"]
   },
   "Wound Care Nursing": {
     "Abbreviation": "WCN",
