@@ -119,7 +119,7 @@ class PostScraperService
   end
 
   def filter_by_title(title)
-    temp_title = remove_standard_words(title).strip
+    temp_title = remove_standard_words(title)&.squish
     Speciality_List.each do |speciality, details|
       abbreviation = details["Abbreviation"] || details[:Abbreviation]
       other_names = details["OtherNames"] || details[:OtherNames]
