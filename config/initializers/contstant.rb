@@ -25,7 +25,7 @@ Speciality_List = {
   },
   "Home Health": {
     "Abbreviation": "Home Health",
-    "OtherNames": ["Home Health", "HH Complete Care", "Paramedic Complete Care", "Infusion Authorization Coordinator", "Complete Care"]
+    "OtherNames": ["Home Health", "HH Complete Care", "Paramedic Complete Care", "Infusion Authorization Coordinator", "Complete Care", "Home Care"]
   },
   "Gastroenterology and Hepatology": {
     "Abbreviation": "Gastro",
@@ -221,8 +221,18 @@ Speciality_List = {
     "Abbreviation": "CDU",
     "OtherNames": ["Clinical Decision Unit", "RN Clinical Decision Unit"]
   },
-
-
+  "Physiotherapy or physical therapy": {
+    "Abbreviation": "PT",
+    "OtherNames": ["Physiotherapy", "physical therapy", "RN (PT) Emergency", "PT Emergency"]
+  },
+  "Home Health Aide": {
+    "Abbreviation": "HHA",
+    "OtherNames": ["Home Health Aide", "Health Aide"]
+  },
+  "Licensed Practical Nurse": {
+    "Abbreviation": "LPN",
+    "OtherNames": ["Licensed Practical Nurse"]
+  }
 }
 
 
