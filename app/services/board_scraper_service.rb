@@ -6,6 +6,7 @@ class BoardScraperService
     @url = board.source_url
     @selectors = JSON.parse(board.listing_selector)
     @session = start_chrome_headless_session
+    @total_urls = []
   end
 
   def scrape_and_parse
@@ -20,7 +21,7 @@ class BoardScraperService
       click_next_page
       scrape_and_parse_page(@session.body)
     end
-
+    delete_expired_jobs
     close_browser
   end
 
@@ -40,7 +41,9 @@ class BoardScraperService
     return unless scraping_enabled?
 
     page = Nokogiri::HTML(html)
-    page.css(@selectors['job-container-list']).each do |job_card|
+    job_list = page.css(@selectors['job-container-list'])
+    job_list.map{ |job| @total_urls << full_url(job.css('a').first['href'])}
+    job_list.each do |job_card|
       main_selector_hash = extract_data_from_selector(job_card, @selectors['main_selector'])
       response_data = extract_data_from_selector(job_card, @selectors['response_selector'])
       create_posts(main_selector_hash, response_data)
@@ -138,5 +141,11 @@ class BoardScraperService
       @session.execute_script('window.scrollTo(0, 0);')
     end
     sleep(2)
+  end
+
+  def delete_expired_jobs
+    previous_jobs = @board.posts.pluck(:scraped_url)
+    expired_jobs = previous_jobs - @total_urls
+    Post.where(scraped_url: expired_jobs).destroy_all
   end
 end
