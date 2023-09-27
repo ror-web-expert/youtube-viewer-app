@@ -5,23 +5,15 @@ Speciality_List = {
   },
   "Pediatric Nursing": {
     "Abbreviation": "Pediatric",
-    "OtherNames": ["Child Health Nursing", "Pediatric Care Nursing", "Pediatric Care Nursing", "Womens and Childrens Services", "Women's Care", "Women's Health"]
+    "OtherNames": ["Child Health Nursing", "Pediatric Care Nursing", "Womens and Childrens Services", "Women's Care", "Women's Health"]
   },
   "Psychiatric-Mental Health Nursing": {
     "Abbreviation": "Psych",
-    "OtherNames": ["Behavioral Health Nursing", "Mental Health Nursing", "Behavioral Health"]
-  },
-  "Perioperative PACU RN": {
-    "Abbreviation": "Preop/PACU",
-    "OtherNames": ["Preop/PACU", "Preop/PACU RN"]
+    "OtherNames": ["Behavioral Health Nursing", "Mental Health Nursing", "Behavioral Health", "Psychiatric", "Mental Health"]
   },
   "Medical Surgical": {
     "Abbreviation": "Med/Surg",
-    "OtherNames": ["Registered Nurse Med/Surg5D", "Med/Surg5D", "Med/Surg", "Patient care", "Interventional Radiology", "(RN) Interventional Radiology", "MedSurg", "Med Surg", "Patient Safety Program", "Medical Surgical"]
-  },
-  "Telemetry": {
-    "Abbreviation": "Telemetry",
-    "OtherNames": ["RN Telemetry", "Telemetry", "electrocardiogram"]
+    "OtherNames": ["Registered Nurse Med/Surg5D", "Med/Surg5D", "Med/Surg", "Patient care", "Interventional Radiology", "MedSurg", "Med Surg", "Patient Safety Program", "Medical Surgical"]
   },
   "Home Health": {
     "Abbreviation": "Home Health",
@@ -37,7 +29,7 @@ Speciality_List = {
   },
   "Surgical Orthopedics": {
     "Abbreviation": "Surg Ortho",
-    "OtherNames": ["RN Med/Surg Orthopedics", "Med/Surg Orthopedics"]
+    "OtherNames": ["Med/Surg Orthopedics", "Med/Surg Orthopedics"]
   },
   "Surgical oncology": {
     "Abbreviation": "Surg Oncol",
@@ -55,6 +47,10 @@ Speciality_List = {
     "Abbreviation": "OB-GYN",
     "OtherNames": ["Labor & Delivery", "obstetrics and gynecology", "Labor & Delivery", "Labor and Delivery Nursing", "Labor and Delivery", "L&D"]
   },
+  "Forensic Nurse Examiner": {
+    "Abbreviation": "FNE",
+    "OtherNames": ["Sexual Assault Nurse Examiner","Adult/Adolescent", "Forensic Examiner", "Domestic Violence Forensic", "Elder Abuse"]
+  },
   "Pediatric Intensive Care Unit": {
     "Abbreviation": "PICU",
     "OtherNames": ["Pediatric Intensive Care Unit", "Med/Extended", "Acute Care", "Peds Acute"]
@@ -63,17 +59,9 @@ Speciality_List = {
     "Abbreviation": "NICU",
     "OtherNames": ["Neonatal Intensive Care Unit", "NICU"]
   },
-  "intensive care unit": {
-    "Abbreviation": "ICU",
-    "OtherNames": ["intensive care unit", "ICU", "Med/Extended", "Acute Care"]
-  },
   "Nurse Anesthetist": {
     "Abbreviation": "CRNA",
     "OtherNames": ["Nurse Anesthetist", "CRNA"]
-  },
-  "perioperative care": {
-    "Abbreviation": "Peri",
-    "OtherNames": ["perioperative care", "Operating Room"]
   },
   "Post Cardiac Cath Unit": {
     "Abbreviation": "PCCU",
@@ -81,12 +69,11 @@ Speciality_List = {
   },
   "RN Burn ICU": {
     "Abbreviation": "BICU",
-    "OtherNames": ["Burn ICU Ward", "Burn ICU Unit"]
+    "OtherNames": ["Burn ICU", "Burn"]
   },
-  # END Honor Health site
   "PreOp PACU RN": {
-    "Abbreviation": "PeriOp PACU",
-    "OtherNames": ["Preoperative/Post-Anesthesia Care Unit Registered Nurse", "PreOp PACU "]
+    "Abbreviation": "PreOp/PACU",
+    "OtherNames": ["Preoperative/Post-Anesthesia Care Unit Registered Nurse", "PreOp PACU", "Preop/PACU"]
   },
   "Advanced Clinical Nurse": {
     "Abbreviation": "NP",
@@ -98,7 +85,7 @@ Speciality_List = {
   },
   "Oncology Nursing": {
     "Abbreviation": "Oncology",
-    "OtherNames": ["Cancer Nursing", "Oncologic Nursing", "Medical Oncology Ortho"]
+    "OtherNames": ["Cancer Nursing", "Oncologic Nursing", "Medical Oncology Ortho", "Tele/Oncology"]
   },
   "Orthopedic Nursing": {
     "Abbreviation": "Ortho",
@@ -118,15 +105,11 @@ Speciality_List = {
   },
   "Operating Room": {
     "Abbreviation": "OR",
-    "OtherNames": ["Operating Room Nursing", "Perioperative Nursing"]
+    "OtherNames": ["Operating Room Nursing", "Perioperative Nursing", "Surgical Services Nursing", "OR Nursing", "perioperative care", "Operating Room"]
   },
   "Progressive Care Unit": {
     "Abbreviation": "PCU",
     "OtherNames": ["Progressive Care Unit", "Progressive Care"]
-  },
-  "Registered Nurse Psychiatric": {
-    "Abbreviation": "Psychiatry",
-    "OtherNames": ["Psychiatric Nurse", "Mental Health Nurse"]
   },
   "Wound Care Nursing": {
     "Abbreviation": "Wound Care",
@@ -136,13 +119,9 @@ Speciality_List = {
     "Abbreviation": "FNP",
     "OtherNames": ["Primary Care Nurse Practitioner", "FNP-C"]
   },
-  "Perioperative Nursing": {
-    "Abbreviation": "Peri",
-    "OtherNames": ["Surgical Services Nursing", "OR Nursing"]
-  },
   "Intensive Care Unit Nursing": {
     "Abbreviation": "ICU",
-    "OtherNames": ["ICU Nursing", "Critical Care Unit Nursing"]
+    "OtherNames": ["ICU Nursing", "intensive care unit", "ICU", "Med/Extended", "Acute Care", "Critical Care Unit Nursing"]
   },
   "Hospice and Palliative Care Nursing": {
     "Abbreviation": "Palliative",
@@ -156,10 +135,6 @@ Speciality_List = {
   "Sonographer": {
     "Abbreviation": "Sonographer",
     "OtherNames": ["Ultrasound Technologist", "Medical Sonographer", "Sonographer Pool"]
-  },
- "Burn Technician": {
-  "Abbreviation": "Burn-Tech",
-  "OtherNames": ["Burn Technician"]
   },
   "Graduate Nurse Program": {
     "Abbreviation": "GRAD Nurs",
@@ -175,7 +150,7 @@ Speciality_List = {
   },
   "care management coordinator": {
     "Abbreviation": "CM-COORD",
-    "OtherNames": ["care management coordinator", "RN Care Management Coordinator"]
+    "OtherNames": ["care management coordinator", "Care Management Coordinator"]
   },
   "diabetes care and education specialist": {
     "Abbreviation": "DCES",
@@ -219,11 +194,11 @@ Speciality_List = {
   },
   "Clinical Decision Unit": {
     "Abbreviation": "CDU",
-    "OtherNames": ["Clinical Decision Unit", "RN Clinical Decision Unit"]
+    "OtherNames": ["Clinical Decision Unit", "Clinical Decision Unit"]
   },
   "Physiotherapy or physical therapy": {
     "Abbreviation": "PT",
-    "OtherNames": ["Physiotherapy", "physical therapy", "RN (PT) Emergency", "PT Emergency"]
+    "OtherNames": ["Physiotherapy", "physical therapy", "PT Emergency"]
   },
   "Home Health Aide": {
     "Abbreviation": "HHA",
@@ -232,6 +207,10 @@ Speciality_List = {
   "Licensed Practical Nurse": {
     "Abbreviation": "LPN",
     "OtherNames": ["Licensed Practical Nurse"]
+  },
+  "Telemetry": {
+    "Abbreviation": "Telemetry",
+    "OtherNames": ["Telemetry", "Telemetry", "electrocardiogram", "Tele"]
   }
 }
 

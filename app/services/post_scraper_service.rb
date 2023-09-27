@@ -135,11 +135,11 @@ class PostScraperService
   end
 
   def filter_by_title(title)
-    temp_title = remove_standard_words(title)&.squish
+    temp_title = remove_standard_words(title)&.tr("()","")&.squish
     Speciality_List.each do |speciality, details|
       abbreviation = details["Abbreviation"] || details[:Abbreviation]
       other_names = details["OtherNames"] || details[:OtherNames]
-      if temp_title.include?(abbreviation) || (abbreviation && temp_title.include?(abbreviation)) || other_names&.any? { |name| temp_title.downcase.include?(name.downcase) }
+      if (abbreviation.present? && temp_title.split(/\s+/).include?(abbreviation)) || other_names&.any? { |name| temp_title.downcase.include?(name.downcase) }
         return abbreviation
       end
     end
