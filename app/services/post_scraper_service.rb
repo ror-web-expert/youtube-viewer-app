@@ -40,12 +40,28 @@ class PostScraperService
           data_hash[index] = extract_data_without_hash(element, value)&.gsub(/Department\s*:?/i, ' ')&.squish
         elsif index.include?("shift_type")
           data_hash[index] = extract_data_without_hash(element, value)&.gsub(/\d+\s*-\s*([a-zA-Z]+)/) { $1 }&.squish&.gsub(/Shifts|#\s*:?/i, ' ')&.squish
+        elsif index.include?("get_from_content")
+          job_description           = extract_data_without_hash(element, value)&.squish
+          data_hash["job_type"]     = get_job_type_from_description(job_description) if data_hash["job_type"].blank?
+          data_hash["salary_range"] = get_salary_range_from_description(job_description)
         else
           data_hash[index] = extract_data_without_hash(element, value)&.gsub(/Shifts|Pay|Posted|Schedule|Facility|Job Reference|#\s*:?/i, ' ')&.squish
         end
       end
     end
     data_hash
+  end
+
+  def get_job_type_from_description(job_description)
+    job_type_regex = /(full[-\s]?time|part[-\s]?time|prn)/i
+    job_type_match = job_description.match(job_type_regex)
+    job_type_match[1] if job_type_match
+  end
+
+  def get_salary_range_from_description(job_description)
+    salary_regex = /up\s+to\s+\$([\d,]+)/i
+    salary_match = job_description.match(salary_regex)
+    "bonus #{salary_match.to_s }" if salary_match
   end
 
   def extract_data_with_hash(element, value)
