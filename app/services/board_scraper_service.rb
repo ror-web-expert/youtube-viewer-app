@@ -42,11 +42,13 @@ class BoardScraperService
 
     page = Nokogiri::HTML(html)
     job_list = page.css(@selectors['job-container-list'])
-    job_list.map{ |job| @total_urls << full_url(job.css('a').first['href'])}
+    job_list.map { |job| @total_urls << full_url(job.css('a').first['href']) }
     job_list.each do |job_card|
       main_selector_hash = extract_data_from_selector(job_card, @selectors['main_selector'])
       response_data = extract_data_from_selector(job_card, @selectors['response_selector'])
-      create_posts(main_selector_hash, response_data)
+      if check_keywords_in_title(main_selector_hash["title"])
+        create_posts(main_selector_hash, response_data)
+      end
     end
   end
 
@@ -114,7 +116,7 @@ class BoardScraperService
       if key.include?('source_url')
         data_hash[key] = full_url(element.css(value).attr('href').value)
       elsif key.include?('job_type')
-      data_hash[key] = element.css(value)&.text&.gsub(/Regular\s*:?/i, ' ')&.squish
+        data_hash[key] = element.css(value)&.text&.gsub(/Regular\s*:?/i, ' ')&.squish
       else
         data_hash[key] = element.css(value).text.squish
       end
@@ -147,5 +149,13 @@ class BoardScraperService
     previous_jobs = @board.posts.pluck(:scraped_url)
     expired_jobs = previous_jobs - @total_urls
     Post.where(scraped_url: expired_jobs).destroy_all
+  end
+
+  def check_keywords_in_title(title)
+    keywords = ["RN", "Registered Nurse", "Registered Nurses", "RNs"]
+    keywords.map do |keyword|
+      return true if title&.tr("()", "")&.squish&.split(/\s+/).include?(keyword)
+    end
+    false
   end
 end
