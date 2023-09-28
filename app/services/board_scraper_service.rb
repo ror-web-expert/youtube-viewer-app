@@ -14,6 +14,7 @@ class BoardScraperService
 
     scroll_page if scrolling_enabled?
     accept_cookies if cookies_modal_present?
+    execute_script_for_click_on_body if click_on_body.present?
     show_all_button_click if show_all_selector_present?
     scrape_and_parse_page(@session.body)
 
@@ -73,6 +74,15 @@ class BoardScraperService
     @show_all_button ||= @selectors['pagination_show_all']
   end
 
+  def click_on_body
+    @click_on_body ||= @selectors['click_on_body']
+  end
+
+  def execute_script_for_click_on_body
+    @session.execute_script('document.querySelector("button").click();')
+    sleep(2)
+  end
+
   def click_next_page
     return unless pagination_present?
     next_button = @session.find(pagination['next_button'])
@@ -82,9 +92,12 @@ class BoardScraperService
 
   def show_all_button_click
     return unless show_all_selector_present?
-    show_button = @session.find(show_all_button['show_all_button'])
-    show_button.click
-    sleep(2)
+    loop do
+      show_button = @session.find(show_all_button['show_all_button'])
+      show_button.click
+      sleep(2)
+      break unless show_all_selector_present?
+    end
   end
 
   def visit_and_apply_filters
