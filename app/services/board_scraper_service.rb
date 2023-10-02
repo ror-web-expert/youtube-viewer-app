@@ -48,6 +48,7 @@ class BoardScraperService
       main_selector_hash = extract_data_from_selector(job_card, @selectors['main_selector'])
       response_data = extract_data_from_selector(job_card, @selectors['response_selector'])
       if check_keywords_in_title(main_selector_hash["title"])
+        response_data["speciality"] = filter_by_title(main_selector_hash["title"]&.squish) if main_selector_hash["title"].present?
         create_posts(main_selector_hash, response_data)
       end
     end
