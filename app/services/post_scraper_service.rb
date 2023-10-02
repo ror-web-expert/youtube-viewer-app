@@ -33,19 +33,21 @@ class PostScraperService
         data_hash[index] = extract_data_with_hash(element, value)
       else
         if index.include?('_url')
-          data_hash[index] = element.css(value).attr('href').value
+          data_hash[index] = element.css(value&.squish)&.attr('href')&.value
         elsif index.include?("job_description_details")
           data_hash[index] = element.css(value&.squish)&.inner_html
         elsif index.include?("department")
           data_hash[index] = extract_data_without_hash(element, value)&.gsub(/Department\s*:?/i, ' ')&.squish
         elsif index.include?("shift_type")
-          data_hash[index] = extract_data_without_hash(element, value)&.gsub(/\d+\s*-\s*([a-zA-Z]+)/) { $1 }&.squish&.gsub(/Shifts|#\s*:?/i, ' ')&.squish
+          data_hash[index] = extract_data_without_hash(element, value)&.gsub(/\d+\s*-\s*([a-zA-Z]+)/) { $1 }&.squish&.gsub(/Shifts|shift|#\s*:?/i, ' ')&.squish
+        elsif index.include?("job_type") || index.include?("schedule")
+          data_hash[index] = extract_data_without_hash(element, value)&.gsub(/\d+\s*-\s*([a-zA-Z]+)/) { $1 }&.squish&.gsub(/Weekly|Schedule|Type|Employment|Shifts|Pay|Posted|#\s*:?/i, ' ')&.squish
         elsif index.include?("get_from_content")
           job_description           = extract_data_without_hash(element, value)&.squish
-          data_hash["job_type"]     = get_job_type_from_description(job_description) if data_hash["job_type"].blank?
+          data_hash["job_type"]     = get_job_type_from_description(job_description) if @post.response_data["job_type"].blank?
           data_hash["salary_range"] = get_salary_range_from_description(job_description)
         else
-          data_hash[index] = extract_data_without_hash(element, value)&.gsub(/Shifts|Pay|Posted|Schedule|Facility|Job Reference|#\s*:?/i, ' ')&.squish
+          data_hash[index] = extract_data_without_hash(element, value)&.gsub(/Shifts|Pay|Posted|Schedule|Date|Facility|Weekly|Job Reference|#\s*:?/i, ' ')&.squish
         end
       end
     end
@@ -60,8 +62,15 @@ class PostScraperService
 
   def get_salary_range_from_description(job_description)
     salary_regex = /up\s+to\s+\$([\d,]+)/i
-    salary_match = job_description.match(salary_regex)
-    "bonus #{salary_match.to_s }" if salary_match
+    second_salary_regex = /\$\d+\.\d{2} - \$\d+\.\d{2}/
+
+    if job_description.present? && job_description.match(salary_regex).present?
+      salary_match = job_description.match(salary_regex)
+      "bonus #{salary_match.to_s }" if salary_match
+    elsif job_description.present?
+      salary_match = job_description.match(second_salary_regex)
+      salary_match.to_s
+    end
   end
 
   def extract_data_with_hash(element, value)
@@ -134,26 +143,7 @@ class PostScraperService
     selected_elements.empty? ? nil : selected_elements.text.sub(':', '')
   end
 
-  def filter_by_title(title)
-    temp_title = remove_standard_words(title)&.tr("()","")&.squish
-    Speciality_List.each do |speciality, details|
-      abbreviation = details["Abbreviation"] || details[:Abbreviation]
-      other_names = details["OtherNames"] || details[:OtherNames]
-      if (abbreviation.present? && temp_title.split(/\s+/).include?(abbreviation)) || other_names&.any? { |name| temp_title.downcase.include?(name.downcase) }
-        return abbreviation
-      end
-    end
-      return title.include?("ICU") ? "ICU" : nil
-  end
-
   private
-
-  def remove_standard_words(title)
-    standard_words = ["Nursing", "ICU", "Nurse", "RN", "Registered"]
-    words_to_remove = standard_words.map { |word| Regexp.escape(word) }
-    pattern = Regexp.new("\\b(?:#{words_to_remove.join('|')})\\b", Regexp::IGNORECASE)
-    title.gsub(pattern, '')
-  end
 
   def base_url(source_url)
     parsed_url = URI.parse(source_url)
