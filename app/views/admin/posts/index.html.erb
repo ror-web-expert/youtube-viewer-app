@@ -3,14 +3,71 @@
     <% if notice.present? %>
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
-
-    <div class="flex justify-between items-center">
+    <div class="flex justify-between items-center mt-6 px-4">
       <h1 class="font-bold text-4xl">Posts</h1>
       <%= link_to 'New Post', new_admin_post_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
     </div>
-
-    <div id="posts" class="min-w-full">
-      <%= render @posts %>
+    <div class='container mt-3 mx-auto w-11/12 lg:w-9/12'>
+      <div class='grid grid-cols-1 md:grid-cols-2 gap-4'>
+        <% @posts.each do |post| %>
+          <div class="relative p-4 flex flex-col justify-between bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
+            <a href="#" class="p-2">
+              <div class='flex justify-between'>
+                <h5 class="text-lg font-bold tracking-tight text-gray-900"><%= post.title %></h5>
+              </div>
+              <% @response_data = post.response_data %>
+              <% if @response_data.present? %>
+                <div>
+                  <p class="text-slate-400"><%= post&.board&.title %></p>
+                  <p class="text-slate-400">
+                    <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                    <span><%= @response_data["location"].gsub(/location\s*:?/i, ' ') if @response_data["location"] %></span>
+                  </p>
+                </div>
+                <div class="flex flex-wrap gap-1 mt-2">
+                  <% if @response_data["hourly_rate"].present? %>
+                    <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["hourly_rate"] %></span>
+                  <% end %>
+                  <% if @response_data["salary_range"].present? &&  @response_data["salary_range"].include?("$") %>
+                    <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= get_salary_range(@response_data["salary_range"]) %></span>
+                  <% end %>
+                  <% if @response_data["post_type"].present? %>
+                    <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["post_type"] %></span>
+                  <% end %>
+                  <% if @response_data["shift_type"].present? %>
+                    <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["shift_type"].gsub(/shifts\s*:?/i, ' ')  %></span>
+                  <% end %>
+                  <% if @response_data["speciality"].present? %>
+                    <span class=" p-1 bg-gray-100 text-gray-800 text-sm font-medium mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["speciality"] %></span>
+                  <% end %>
+                </div>
+                <% if @response_data["department"].present? %>
+                  <div class='mt-2'>
+                    <ul class='list-disc pl-2'>
+                      <b>Department:</b>
+                      <%= @response_data["department"] %>
+                    </ul>
+                  </div>
+                <% end %>
+                <% if @response_data["posted_date"].present? %>
+                  <div class='text-slate-400 text-xs mt-2'><span class="text-blue-500 font-bold">Posted Date:</span> <%= @response_data["posted_date"].gsub(/Date posted\s*:?/i, ' ') %></div>
+                <% end %>
+              <% end %>
+            </a>
+            <div class='flex justify-end space-x-2'>
+              <a href="#" target="_blank" title = 'show' class='text-white w-10 h-10 bg-slate-400 hover:bg-slate-800 font-medium rounded-lg text-sm flex items-center justify-center'>
+                <i class="fa fa-eye !text-black-800" aria-hidden="true"></i>
+              </a>
+              <a href="#"  target="_blank" title = 'edit' class='text-white w-10 h-10 bg-slate-400 hover:bg-slate-800 font-medium rounded-lg text-sm flex items-center justify-center'>
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+              </a>
+              <a href="#"  target="_blank" title = 'scrape' class = 'text-white w-10 h-10 bg-slate-400 hover:bg-slate-800 font-medium rounded-lg text-sm flex items-center justify-center'>
+                <%= image_tag('scrape.png', class: 'w-full') %>
+              </a>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
     <div class="pagination mb-4 mt-3">
       <%= will_paginate @posts, previous_label: "Previous", next_label: "Next", class: "flex items-center justify-center space-x-2" %>

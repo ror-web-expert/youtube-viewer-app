@@ -8,9 +8,6 @@
           </div>
           <% @response_data = job.response_data %>
           <% if @response_data.present? %>
-            <span class='absolute right-[15px] top-[15px]'>
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </span>
             <div>
               <p class="text-slate-400"><%= job&.board&.title %></p>
               <p class="text-slate-400">
@@ -48,10 +45,8 @@
             <% end %>
           <% end %>
         </a>
-        <a href="<%= job.scraped_url %>" class='text-right' target="_blank">
-          <button class='text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5'>
-            Apply Now
-          </button>
+        <a href="<%= job.scraped_url %>" class='text-right text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 self-end' target="_blank">
+          Apply Now
         </a>
       </div>
     <% end %>
