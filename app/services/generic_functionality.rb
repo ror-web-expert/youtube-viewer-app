@@ -18,7 +18,7 @@ module GenericFunctionality
   end
 
   def filter_by_title(title)
-    temp_title = remove_standard_words(title)&.tr("()","")&.squish
+    temp_title = remove_standard_words(title)&.tr("()", "")&.squish
     Speciality_List.each do |speciality, details|
       abbreviation = details["Abbreviation"] || details[:Abbreviation]
       other_names = details["OtherNames"] || details[:OtherNames]
@@ -34,5 +34,25 @@ module GenericFunctionality
     words_to_remove = standard_words.map { |word| Regexp.escape(word) }
     pattern = Regexp.new("\\b(?:#{words_to_remove.join('|')})\\b", Regexp::IGNORECASE)
     title.gsub(pattern, '')
+  end
+
+  def convert_to_uppercase_with_underscores(title)
+    return title.upcase.gsub(/\s+/, '_')
+  end
+
+  def hash_selector(selector)
+    selector.class == Hash ? selector : JSON.parse(selector)
+  end
+
+  def get_listing_selector(title)
+    get_constant(title)[:listing_selector].to_json if get_constant(title).present?
+  end
+
+  def get_detail_selector(title)
+    get_constant(title)[:detail_selector].to_json if get_constant(title).present?
+  end
+
+  def get_constant(title)
+    convert_to_uppercase_with_underscores(title)&.safe_constantize
   end
 end
