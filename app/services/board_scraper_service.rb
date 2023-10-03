@@ -6,6 +6,7 @@ class BoardScraperService
     @url = board.source_url
     @selectors = JSON.parse(board.listing_selector)
     @session = start_chrome_headless_session
+    @session.current_window.resize_to(2500, 1600)
     @total_urls = []
   end
 
