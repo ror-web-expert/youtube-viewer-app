@@ -26,12 +26,6 @@ VALLEY_WISE_HEALTH = {
       "posted_date": ".job-addl-info .date span",
       "job_status": ".job-addl-info .job-status span",
       "job_refernce_id": ".job-addl-info .job-ref",
-      "short_description": {
-        "get_paragraph": ".job-description-content #descHeader",
-        "next_element": true,
-        "split_base": "Hourly pay rate:",
-        "need_text": "first"
-      },
       "job_description_details": {
         "get_paragraph": ".job-description-content #descHeader",
         "next_element": true,
@@ -209,3 +203,75 @@ USPI = {
   }
 }
 
+ENVITA = {
+  "listing_selector": {
+    "job-container-list": "#resumator-jobs .resumator-job",
+    "main_selector": {
+      "title": ".resumator-job-title",
+      "source_url": ".resumator-job-view-details a"
+    },
+    "response_selector": {
+      "location": ".resumator-job-info"
+    }
+  },
+  "detail_selector": {
+    "job-detail-container": "main",
+    "response_selector": {
+      "job_type": ".job-attributes-container #resumator-job-employment",
+      "location": ".job-attributes-container div[1]",
+      "schedule": ".job-details #job-description p[5]",
+      "salary_range": ".job-details #job-description p[3]",
+      "job_description_details": ".job-details #job-description"
+    }
+  }
+}
+
+FRESENIUS_MEDICAL_CARE = {
+  "listing_selector": {
+    "job-container-list": ".sc-htpNat .sc-TuwoP",
+    "main_selector": {
+      "title": "div[1] a",
+      "source_url": "div[1] a"
+    },
+    "response_selector": {
+      "location": "div[1] .richText"
+    },
+    "pagination": {
+      "next_button": "#JobSearchResultsWrapper a .sc-epGmkI button.sc-dphlzf.fQTloK:not([disabled]",
+      next_button_text: ">>"
+    },
+  },
+  "detail_selector": {
+    "job-detail-container": ".hSHIcX",
+    "response_selector": {
+      "job_type": "#JobDetailOverview div[6] .kowrXr",
+      "location": ".logoPrintable span[1]",
+      "apply_now_url": ".jd-btn-wrap .job-apply",
+      "department": "#JobDetailOverview div[7] .kowrXr",
+      "job_refernce_id": "#JobDetailOverview div[8] .kowrXr",
+      "job_description_details": "#JobDetailDescription"
+    }
+  }
+}
+
+IQVIA = {
+  "listing_selector": {
+    "job-container-list": "#search-results-list li",
+    "main_selector": {
+      "title": "a h2",
+      "source_url": "a"
+    },
+    "response_selector": {
+      "location": "a .job-info-wrap .job-location"
+    }
+  },
+  "detail_selector": {
+    "job-detail-container": ".job-description",
+    "response_selector": {
+      "job_type": ".jd-jobinfo .job-type",
+      "job_refernce_id": ".jd-jobinfo .job-id",
+      "apply_now_url": ".jd-jobinfo-wrap a",
+      "job_description_details": ".ats-description"
+    }
+  }
+}
