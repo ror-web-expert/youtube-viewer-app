@@ -3,16 +3,199 @@
     <% if notice.present? %>
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
-
-    <div class="flex justify-between items-center">
+    <div class="flex justify-between items-center my-3">
       <h1 class="font-bold text-4xl">Boards</h1>
       <%= link_to 'New Board', new_admin_board_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
     </div>
-
-    <div id="boards" class="min-w-full">
+    <!-- <div id="boards" class="min-w-full">
       <%= render @boards %>
+    </div> -->
+    <div class="relative overflow-x-auto">
+      <table class="w-11/12 mx-auto text-sm text-left text-gray-500 dark:text-gray-400 shadow-md sm:rounded-lg">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <tr>
+            <th scope="col" class="px-6 py-3">
+              Title
+            </th>
+            <th scope="col" class="px-6 py-3">
+              Listing Selector
+            </th>
+            <th scope="col" class="px-6 py-3">
+              Detail Selector
+            </th>
+            <th scope="col" class="px-6 py-3">
+              Action
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+            <th scope="row" class="min-w-0 px-6 py-4 overflow-hidden cursor-pointer font-medium text-gray-900 dark:text-white">
+              <div class="min-w-0 max-w-xs">
+                <span class="block text-ellipsis">
+                  Magic Mouse 2
+                </span>
+              </div>
+            </th>
+            <td class="min-w-0 px-6 py-4 overflow-hidden cursor-pointer">
+              <div class="min-w-0 max-w-xs">
+                <span class="block text-ellipsis">
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry...
+                </span>
+              </div>
+            </td>
+            <td class="min-w-0 px-6 py-4 overflow-hidden cursor-pointer">
+              <div class="min-w-0 max-w-xs">
+                <span class="block text-ellipsis">
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry...
+                </span>
+              </div>
+            </td>
+            <td class="px-6 py-4">
+              <div class='flex justify-start space-x-2'>
+                <a href="#" target="_blank" title = 'show' class='text-white w-10 h-10 bg-slate-400 hover:bg-slate-800 font-medium rounded-lg text-sm flex items-center justify-center'>
+                  <i class="fa fa-eye !text-black-800" aria-hidden="true"></i>
+                </a>
+                <a href="#"  target="_blank" title = 'edit' class='text-white w-10 h-10 bg-slate-400 hover:bg-slate-800 font-medium rounded-lg text-sm flex items-center justify-center'>
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                </a>
+                <a href="#"  target="_blank" title = 'scrape' class = 'text-white w- h-12 bg-slate-400 hover:bg-slate-800 font-medium rounded-lg text-sm '>
+                  <%= image_tag('scrape.png', class: 'w-full') %>
+                </a>
+              </div>
+            </td>
+          </tr>
+          <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+            <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+              Magic Mouse 2
+            </th>
+            <td class="min-w-0 px-6 py-4 overflow-hidden cursor-pointer">
+              <div class="min-w-0 max-w-xs">
+                <span class="block text-ellipsis">
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry...
+                </span>
+              </div>
+            </td>
+            <td class="min-w-0 px-6 py-4 overflow-hidden cursor-pointer">
+              <div class="min-w-0 max-w-xs">
+                <span class="block text-ellipsis">
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry...
+                </span>
+              </div>
+            </td>
+            <td class="px-6 py-4">
+              <div class='flex justify-start space-x-2'>
+                <a href="#" target="_blank" title = 'show' class='w-[32px] h-[32px] bg-slate-400 hover:bg-slate-800 font-medium rounded-lg text-sm '>
+                  <i class="fa fa-eye !text-black-800" aria-hidden="true"></i>
+                </a>
+                <a href="#"  target="_blank" title = 'edit' class= 'w-10 h-10 bg-slate-400 hover:bg-slate-800 font-medium rounded-lg text-sm'>
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                </a>
+                <a href="#"  target="_blank" title = 'scrape' class = 'w-10 h-10 bg-slate-400 hover:bg-slate-800 font-medium rounded-lg text-sm '>
+                  <%= image_tag('scrape.png', class: 'w-full') %>
+                </a>
+              </div>
+            </td>
+          </tr>
+          <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+            <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+              Magic Mouse 2
+            </th>
+            <td class="min-w-0 px-6 py-4 overflow-hidden cursor-pointer">
+              <div class="min-w-0 max-w-xs">
+                <span class="block text-ellipsis">
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry...
+                </span>
+              </div>
+            </td>
+            <td class="min-w-0 px-6 py-4 overflow-hidden cursor-pointer">
+              <div class="min-w-0 max-w-xs">
+                <span class="block text-ellipsis">
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry...
+                </span>
+              </div>
+            </td>
+            <td class="px-6 py-4">
+              <div class='flex justify-start space-x-2'>
+                <a href="#" target="_blank" title = 'show' class='text-white w-10 h-10 bg-slate-400 hover:bg-slate-800 font-medium rounded-lg text-sm flex items-center justify-center'>
+                  <i class="fa fa-eye !text-black-800" aria-hidden="true"></i>
+                </a>
+                <a href="#"  target="_blank" title = 'edit' class='text-white w-10 h-10 bg-slate-400 hover:bg-slate-800 font-medium rounded-lg text-sm flex items-center justify-center'>
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                </a>
+                <a href="#"  target="_blank" title = 'scrape' class = 'text-white w-10 h-10 bg-slate-400 hover:bg-slate-800 font-medium rounded-lg text-sm flex items-center justify-center'>
+                  <%= image_tag('scrape.png', class: 'w-full') %>
+                </a>
+              </div>
+            </td>
+          </tr>
+          <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+            <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+              Magic Mouse 2
+            </th>
+            <td class="min-w-0 px-6 py-4 overflow-hidden cursor-pointer">
+              <div class="min-w-0 max-w-xs">
+                <span class="block text-ellipsis">
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry...
+                </span>
+              </div>
+            </td>
+            <td class="min-w-0 px-6 py-4 overflow-hidden cursor-pointer">
+              <div class="min-w-0 max-w-xs">
+                <span class="block text-ellipsis">
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry...
+                </span>
+              </div>
+            </td>
+            <td class="px-6 py-4">
+              <div class='flex justify-start space-x-2'>
+                <a href="#" target="_blank" title = 'show' class='text-white w-10 h-10 bg-slate-400 hover:bg-slate-800 font-medium rounded-lg text-sm flex items-center justify-center'>
+                  <i class="fa fa-eye !text-black-800" aria-hidden="true"></i>
+                </a>
+                <a href="#"  target="_blank" title = 'edit' class='text-white w-10 h-10 bg-slate-400 hover:bg-slate-800 font-medium rounded-lg text-sm flex items-center justify-center'>
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                </a>
+                <a href="#"  target="_blank" title = 'scrape' class = 'text-white w-10 h-10 bg-slate-400 hover:bg-slate-800 font-medium rounded-lg text-sm flex items-center justify-center'>
+                  <%= image_tag('scrape.png', class: 'w-full') %>
+                </a>
+              </div>
+            </td>
+          </tr>
+          <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+            <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+              Magic Mouse 2
+            </th>
+            <td class="min-w-0 px-6 py-4 overflow-hidden cursor-pointer">
+              <div class="min-w-0 max-w-xs">
+                <span class="block text-ellipsis">
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry...
+                </span>
+              </div>
+            </td>
+            <td class="min-w-0 px-6 py-4 overflow-hidden cursor-pointer">
+              <div class="min-w-0 max-w-xs">
+                <span class="block text-ellipsis">
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry...
+                </span>
+              </div>
+            </td>
+            <td class="px-6 py-4">
+              <div class='flex justify-start space-x-2'>
+                <a href="#" target="_blank" title = 'show' class='text-white w-10 h-10 bg-slate-400 hover:bg-slate-800 font-medium rounded-lg text-sm flex items-center justify-center'>
+                  <i class="fa fa-eye !text-black-800" aria-hidden="true"></i>
+                </a>
+                <a href="#"  target="_blank" title = 'edit' class='text-white w-10 h-10 bg-slate-400 hover:bg-slate-800 font-medium rounded-lg text-sm flex items-center justify-center'>
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                </a>
+                <a href="#"  target="_blank" title = 'scrape' class = 'text-white w-10 h-10 bg-slate-400 hover:bg-slate-800 font-medium rounded-lg text-sm flex items-center justify-center'>
+                  <%= image_tag('scrape.png', class: 'w-full') %>
+                </a>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-
     <div class="pagination mb-4 mt-3">
       <%= will_paginate @boards, previous_label: "Previous", next_label: "Next", class: "flex items-center justify-center space-x-2" %>
     </div>
