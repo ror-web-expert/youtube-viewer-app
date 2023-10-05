@@ -5,7 +5,7 @@ class PostScraperService
     @post = post
     @url = @post.scraped_url
     @board = @post.board
-    @selectors = JSON.parse(@board.detail_selector) if @board.detail_selector.present?
+    @selectors = hash_selector(get_detail_selector(@board.title)) if @board.title.present?
     @session = start_chrome_headless_session
   end
 
@@ -33,7 +33,7 @@ class PostScraperService
         data_hash[index] = extract_data_with_hash(element, value)
       else
         if index.include?('_url')
-          data_hash[index] = element.css(value&.squish)&.attr('href')&.value
+          data_hash[index] = element.css(value&.squish)&.attr('href')&.value ||  @session.current_url
         elsif index.include?("job_description_details")
           data_hash[index] = element.css(value&.squish)&.inner_html
         elsif index.include?("department")

@@ -4,9 +4,8 @@ class BoardScraperService
   def initialize(board)
     @board = board
     @url = board.source_url
-    @selectors = JSON.parse(board.listing_selector)
+    @selectors = hash_selector(get_listing_selector(board.title)) if board.title.present?
     @session = start_chrome_headless_session
-    @session.current_window.resize_to(2500, 1600)
     @total_urls = []
   end
 
@@ -18,7 +17,6 @@ class BoardScraperService
     execute_script_for_click_on_body if click_on_body.present?
     show_all_button_click if show_all_selector_present?
     scrape_and_parse_page(@session.body)
-
     while has_next_page?
       click_next_page
       scrape_and_parse_page(@session.body)
@@ -57,11 +55,31 @@ class BoardScraperService
 
   def has_next_page?
     return false unless pagination_present?
-    @session.has_css?(@selectors['pagination']['next_button'])
+    if next_button_text_present?
+      @session.has_css?(next_button_css, text: next_button_text)
+    else
+      @session.has_css?(next_button_css)
+    end
   end
 
   def pagination_present?
     @selectors['pagination']
+  end
+
+  def next_button_text_present?
+    next_button_text.present?
+  end
+
+  def next_button_text_present?
+    next_button_text.present?
+  end
+
+  def next_button_css
+    @next_button_css ||= @selectors['pagination']['next_button']
+  end
+
+  def next_button_text
+    @next_button_text ||= @selectors['pagination']['next_button_text']
   end
 
   def show_all_selector_present?
@@ -87,7 +105,11 @@ class BoardScraperService
 
   def click_next_page
     return unless pagination_present?
-    next_button = @session.find(pagination['next_button'])
+    if next_button_text_present?
+      next_button = @session.find(next_button_css, text: next_button_text)
+    else
+      next_button = @session.find(next_button_css)
+    end
     next_button.click
     sleep(2)
   end
@@ -129,7 +151,7 @@ class BoardScraperService
     data_hash = {}
     selector.each do |key, value|
       if key.include?('source_url')
-        data_hash[key] = full_url(element.css(value).attr('href').value)
+        data_hash[key] = full_url(element.css(value).attr('href')&.value)
       elsif key.include?('job_type')
         data_hash[key] = element.css(value)&.text&.gsub(/Regular\s*:?/i, ' ')&.squish
       else
@@ -168,9 +190,8 @@ class BoardScraperService
 
   def check_keywords_in_title(title)
     keywords = ["RN", "Registered Nurse", "Registered Nurses", "RNs"]
-    keywords.map do |keyword|
-      return true if title&.tr("()", "")&.squish&.split(/\s+/).include?(keyword)
-    end
-    false
+    pattern = keywords.join("|")
+    regex = /\b(?:#{pattern})\b/i
+    return title&.tr("()", "")&.squish&.match?(regex)
   end
 end
