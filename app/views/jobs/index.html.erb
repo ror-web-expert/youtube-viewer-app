@@ -45,9 +45,7 @@
                 </ul>
               </div>
             <% end %>
-            <% if @response_data["posted_date"].present? %>
-              <div class='text-slate-400 text-xs mt-2'><span class="text-blue-500 font-bold">Posted Date:</span> <%= @response_data["posted_date"].gsub(/Date posted\s*:?/i, ' ') %></div>
-            <% end %>
+              <div class='text-slate-400 text-xs mt-2'><span class="text-blue-500 font-bold">Posted Date:</span> <%= formatted_time_ago(job.created_at) %></div>
           <% end %>
         </a>
         <a href="<%= job.scraped_url %>" class='text-right' target="_blank">
