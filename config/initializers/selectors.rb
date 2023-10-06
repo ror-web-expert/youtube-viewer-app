@@ -341,3 +341,54 @@ MGA_HOME_CARE = {
     }
   }
 }
+
+CSV_HEALTH = {
+  "listing_selector": {
+    "job-container-list": "#widget-jobsearch-results-list .job",
+    "main_selector": {
+      "title": ".jobTitle a",
+      "source_url": ".jobTitle a"
+    },
+    "pagination": {
+      "next_button": "#widget-jobsearch-results-pages .pagination-li a:not([disabled]",
+      next_button_text: ">>"
+    },
+    "response_selector": {
+      "location": ".joblist-location .job-locale",
+      "job_refernce_id": ".job-innerwrap.g-cols div[3]"
+    }
+  },
+  "detail_selector": {
+    "job-detail-container": ".post-content .fusion-layout-column.fusion_builder_column.fusion-builder-column-5",
+    "response_selector": {
+      "apply_now_url": ".fusion-text.fusion-text-2 a.apply-btn",
+      "get_from_content": ".fusion-text.fusion-text-3",
+      "job_description_details": ".fusion-text.fusion-text-3"
+    }
+  }
+}
+
+ATLAS_HEALTH = {
+  "listing_selector": {
+    "job-container-list": "#jobsect .pfc-jl .entry-categories",
+    "main_selector": {
+      "title": ".joblinks",
+      "source_url": ".joblinks"
+    },
+    "pagination": {
+      "next_button": ".pagination .facetwp-pager a:not([disabled]",
+      next_button_text: ">>"
+    },
+    "response_selector": {
+      "location": ".joblinks .loc-stuff",
+    }
+  },
+  "detail_selector": {
+    "job-detail-container": ".job-desc",
+    "response_selector": {
+      "apply_now_url": ".applyjd",
+      "get_from_content": ".oculusStuff",
+      "job_description_details": ".oculusStuff"
+    }
+  }
+}
