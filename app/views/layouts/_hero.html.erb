@@ -1,0 +1,37 @@
+<section class="relative overflow-hidden">
+  <!-- Bg -->
+  <div class="absolute inset-0 bg-gradient-to-b from-indigo-100 to-white pointer-events-none -z-10" aria-hidden="true"></div>
+  <!-- Illustration -->
+  <div class="hidden md:block absolute left-1/2 -translate-x-1/2 pointer-events-none -z-10" aria-hidden="true">
+    <%= image_tag 'hero-illustration.svg' %>
+  </div>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="pt-28 pb-8 md:pt-36 md:pb-16">
+      <!-- Hero content -->
+      <div class="max-w-3xl text-center md:text-left">
+        <!-- Copy -->
+        <h1 class="h1 font-inter mb-6">Join the best tech startups in the
+          <span class="font-nycd text-indigo-500 font-normal">industry</span></h1>
+        <p class="text-lg text-gray-500 mb-8">Our landing page template works on all devices, so you only have to set it<br class="hidden md:block"/>
+          up once, and get beautiful results forever.</p>
+        <!-- Button + Avatars -->
+        <div class="sm:flex sm:items-center sm:justify-center md:justify-start space-y-6 sm:space-y-0 sm:space-x-5">
+          <div>
+            <a class="btn text-white bg-indigo-500 hover:bg-indigo-600 shadow-sm" href="#">Post a job - $299</a>
+          </div>
+          <div class="sm:flex sm:items-center sm:justify-center space-y-2 sm:space-y-0 sm:space-x-3">
+            <div class="inline-flex -space-x-3 -ml-0.5">
+              <%= image_tag 'avatar-01.jpg', alt: "Avatar 01", class: "rounded-full border-2 border-indigo-50 box-content w-8 h-8" %>
+              <%= image_tag 'avatar-02.jpg', alt: "Avatar 02", class: "rounded-full border-2 border-indigo-50 box-content w-8 h-8" %>
+              <%= image_tag 'avatar-03.jpg', alt: "Avatar 03", class: "rounded-full border-2 border-indigo-50 box-content w-8 h-8" %>
+              <%= image_tag 'avatar-04.jpg', alt: "Avatar 04", class: "rounded-full border-2 border-indigo-50 box-content w-8 h-8" %>
+            </div>
+            <div class="text-sm text-gray-500 font-medium">Reach <span class="text-indigo-500">100K+</span>
+              Prefessionals
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
