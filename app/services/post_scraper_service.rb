@@ -33,7 +33,7 @@ class PostScraperService
         data_hash[index] = extract_data_with_hash(element, value)
       else
         if index.include?('_url')
-          data_hash[index] = element.css(value&.squish)&.attr('href')&.value ||  @session.current_url
+          data_hash[index] = url_for_apply_now(element.css(value&.squish)&.attr('href')&.value ||  @session.current_url)
         elsif index.include?("job_description_details")
           data_hash[index] = element.css(value&.squish)&.inner_html
         elsif index.include?("department")
@@ -55,7 +55,7 @@ class PostScraperService
   end
 
   def get_job_type_from_description(job_description)
-    job_type_regex = /(full[-\s]?time|part[-\s]?time|prn)/i
+    job_type_regex = /(Full[-\s]?Time|full[-\s]?time|part[-\s]?time|Part[-\s]?Time|prn)/i
     job_type_match = job_description.match(job_type_regex)
     job_type_match[1] if job_type_match
   end
@@ -144,9 +144,12 @@ class PostScraperService
   end
 
   private
-
-  def base_url(source_url)
-    parsed_url = URI.parse(source_url)
-    "#{parsed_url.scheme}://#{parsed_url.host}"
+  def url_for_apply_now(path)
+    if path.start_with?('/')
+      parsed_url = URI.parse(@url)
+      URI.join("#{parsed_url.scheme}://#{parsed_url.host}", path).to_s
+    else
+      path
+    end
   end
 end

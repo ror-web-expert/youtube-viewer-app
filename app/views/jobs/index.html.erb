@@ -10,10 +10,12 @@
           <% if @response_data.present? %>
             <div>
               <p class="text-slate-400"><%= job&.board&.title %></p>
-              <p class="text-slate-400">
-                <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-                <span><%= @response_data["location"].gsub(/location\s*:?/i, ' ') if @response_data["location"] %></span>
-              </p>
+              <% if @response_data["location"].present? %>
+                <p class="text-slate-400">
+                  <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                  <span><%= @response_data["location"].gsub(/location\s*:?/i, ' ') %></span>
+                </p>
+              <% end %>
             </div>
             <div class="flex flex-wrap gap-1 mt-2">
               <% if @response_data["hourly_rate"].present? %>
@@ -40,9 +42,7 @@
                 </ul>
               </div>
             <% end %>
-            <% if @response_data["posted_date"].present? %>
-              <div class='text-slate-400 text-xs mt-2'><span class="text-blue-500 font-bold">Posted Date:</span> <%= @response_data["posted_date"].gsub(/Date posted\s*:?/i, ' ') %></div>
-            <% end %>
+              <div class='text-slate-400 text-xs mt-2'><span class="text-blue-500 font-bold">Posted Date:</span> <%= formatted_time_ago(job.created_at) %></div>
           <% end %>
         </a>
         <a href="<%= job.scraped_url %>" class='text-right text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 self-end' target="_blank">
