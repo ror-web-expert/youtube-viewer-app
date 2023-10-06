@@ -341,3 +341,29 @@ MGA_HOME_CARE = {
     }
   }
 }
+
+CSV_HEALTH = {
+  "listing_selector": {
+    "job-container-list": "#widget-jobsearch-results-list .job",
+    "main_selector": {
+      "title": ".jobTitle a",
+      "source_url": ".jobTitle a"
+    },
+    "pagination": {
+      "next_button": "#widget-jobsearch-results-pages .pagination-li a:not([disabled]",
+      next_button_text: ">>"
+    },
+    "response_selector": {
+      "location": ".joblist-location .job-locale",
+      "job_refernce_id": ".job-innerwrap.g-cols div[3]"
+    }
+  },
+  "detail_selector": {
+    "job-detail-container": ".post-content .fusion-layout-column.fusion_builder_column.fusion-builder-column-5",
+    "response_selector": {
+      "apply_now_url": ".fusion-text.fusion-text-2 a.apply-btn",
+      "get_from_content": ".fusion-text.fusion-text-3",
+      "job_description_details": ".fusion-text.fusion-text-3"
+    }
+  }
+}

@@ -62,7 +62,7 @@ class PostScraperService
 
   def get_salary_range_from_description(job_description)
     salary_regex = /up\s+to\s+\$([\d,]+)/i
-    second_salary_regex = /\$\d+\.\d{2} - \$\d+\.\d{2}/
+    second_salary_regex = /\$\d+\.\d{2} - \$\d+\.\d{2}|\$\d+\.\d{2} – \$\d+\.\d{2}/
 
     if job_description.present? && job_description.match(salary_regex).present?
       salary_match = job_description.match(salary_regex)
