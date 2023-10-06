@@ -367,3 +367,28 @@ CSV_HEALTH = {
     }
   }
 }
+
+ATLAS_HEALTH = {
+  "listing_selector": {
+    "job-container-list": "#jobsect .pfc-jl .entry-categories",
+    "main_selector": {
+      "title": ".joblinks",
+      "source_url": ".joblinks"
+    },
+    "pagination": {
+      "next_button": ".pagination .facetwp-pager a:not([disabled]",
+      next_button_text: ">>"
+    },
+    "response_selector": {
+      "location": ".joblinks .loc-stuff",
+    }
+  },
+  "detail_selector": {
+    "job-detail-container": ".job-desc",
+    "response_selector": {
+      "apply_now_url": ".applyjd",
+      "get_from_content": ".oculusStuff",
+      "job_description_details": ".oculusStuff"
+    }
+  }
+}

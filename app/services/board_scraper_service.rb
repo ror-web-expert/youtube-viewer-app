@@ -144,7 +144,7 @@ class BoardScraperService
   end
 
   def full_url(path)
-    URI.join(@url, path).to_s
+    URI.join(@url, path).to_s rescue path
   end
 
   def extract_data_from_selector(element, selector)
