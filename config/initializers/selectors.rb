@@ -275,3 +275,69 @@ IQVIA = {
     }
   }
 }
+
+LIFE_POINT_HEALTH = {
+  "listing_selector": {
+    "job-container-list": "#search-results-list li",
+    "main_selector": {
+      "title": "a h2",
+      "source_url": "a"
+    },
+    "response_selector": {
+      "location": "a .job-location"
+    }
+  },
+  "detail_selector": {
+    "job-detail-container": ".job-description",
+    "response_selector": {
+      "job_refernce_id": ".job-info__wrap .job-id",
+      "facility": ".job-info__wrap .job-brand",
+      "category": ".job-info__wrap .job-cat",
+      "apply_now_url": ".job-buttons .job-apply",
+      "job_description_details": ".read-more .ats-description"
+    }
+  }
+}
+
+BLUE_MOUNTAIN_HOSPITAL = {
+  "listing_selector": {
+    "job-container-list": "#pt-cv-gls-R .pt-cv-content-item",
+    "main_selector": {
+      "title": ".pt-cv-ifield .pt-cv-title a",
+      "source_url": ".pt-cv-ifield .pt-cv-title a"
+    },
+    "response_selector": {
+      "location": "a .job-location"
+    }
+  },
+  "detail_selector": {
+    "job-detail-container": ".entry-wrap",
+    "response_selector": {
+      "apply_now_url": ".wp-block-button a",
+      "get_from_content": ".entry-header h1",
+      "job_description_details": ".entry-content"
+    }
+  }
+}
+
+MGA_HOME_CARE = {
+  "listing_selector": {
+    "job-container-list": ".job-listing .joblist",
+    "main_selector": {
+      "title": ".job-title",
+      "source_url": ".job-title a"
+    },
+    "response_selector": {
+      "location": ".job-location"
+    }
+  },
+  "detail_selector": {
+    "job-detail-container": ".job-content .cl-left",
+    "response_selector": {
+      "job_type": ".job-type",
+      "apply_now_url": ".w-btn-wrapper a",
+      "shift_type": ".company-description ul[1] li[4]",
+      "job_description_details": ".job-sections .company-description"
+    }
+  }
+}
