@@ -1,18 +1,29 @@
-<div id="<%= dom_id board %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Title:</strong>
-    <%= board.title %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Source url:</strong>
-    <%= board.source_url %>
-  </p>
-
-  <% if action_name != "show" %>
-    <%= link_to "Show this Board", admin_board_path(board), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this Board', edit_admin_board_path(board), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Scrape', scrape_jobs_admin_board_path(board), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
-</div>
+<tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700 my-3">
+  <th scope="row" class="min-w-0 px-6 py-4 overflow-hidden cursor-pointer font-medium text-gray-900 dark:text-white">
+    <div class="min-w-0 max-w-xs">
+      <span class="block text-ellipsis">
+       <%= board.title %>
+      </span>
+    </div>
+  </th>
+  <td class="min-w-0 px-6 py-4 overflow-hidden cursor-pointer">
+    <div class="min-w-0 max-w-xs">
+      <span class="block text-ellipsis">
+        <%= board.source_url %>
+      </span>
+    </div>
+  </td>
+  <td class="px-6 py-4">
+    <div class='flex justify-end space-x-2'>
+      <a href="<%= admin_board_path(board) %>" target="_blank" title = 'show' class='text-white w-10 h-10 bg-slate-400 hover:bg-slate-800 font-medium rounded-lg text-sm flex items-center justify-center'>
+        <i class="fa fa-eye !text-black-800" aria-hidden="true"></i>
+      </a>
+      <a href="<%= edit_admin_board_path(board) %>"  target="_blank" title = 'edit' class='text-white w-10 h-10 bg-slate-400 hover:bg-slate-800 font-medium rounded-lg text-sm flex items-center justify-center'>
+        <i class="fa fa-pencil" aria-hidden="true"></i>
+      </a>
+      <a href="<%= scrape_jobs_admin_board_path(board) %>"  target="_blank" title = 'scrape' class = ' w-10 h-10'>
+        <%= image_tag('scrape.png', class: 'w-full') %>
+      </a>
+    </div>
+  </td>
+</tr>
