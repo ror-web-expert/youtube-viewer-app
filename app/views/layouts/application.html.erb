@@ -6,20 +6,18 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <%= javascript_importmap_tags %>
   </head>
-
   <body>
     <main>
       <body class="font-inter antialiased bg-white text-gray-800 tracking-tight">
-      <div class="flex flex-col min-h-screen overflow-hidden supports-[overflow:clip]:overflow-clip">
-        <%= render "layouts/header" %>
-        <%= yield %>
-        <%= render "layouts/footer" %>
-      </div>
+        <div class="flex flex-col justify-between min-h-screen overflow-hidden supports-[overflow:clip]:overflow-clip">
+          <%= render "layouts/header" %>
+          <%= yield %>
+          <%= render "layouts/footer" %>
+        </div>
       </body>
     </main>
   </body>
