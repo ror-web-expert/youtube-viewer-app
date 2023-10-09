@@ -9,4 +9,5 @@ class Post < ApplicationRecord
   scope :order_by_id, -> { order(id: :desc) }
   scope :scraped, -> { where(is_scrap: true) }
   scope :not_scraped, -> { where(is_scrap: false) }
+  scope :response_data_not_exist, -> { where.not(response_data: nil)}
 end

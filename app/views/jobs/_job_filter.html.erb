@@ -9,116 +9,42 @@
         <div>
           <div class="text-sm text-gray-800 font-semibold mb-3">Job Type</div>
           <ul class="space-y-2">
+            <% @filtered_job_types.map do |job_type| %>
             <li>
               <label class="flex items-center">
                 <input type="checkbox" class="form-checkbox" />
-                <span class="text-sm text-gray-600 ml-2">Full-time</span>
+                <span class="text-sm text-gray-600 ml-2"><%= job_type %></span>
               </label>
             </li>
-            <li>
-              <label class="flex items-center">
-                <input type="checkbox" class="form-checkbox" />
-                <span class="text-sm text-gray-600 ml-2">Part-time</span>
-              </label>
-            </li>
-            <li>
-              <label class="flex items-center">
-                <input type="checkbox" class="form-checkbox" />
-                <span class="text-sm text-gray-600 ml-2">Intership</span>
-              </label>
-            </li>
-            <li>
-              <label class="flex items-center">
-                <input type="checkbox" class="form-checkbox" />
-                <span class="text-sm text-gray-600 ml-2">Contract / Freelance</span>
-              </label>
-            </li>
-            <li>
-              <label class="flex items-center">
-                <input type="checkbox" class="form-checkbox" />
-                <span class="text-sm text-gray-600 ml-2">Co-founder</span>
-              </label>
-            </li>
+            <% end %>
           </ul>
         </div>
         <!-- Group 2 -->
         <div>
-          <div class="text-sm text-gray-800 font-semibold mb-3">Job Roles</div>
+          <div class="text-sm text-gray-800 font-semibold mb-3">Job Speciality</div>
           <ul class="space-y-2">
-            <li>
-              <label class="flex items-center">
-                <input type="checkbox" class="form-checkbox" checked />
-                <span class="text-sm text-gray-600 ml-2">Programming</span>
-              </label>
-            </li>
-            <li>
-              <label class="flex items-center">
-                <input type="checkbox" class="form-checkbox" />
-                <span class="text-sm text-gray-600 ml-2">Design</span>
-              </label>
-            </li>
-            <li>
-              <label class="flex items-center">
-                <input type="checkbox" class="form-checkbox" />
-                <span class="text-sm text-gray-600 ml-2">Management / Finance</span>
-              </label>
-            </li>
-            <li>
-              <label class="flex items-center">
-                <input type="checkbox" class="form-checkbox" />
-                <span class="text-sm text-gray-600 ml-2">Customer Support</span>
-              </label>
-            </li>
-            <li>
-              <label class="flex items-center">
-                <input type="checkbox" class="form-checkbox" />
-                <span class="text-sm text-gray-600 ml-2">Sales / Marketing</span>
-              </label>
-            </li>
+            <% @filter_job_specialities.each do |speciality| %>
+              <li>
+                <label class="flex items-center">
+                  <input type="checkbox" class="form-checkbox"/>
+                  <span class="text-sm text-gray-600 ml-2"><%= speciality %></span>
+                </label>
+              </li>
+            <% end %>
           </ul>
-        </div>
-        <!-- Group 3 -->
-        <div>
-          <div class="text-sm text-gray-800 font-semibold mb-3">Remote Only</div>
-          <div class="flex items-center" x-data="{ checked: false }">
-            <div class="form-switch">
-              <input type="checkbox" id="remote-toggle" class="sr-only" x-model="checked" />
-              <label class="bg-gray-300" for="remote-toggle">
-                <span class="bg-white shadow-sm" aria-hidden="true"></span>
-                <span class="sr-only">Remote Only</span>
-              </label>
-            </div>
-            <div class="text-sm text-gray-400 italic ml-2" x-text="checked ? 'On' : 'Off'"></div>
-          </div>
         </div>
         <!-- Group 3 -->
         <div>
           <div class="text-sm text-gray-800 font-semibold mb-3">Salary Range</div>
           <ul class="space-y-2">
-            <li>
-              <label class="flex items-center">
-                <input type="checkbox" class="form-checkbox" />
-                <span class="text-sm text-gray-600 ml-2">$20K - $50K</span>
-              </label>
-            </li>
-            <li>
-              <label class="flex items-center">
-                <input type="checkbox" class="form-checkbox" />
-                <span class="text-sm text-gray-600 ml-2">$50K - $100K</span>
-              </label>
-            </li>
-            <li>
-              <label class="flex items-center">
-                <input type="checkbox" class="form-checkbox" />
-                <span class="text-sm text-gray-600 ml-2">&gt; $100K</span>
-              </label>
-            </li>
-            <li>
-              <label class="flex items-center">
-                <input type="checkbox" class="form-checkbox" />
-                <span class="text-sm text-gray-600 ml-2">Drawing / Painting</span>
-              </label>
-            </li>
+            <% @salary_ranges.map do |salary_range| %>
+              <li>
+                <label class="flex items-center">
+                  <input type="checkbox" class="form-checkbox"/>
+                  <span class="text-sm text-gray-600 ml-2"><%= salary_range %></span>
+                </label>
+              </li>
+            <% end %>
           </ul>
         </div>
         <!-- Group 4 -->
