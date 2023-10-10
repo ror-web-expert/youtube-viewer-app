@@ -5,11 +5,11 @@ Speciality_List = {
   },
   "Pediatric Nursing": {
     "Abbreviation": "Pediatric",
-    "OtherNames": ["Child Health Nursing", "Pediatric Care Nursing", "Womens and Childrens Services", "Women's Care", "Women's Health"]
+    "OtherNames": ["Child Health Nursing", "Pediatric Care Nursing", "Womens and Childrens Services", "Women's Care", "Women's Health", "Child Health", "Pediatric", "Childrens Services"]
   },
   "Psychiatric-Mental Health Nursing": {
     "Abbreviation": "Psych",
-    "OtherNames": ["Behavioral Health Nursing", "Mental Health Nursing", "Behavioral Health", "Psychiatric", "Mental Health"]
+    "OtherNames": ["Behavioral Health Nursing", "Mental Health Nursing", "Behavioral Health", "Psychiatric", "Mental Health", "Behavioral"]
   },
   "Medical Surgical": {
     "Abbreviation": "Med/Surg",
@@ -57,7 +57,7 @@ Speciality_List = {
   },
   "Neonatal Intensive Care Unit": {
     "Abbreviation": "NICU",
-    "OtherNames": ["Neonatal Intensive Care Unit", "NICU"]
+    "OtherNames": ["Neonatal Intensive Care Unit", "NICU", "Neonatal"]
   },
   "Nurse Anesthetist": {
     "Abbreviation": "CRNA",
@@ -87,13 +87,9 @@ Speciality_List = {
     "Abbreviation": "Oncology",
     "OtherNames": ["Cancer Nursing", "Oncologic Nursing", "Medical Oncology Ortho", "Tele/Oncology"]
   },
-  "Orthopedic Nursing": {
-    "Abbreviation": "Ortho",
-    "OtherNames": ["Musculoskeletal Nursing", "Ortho Nursing"]
-  },
   "Nephrology Nursing": {
     "Abbreviation": "Nephrology",
-    "OtherNames": ["Kidney Nursing", "Renal Nursing", " Post-Kidney/Pancreas"]
+    "OtherNames": ["Kidney Nursing", "Renal Nursing", " Post-Kidney/Pancreas", "Kidney", "Renal", "Pancreas"]
   },
   "Gastroenterology Nursing": {
     "Abbreviation": "Gastro",
@@ -101,11 +97,11 @@ Speciality_List = {
   },
   "Cardiac Nursing": {
     "Abbreviation": "Cardiac",
-    "OtherNames": ["Heart Nursing", "Cardiology Nursing"]
+    "OtherNames": ["Heart Nursing", "Cardiology Nursing", "Cardiology"]
   },
   "Operating Room": {
     "Abbreviation": "OR",
-    "OtherNames": ["Operating Room Nursing", "Perioperative Nursing", "Surgical Services Nursing", "OR Nursing", "perioperative care", "Operating Room"]
+    "OtherNames": ["Operating Room Nursing", "Perioperative Nursing", "Surgical Services Nursing", "OR Nursing", "perioperative care", "Operating Room", "Surgical Services", "OR"]
   },
   "Progressive Care Unit": {
     "Abbreviation": "PCU",
@@ -113,15 +109,11 @@ Speciality_List = {
   },
   "Wound Care Nursing": {
     "Abbreviation": "Wound Care",
-    "OtherNames": ["Ostomy Nursing", "Wound, Ostomy, and Continence Nursing"]
+    "OtherNames": ["Ostomy Nursing", "Wound, Ostomy, and Continence Nursing", "Ostomy", "Wound"]
   },
   "Family Nurse Practitioner": {
     "Abbreviation": "FNP",
     "OtherNames": ["Primary Care Nurse Practitioner", "FNP-C"]
-  },
-  "Intensive Care Unit Nursing": {
-    "Abbreviation": "ICU",
-    "OtherNames": ["ICU Nursing", "intensive care unit", "ICU", "Med/Extended", "Acute Care", "Critical Care Unit Nursing"]
   },
   "Hospice and Palliative Care Nursing": {
     "Abbreviation": "Palliative",
@@ -129,9 +121,8 @@ Speciality_List = {
   },
   "Emergency Department": {
     "Abbreviation": "ED",
-    "OtherNames": ["Emergency Department", "Emergency Department Nurse", "Emergency Department Nursing", "Emergency", "SONORAN CROSSING", "Emergency Room"]
+    "OtherNames": ["Emergency Department", "Emergency Department Nurse", "Emergency Department Nursing", "Emergency", "Emergency Medicine", "SONORAN CROSSING", "Emergency Room"]
   },
-  # valleyWise Health
   "Sonographer": {
     "Abbreviation": "Sonographer",
     "OtherNames": ["Ultrasound Technologist", "Medical Sonographer", "Sonographer Pool"]
@@ -163,10 +154,6 @@ Speciality_List = {
   "Supplemental Work and Transition": {
     "Abbreviation": "SWAT",
     "OtherNames": ["SWAT", "Supplemental Work and Transition"]
-  },
-  "Urology": {
-    "Abbreviation": "Urology",
-    "OtherNames": [" Physician Assistant", "Urology"]
   },
   "Dialysis": {
     "Abbreviation": "Dialysis",
@@ -211,12 +198,102 @@ Speciality_List = {
   "Telemetry": {
     "Abbreviation": "Telemetry",
     "OtherNames": ["Telemetry", "Telemetry", "electrocardiogram", "Tele"]
+  },
+  "Addiction Medicine": {
+    "Abbreviation": "Addiction",
+    "OtherNames": ["Detox", "Substance Abuse"]
+  },
+  "Nurse Practitioner": {
+    "Abbreviation": "NP",
+    "OtherNames": ["Nurse Practitioner"]
+  },
+  "Critical & Intensive Care": {
+    "Abbreviation": "ICU",
+    "OtherNames": ["ICU"]
+  },
+  "New Grad": {
+    "Abbreviation": "New Grad",
+    "OtherNames": ["New Grad"]
+  },
+  "Hospice": {
+    "Abbreviation": "Hospice",
+    "OtherNames": ["Hospice"]
+  },
+  "Palliative Medicine": {
+    "Abbreviation": "Palliative",
+    "OtherNames": ["Palliative"]
+  },
+  "Intensive Care Unit Nursing": {
+    "Abbreviation": "ICU",
+    "OtherNames": ["ICU Nursing", "intensive care unit", "ICU", "Med/Extended", "Acute Care", "Critical Care Unit Nursing"]
+  },
+  "Management": {
+    "Abbreviation": "Management",
+    "OtherNames": ["Manager", "Director", "DON", "Case Management", "Chief Nursing Officer", "CNO", "Administrator", "Clinical Nurse Leader", "CNL", "Nurse Educator"]
+  },
+  "Neurology": {
+    "Abbreviation": "Neuro",
+    "OtherNames": ["Neurology", "Neurologist", "Stroke"]
+  },
+  "Occupational Medicine": {
+    "Abbreviation": "Occupational",
+    "OtherNames": []
+  },
+  "Oncology": {
+    "Abbreviation": "Oncology",
+    "OtherNames": ["Hematology","Oncologic"]
+  },
+  "Orthopedic Nursing": {
+    "Abbreviation": "Ortho",
+    "OtherNames": ["Musculoskeletal Nursing", "Ortho Nursing"]
+  },
+  "Pain Medicine": {
+    "Abbreviation": "Pain",
+    "OtherNames": []
+  },
+  "Perioperative Care": {
+    "Abbreviation": "Pre-OP/PACU",
+    "OtherNames": ["Preop/PACU", "PreOp/PACU", "PACU", "Sedation" ]
+  },
+  "Physical & Rehabilitation Medicine": {
+    "Abbreviation": "Rehab",
+    "OtherNames": []
+  },
+  "Plastic Surgery": {
+    "Abbreviation": "Aesthetic",
+    "OtherNames": ["Aesthetic", "Plastic"]
+  },
+  "Labor & Delivery": {
+    "Abbreviation": "L&D",
+    "OtherNames": ["Post Partum", "Labor & Deliver"]
+  },
+  "Primary Care": {
+    "Abbreviation": "Primary",
+    "OtherNames": []
+  },
+  "Burn ICU": {
+    "Abbreviation": "BICU",
+    "OtherNames": ["Burn ICU", "Burn"]
+  },
+  "Trauma ICU": {
+    "Abbreviation": "Trauma",
+    "OtherNames": []
+  },
+  "Transplant Surgery": {
+    "Abbreviation": "Transplant",
+    "OtherNames": []
+  },
+  "Urgent Care": {
+    "Abbreviation": "Urgent Care",
+    "OtherNames": []
+  },
+  "Urology": {
+    "Abbreviation": "Urology",
+    "OtherNames": ["Physician Assistant", "Urology"]
   }
 }
 
-
 # FOR ICU
-
 # NICU
 # CVICU
 # Cardiac
