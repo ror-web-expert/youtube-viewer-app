@@ -28,8 +28,10 @@
         <%#= post.response_data %>
         <% post.response_data.each do |key, value| %>
         <div class="mb-4">
+          <% unless key == "formatted_job_description_details" %>
           <h2 class="text-lg font-semibold mb-2 font-bold"><%= key.titleize %> : </h2>
-          <p><%= value&.html_safe %></p>
+            <p><%= value&.html_safe %></p>
+          <% end %>
         </div>
       <% end %>
       </p>
