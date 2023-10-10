@@ -101,7 +101,7 @@ Speciality_List = {
   },
   "Operating Room": {
     "Abbreviation": "OR",
-    "OtherNames": ["Operating Room Nursing", "Perioperative Nursing", "Surgical Services Nursing", "OR Nursing", "perioperative care", "Operating Room", "Surgical Services", "OR"]
+    "OtherNames": ["Operating Room Nursing", "Perioperative Nursing", "Surgical Services Nursing", "OR Nursing", "perioperative care", "Operating Room", "Surgical Services"]
   },
   "Progressive Care Unit": {
     "Abbreviation": "PCU",
