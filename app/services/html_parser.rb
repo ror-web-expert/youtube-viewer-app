@@ -46,8 +46,11 @@ class HtmlParser
         output_array << { "ul" => list.map {|l| { "li" => l.tr("#*"," ") } if l.present?  }.compact! }
       elsif line.start_with?("`") && line.end_with?("`")
         output_array << { "p" => line.tr("`","") }
-      else
-        output_array << { "p" => line.tr("\n*","| ").squish }
+      elsif line.start_with?("[")
+      elsif line.start_with?("**")
+        sections = line.split(/\*{2}(.*?)\*{2}/).map(&:strip).reject(&:empty?)
+        output_array << { "h3" => sections[0]}
+        output_array << { "p" => sections[1] }
       end
     end
     output_array
