@@ -21,7 +21,7 @@ class PostScraperService
       response_data["speciality"] = filter_by_title(@post.title.squish)
       response_data = @post.response_data.merge(response_data) if @post.response_data.present?
       @post.update(response_data: response_data, is_scrap: true)
-      UpdateDynamicHtmlTags.new(@post).formatted_job_details
+      HtmlParser.new(@post).formatted_markdown
     end
     close_browser
   end
@@ -35,7 +35,7 @@ class PostScraperService
       else
         if index.include?('_url')
           data_hash[index] = url_for_apply_now(element.css(value&.squish)&.attr('href')&.value ||  @session.current_url)
-        elsif index.include?("job_description_details")
+        elsif index.include?("description_raw_html")
           data_hash[index] = element.css(value&.squish)&.inner_html
         elsif index.include?("department")
           data_hash[index] = extract_data_without_hash(element, value)&.gsub(/Department\s*:?/i, ' ')&.squish

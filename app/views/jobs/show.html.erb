@@ -89,7 +89,7 @@
                   <h1 class="text-4xl font-extrabold font-inter mb-10"><%= @job.title %></h1>
                   <!-- Job description -->
                   <div class="space-y-8 mb-8">
-                    <%= @response_data["job_description_details"]&.html_safe  %>
+                    <%= render_html_content(@response_data["description_formatted_html"])  %>
                   </div>
                   <!-- Social share -->
                   <div class="flex items-center justify-end space-x-4">
@@ -262,7 +262,7 @@
         <div class="border border-gray-100 h-px w-full"></div>
         <div class='overflow-hidden'>
           <div class='mt-4 mb-4'>
-            <%= @response_data["job_description_details"]&.html_safe %>
+            <%= @response_data["description_raw_html"]&.html_safe %>
           </div>
         </div>
       </div>

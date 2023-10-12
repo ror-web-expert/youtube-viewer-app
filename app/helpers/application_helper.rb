@@ -21,4 +21,37 @@ module ApplicationHelper
       created_at.strftime("%Y-%m-%d")
     end
   end
+
+  def render_html_content(data)
+    if data.present?
+    html = data.map do |tag|
+      tag.map do |tag_name, tag_content|
+        send("render_#{tag_name}", tag_content)
+      end.join.html_safe
+    end.join.html_safe
+
+    raw(html)
+    end
+  end
+
+  def render_h3(tag_content)
+    content_tag(:h3, tag_content, class: 'text-xl font-bold text-gray-800 mb-3')
+  end
+
+  def render_p(tag_content)
+    content_tag(:p, tag_content, class: 'text-gray-500 space-y-3')
+  end
+
+  def render_ul(tag_content)
+    content_tag(:ul, class: 'list-disc list-inside space-y-3') do
+      tag_content.map do |li_content|
+        render_li(li_content["li"])
+      end.join.html_safe
+    end
+  end
+
+  def render_li(tag_content)
+    content_tag(:li, tag_content)
+  end
+
 end

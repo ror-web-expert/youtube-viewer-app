@@ -56,6 +56,7 @@ gem 'will_paginate', '~> 4.0'
 # Use the friendly_id gem for creating slugs and improving
 gem 'friendly_id', '~> 5.4.0'
 
+gem 'reverse_markdown'
 group :development, :test do
   gem "byebug"
   gem "pry-rails"

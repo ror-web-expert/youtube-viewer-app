@@ -26,7 +26,7 @@ VALLEY_WISE_HEALTH = {
       "posted_date": ".job-addl-info .date span",
       "job_status": ".job-addl-info .job-status span",
       "job_refernce_id": ".job-addl-info .job-ref",
-      "job_description_details": {
+      "description_raw_html": {
         "get_paragraph": ".job-description-content #descHeader",
         "next_element": true,
         "inner_html": true
@@ -53,7 +53,7 @@ THRIVE_SPC = {
     "job-detail-container": ".is-multiline",
     "response_selector": {
       "job_type": ".job-content p:contains('Full Time')",
-      "job_description_details": ".column[1]",
+      "description_raw_html": ".column[1]",
       "get_from_content": ".job-content"
     }
   }
@@ -88,8 +88,7 @@ HONOR_HEALTH = {
       "apply_now_url": ".right .sticky-item .apply",
       "job_refernce_id": "ul.meta-data-options li[6] span",
       "job_description_heading": ".columns .left .main-description-section h2",
-      "job_description_details": ".columns .left .main-description-body",
-      "short_description": ".columns .left .main-description-body"
+      "description_raw_html": ".columns .left .main-description-body"
     }
   }
 }
@@ -127,7 +126,7 @@ MAYO_CLINIC = {
       "location": ".job-description .title-wrapper .ico-location",
       "posted_date": ".job-description .title-wrapper .job-date",
       "apply_now_url": ".button-wrapper a.job-apply",
-      "job_description_details": "#core_jd-top",
+      "description_raw_html": "#core_jd-top",
       "salary_range": {
         "next_sibling": true,
         "next_element": "true",
@@ -171,7 +170,7 @@ COMMON_SPIRIT = {
       "apply_now_url": ".ajd_header__job-buttons a",
       "job_refernce_id": ".job-details-info .job-id",
       "get_from_content": ".job-info",
-      "job_description_details": "#anchor-responsibilities .collapse-ajd__wrapper"
+      "description_raw_html": "#anchor-responsibilities .collapse-ajd__wrapper"
     }
   }
 }
@@ -198,7 +197,7 @@ USPI = {
       "apply_now_url": ".jd-btn-wrap .job-apply",
       "posted_date": ".jd-job-info-wrap .job-date",
       "job_refernce_id": ".jd-job-info-wrap .job-id",
-      "job_description_details": "#jd-wrap"
+      "description_raw_html": "#jd-wrap"
     }
   }
 }
@@ -221,7 +220,7 @@ ENVITA = {
       "location": ".job-attributes-container div[1]",
       "schedule": ".job-details #job-description p[5]",
       "salary_range": ".job-details #job-description p[3]",
-      "job_description_details": ".job-details #job-description"
+      "description_raw_html": ".job-details #job-description"
     }
   }
 }
@@ -249,7 +248,7 @@ FRESENIUS_MEDICAL_CARE = {
       "apply_now_url": ".jd-btn-wrap .job-apply",
       "department": "#JobDetailOverview div[7] .kowrXr",
       "job_refernce_id": "#JobDetailOverview div[8] .kowrXr",
-      "job_description_details": "#JobDetailDescription"
+      "description_raw_html": "#JobDetailDescription"
     }
   }
 }
@@ -271,7 +270,7 @@ IQVIA = {
       "job_type": ".jd-jobinfo .job-type",
       "job_refernce_id": ".jd-jobinfo .job-id",
       "apply_now_url": ".jd-jobinfo-wrap a",
-      "job_description_details": ".ats-description"
+      "description_raw_html": ".ats-description"
     }
   }
 }
@@ -294,7 +293,7 @@ LIFE_POINT_HEALTH = {
       "facility": ".job-info__wrap .job-brand",
       "category": ".job-info__wrap .job-cat",
       "apply_now_url": ".job-buttons .job-apply",
-      "job_description_details": ".read-more .ats-description"
+      "description_raw_html": ".read-more .ats-description"
     }
   }
 }
@@ -315,7 +314,7 @@ BLUE_MOUNTAIN_HOSPITAL = {
     "response_selector": {
       "apply_now_url": ".wp-block-button a",
       "get_from_content": ".entry-header h1",
-      "job_description_details": ".entry-content"
+      "description_raw_html": ".entry-content"
     }
   }
 }
@@ -337,7 +336,7 @@ MGA_HOME_CARE = {
       "job_type": ".job-type",
       "apply_now_url": ".w-btn-wrapper a",
       "shift_type": ".company-description ul[1] li[4]",
-      "job_description_details": ".job-sections .company-description"
+      "description_raw_html": ".job-sections .company-description"
     }
   }
 }
@@ -363,7 +362,7 @@ CSV_HEALTH = {
     "response_selector": {
       "apply_now_url": ".fusion-text.fusion-text-2 a.apply-btn",
       "get_from_content": ".fusion-text.fusion-text-3",
-      "job_description_details": ".fusion-text.fusion-text-3"
+      "description_raw_html": ".fusion-text.fusion-text-3"
     }
   }
 }
@@ -388,7 +387,7 @@ ATLAS_HEALTH = {
     "response_selector": {
       "apply_now_url": ".applyjd",
       "get_from_content": ".oculusStuff",
-      "job_description_details": ".oculusStuff"
+      "description_raw_html": ".oculusStuff"
     }
   }
 }
