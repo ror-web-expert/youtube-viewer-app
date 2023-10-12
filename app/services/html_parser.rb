@@ -41,8 +41,8 @@ class HtmlParser
         output_array << {"p" => line }
       elsif line.start_with?("#") || ( line.start_with?("**") && line.end_with?("**") )
         output_array << { "h3" => line.tr("#*"," ") }
-      elsif line.start_with?("-")
-        list = line.split("-")
+      elsif line.start_with?("-") || line.start_with?("–")
+        list = line.include?("–") ? line.split("–") : line.split("-")
         output_array << { "ul" => list.map {|l| { "li" => l.tr("#*"," ") } if l.present?  }.compact! }
       elsif line.start_with?("`") && line.end_with?("`")
         output_array << { "p" => line.tr("`","") }
