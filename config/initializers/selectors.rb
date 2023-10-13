@@ -341,7 +341,7 @@ MGA_HOME_CARE = {
   }
 }
 
-CSV_HEALTH = {
+CVS_HEALTH = {
   "listing_selector": {
     "job-container-list": "#widget-jobsearch-results-list .job",
     "main_selector": {
