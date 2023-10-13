@@ -89,6 +89,38 @@ abbr:where([title]) {
   text-decoration: underline dotted;
 }
 
+.jobDetail h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 0.75rem;
+}
+
+.jobDetail p {
+  color: #718096; /* Equivalent to text-gray-500 in Tailwind CSS */
+  line-height: 1.5em; /* Equivalent to space-y-3 in Tailwind CSS */
+  margin-bottom: 1.5em; /* Equivalent to space-y-3 in Tailwind CSS */
+}
+
+.jobDetail p strong {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 0.75rem;
+}
+
+.jobDetail > ul {
+  list-style-type: disc; /* Equivalent to list-disc in Tailwind CSS */
+  padding-left: 1em; /* Equivalent to list-inside in Tailwind CSS */
+  margin-top: 0; /* Reset the default margin */
+  margin-bottom: 1.5em; /* Equivalent to space-y-3 in Tailwind CSS */
+}
+.jobDetail ul li {
+  color: #718096;
+  line-height: 1.5em;
+  margin-bottom: 1.5em;
+}
+
 /*
 Remove the default font size and weight for headings.
 */
