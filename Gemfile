@@ -57,6 +57,8 @@ gem 'will_paginate', '~> 4.0'
 gem 'friendly_id', '~> 5.4.0'
 
 gem 'reverse_markdown'
+gem 'kramdown'
+
 group :development, :test do
   gem "byebug"
   gem "pry-rails"

@@ -88,8 +88,8 @@
                   </div>
                   <h1 class="text-4xl font-extrabold font-inter mb-10"><%= @job.title %></h1>
                   <!-- Job description -->
-                  <div class="space-y-8 mb-8">
-                    <%= render_html_content(@response_data["description_formatted_html"])  %>
+                  <div class="space-y-6 mb-8">
+                    <%= @response_data["description_raw_html"]&.html_safe  %>
                   </div>
                   <!-- Social share -->
                   <div class="flex items-center justify-end space-x-4">
