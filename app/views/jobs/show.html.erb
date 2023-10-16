@@ -1,7 +1,6 @@
 <body class="font-inter antialiased bg-white text-gray-800 tracking-tight">
   <!-- Page wrapper -->
   <div class="flex flex-col min-h-screen overflow-hidden supports-[overflow:clip]:overflow-clip">
-
     <!-- Page content -->
     <main class="grow">
       <% @response_data = @job.response_data %>
@@ -64,7 +63,6 @@
                         <% end %>
                       </ul>
                     </div>
-
                     <div class="max-w-xs mx-auto mb-5">
                       <% if @response_data["apply_now_url"] %>
                         <a class="btn w-full text-white bg-indigo-500 hover:bg-indigo-600 group shadow-sm" href="<%= @response_data["apply_now_url"] %>">
@@ -88,7 +86,7 @@
                   </div>
                   <h1 class="text-4xl font-extrabold font-inter mb-10"><%= @job.title %></h1>
                   <!-- Job description -->
-                  <div class="space-y-6 mb-8">
+                  <div class="jobDetail">
                     <%= @response_data["description_raw_html"]&.html_safe  %>
                   </div>
                   <!-- Social share -->
@@ -124,7 +122,6 @@
                   <h4 class="text-2xl font-bold font-inter mb-8">Related Jobs</h4>
                   <!-- List container -->
                   <div class="flex flex-col border-t border-gray-200">
-
                     <% @related_jobs.each do |job| %>
                       <!-- Item -->
                       <% @response_data = job.response_data %>
