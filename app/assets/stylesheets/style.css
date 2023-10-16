@@ -89,7 +89,8 @@ abbr:where([title]) {
   text-decoration: underline dotted;
 }
 
-.jobDetail h3 {
+.jobDetail h3,
+.jobDetail h2 {
   font-size: 1.25rem;
   font-weight: 700;
   color: #2d3748;
@@ -97,16 +98,37 @@ abbr:where([title]) {
 }
 
 .jobDetail p {
-  color: #718096; /* Equivalent to text-gray-500 in Tailwind CSS */
-  line-height: 1.5em; /* Equivalent to space-y-3 in Tailwind CSS */
-  margin-bottom: 1.5em; /* Equivalent to space-y-3 in Tailwind CSS */
+  color: #718096;
+  line-height: 1.5em;
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: start;
+}
+
+/* .jobDetail p br {
+  display: none;
+} */
+
+.jobDetail strong + br {
+  display: none;
+}
+
+.jobDetail p a {
+  padding: 0.375rem 0.75rem; /* Equivalent to py-1.5 and px-3 in Tailwind CSS */
+  text-decoration: none;
+  color: white; /* Equivalent to text-white in Tailwind CSS */
+  background-color: #4f46e5; /* Equivalent to bg-indigo-500 in Tailwind CSS */
+  transition: background-color 0.3s ease; /* Transition effect for hover state */
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
 }
 
 .jobDetail p strong {
   font-size: 1.25rem;
   font-weight: 700;
   color: #2d3748;
-  margin-bottom: 0.75rem;
 }
 
 .jobDetail > ul {
@@ -118,7 +140,7 @@ abbr:where([title]) {
 .jobDetail ul li {
   color: #718096;
   line-height: 1.5em;
-  margin-bottom: 1.5em;
+  margin-top: 12px;
 }
 
 /*
