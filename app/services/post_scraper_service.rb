@@ -16,6 +16,9 @@ class PostScraperService
     accept_cookies if cookies_modal_present?
     sleep(2)
     page = Nokogiri::HTML(@session.body)
+
+    job_details_not_exist(page)
+
     page.css(@selectors["job-detail-container"]).each do |post|
       response_data = extract_data_from_selector(post, @selectors["response_selector"])
       response_data["speciality"] = filter_by_title(@post.title.squish)
@@ -24,6 +27,11 @@ class PostScraperService
       HtmlParser.new(@post).formatted_markdown
     end
     close_browser
+  end
+
+  def job_details_not_exist(page)
+      @post.destroy if  page.css(@selectors["job-detail-container"]).blank? ||
+        page.css(@selectors["job-detail-container"]).text.squish.include?("We are sorry this job post no longer exists. Luckily, we have other jobs you might also be interested in: Search jobs")
   end
 
   def extract_data_from_selector(element, selector)
