@@ -15,6 +15,10 @@ VALLEY_WISE_HEALTH = {
   },
   "detail_selector": {
     "job-detail-container": ".content",
+    "job_does_not_exist": {
+      "not_found_container": "",
+      "not_found_text": ""
+    },
     "response_selector": {
       "title": ".job-title",
       "facility": ".job-description-content p:contains('Facility:')",
@@ -51,6 +55,10 @@ THRIVE_SPC = {
   },
   "detail_selector": {
     "job-detail-container": ".is-multiline",
+    "job_does_not_exist": {
+      "not_found_container": "",
+      "not_found_text": ""
+    },
     "response_selector": {
       "job_type": ".job-content p:contains('Full Time')",
       "description_raw_html": ".column[1]",
@@ -77,6 +85,10 @@ HONOR_HEALTH = {
   },
   "detail_selector": {
     "job-detail-container": ".job-description-container",
+    "job_does_not_exist": {
+      "not_found_container": ".not-found-container .not-found-content h2",
+      "not_found_text": "The page you are looking for no longer exists."
+    },
     "response_selector": {
       "title": ".columns .left .header-section h1",
       "facility": "ul.meta-data-options li[1] span",
@@ -115,6 +127,10 @@ MAYO_CLINIC = {
     "cookies_modal": {
       "id": ".system-ialert-button",
       "button_text": "Accept"
+    },
+    "job_does_not_exist": {
+      "not_found_container": "#content .generic-container p",
+      "not_found_container": "We are sorry this job post no longer exists. Luckily, we have other jobs you might also be interested in: Search jobs"
     },
     "job-detail-container": "#content",
     "response_selector": {
@@ -162,6 +178,10 @@ COMMON_SPIRIT = {
   },
   "detail_selector": {
     "job-detail-container": "#content",
+    "job_does_not_exist": {
+      "not_found_container": "#content .container",
+      "not_found_text": "We are sorry this job post no longer exists. Luckily, we have other jobs you might also be interested in: Search jobs"
+    },
     "response_selector": {
       "department": ".ajd_overview__quick-facts .ajd_overview__quick-fact--department",
       "job_type": ".ajd_overview__quick-facts .ajd_overview__quick-fact--type",
@@ -190,6 +210,10 @@ USPI = {
     }
   },
   "detail_selector": {
+    "job_does_not_exist": {
+      "not_found_container": ".max-width.misc-content p",
+      "not_found_text": "We are sorry this job post no longer exists. Luckily, we have other jobs you might also be interested in: Search jobs"
+    },
     "job-detail-container": ".job-description",
     "response_selector": {
       "facility": ".jd-job-info-wrap .job-facility",
@@ -214,6 +238,11 @@ ENVITA = {
     }
   },
   "detail_selector": {
+    "job_does_not_exist": {
+      "not_found_container": ".job-header .container",
+      "not_found_text": "Hiring for this position has been put on hold at this time.\nClick here to view more opportunities at Envita Medical Center."
+    },
+
     "job-detail-container": "main",
     "response_selector": {
       "job_type": ".job-attributes-container #resumator-job-employment",
@@ -241,6 +270,10 @@ FRESENIUS_MEDICAL_CARE = {
     },
   },
   "detail_selector": {
+    "job_does_not_exist": {
+      "not_found_container": "#elm_TEXT h4",
+      "not_found_text": "This job ad has been deactivated."
+    },
     "job-detail-container": ".hSHIcX",
     "response_selector": {
       "job_type": "#JobDetailOverview div[6] .kowrXr",
@@ -265,6 +298,10 @@ IQVIA = {
     }
   },
   "detail_selector": {
+    "job_does_not_exist": {
+      "not_found_container": ".misc-content-inner p",
+      "not_found_text": "We are sorry this job post no longer exists. Luckily, we have other jobs you might also be interested in: Search all jobs"
+    },
     "job-detail-container": ".job-description",
     "response_selector": {
       "job_type": ".jd-jobinfo .job-type",
@@ -287,6 +324,10 @@ LIFE_POINT_HEALTH = {
     }
   },
   "detail_selector": {
+    "job_does_not_exist": {
+      "not_found_container": ".max-width-padding.secondary-wrapper",
+      "not_found_text": "We are sorry this job post no longer exists. Luckily, we have other jobs you might also be interested in: Search jobs"
+    },
     "job-detail-container": ".job-description",
     "response_selector": {
       "job_refernce_id": ".job-info__wrap .job-id",
@@ -310,6 +351,10 @@ BLUE_MOUNTAIN_HOSPITAL = {
     }
   },
   "detail_selector": {
+    "job_does_not_exist": {
+      "not_found_container": ".entry-404 .center-text",
+      "not_found_text": "The page you are looking for is no longer here, or never existed in the first place (bummer). You can try searching for what you are looking for using the form below. If that still doesn't provide the results you are looking for, you can always start over from the home page."
+    },
     "job-detail-container": ".entry-wrap",
     "response_selector": {
       "apply_now_url": ".wp-block-button a",
@@ -331,6 +376,10 @@ MGA_HOME_CARE = {
     }
   },
   "detail_selector": {
+    "job_does_not_exist": {
+      "not_found_container": ".w-iconbox-meta .w-iconbox-text",
+      "not_found_text": "The link you followed may be broken, or the page may have been removed."
+    },
     "job-detail-container": ".job-content .cl-left",
     "response_selector": {
       "job_type": ".job-type",
@@ -358,6 +407,9 @@ CVS_HEALTH = {
     }
   },
   "detail_selector": {
+    "job_does_not_exist": {
+      "not_found_container": ".post-content .fusion-layout-column.fusion_builder_column.fusion-builder-column-3"
+    },
     "job-detail-container": ".post-content .fusion-layout-column.fusion_builder_column.fusion-builder-column-5",
     "response_selector": {
       "apply_now_url": ".fusion-text.fusion-text-2 a.apply-btn",
@@ -383,6 +435,10 @@ ATLAS_HEALTH = {
     }
   },
   "detail_selector": {
+    "job_does_not_exist": {
+      "not_found_container": ".error404-content .entry-title",
+      "not_found_text": "PAGE NOT FOUND"
+    },
     "job-detail-container": ".job-desc",
     "response_selector": {
       "apply_now_url": ".applyjd",

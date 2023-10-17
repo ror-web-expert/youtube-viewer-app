@@ -17,8 +17,8 @@ class PostScraperService
     sleep(2)
     page = Nokogiri::HTML(@session.body)
 
-    job_details_not_exist(page)
-
+    not_found_text = job_details_not_exist(page)
+    unless not_found_text
     page.css(@selectors["job-detail-container"]).each do |post|
       response_data = extract_data_from_selector(post, @selectors["response_selector"])
       response_data["speciality"] = filter_by_title(@post.title.squish)
@@ -26,12 +26,22 @@ class PostScraperService
       @post.update(response_data: response_data, is_scrap: true)
       HtmlParser.new(@post).formatted_markdown
     end
+    else
+      @post.destroy
+    end
     close_browser
   end
 
   def job_details_not_exist(page)
-      @post.destroy if  page.css(@selectors["job-detail-container"]).blank? ||
-        page.css(@selectors["job-detail-container"]).text.squish.include?("We are sorry this job post no longer exists. Luckily, we have other jobs you might also be interested in: Search jobs")
+
+      if @selectors["job_does_not_exist"]["not_found_container"].present?
+      if @post.scraped_url == @session.current_url
+        found_container = @session.find(@selectors["job_does_not_exist"]["not_found_container"], text: @selectors["job_does_not_exist"]["not_found_text"]).text.squish rescue ""
+        return  found_container.present?
+      else
+        return true
+      end
+    end
   end
 
   def extract_data_from_selector(element, selector)
