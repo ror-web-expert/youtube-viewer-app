@@ -130,7 +130,7 @@ MAYO_CLINIC = {
     },
     "job_does_not_exist": {
       "not_found_container": "#content .generic-container p",
-      "not_found_container": "We are sorry this job post no longer exists. Luckily, we have other jobs you might also be interested in: Search jobs"
+      "not_found_text": "We are sorry this job post no longer exists. Luckily, we have other jobs you might also be interested in: Search jobs"
     },
     "job-detail-container": "#content",
     "response_selector": {
