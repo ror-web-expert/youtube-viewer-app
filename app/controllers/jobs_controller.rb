@@ -7,6 +7,10 @@ class JobsController < ApplicationController
     filter_job_specialities
     salary_ranges
     locations
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show
@@ -30,7 +34,7 @@ class JobsController < ApplicationController
   end
 
   def salary_ranges
-    @salary_ranges ||= @jobs.scraped.response_data_exist.pluck(Arel.sql("response_data -> 'salary_range'")).compact.uniq.map{|s| s.tr("a-zA-Z","")}
+    @salary_ranges ||= @jobs.scraped.response_data_exist.pluck(Arel.sql("response_data -> 'salary_range'")).compact.uniq.map{|s| s.tr("a-zA-Z:,.","").strip}
   end
 
   def related_jobs

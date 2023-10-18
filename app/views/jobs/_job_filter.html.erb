@@ -1,6 +1,6 @@
 <aside class="mb-8 md:mb-0 md:w-64 lg:w-72 md:ml-12 lg:ml-20 md:shrink-0 md:order-1">
-  <div class="sticky top-8">
-    <%= form_with(url: jobs_path, method: "get", local: true, remote: true, id: "job_filter" ) do |form| %>
+  <div class="sticky top-8" data-controller="jobs">
+    <%= form_with(url: jobs_path, method: "get", id: "job_filter", data: {remote: true, action: 'change->jobs#submitForm' } ) do |form| %>
       <div class="relative bg-gray-50 rounded-xl border border-gray-200 p-5">
         <div class="absolute top-5 right-5 leading-none">
           <button class="text-sm font-medium text-indigo-500 hover:underline">Clear</button>
@@ -13,7 +13,7 @@
               <% @filtered_job_types.map do |job_type| %>
               <li>
                 <label class="flex items-center">
-                  <%= check_box_tag "job_type[]", "Full-Time", false, class: "form-checkbox" %>
+                  <%= check_box_tag "job_type[]", job_type, false, class: "form-checkbox" %>
                   <span class="text-sm text-gray-600 ml-2"><%= job_type %></span>
                 </label>
               </li>
@@ -27,7 +27,7 @@
               <% @filter_job_specialities.each do |speciality| %>
                 <li>
                   <label class="flex items-center">
-                    <%= check_box_tag "speciality[]", "Full-Time", false, class: "form-checkbox" %>
+                    <%= check_box_tag "speciality[]", speciality, false, class: "form-checkbox" %>
                     <span class="text-sm text-gray-600 ml-2"><%= speciality %></span>
                   </label>
                 </li>
@@ -41,7 +41,7 @@
               <% @salary_ranges.map do |salary_range| %>
                 <li>
                   <label class="flex items-center">
-                    <input type="checkbox" class="form-checkbox"/>
+                  <%= check_box_tag "salary_range[]", salary_range, false, class: "form-checkbox" %>
                     <span class="text-sm text-gray-600 ml-2"><%= salary_range %></span>
                   </label>
                 </li>
