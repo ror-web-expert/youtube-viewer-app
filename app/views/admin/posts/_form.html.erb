@@ -21,9 +21,9 @@
     <%= form.label :scraped_url ,class:"block text-sm font-medium mb-1"%>
     <%= form.text_field :scraped_url, class: "form-input w-full" %>
   </div>
-  <div class="my-5 flex justify-between ">
-    <%= form.label :is_scrap , class:"block text-sm font-medium mb-1"%>
+  <div class="my-5 flex justify-start items-center ">
     <%= form.check_box :is_scrap, class:"form-checkbox" %>
+    <%= form.label :is_scrap , class:"ml-2 block text-sm font-medium mb-1"%>
   </div>
   <div class="my-5">
     <%= form.label :status, class:"block text-sm font-medium mb-1" %>
