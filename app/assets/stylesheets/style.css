@@ -1464,6 +1464,10 @@ input[type="range"]::-moz-focus-outer {
   margin-top: -1.5rem;
   margin-bottom: -1.5rem;
 }
+.my-5 {
+  margin-top: 1.25rem; /* 20px */
+  margin-bottom: 1.25rem; /* 20px */
+}
 
 .mx-auto {
   margin-left: auto;
@@ -2202,6 +2206,14 @@ input[type="range"]::-moz-focus-outer {
   padding-bottom: 2rem;
 }
 
+.pt-20 {
+  padding-top: 5rem;
+}
+
+.pt-24 {
+  padding-top: 6rem;
+}
+
 .pb-1 {
   padding-bottom: 0.25rem;
 }
@@ -2426,6 +2438,10 @@ input[type="range"]::-moz-focus-outer {
   --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
     var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.shadow-md {
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
 
 .ring-2 {

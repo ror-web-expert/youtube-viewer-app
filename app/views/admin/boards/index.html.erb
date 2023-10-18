@@ -1,17 +1,17 @@
-<div class='container py-20 px-5 mx-auto'>
+<div class='max-w-6xl mx-auto px-4 sm:px-6'>
   <div class="w-full">
     <% if notice.present? %>
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
-    <div class="flex justify-between items-center my-3">
-      <h1 class="font-bold text-4xl">Boards</h1>
-      <%= link_to 'New Board', new_admin_board_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    <div class="flex justify-between items-center mb-3">
+      <h2 class="font-bold text-4xl">Boards</h2>
+      <%= link_to 'New Board', new_admin_board_path, class: "btn text-white bg-indigo-500 hover:bg-indigo-600 group shadow-sm" %>
     </div>
     <!-- <div id="boards" class="min-w-full">
       <%= render @boards %>
     </div> -->
-    <div class="relative overflow-x-auto">
-      <table class="w-11/12 mx-auto text-sm text-left text-gray-500 dark:text-gray-400 shadow-md sm:rounded-lg">
+    <div class="max-w-6xl mx-auto">
+      <table class="text-sm text-left text-gray-500 shadow-md sm:rounded-lg">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
             <th scope="col" class="px-6 py-3">

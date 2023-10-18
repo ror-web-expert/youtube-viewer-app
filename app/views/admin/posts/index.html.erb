@@ -1,13 +1,13 @@
-<div class='container py-12 px-5'>
+<div class='max-w-6xl mx-auto px-4'>
   <div class="w-full">
     <% if notice.present? %>
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
-    <div class="flex justify-between items-center mt-6 px-4">
+    <div class="flex justify-between items-center px-4">
       <h1 class="font-bold text-4xl">Posts</h1>
-      <%= link_to 'New Post', new_admin_post_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+      <%= link_to 'New Post', new_admin_post_path, class: "btn text-white bg-indigo-500 hover:bg-indigo-600 group shadow-sm" %>
     </div>
-    <div class='container mt-3 mx-auto w-11/12 lg:w-9/12'>
+    <div class=' mt-3 mx-auto max-w-6xl px-4'>
       <div class='grid grid-cols-1 md:grid-cols-2 gap-4'>
         <% @posts.each do |post| %>
           <div class="relative p-4 flex flex-col justify-between bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
@@ -26,7 +26,7 @@
                 </div>
                 <div class="flex flex-wrap gap-1 mt-2">
                   <% if @response_data["hourly_rate"].present? %>
-                    <span class=" p-1 !bg-gray-100 !text-gray-800 text-sm  mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["hourly_rate"] %></span>
+                    <span class=" p-1 !bg-gray-100 !text-gray-800 text-sm  mr-[.5px] px-2.5 py-0.5 rounded-lg font-semibold"><%= @response_data["hourly_rate"] %></span>
                   <% end %>
                   <% if @response_data["salary_range"].present? &&  @response_data["salary_range"].include?("$") %>
                     <span class=" p-1 bg-gray-100 text-gray-800 text-sm  mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= get_salary_range(@response_data["salary_range"]) %></span>
