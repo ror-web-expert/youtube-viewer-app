@@ -1,29 +1,25 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+<div class="max-w-xl mx-auto y-auto px-4">
+  <h2 class="font-bold text-4xl text-center my-5">Sign up</h2>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="my-5">
+      <%= f.label :email , class:"block text-sm font-medium mb-1" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email",class: "form-input w-full" %>
+    </div>
+    <div class="my-5">
+      <%= f.label :password , class:"block text-sm font-medium mb-1" %>
+      <%= f.password_field :password, autocomplete: "new-password",class: "form-input w-full" %>
+      <% if @minimum_password_length %>
+        <em class="text-red-500 text-sm mt-2" >(<%= @minimum_password_length%> characters minimum)</em>
+      <% end %>
+    </div>
+    <div class="my-5">
+      <%= f.label :password_confirmation,class:"block text-sm font-medium mb-1" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" ,class: "form-input w-full" %>
+    </div>
+    <div class ='flex md:gap-4 gap-1 md:flex-row flex-col' >
+      <%= f.submit "Sign up" ,class: "flex-1 btn text-white btn text-center mt-3 block bg-gray-100 font-medium bg-indigo-500 hover:bg-indigo-600 shadow-sm group transition duration-300 ease-in-out " %>
+      <%= render "devise/shared/links" %>
+    </div>
+  <% end %>
+</div>
