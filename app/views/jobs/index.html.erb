@@ -13,85 +13,34 @@
             <div class="pb-8 md:pb-16">
               <h2 class="text-3xl font-bold font-inter mb-10">Latest jobs</h2>
               <!-- List container -->
-              <div class="flex flex-col">
-                <% @jobs.each do |job| %>
-                  <!-- Item -->
-                  <% @response_data = job.response_data %>
-                  <% if @response_data.present? %>
-                    <div class="[&:nth-child(-n+12)]:-order-1 border-b border-gray-200 group">
-                      <div class="px-4 py-6 bg-indigo-100 rounded-xl">
-                        <div class="sm:flex items-center space-y-3 sm:space-y-0 sm:space-x-5">
-                          <div class="shrink-0">
-                            <%= image_tag 'company-icon-02.svg', alt: "Company 02", class: 'w-14 h-14' %>
-                          </div>
-                          <div class="grow lg:flex items-center justify-between space-y-5 lg:space-x-2 lg:space-y-0">
-                            <div>
-                              <div class="flex items-start space-x-2">
-                                <div class="text-sm text-gray-800 font-semibold mb-1"><%= job.board.title %></div>
-                              </div>
-                              <div class="mb-2">
-                                <a class="text-lg text-gray-800 font-bold" href="#"><%= job.title %></a>
-                              </div>
-                              <div class="-m-1">
-                                <% if @response_data["job_type"].present? %>
-                                  <a class="text-xs text-gray-500 font-medium inline-flex px-2 py-0.5 bg-gray-100 hover:text-gray-600 rounded-md m-1 whitespace-nowrap transition duration-150 ease-in-out" href="#0"><%= @response_data["job_type"] %></a>
-                                <% end %>
-                                <% if @response_data["location"].present? %>
-                                  <a class="text-xs text-gray-500 font-medium inline-flex px-2 py-0.5 bg-indigo-50 hover:text-gray-600 rounded-md m-1 whitespace-nowrap transition duration-150 ease-in-out" href="#"><%= @response_data["location"].gsub(/location\s*:?/i, ' ') %></a>
-                                <% end %>
-                                <% if @response_data["salary_range"].present? && @response_data["salary_range"].include?("$") %>
-                                  <a class="text-xs text-gray-500 font-medium inline-flex px-2 py-0.5 bg-indigo-50 hover:text-gray-600 rounded-md m-1 whitespace-nowrap transition duration-150 ease-in-out" href="#"><%= get_salary_range(@response_data["salary_range"]) %></a>
-                                <% end %>
-                                <% if @response_data["shift_type"].present? %>
-                                  <a class="text-xs text-gray-500 font-medium inline-flex px-2 py-0.5 bg-gray-100 hover:text-gray-600 rounded-md m-1 whitespace-nowrap transition duration-150 ease-in-out" href="#0"><%= @response_data["shift_type"] %></a>
-                                <% end %>
-                                <% if @response_data["speciality"].present? %>
-                                  <a class="text-xs text-gray-500 font-medium inline-flex px-2 py-0.5 bg-gray-100 hover:text-gray-600 rounded-md m-1 whitespace-nowrap transition duration-150 ease-in-out" href="#0"><%= @response_data["speciality"] %></a>
-                                <% end %>
-                                <% if @response_data["hourly_rate"].present? %>
-                                  <a class="text-xs text-gray-500 font-medium inline-flex px-2 py-0.5 bg-gray-100 hover:text-gray-600 rounded-md m-1 whitespace-nowrap transition duration-150 ease-in-out" href="#0"><%= @response_data["hourly_rate"] %></a>
-                                <% end %>
-                              </div>
-                            </div>
-                            <div class="min-w-[120px] flex items-center lg:justify-end space-x-3 lg:space-x-0">
-                              <div class="lg:hidden group-hover:lg:block">
-                                <a class="btn-sm py-1.5 px-3 text-white bg-indigo-500 hover:bg-indigo-600 group shadow-sm" target="_blank" href="<%= job_path(job) %>">
-                                  Apply Now
-                                  <span class="tracking-normal text-indigo-200 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
-                                </a>
-                              </div>
-                              <div class="group-hover:lg:hidden text-sm italic text-gray-500"><%= formatted_time_ago(job.created_at) %></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+              <%= turbo_frame_tag "jobs" do %>
+                <div class="flex flex-col">
+                  <%= render 'jobs', jobs: @jobs %>
+                  <div class="pagination">
+                    <div class="py-6">
+                      <%= will_paginate @jobs, previous_label: "Previous", next_label: "Next", class: "flex items-center justify-center space-x-2" %>
                     </div>
-                  <% end %>
+                  </div>
+                  <!-- Newletter CTA -->
+                  <div class="py-8 border-b border-gray-200 -order-1">
+                    <div class="relative text-center px-4 py-6 group">
+                      <div class="absolute inset-0 rounded-xl bg-gray-50 border border-gray-200 -rotate-1 group-hover:rotate-0 transition duration-150 ease-in-out -z-10" aria-hidden="true"></div>
+                      <div class="font-nycd text-xl text-indigo-500 mb-1">Land your dream job</div>
+                      <div class="text-2xl font-bold mb-5">Get a weekly email with the latest startup jobs.</div>
+                      <form class="inline-flex max-w-sm">
+                        <div class="flex flex-col sm:flex-row justify-center max-w-xs mx-auto sm:max-w-none">
+                          <input type="email" class="form-input py-1.5 w-full mb-2 sm:mb-0 sm:mr-2" placeholder="Your email" aria-label="Your email"/>
+                          <button class="btn-sm text-white bg-indigo-500 hover:bg-indigo-600 shadow-sm whitespace-nowrap" type="submit">Join
+                            Newsletter
+                          </button>
+                        </div>
+                        <!-- Success message -->
+                        <!-- <p class="font-medium text-emerald-600 text-center sm:text-left sm:absolute mt-2 opacity-75 text-sm">Thanks for subscribing!</p> -->
+                      </form>
+                    </div>
+                  </div>
+                </div>
                 <% end %>
-                <div class="pagination">
-                  <div class="py-6">
-                    <%= will_paginate @jobs, previous_label: "Previous", next_label: "Next", class: "flex items-center justify-center space-x-2" %>
-                  </div>
-                </div>
-                <!-- Newletter CTA -->
-                <div class="py-8 border-b border-gray-200 -order-1">
-                  <div class="relative text-center px-4 py-6 group">
-                    <div class="absolute inset-0 rounded-xl bg-gray-50 border border-gray-200 -rotate-1 group-hover:rotate-0 transition duration-150 ease-in-out -z-10" aria-hidden="true"></div>
-                    <div class="font-nycd text-xl text-indigo-500 mb-1">Land your dream job</div>
-                    <div class="text-2xl font-bold mb-5">Get a weekly email with the latest startup jobs.</div>
-                    <form class="inline-flex max-w-sm">
-                      <div class="flex flex-col sm:flex-row justify-center max-w-xs mx-auto sm:max-w-none">
-                        <input type="email" class="form-input py-1.5 w-full mb-2 sm:mb-0 sm:mr-2" placeholder="Your email" aria-label="Your email"/>
-                        <button class="btn-sm text-white bg-indigo-500 hover:bg-indigo-600 shadow-sm whitespace-nowrap" type="submit">Join
-                          Newsletter
-                        </button>
-                      </div>
-                      <!-- Success message -->
-                      <!-- <p class="font-medium text-emerald-600 text-center sm:text-left sm:absolute mt-2 opacity-75 text-sm">Thanks for subscribing!</p> -->
-                    </form>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
