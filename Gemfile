@@ -58,6 +58,7 @@ gem 'friendly_id', '~> 5.4.0'
 
 gem 'reverse_markdown'
 gem 'kramdown'
+gem "rolify"
 
 group :development, :test do
   gem "byebug"
