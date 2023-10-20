@@ -1,9 +1,13 @@
 import { Controller } from "@hotwired/stimulus"
+import 'jquery'
+
 export default class extends Controller {
 
   submitForm() {
     document.getElementById("submitform").click();
-    // Rails.fire(document.getElementById("job_filter"), "submit");
+  }
 
+  clearForm(){
+    $("#job_filter")[0].reset();
   }
 }
