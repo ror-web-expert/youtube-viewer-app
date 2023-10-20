@@ -25,13 +25,13 @@
     <%= form.check_box :is_scrap, class:"form-checkbox" %>
     <%= form.label :is_scrap , class:"ml-2 block text-sm font-medium mb-1"%>
   </div>
-  <div class="my-5">
-    <%= form.label :status, class:"block text-sm font-medium mb-1" %>
-    <%= form.number_field :status, class: "form-input w-full" %>
+  <div class="text-sm text-gray-800 font-semibold mb-3">Status</div>
+    <label class="sr-only">Status</label>
+    <%= select_tag 'location', options_for_select(Post.statuses), class: 'form-select w-full' %>
   </div>
   <div class="my-5">
     <%= form.label :response_data ,class:"block text-sm font-medium mb-1" %>
-    <%= form.text_field :response_data, class: "form-input w-full" %>
+    <%= form.text_area :response_data, rows: 20, class: "form-input w-full" %>
   </div>
   <div class="inline">
     <%= form.submit class: "btn w-full text-white bg-indigo-500 hover:bg-indigo-600 shadow-sm group"  %>
