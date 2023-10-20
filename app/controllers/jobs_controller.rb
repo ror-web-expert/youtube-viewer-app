@@ -1,7 +1,7 @@
 class JobsController < ApplicationController
   before_action :set_post, only: %i[show]
   before_action :prepare_query, only: %i[index], if: :any_filter_present?
-  before_action :filter_products, only: %i[index]
+  before_action :filter_jobs, only: %i[index]
 
   def index
     filtered_job_types
@@ -41,7 +41,7 @@ class JobsController < ApplicationController
     Post
   end
 
-  def filter_products
+  def filter_jobs
     @jobs = if params[:query].present?
       resource_class.scraped.search(params[:query]).order_by_id.paginate(page: page, per_page: per_page(20))
     else
