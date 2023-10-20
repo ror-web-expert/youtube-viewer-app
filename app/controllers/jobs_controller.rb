@@ -8,7 +8,7 @@ class JobsController < ApplicationController
     filter_job_specialities
     shift_types
     if @filter_conditions.present?
-      where_clause = @filter_conditions.keys.join(' IN (?) AND ') + ' IN (?)'
+      where_clause = @filter_conditions.keys.join(' AND ')
       @jobs = @jobs.where(where_clause, *@filter_conditions.values)
     end
   end
@@ -47,18 +47,21 @@ class JobsController < ApplicationController
 
   def prepare_query
     @filter_conditions = {}
-
-    if params[:shift_type].present?
-      @filter_conditions["response_data ->> 'shift_type'"] = params[:shift_type]
-    elsif params[:job_type].present?
-      @filter_conditions["response_data ->> 'job_type'"] = params[:job_type]
-    elsif params[:speciality].present?
-      @filter_conditions["response_data ->> 'speciality'"] = params[:speciality]
+    filter_params.each do |key, value|
+      if key == "query" and value.present?
+        @filter_conditions["LOWER(title) ILIKE ?"] = "%#{value.downcase}%"
+      elsif key != "query"
+        @filter_conditions["response_data ->> '#{key}' IN (?)"] = value
+      end
     end
     @filter_conditions
   end
 
   def any_filter_present?
-    params[:job_type].present? || params[:shift_type].present? || params[:speciality].present?
+    filter_params.present?
+  end
+
+  def filter_params
+    params.permit(:query, job_type: [], speciality: [], shift_type: [])
   end
 end
