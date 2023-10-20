@@ -26,19 +26,19 @@
                 </div>
                 <div class="flex flex-wrap gap-1 mt-2">
                   <% if @response_data["hourly_rate"].present? %>
-                    <span class=" p-1 !bg-gray-100 !text-gray-800 text-sm  mr-[.5px] px-2.5 py-0.5 rounded-lg font-semibold"><%= @response_data["hourly_rate"] %></span>
+                    <span class="bg-gray-100 text-gray-800 text-sm px-5 py-1 border rounded-3xl font-semibold"><%= @response_data["hourly_rate"] %></span>
                   <% end %>
                   <% if @response_data["salary_range"].present? &&  @response_data["salary_range"].include?("$") %>
-                    <span class=" p-1 bg-gray-100 text-gray-800 text-sm  mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= get_salary_range(@response_data["salary_range"]) %></span>
+                    <span class=" bg-gray-100 text-gray-800 text-sm px-5 py-1 border rounded-3xl font-semibold"><%= get_salary_range(@response_data["salary_range"]) %></span>
                   <% end %>
                   <% if @response_data["post_type"].present? %>
-                    <span class=" p-1 bg-gray-100 text-gray-800 text-sm  mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["post_type"] %></span>
+                    <span class=" bg-gray-100 text-gray-800 text-sm px-5 py-1 border rounded-3xl font-semibold"><%= @response_data["post_type"] %></span>
                   <% end %>
                   <% if @response_data["shift_type"].present? %>
-                    <span class=" p-1 bg-gray-100 text-gray-800 text-sm  mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["shift_type"].gsub(/shifts\s*:?/i, ' ')  %></span>
+                    <span class=" bg-gray-100 text-gray-800 text-sm px-5 py-1 border rounded-3xl font-semibold"><%= @response_data["shift_type"].gsub(/shifts\s*:?/i, ' ')  %></span>
                   <% end %>
                   <% if @response_data["speciality"].present? %>
-                    <span class=" p-1 bg-gray-100 text-gray-800 text-sm  mr-[.5px] px-2.5 py-0.5 rounded font-semibold"><%= @response_data["speciality"] %></span>
+                    <span class=" bg-gray-100 text-gray-800 text-sm px-5 py-1 border rounded-3xl font-semibold"><%= @response_data["speciality"] %></span>
                   <% end %>
                 </div>
                 <% if @response_data["department"].present? %>
