@@ -1,8 +1,8 @@
-<div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">Editing Board</h1>
-
+<div class="max-w-xl mx-auto px-4 my-auto">
+  <h1 class="font-bold text-4xl text-center my-3">Editing Board</h1>
   <%= render "form", board: @board %>
-
-  <%= link_to "Show this board", admin_board_path(@board), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-  <%= link_to "Back to boards", admin_boards_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <div class ='flex md:gap-4 gap-1 md:flex-row flex-col'>
+    <%= link_to "Show this board", admin_board_path(@board), class: "flex-1 btn hover:text-white btn text-center mt-3 block bg-gray-100 font-medium hover:bg-indigo-600 shadow-sm group transition duration-300 ease-in-out " %>
+    <%= link_to "Back to boards", admin_boards_path, class: "flex-1 btn hover:text-white btn text-center mt-3 block bg-gray-100 font-medium hover:bg-indigo-600 shadow-sm group transition duration-300 ease-in-out " %>
+  </div>
 </div>
