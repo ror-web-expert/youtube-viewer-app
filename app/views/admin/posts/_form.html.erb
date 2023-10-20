@@ -2,7 +2,6 @@
   <% if post.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
       <ul>
         <% post.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -10,38 +9,31 @@
       </ul>
     </div>
   <% end %>
-
   <div class="my-5">
-    <%= form.label :board_id %>
-    <%= form.text_field :board_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :board_id , class:"block text-sm font-medium mb-1" %>
+    <%= form.text_field :board_id, class: "form-input w-full" %>
   </div>
-
   <div class="my-5">
-    <%= form.label :title %>
-    <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :title ,class:"block text-sm font-medium mb-1" %>
+    <%= form.text_field :title, class: "form-input w-full" %>
   </div>
-
   <div class="my-5">
-    <%= form.label :scraped_url %>
-    <%= form.text_field :scraped_url, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :scraped_url ,class:"block text-sm font-medium mb-1"%>
+    <%= form.text_field :scraped_url, class: "form-input w-full" %>
   </div>
-
+  <div class="my-5 flex justify-start items-center ">
+    <%= form.check_box :is_scrap, class:"form-checkbox" %>
+    <%= form.label :is_scrap , class:"ml-2 block text-sm font-medium mb-1"%>
+  </div>
   <div class="my-5">
-    <%= form.label :is_scrap %>
-    <%= form.check_box :is_scrap, class: "block mt-2 h-5 w-5" %>
+    <%= form.label :status, class:"block text-sm font-medium mb-1" %>
+    <%= form.number_field :status, class: "form-input w-full" %>
   </div>
-
   <div class="my-5">
-    <%= form.label :status %>
-    <%= form.number_field :status, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :response_data ,class:"block text-sm font-medium mb-1" %>
+    <%= form.text_field :response_data, class: "form-input w-full" %>
   </div>
-
-  <div class="my-5">
-    <%= form.label :response_data %>
-    <%= form.text_field :response_data, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
   <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit class: "btn w-full text-white bg-indigo-500 hover:bg-indigo-600 shadow-sm group"  %>
   </div>
 <% end %>

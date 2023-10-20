@@ -1,7 +1,5 @@
-<div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">New Board</h1>
-
+<div class="max-w-xl mx-auto px-4">
+  <h2 class="font-bold text-4xl text-center">New Board</h2>
   <%= render "form", board: @board %>
-
-  <%= link_to 'Back to Boards', admin_boards_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <%= link_to 'Back to Boards', admin_boards_path, class: "btn text-center mt-3 block py-3 px-5 bg-gray-100 inline-block font-medium" %>
 </div>

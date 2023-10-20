@@ -12,10 +12,10 @@
   </head>
   <body>
     <main>
-      <body class="font-inter antialiased bg-white text-gray-800 tracking-tight">
+      <body class="font-inter antialiased bg-white text-gray-800 tracking-tight ">
         <div class="flex flex-col justify-between min-h-screen overflow-hidden supports-[overflow:clip]:overflow-clip">
           <%= render "layouts/header" %>
-          <%= yield %>
+          <div class = 'pt-24' > <%= yield %></div>
           <%= render "layouts/footer" %>
         </div>
       </body>
