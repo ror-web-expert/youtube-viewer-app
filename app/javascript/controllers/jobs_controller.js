@@ -9,5 +9,6 @@ export default class extends Controller {
 
   clearForm(){
     $("#job_filter")[0].reset();
+    document.getElementById("submitform").click();
   }
 }
