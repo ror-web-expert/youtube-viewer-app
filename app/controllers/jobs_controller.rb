@@ -1,16 +1,12 @@
 class JobsController < ApplicationController
   before_action :set_post, only: %i[show]
   before_action :prepare_query, only: %i[index], if: :any_filter_present?
+  before_action :filter_products, only: %i[index]
 
   def index
-    @jobs = resource_class.scraped.order_by_id.paginate(page: page, per_page: per_page(20))
     filtered_job_types
     filter_job_specialities
     shift_types
-    if @filter_conditions.present?
-      where_clause = @filter_conditions.keys.join(' AND ')
-      @jobs = @jobs.where(where_clause, *@filter_conditions.values)
-    end
   end
 
   def show
@@ -45,14 +41,23 @@ class JobsController < ApplicationController
     Post
   end
 
+  def filter_products
+    @jobs = if params[:query].present?
+      resource_class.scraped.search(params[:query]).order_by_id.paginate(page: page, per_page: per_page(20))
+    else
+      resource_class.scraped.order_by_id.paginate(page: page, per_page: per_page(20))
+    end
+    if @filter_conditions.present?
+      where_clause = @filter_conditions.keys.join(' AND ')
+      @jobs = @jobs.where(where_clause, *@filter_conditions.values)
+    end
+  end
+
   def prepare_query
     @filter_conditions = {}
     filter_params.each do |key, value|
-      if key == "query" and value.present?
-        @filter_conditions["LOWER(title) ILIKE ?"] = "%#{value.downcase}%"
-      elsif key != "query"
-        @filter_conditions["response_data ->> '#{key}' IN (?)"] = value
-      end
+      next if key == "query"
+      @filter_conditions["response_data ->> '#{key}' IN (?)"] = value
     end
     @filter_conditions
   end
