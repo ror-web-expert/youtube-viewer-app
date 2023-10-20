@@ -4,11 +4,11 @@ import 'jquery'
 export default class extends Controller {
 
   submitForm() {
-    document.getElementById("submitform").click();
+    $("#submitform")[0].click();
   }
 
   clearForm(){
     $("#job_filter")[0].reset();
-    document.getElementById("submitform").click();
+    $("#submitform")[0].click();
   }
 }
