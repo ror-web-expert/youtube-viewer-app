@@ -22,7 +22,7 @@ class PostScraperService
     page.css(@selectors["job-detail-container"]).each do |post|
       response_data = extract_data_from_selector(post, @selectors["response_selector"])
       response_data["speciality"] = filter_by_title(@post.title.squish)
-      response_data["job_type"] = response_data["job_type"].gsub("-"," ")
+      response_data["job_type"] = response_data["job_type"]&.gsub("-"," ")&.titleize
       response_data = @post.response_data.merge(response_data) if @post.response_data.present?
       @post.update(response_data: response_data, is_scrap: true)
       HtmlParser.new(@post).formatted_markdown
