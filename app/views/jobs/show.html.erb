@@ -14,7 +14,7 @@
                 <div class="sticky top-8">
                   <div class="relative bg-gray-50 rounded-xl border border-gray-200 p-5">
                     <div class="text-center mb-6">
-                      <%= image_tag "company-icon-08.svg",class: "inline-flex mb-2 w-[72px] h-[72px] ",alt: "Company 08"  %>
+                      <%= image_tag @response_data["logo"].present? ? @response_data["logo"] : 'company-icon-02.svg' ,class: "inline-flex mb-2 w-[72px] h-[72px] ",alt: "Company 08"  %>
                       <h2 class="text-lg font-bold text-gray-800"><%= @job.board.title %></h2>
                     </div>
                     <div class="flex justify-center md:justify-start mb-5">

@@ -36,7 +36,8 @@ VALLEY_WISE_HEALTH = {
         "inner_html": true
       }
     }
-  }
+  },
+  "logo": "valley_wise_health.png"
 }
 
 THRIVE_SPC = {
@@ -64,7 +65,8 @@ THRIVE_SPC = {
       "description_raw_html": ".column[1]",
       "get_from_content": ".job-content"
     }
-  }
+  },
+  "logo": "thrive_spc.png"
 }
 
 HONOR_HEALTH = {
@@ -102,7 +104,8 @@ HONOR_HEALTH = {
       "job_description_heading": ".columns .left .main-description-section h2",
       "description_raw_html": ".columns .left .main-description-body"
     }
-  }
+  },
+  "logo": "honor_health.png"
 }
 
 MAYO_CLINIC = {
@@ -154,7 +157,8 @@ MAYO_CLINIC = {
         "element_css": "b:contains('Site Description')"
       }
     }
-  }
+  },
+  "logo": "mayo_clinic.png"
 }
 
 COMMON_SPIRIT = {
@@ -192,7 +196,8 @@ COMMON_SPIRIT = {
       "get_from_content": ".job-info",
       "description_raw_html": "#anchor-responsibilities .collapse-ajd__wrapper"
     }
-  }
+  },
+  "logo": "common_spirit.png"
 }
 
 USPI = {
@@ -223,7 +228,8 @@ USPI = {
       "job_refernce_id": ".jd-job-info-wrap .job-id",
       "description_raw_html": "#jd-wrap"
     }
-  }
+  },
+  "logo": "uspi.png"
 }
 
 ENVITA = {
@@ -251,7 +257,8 @@ ENVITA = {
       "salary_range": ".job-details #job-description p[3]",
       "description_raw_html": ".job-details #job-description"
     }
-  }
+  },
+  "logo": "envita.png"
 }
 
 FRESENIUS_MEDICAL_CARE = {
@@ -283,7 +290,8 @@ FRESENIUS_MEDICAL_CARE = {
       "job_refernce_id": "#JobDetailOverview div[8] .kowrXr",
       "description_raw_html": "#JobDetailDescription"
     }
-  }
+  },
+  "logo": "fresenius_medical_care.png"
 }
 
 IQVIA = {
@@ -309,7 +317,8 @@ IQVIA = {
       "apply_now_url": ".jd-jobinfo-wrap a",
       "description_raw_html": ".ats-description"
     }
-  }
+  },
+  "logo": "iqvia.png"
 }
 
 LIFE_POINT_HEALTH = {
@@ -336,7 +345,8 @@ LIFE_POINT_HEALTH = {
       "apply_now_url": ".job-buttons .job-apply",
       "description_raw_html": ".read-more .ats-description"
     }
-  }
+  },
+  "logo": "life_point_health.png"
 }
 
 BLUE_MOUNTAIN_HOSPITAL = {
@@ -361,7 +371,8 @@ BLUE_MOUNTAIN_HOSPITAL = {
       "get_from_content": ".entry-header h1",
       "description_raw_html": ".entry-content"
     }
-  }
+  },
+  "logo": "blue_mountain_hospital.png"
 }
 
 MGA_HOME_CARE = {
@@ -387,7 +398,8 @@ MGA_HOME_CARE = {
       "shift_type": ".company-description ul[1] li[4]",
       "description_raw_html": ".job-sections .company-description"
     }
-  }
+  },
+  "logo": "mga_home_care.png"
 }
 
 CVS_HEALTH = {
@@ -416,7 +428,8 @@ CVS_HEALTH = {
       "get_from_content": ".fusion-text.fusion-text-3",
       "description_raw_html": ".fusion-text.fusion-text-3"
     }
-  }
+  },
+  "logo": "cvs_health.png"
 }
 
 ATLAS_HEALTH = {
@@ -445,5 +458,6 @@ ATLAS_HEALTH = {
       "get_from_content": ".oculusStuff",
       "description_raw_html": ".oculusStuff"
     }
-  }
+  },
+  "logo": "atlas_health.png"
 }

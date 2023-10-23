@@ -52,6 +52,10 @@ module GenericFunctionality
     get_constant(title)[:detail_selector].to_json if get_constant(title).present?
   end
 
+  def get_logo(title)
+    get_constant(title)[:logo]
+  end
+
   def get_constant(title)
     convert_to_uppercase_with_underscores(title)&.safe_constantize
   end

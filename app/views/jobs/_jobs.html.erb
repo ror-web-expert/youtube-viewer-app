@@ -6,8 +6,8 @@
       <div class="[&:nth-child(-n+12)]:-order-1 border-b border-gray-200 group">
         <div class="px-4 py-6 bg-indigo-100 rounded-xl">
           <div class="sm:flex items-center space-y-3 sm:space-y-0 sm:space-x-5">
-            <div class="shrink-0">
-              <%= image_tag 'company-icon-02.svg', alt: "Company 02", class: 'w-14 h-14' %>
+            <div class="shrink-0 w-24 rounded-full">
+              <%= image_tag @response_data["logo"].present? ? @response_data["logo"] : 'company-icon-02.svg', alt: "Company 02", class: 'w-14 h-14 shadow-lg' %>
             </div>
             <div class="grow lg:flex items-center justify-between space-y-5 lg:space-x-2 lg:space-y-0">
               <div>

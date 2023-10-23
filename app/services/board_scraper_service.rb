@@ -6,6 +6,7 @@ class BoardScraperService
     @url = board.source_url
     @selectors = hash_selector(get_listing_selector(board.title)) if board.title.present?
     @session = start_chrome_headless_session
+    @logo = get_logo(board.title)
     @total_urls = []
   end
 
@@ -163,7 +164,7 @@ class BoardScraperService
 
   def create_posts(main_data, response_data)
     scraped_url = full_url(main_data['source_url'])
-
+    response_data["logo"] = @logo
     @board.posts.find_or_initialize_by(scraped_url: scraped_url).tap do |post|
       post.update!(
         title: main_data['title'],
