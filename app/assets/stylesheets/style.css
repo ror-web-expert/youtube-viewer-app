@@ -64,6 +64,13 @@ body {
   line-height: inherit;
   /* 2 */
 }
+.table-fixed {
+  table-layout: fixed;
+}
+
+.table-auto {
+  table-layout: auto;
+}
 
 /*
 1. Add the correct height in Firefox.
@@ -1602,6 +1609,18 @@ input[type="range"]::-moz-focus-outer {
 .box-content {
   box-sizing: content-box;
 }
+.overflow-auto {
+  overflow: auto;
+}
+.overflow-scroll {
+  overflow: scroll;
+}
+.overflow-x-auto {
+  overflow-x: auto;
+}
+.overflow-y-auto {
+  overflow-y: auto;
+}
 
 .block {
   display: block;
@@ -1617,6 +1636,10 @@ input[type="range"]::-moz-focus-outer {
 
 .inline-flex {
   display: inline-flex;
+}
+
+.break-words {
+  overflow-wrap: break-word;
 }
 
 .grid {
@@ -1685,6 +1708,25 @@ input[type="range"]::-moz-focus-outer {
 .w-24 {
   width: 6rem;
 }
+.w-28 {
+  width: 7rem;
+}
+.w-40 {
+  width: 10rem;
+}
+.w-52 {
+  width: 13rem;
+}
+.w-\[768px\] {
+  width: 768px;
+}
+.w-\[655px\] {
+  width: 655px;
+}
+.w-96 {
+  width: 24rem;
+}
+
 .w-full {
   width: 100%;
 }
@@ -1700,7 +1742,9 @@ input[type="range"]::-moz-focus-outer {
 .min-w-0 {
   min-width: 0;
 }
-
+.h-\[550px\] {
+  height: 550px;
+}
 .min-w-\[120px\] {
   min-width: 120px;
 }
@@ -2872,6 +2916,9 @@ input[type="range"]::-moz-focus-outer {
   .md\:order-1 {
     order: 1;
   }
+  .md\:w-full {
+    width: 100%;
+  }
 
   .md\:order-2 {
     order: 2;
@@ -2911,6 +2958,9 @@ input[type="range"]::-moz-focus-outer {
 
   .md\:max-w-4xl {
     max-width: 56rem;
+  }
+  .md\:max-w-6xl {
+    max-width: 72rem;
   }
 
   .md\:shrink-0 {
