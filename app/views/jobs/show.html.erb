@@ -7,15 +7,15 @@
       <!-- Page content -->
       <section>
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
-          <div class="pt-28 pb-8 md:pt-36 md:pb-16">
+          <div class="pt-10 pb-8 md:pb-16">
             <div class="md:flex md:justify-between">
               <!-- Sidebar -->
               <aside class="mb-8 md:mb-0 md:w-64 lg:w-72 md:ml-12 lg:ml-20 md:shrink-0 md:order-1">
                 <div class="sticky top-8">
                   <div class="relative bg-gray-50 rounded-xl border border-gray-200 p-5">
                     <div class="text-center mb-6">
-                      <div class='w-40 mx-auto'>
-                        <%= image_tag @response_data["logo"].present? ? @response_data["logo"] : 'company-icon-02.svg' ,class: "inline-flex mb-2 w-[72px] h-[72px] ",alt: "Company 08"  %>
+                      <div class='w-28 mx-auto'>
+                        <%= image_tag @response_data["logo"].present? ? @response_data["logo"] : 'company-icon-02.svg' ,class: "inline-flex mb-2 ",alt: "Company 08"  %>
                       </div>
                       <h2 class="text-lg font-bold text-gray-800"><%= @job.board.title %></h2>
                     </div>
