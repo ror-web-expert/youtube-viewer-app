@@ -1,3 +1,8 @@
-my_first_job:
-  cron: "0 0 * * *" #it will retrieve data At 00:00.
-  class: "JobDetailScraperJob"
+daily_boards_scraper_job:
+  cron: '0 0 * * *'
+  class: "DailyBoardsScraperJob"
+  queue: default    
+daily_posts_scraper_job:
+  cron: '45 0 * * *'
+  class: "DailyPostsScraperJob"
+  queue: default

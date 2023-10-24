@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.0.0"
+ruby "3.2.2"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.7", ">= 7.0.7.2"
@@ -50,7 +50,7 @@ gem 'sidekiq-cron'
 gem "capybara"
 gem "nokogiri"
 gem "selenium-webdriver"
-gem "webdrivers"
+gem "webdrivers", "= 5.3.0"
 # Use the will_paginate gem for pagination functionality
 gem 'will_paginate', '~> 4.0'
 # Use the friendly_id gem for creating slugs and improving
