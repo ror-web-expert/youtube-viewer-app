@@ -3,12 +3,12 @@ import 'jquery'
 
 export default class extends Controller {
 
-  submitForm() {
-    $("#submitform")[0].click();
-  }
-
   clearForm(){
     $("#job_filter")[0].reset();
-    submitForm();
+    this.submitForm();
+  }
+
+  submitForm() {
+    $("#submitform")[0].click();
   }
 }

@@ -186,7 +186,7 @@ class BoardScraperService
   def delete_expired_jobs
     previous_jobs = @board.posts.pluck(:scraped_url)
     expired_jobs = previous_jobs - @total_urls
-    Post.where(scraped_url: expired_jobs).destroy_all
+    Post.where(scraped_url: expired_jobs).update_all(status: 'expire')
   end
 
   def check_keywords_in_title(title)

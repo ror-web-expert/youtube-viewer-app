@@ -1,17 +1,11 @@
 class JobsController < ApplicationController
-  before_action :set_post, only: %i[show]
+  before_action :set_post, :related_jobs, only: %i[show]
   before_action :prepare_query, only: %i[index], if: :any_filter_present?
-  before_action :filter_jobs, only: %i[index]
+  before_action :filter_jobs, :filtered_job_types, :filter_job_specialities, :shift_types, only: %i[index]
 
-  def index
-    filtered_job_types
-    filter_job_specialities
-    shift_types
-  end
+  def index; end
 
-  def show
-    related_jobs
-  end
+  def show; end
 
   private
 
@@ -20,21 +14,21 @@ class JobsController < ApplicationController
   end
 
   def filtered_job_types
-    job_type_values = @jobs.scraped.response_data_exist.pluck(Arel.sql("response_data -> 'job_type'")).compact.uniq
+    job_type_values = @jobs.pluck(Arel.sql("response_data -> 'job_type'")).compact.uniq
     desired_job_types = ["Prn (On Call)", "Temporary Full Time", "Part Time", "Full Time", "PRN"]
     @filtered_job_types = job_type_values.select { |job_type| desired_job_types.include?(job_type) }.uniq
   end
 
   def filter_job_specialities
-    @filter_job_specialities ||= @jobs.scraped.response_data_exist.pluck(Arel.sql("response_data -> 'speciality'")).compact.uniq.sample(8)
+    @filter_job_specialities = @jobs.pluck(Arel.sql("response_data -> 'speciality'")).compact.uniq.sample(20)
   end
 
   def shift_types
-    @shift_types ||= @jobs.scraped.response_data_exist.pluck(Arel.sql("response_data -> 'shift_type'")).compact.map(&:pluralize).uniq
+    @shift_types = @jobs.pluck(Arel.sql("response_data -> 'shift_type'")).compact.map(&:pluralize).uniq
   end
 
   def related_jobs
-    @related_jobs = @job.board.posts.scraped.limit(5)
+    @related_jobs = @job.board.posts.limit(5)
   end
 
   def resource_class
@@ -56,7 +50,6 @@ class JobsController < ApplicationController
   def prepare_query
     @filter_conditions = {}
     filter_params.each do |key, value|
-      next if key == "query"
       @filter_conditions["response_data ->> '#{key}' IN (?)"] = value
     end
     @filter_conditions
@@ -67,6 +60,10 @@ class JobsController < ApplicationController
   end
 
   def filter_params
-    params.permit(:query, job_type: [], speciality: [], shift_type: [])
+    {
+      "job_type" => params[:job_type],
+      "speciality" => params[:speciality],
+      "shift_type" => params[:shift_type]
+    }.compact
   end
 end

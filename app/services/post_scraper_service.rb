@@ -28,7 +28,7 @@ class PostScraperService
       HtmlParser.new(@post).formatted_markdown
     end
     else
-      @post.destroy
+      @post.update(status: 'expire')
     end
     close_browser
   end
