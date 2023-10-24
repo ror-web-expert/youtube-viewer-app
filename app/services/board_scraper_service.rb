@@ -170,6 +170,8 @@ class BoardScraperService
         title: main_data['title'],
         response_data: response_data
       )
+    rescue ActiveRecord::RecordNotUnique => e
+      next
     end
   end
 
