@@ -1364,6 +1364,20 @@ input[type="range"]::-moz-focus-outer {
     width 0.1s ease-out;
 }
 
+/* Tabs styling start */
+a[aria-selected = "true"].bg-white {
+  background-color: rgb(99 102 241);
+  color: rgb(99 102 241) !important;
+}
+ul li a[aria-selected = "true"] {
+  color: #fff !important;
+}
+ul li  a {
+  transition: .5s all;
+}
+/* Tabs styling end */
+
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -1686,9 +1700,17 @@ input[type="range"]::-moz-focus-outer {
   min-height: 100vh;
 }
 
+/* width percentage start*/
+
+.w-2\/3 {
+  width: 66.666667%;
+}
+
 .w-1\/2 {
   width: 50%;
 }
+
+/* width percentage end */
 
 .w-16 {
   width: 4rem;
