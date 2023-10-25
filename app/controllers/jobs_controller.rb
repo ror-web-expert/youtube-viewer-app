@@ -14,17 +14,17 @@ class JobsController < ApplicationController
   end
 
   def filtered_job_types
-    job_type_values = @jobs.pluck(Arel.sql("response_data -> 'job_type'")).compact.uniq
+    job_type_values = published_jobs.pluck(Arel.sql("response_data -> 'job_type'")).compact.uniq
     desired_job_types = ["Prn (On Call)", "Temporary Full Time", "Part Time", "Full Time", "PRN"]
     @filtered_job_types = job_type_values.select { |job_type| desired_job_types.include?(job_type) }.uniq
   end
 
   def filter_job_specialities
-    @filter_job_specialities = @jobs.pluck(Arel.sql("response_data -> 'speciality'")).compact.uniq.sample(20)
+    @filter_job_specialities = published_jobs.pluck(Arel.sql("response_data -> 'speciality'")).compact.uniq.sample(15)
   end
 
   def shift_types
-    @shift_types = @jobs.pluck(Arel.sql("response_data -> 'shift_type'")).compact.map(&:pluralize).uniq
+    @shift_types = published_jobs.pluck(Arel.sql("response_data -> 'shift_type'")).compact.map(&:pluralize).uniq
   end
 
   def related_jobs
@@ -37,9 +37,9 @@ class JobsController < ApplicationController
 
   def filter_jobs
     @jobs = if params[:query].present?
-      resource_class.scraped.search(params[:query]).order_by_id.paginate(page: page, per_page: per_page(20))
+      published_jobs.search(params[:query]).order_by_id.paginate(page: page, per_page: per_page(20))
     else
-      resource_class.scraped.order_by_id.paginate(page: page, per_page: per_page(20))
+      published_jobs.order_by_id.paginate(page: page, per_page: per_page(20))
     end
     if @filter_conditions.present?
       where_clause = @filter_conditions.keys.join(' AND ')
@@ -57,6 +57,10 @@ class JobsController < ApplicationController
 
   def any_filter_present?
     filter_params.present?
+  end
+
+  def published_jobs
+    resource_class.scraped
   end
 
   def filter_params

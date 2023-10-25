@@ -3,6 +3,6 @@ daily_boards_scraper_job:
   class: "DailyBoardsScraperJob"
   queue: default    
 daily_posts_scraper_job:
-  cron: '45 0 * * *'
+  cron: '0 */2 * * *'
   class: "DailyPostsScraperJob"
   queue: default
