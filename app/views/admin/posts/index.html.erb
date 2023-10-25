@@ -16,9 +16,9 @@
           <a
             class="btn text-slate-700 z-30 mb-0 flex w-full cursor-pointer items-center justify-center rounded-full border-0 bg-inherit px-0 py-1 transition-all ease-in-out"
             data-tab-target=""
-            <%= params[:status].blank? || params[:status] == "published" ? active="" : "" %>
+            active=""
             role="tab"
-            aria-selected="<%= params[:status].blank? || params[:status] == "published" ? true : false %>"
+            aria-selected="true"
             aria-controls="app"
           >
             <span class="ml-1">Published</span>
@@ -28,9 +28,8 @@
           <a
             class="btn text-slate-700 z-30 mb-0 flex w-full cursor-pointer items-center justify-center rounded-lg border-0 bg-inherit px-0 py-1 transition-all ease-in-out"
             data-tab-target=""
-            <%= params[:status].present? || params[:status] == "pending" ? active="" : "" %>
             role="tab"
-            aria-selected="<%= params[:status].present? || params[:status] == "pending" ? active="" : "" %>"
+            aria-selected="false"
             aria-controls="message"
           >
             <span class="ml-1">Pending</span>
@@ -40,9 +39,8 @@
           <a
             class="btn text-slate-700 z-30 mb-0 flex w-full cursor-pointer items-center justify-center rounded-lg border-0 bg-inherit px-0 py-1 transition-all ease-in-out"
             data-tab-target=""
-            <%= params[:status].present? || params[:status] == "expired" ? active="" : "" %>"
             role="tab"
-            aria-selected="<%= params[:status].present? || params[:status] == "expired" ? active="" : "" %>"
+            aria-selected="false"
             aria-controls="settings"
           >
             <span class="ml-1">Expired</span>

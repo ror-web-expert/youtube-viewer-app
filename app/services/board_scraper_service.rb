@@ -26,6 +26,7 @@ class BoardScraperService
     close_browser
   rescue => e
     close_browser
+    return
   end
 
   private
