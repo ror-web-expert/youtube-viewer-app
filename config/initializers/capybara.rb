@@ -3,7 +3,6 @@ require 'nokogiri'
 require 'capybara'
 # Configurations
 binary = ENV.fetch("GOOGLE_CHROME_BIN", nil)
-Selenium::WebDriver::Chrome.path = binary if binary
 Capybara.register_driver(:headless_chrome) do |app|
   options = {
     args: %w[headless no-sandbox disable-dev-shm-usage disable-gpu remote-debugging-port=9222],
