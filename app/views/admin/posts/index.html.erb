@@ -9,7 +9,7 @@
     </div>
     <div class="relative right-0">
       <ul
-        class="relative flex list-none flex-wrap rounded-full border w-2/3 mx-auto p-2"
+        class="relative mt-5 flex list-none flex-wrap rounded-full border w-full md:w-2/3 mx-auto p-2"
         data-tabs="tabs"
         role="list">
         <li class="z-30 flex-auto text-center">
@@ -21,7 +21,7 @@
             aria-selected="true"
             aria-controls="app"
           >
-            <span class="ml-1">App</span>
+            <span class="ml-1">Published</span>
           </a>
         </li>
         <li class="z-30 flex-auto text-center">
@@ -32,7 +32,7 @@
             aria-selected="false"
             aria-controls="message"
           >
-            <span class="ml-1">Messages</span>
+            <span class="ml-1">Pending</span>
           </a>
         </li>
         <li class="z-30 flex-auto text-center">
@@ -43,14 +43,14 @@
             aria-selected="false"
             aria-controls="settings"
           >
-            <span class="ml-1">Settings</span>
+            <span class="ml-1">Expired</span>
           </a>
         </li>
       </ul>
       <div data-tab-content="" class="p-5">
         <div class="block opacity-100" id="app" role="tabpanel">
-          <div class="md:w-full overflow-auto h-[550px] mx-auto">
-            <table class="w-full text-sm text-left text-gray-500 shadow-md sm:rounded-lg">
+          <div class="md:w-full overflow-auto mx-auto">
+            <table class="md:w-full w-[655px] text-sm text-left text-gray-500 shadow-md sm:rounded-lg">
               <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                   <th class="px-6 py-3 w-28">
@@ -59,27 +59,37 @@
                   <th class="px-6 py-3 w-28">
                     Board
                   </th>
-                  <th class="px-6 py-3 w-28">
+                  <th class="px-6 py-3 w-28 text-center">
                     Action
                   </th>
                 </tr>
               </thead>
               <tbody>
+              <% unless @posts.any? %>
+                <% @posts.each do |post| %>
+                  <tr class="bg-white border-b my-3">
+                    <td class="px-6 py-4 font-medium text-gray-900 w-24"><%= post.title %></td>
+                    <td class="px-6 py-4  font-medium text-gray-900"><%= post.board.title %></td>
+                    <td class="px-6 py-4 font-medium text-gray-900">
+                      <div class='flex justify-center space-x-2'>
+                        <a href="<%= admin_post_path(post) %>" target="_blank" title = 'show' class='text-white w-10 h-10 bg-slate-400 hover:bg-slate-800 font-medium rounded-lg text-sm flex items-center justify-center'>
+                          <i class="fa fa-eye !text-black-800" aria-hidden="true"></i>
+                        </a>
+                        <a href="<%= edit_admin_post_path(post) %>"  target="_blank" title = 'edit' class='text-white w-10 h-10 bg-slate-400 hover:bg-slate-800 font-medium rounded-lg text-sm flex items-center justify-center'>
+                          <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </a>
+                        <a href="<%= scrape_jobs_admin_post_path(post) %>"  target="_blank" title = 'scrape' class = ' w-10 h-10'>
+                          <%= image_tag('scrape.png', class: 'w-full') %>
+                        </a>
+                      </div>
+                    </td>
+                  </tr>
+                <% end %>
+              <%else%>
                 <tr class="bg-white border-b my-3">
-                  <td class="px-6 py-4 font-medium text-gray-900">title section</td>
-                  <td class="px-6 py-4 font-medium text-gray-900">board section</td>
-                  <td class="px-6 py-4 font-medium text-gray-900">action section</td>
+                  <td colspan='3' class="text-center lead text-gray-400 capitalize px-6 py-4 text-xl">posts not available</td>
                 </tr>
-                <tr class="bg-white border-b my-3">
-                  <td class="px-6 py-4 font-medium text-gray-900">title section</td>
-                  <td class="px-6 py-4 font-medium text-gray-900">board section</td>
-                  <td class="px-6 py-4 font-medium text-gray-900">action section</td>
-                </tr>
-                <tr class="bg-white border-b my-3">
-                  <td class="px-6 py-4 font-medium text-gray-900">title section</td>
-                  <td class="px-6 py-4 font-medium text-gray-900">board section</td>
-                  <td class="px-6 py-4 font-medium text-gray-900">action section</td>
-                </tr>
+              <% end %>
               </tbody>
             </table>
           </div>
@@ -138,70 +148,8 @@
         </div>
       </div>
     </div>
-    <div class=' mt-3 mx-auto max-w-6xl px-4'>
-      <div class='grid grid-cols-1 md:grid-cols-2 gap-4'>
-        <% @posts.each do |post| %>
-          <div class="relative p-4 flex flex-col justify-between bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
-            <a href="<%= admin_post_path(post) %>" class="p-2">
-              <div class='flex justify-between'>
-                <h5 class="text-lg font-bold tracking-tight text-gray-900"><%= post.title %></h5>
-              </div>
-              <% @response_data = post.response_data %>
-              <% if @response_data.present? %>
-                <div>
-                  <p class="text-slate-400"><%= post&.board&.title %></p>
-                  <p class="text-slate-400">
-                    <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-                    <span><%= @response_data["location"].gsub(/location\s*:?/i, ' ') if @response_data["location"] %></span>
-                  </p>
-                </div>
-                <div class="flex flex-wrap gap-1 mt-2">
-                  <% if @response_data["hourly_rate"].present? %>
-                    <span class="bg-gray-100 text-gray-800 text-sm px-5 py-1 border rounded-3xl font-semibold"><%= @response_data["hourly_rate"] %></span>
-                  <% end %>
-                  <% if @response_data["salary_range"].present? &&  @response_data["salary_range"].include?("$") %>
-                    <span class=" bg-gray-100 text-gray-800 text-sm px-5 py-1 border rounded-3xl font-semibold"><%= get_salary_range(@response_data["salary_range"]) %></span>
-                  <% end %>
-                  <% if @response_data["post_type"].present? %>
-                    <span class=" bg-gray-100 text-gray-800 text-sm px-5 py-1 border rounded-3xl font-semibold"><%= @response_data["post_type"] %></span>
-                  <% end %>
-                  <% if @response_data["shift_type"].present? %>
-                    <span class=" bg-gray-100 text-gray-800 text-sm px-5 py-1 border rounded-3xl font-semibold"><%= @response_data["shift_type"].gsub(/shifts\s*:?/i, ' ')  %></span>
-                  <% end %>
-                  <% if @response_data["speciality"].present? %>
-                    <span class=" bg-gray-100 text-gray-800 text-sm px-5 py-1 border rounded-3xl font-semibold"><%= @response_data["speciality"] %></span>
-                  <% end %>
-                </div>
-                <% if @response_data["department"].present? %>
-                  <div class='mt-2'>
-                    <ul class='list-disc pl-2'>
-                      <b>Department:</b>
-                      <%= @response_data["department"] %>
-                    </ul>
-                  </div>
-                <% end %>
-                <% if @response_data["posted_date"].present? %>
-                  <div class='text-slate-400 text-xs mt-2'><span class="text-blue-500 font-bold">Posted Date:</span> <%= @response_data["posted_date"].gsub(/Date posted\s*:?/i, ' ') %></div>
-                <% end %>
-              <% end %>
-            </a>
-            <div class='flex justify-end space-x-2'>
-              <a href="<%= admin_post_path(post) %>" target="_blank" title = 'show' class='text-white w-10 h-10 bg-slate-400 hover:bg-slate-800 font-medium rounded-lg text-sm flex items-center justify-center'>
-                <i class="fa fa-eye !text-black-800" aria-hidden="true"></i>
-              </a>
-              <a href="<%= edit_admin_post_path(post) %>"  target="_blank" title = 'edit' class='text-white w-10 h-10 bg-slate-400 hover:bg-slate-800 font-medium rounded-lg text-sm flex items-center justify-center'>
-                <i class="fa fa-pencil" aria-hidden="true"></i>
-              </a>
-              <a href="<%= scrape_jobs_admin_post_path(post) %>"  target="_blank" title = 'scrape' class = ' w-10 h-10'>
-                <%= image_tag('scrape.png', class: 'w-full') %>
-              </a>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </div>
     <div class="pagination mb-4 mt-3">
-      <%= will_paginate @posts, previous_label: "Previous", next_label: "Next", class: "flex items-center justify-center space-x-2" %>
+      <%= will_paginate @posts, previous_label: "<", next_label: ">", class: "flex items-center justify-center space-x-2" %>
     </div>
   </div>
 </div>
