@@ -16,9 +16,9 @@
           <a
             class="btn text-slate-700 z-30 mb-0 flex w-full cursor-pointer items-center justify-center rounded-full border-0 bg-inherit px-0 py-1 transition-all ease-in-out"
             data-tab-target=""
-            active=""
+            <%= params[:status].blank? || params[:status] == "published" ? active="" : "" %>
             role="tab"
-            aria-selected="true"
+            aria-selected="<%= params[:status].blank? || params[:status] == "published" ? true : false %>"
             aria-controls="app"
           >
             <span class="ml-1">Published</span>
@@ -28,8 +28,9 @@
           <a
             class="btn text-slate-700 z-30 mb-0 flex w-full cursor-pointer items-center justify-center rounded-lg border-0 bg-inherit px-0 py-1 transition-all ease-in-out"
             data-tab-target=""
+            <%= params[:status].present? || params[:status] == "pending" ? active="" : "" %>
             role="tab"
-            aria-selected="false"
+            aria-selected="<%= params[:status].present? || params[:status] == "pending" ? active="" : "" %>"
             aria-controls="message"
           >
             <span class="ml-1">Pending</span>
@@ -39,117 +40,35 @@
           <a
             class="btn text-slate-700 z-30 mb-0 flex w-full cursor-pointer items-center justify-center rounded-lg border-0 bg-inherit px-0 py-1 transition-all ease-in-out"
             data-tab-target=""
+            <%= params[:status].present? || params[:status] == "expired" ? active="" : "" %>"
             role="tab"
-            aria-selected="false"
+            aria-selected="<%= params[:status].present? || params[:status] == "expired" ? active="" : "" %>"
             aria-controls="settings"
           >
             <span class="ml-1">Expired</span>
           </a>
         </li>
       </ul>
+      <% published_posts = @posts.where(status: "publish") %>
+      <% pending_posts = @posts.where(status: "pending")%>
+      <% expired_posts = @posts.where(status: "expire")%>
       <div data-tab-content="" class="p-5">
         <div class="block opacity-100" id="app" role="tabpanel">
           <div class="md:w-full overflow-auto mx-auto">
-            <table class="md:w-full w-[655px] text-sm text-left text-gray-500 shadow-md sm:rounded-lg">
-              <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                <tr>
-                  <th class="px-6 py-3 w-28">
-                    Title
-                  </th>
-                  <th class="px-6 py-3 w-28">
-                    Board
-                  </th>
-                  <th class="px-6 py-3 w-28 text-center">
-                    Action
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-              <% if @posts.any? %>
-                <% @posts.each do |post| %>
-                  <tr class="bg-white border-b my-3">
-                    <td class="px-6 py-4 font-medium text-gray-900 w-24"><%= post.title %></td>
-                    <td class="px-6 py-4  font-medium text-gray-900"><%= post.board.title %></td>
-                    <td class="px-6 py-4 font-medium text-gray-900">
-                      <div class='flex justify-center space-x-2'>
-                        <a href="<%= admin_post_path(post) %>" target="_blank" title = 'show' class='text-white w-10 h-10 bg-slate-400 hover:bg-slate-800 font-medium rounded-lg text-sm flex items-center justify-center'>
-                          <i class="fa fa-eye !text-black-800" aria-hidden="true"></i>
-                        </a>
-                        <a href="<%= edit_admin_post_path(post) %>"  target="_blank" title = 'edit' class='text-white w-10 h-10 bg-slate-400 hover:bg-slate-800 font-medium rounded-lg text-sm flex items-center justify-center'>
-                          <i class="fa fa-pencil" aria-hidden="true"></i>
-                        </a>
-                        <a href="<%= scrape_jobs_admin_post_path(post) %>"  target="_blank" title = 'scrape' class = ' w-10 h-10'>
-                          <%= image_tag('scrape.png', class: 'w-full') %>
-                        </a>
-                      </div>
-                    </td>
-                  </tr>
-                <% end %>
-              <%else%>
-                <tr class="bg-white border-b my-3">
-                  <td colspan='3' class="text-center lead text-gray-400 capitalize px-6 py-4 text-xl">posts not available</td>
-                </tr>
-              <% end %>
-              </tbody>
-            </table>
+            <%= render "posts", posts: published_posts, status: "published" %>
           </div>
         </div>
         <div class="hidden opacity-0" id="message" role="tabpanel">
-          <div class="md:w-full overflow-auto h-[550px] mx-auto">
-            <table class="w-full text-sm text-left text-gray-500 shadow-md sm:rounded-lg">
-              <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                <tr>
-                  <th class="px-6 py-3 w-28">
-                    Title
-                  </th>
-                  <th class="px-6 py-3 w-28">
-                    Board
-                  </th>
-                  <th class="px-6 py-3 w-28">
-                    Action
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="bg-white border-b my-3">
-                  <td class="px-6 py-4 font-medium text-gray-900">title section</td>
-                  <td class="px-6 py-4 font-medium text-gray-900">board section</td>
-                  <td class="px-6 py-4 font-medium text-gray-900">action section</td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="md:w-full overflow-auto mx-auto">
+            <%= render "posts", posts: pending_posts, status: "pending"  %>
           </div>
         </div>
         <div class="hidden opacity-0" id="settings" role="tabpanel">
-          <div class="md:w-full overflow-auto h-[550px] mx-auto">
-            <table class="w-full text-sm text-left text-gray-500 shadow-md sm:rounded-lg">
-              <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                <tr>
-                  <th class="px-6 py-3 w-28">
-                    Title
-                  </th>
-                  <th class="px-6 py-3 w-28">
-                    Board
-                  </th>
-                  <th class="px-6 py-3 w-28">
-                    Action
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="bg-white border-b my-3">
-                  <td class="px-6 py-4 font-medium text-gray-900">title section</td>
-                  <td class="px-6 py-4 font-medium text-gray-900">board section</td>
-                  <td class="px-6 py-4 font-medium text-gray-900">action section</td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="md:w-full overflow-auto mx-auto">
+            <%= render "posts", posts: expired_posts, status: "expired" %>
           </div>
         </div>
       </div>
-    </div>
-    <div class="pagination mb-4 mt-3">
-      <%= will_paginate @posts, previous_label: "<", next_label: ">", class: "flex items-center justify-center space-x-2" %>
     </div>
   </div>
 </div>
