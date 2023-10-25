@@ -2194,7 +2194,7 @@ ul li  a {
   -o-object-fit: cover;
   object-fit: cover;
 }
-
+/* padding start here  */
 .p-2 {
   padding: 0.5rem;
 }
@@ -2335,6 +2335,7 @@ ul li  a {
 .pt-28 {
   padding-top: 7rem;
 }
+/* padding ends here */
 
 .text-left {
   text-align: left;
