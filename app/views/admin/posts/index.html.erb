@@ -47,7 +47,7 @@
           </a>
         </li>
       </ul>
-      <% published_posts = @posts.where(status: "publish") %>
+      <% published_posts = @posts.where(status: "published") %>
       <% pending_posts = @posts.where(status: "pending")%>
       <% expired_posts = @posts.where(status: "expire")%>
       <div data-tab-content="" class="p-5">
