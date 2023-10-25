@@ -55,7 +55,7 @@
   <% end %>
   <div class="pagination">
     <div class="py-6">
-      <%= will_paginate @jobs, previous_label: "Previous", next_label: "Next", class: "flex items-center justify-center space-x-2" %>
+      <%= will_paginate @jobs, previous_label: "<", next_label: ">", class: "flex items-center justify-center space-x-2" %>
     </div>
   </div>
 <% else %>
