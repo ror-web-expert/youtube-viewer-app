@@ -31,6 +31,8 @@ class PostScraperService
       @post.update(status: 'expire')
     end
     close_browser
+  rescue => e
+    close_browser
   end
 
   def job_details_not_exist(page)

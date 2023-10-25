@@ -22,7 +22,9 @@ class BoardScraperService
       click_next_page
       scrape_and_parse_page(@session.body)
     end
-    delete_expired_jobs
+    expired_jobs
+    close_browser
+  rescue => e
     close_browser
   end
 
@@ -185,7 +187,7 @@ class BoardScraperService
     sleep(2)
   end
 
-  def delete_expired_jobs
+  def expired_jobs
     previous_jobs = @board.posts.pluck(:scraped_url)
     expired_jobs = previous_jobs - @total_urls
     Post.where(scraped_url: expired_jobs).update_all(status: 'expire')
