@@ -150,6 +150,17 @@ abbr:where([title]) {
   margin-top: 12px;
 }
 
+/* Pagination design starts here */
+.pagination .previous_page .disabled{
+  padding: 5px 10px;
+  background-color: #ddd;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 3px;
+}
+
+/* Pagination design ends here */
+
 /*
 Remove the default font size and weight for headings.
 */
@@ -1390,6 +1401,12 @@ ul li  a {
   border-width: 0;
 }
 
+/* typography starts here */
+.capitalize {
+  text-transform: capitalize;
+}
+/* typography ends here */
+
 .pointer-events-none {
   pointer-events: none;
 }
@@ -1492,6 +1509,9 @@ ul li  a {
 .my-5 {
   margin-top: 1.25rem; /* 20px */
   margin-bottom: 1.25rem; /* 20px */
+}
+.mt-5 {
+  margin-top: 1.25rem; /* 20px */
 }
 
 .mx-auto {
@@ -2978,7 +2998,9 @@ ul li  a {
   .md\:w-64 {
     width: 16rem;
   }
-
+  .md\:w-2\/3 {
+    width: 66.666667%;
+  }
   .md\:max-w-4xl {
     max-width: 56rem;
   }
