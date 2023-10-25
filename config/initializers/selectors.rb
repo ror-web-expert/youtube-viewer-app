@@ -188,9 +188,9 @@ COMMON_SPIRIT = {
     },
     "response_selector": {
       "department": ".ajd_overview__quick-facts .ajd_overview__quick-fact--department",
-      "job_type": ".ajd_overview__quick-facts .ajd_overview__quick-fact--type",
+      "job_type": ".job-details-info .job-info:contains('Employment Type')",
       "schedule": ".job-details-info .job-date[5]",
-      "shift_type": ".job-details-info span[4]",
+      "shift_type": ".job-details-info .job-info:contains('Shift')",
       "apply_now_url": ".ajd_header__job-buttons a",
       "job_refernce_id": ".job-details-info .job-id",
       "get_from_content": ".job-info",
