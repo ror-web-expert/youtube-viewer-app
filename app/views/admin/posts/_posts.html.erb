@@ -1,6 +1,7 @@
 <table class="md:w-full w-[655px] text-sm text-left text-gray-500 shadow-md sm:rounded-lg">
   <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
     <tr>
+      <th class='w-8 px-6 py-3'><input type='checkbox'/></th>
       <th class="px-6 py-3 w-28">
         Title
       </th>
@@ -16,6 +17,7 @@
     <% if posts.any? %>
       <% posts.each do |post| %>
         <tr class="bg-white border-b my-3">
+          <td class='px-6 py-3 w-8'><input type='checkbox'/></td>
           <td class="px-6 py-4 font-medium text-gray-900 w-24"><%= post.title %></td>
           <td class="px-6 py-4  font-medium text-gray-900"><%= post.board.title %></td>
           <td class="px-6 py-4 font-medium text-gray-900">
