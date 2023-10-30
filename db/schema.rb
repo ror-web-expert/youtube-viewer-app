@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_19_101832) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_30_045701) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -67,7 +67,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_19_101832) do
     t.string "title"
     t.string "scraped_url"
     t.boolean "is_scrap", default: false
-    t.string "status", default: "pending"
+    t.string "status", default: "published"
     t.jsonb "response_data", default: {}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

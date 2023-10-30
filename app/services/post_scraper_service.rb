@@ -24,7 +24,8 @@ class PostScraperService
       response_data["speciality"] = filter_by_title(@post.title.squish)
       response_data["job_type"] = response_data["job_type"]&.gsub("-"," ")&.titleize
       response_data = @post.response_data.merge(response_data) if @post.response_data.present?
-      @post.update(response_data: response_data, is_scrap: true)
+      @post.is_scrap = true if @post.response_data.keys.include?("description_raw_html")
+      @post.update(response_data: response_data)
       HtmlParser.new(@post).formatted_markdown
     end
     else

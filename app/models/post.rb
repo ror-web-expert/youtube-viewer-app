@@ -5,7 +5,7 @@ class Post < ApplicationRecord
 
   belongs_to :board
 
-  enum status: { pending: 'pending', published: 'published',  expire: 'expire' },  _default: :pending
+  enum status: { pending: 'pending', published: 'published',  expire: 'expire' },  _default: :published
 
   scope :order_by_id, -> { order(id: :desc) }
   scope :scraped, -> { where(is_scrap: true) }
