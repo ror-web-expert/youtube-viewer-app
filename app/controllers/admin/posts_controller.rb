@@ -1,15 +1,17 @@
 class Admin::PostsController < Admin::BaseController
   before_action :set_post, only: %i[ show edit update destroy scrape_jobs ]
+  skip_before_action :verify_authenticity_token, only: [:update_status]
+  before_action :find_posts, only: %i[update_status]
 
   def index
-    @posts = Post.includes(:board).order_by_id.paginate(page: page, per_page: per_page)
+    @posts = resource_class.includes(:board).order_by_id.paginate(page: page, per_page: per_page)
   end
 
   def show
   end
 
   def new
-    @post = Post.new
+    @post = resource_class.new
   end
 
   def edit
@@ -21,7 +23,7 @@ class Admin::PostsController < Admin::BaseController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = resource_class.new(post_params)
 
     respond_to do |format|
       if @post.save
@@ -46,6 +48,14 @@ class Admin::PostsController < Admin::BaseController
     end
   end
 
+  def update_status
+    if @posts.update_all(status: params[:status])
+      render json: { status: 200}
+    else
+      render json: { status: 433}
+    end
+  end
+
   def destroy
     @post.destroy
 
@@ -57,8 +67,17 @@ class Admin::PostsController < Admin::BaseController
 
   private
 
+    def resource_class
+      Post
+    end
+
+    def find_posts
+      @posts = resource_class.where(id: params[:post_ids])
+      redirect_to admin_posts_path, notice: "No Post with selected Ids found." unless @posts.any?
+    end
+  
     def set_post
-      @post = Post.friendly.find(params[:id])
+      @post = resource_class.friendly.find(params[:id])
     end
 
     def post_params

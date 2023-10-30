@@ -21,6 +21,9 @@ Rails.application.routes.draw do
       end
     end
     resources :posts do
+      collection do
+        patch :update_status
+      end
       member do
         get 'scrape_jobs'
       end
