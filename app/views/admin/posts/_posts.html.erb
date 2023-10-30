@@ -2,10 +2,10 @@
   <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
     <tr>
       <th class='w-8 px-6 py-3'><input type='checkbox'/></th>
-      <th class="px-6 py-3 w-28">
+      <th class="px-6 py-3 w-96">
         Title
       </th>
-      <th class="px-6 py-3 w-28">
+      <th class="px-6 py-3">
         Board
       </th>
       <th class="px-6 py-3 w-28 text-center">
@@ -18,7 +18,7 @@
       <% posts.each do |post| %>
         <tr class="bg-white border-b my-3">
           <td class='px-6 py-3 w-8'><input type='checkbox'/></td>
-          <td class="px-6 py-4 font-medium text-gray-900 w-24"><%= post.title %></td>
+          <td class="px-6 py-4 font-medium text-gray-900 w-96"><%= post.title %></td>
           <td class="px-6 py-4  font-medium text-gray-900"><%= post.board.title %></td>
           <td class="px-6 py-4 font-medium text-gray-900">
             <div class='flex justify-center space-x-2'>
@@ -37,7 +37,7 @@
       <% end %>
     <%else%>
       <tr class="bg-white border-b my-3">
-        <td colspan='3' class="text-center lead text-gray-400 capitalize px-6 py-4 text-xl">posts not available</td>
+        <td colspan='4' class="text-center lead text-gray-400 capitalize px-6 py-4 text-xl">posts not available</td>
       </tr>
     <% end %>
   </tbody>
