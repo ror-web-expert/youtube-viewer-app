@@ -33,7 +33,7 @@
             type="button" 
             role="tab" 
             aria-controls="dashboard" 
-            aria-selected= <%= params[:status] == "pendiing" ? true : false %>
+            aria-selected= <%= params[:status].present? && params[:status] == "pendiing" ? true : false %>
           >
             Pending
           </button>
@@ -45,7 +45,7 @@
             type="button" 
             role="tab" 
             aria-controls="settings" 
-            aria-selected=<%= params[:status] == "pendiing" ? true : false %>
+            aria-selected=<%= params[:status].present? && params[:status] == "expired" ? true : false %>
             >
             Expired
           </button>
@@ -53,13 +53,13 @@
       </ul>
     </div>
     <div id="myTabContent">
-      <div class=<%= params[:status].blank? || params[:status] == "published" ? "rounded-lg" : "rounded-lg hidden" %> id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <div class="<%= params[:status].blank? || params[:status] == 'published' ? 'rounded-lg' : 'hidden rounded-lg' %>" id="profile" role="tabpanel" aria-labelledby="profile-tab">
         <%= render "posts", posts: published_posts, status: "published" %>
       </div>
-      <div class=<%= params[:status] == "pending" ? "rounded-lg" : "rounded-lg hidden" %> id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+      <div class="<%=params[:status].present? &&  params[:status] == 'pending' ? 'rounded-lg' : 'hidden rounded-lg' %>" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
         <%= render "posts", posts: pending_posts, status: "pending"  %>
       </div>
-      <div class=<%= params[:status] == "expire" ? "rounded-lg" : "rounded-lg hidden" %> id="settings" role="tabpanel" aria-labelledby="settings-tab">
+      <div class="<%= params[:status].present? && params[:status] == 'expired' ? 'rounded-lg' : 'hidden rounded-lg' %>" id="settings" role="tabpanel" aria-labelledby="settings-tab">
         <%= render "posts", posts: expired_posts, status: "expired" %>
       </div>
     </div>
