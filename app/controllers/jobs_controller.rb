@@ -14,17 +14,17 @@ class JobsController < ApplicationController
   end
 
   def filtered_job_types
-    job_type_values = published_jobs.pluck(Arel.sql("response_data -> 'job_type'")).compact.uniq
+    job_type_values = published_jobs.response_data_exist.job_type_exist.group("response_data->>'job_type'").count
     desired_job_types = ["Prn (On Call)", "Temporary Full Time", "Part Time", "Full Time", "PRN"]
-    @filtered_job_types = job_type_values.select { |job_type| desired_job_types.include?(job_type) }.uniq
+    @filtered_job_types = job_type_values.select { |job_type, job_count| desired_job_types.include?(job_type) }.uniq
   end
 
   def filter_job_specialities
-    @filter_job_specialities = published_jobs.pluck(Arel.sql("response_data -> 'speciality'")).compact.uniq.sample(15)
+    @filter_job_specialities = published_jobs.response_data_exist.speciality_exist.group("response_data->>'speciality'").count
   end
 
   def shift_types
-    @shift_types = published_jobs.pluck(Arel.sql("response_data -> 'shift_type'")).compact.map(&:pluralize).uniq
+    @shift_types = published_jobs.response_data_exist.shift_type_exist.group("response_data->>'shift_type'").count
   end
 
   def related_jobs

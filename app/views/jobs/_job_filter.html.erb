@@ -17,11 +17,11 @@
           <div>
             <div class="text-sm text-gray-800 font-semibold mb-3">Job Type</div>
             <ul class="space-y-2">
-              <% @filtered_job_types.map do |job_type| %>
+              <% @filtered_job_types.map do |job_type, job_count| %>
                 <li>
                   <label class="flex items-center">
                     <%= check_box_tag "job_type[]", job_type, false, class: "form-checkbox" %>
-                    <span class="text-sm text-gray-600 ml-2"><%= job_type %></span>
+                    <span class="text-sm text-gray-600 ml-2"><%= "#{job_type} (#{job_count})" %></span>
                   </label>
                 </li>
               <% end %>
@@ -31,11 +31,11 @@
           <div>
             <div class="text-sm text-gray-800 font-semibold mb-3">Job Speciality</div>
             <ul class="space-y-2">
-              <% @filter_job_specialities.each do |speciality| %>
+              <% @filter_job_specialities.each do |speciality, speciality_count| %>
                 <li>
                   <label class="flex items-center">
                     <%= check_box_tag "speciality[]", speciality, false, class: "form-checkbox" %>
-                    <span class="text-sm text-gray-600 ml-2"><%= speciality %></span>
+                    <span class="text-sm text-gray-600 ml-2"><%= "#{speciality} (#{speciality_count})" %></span>
                   </label>
                 </li>
               <% end %>
@@ -45,11 +45,11 @@
           <div>
             <div class="text-sm text-gray-800 font-semibold mb-3">Shift Type</div>
             <ul class="space-y-2">
-              <% @shift_types.map do |shift_type| %>
+              <% @shift_types.map do |shift_type, shift_count| %>
                 <li>
                   <label class="flex items-center">
                     <%= check_box_tag "shift_type[]", shift_type, false, class: "form-checkbox" %>
-                    <span class="text-sm text-gray-600 ml-2"><%= shift_type %></span>
+                    <span class="text-sm text-gray-600 ml-2"><%= "#{shift_type} (#{shift_count})"  %></span>
                   </label>
                 </li>
               <% end %>
