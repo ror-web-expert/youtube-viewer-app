@@ -1815,6 +1815,10 @@ button[aria-selected = "true"] {
 .h-\[445px\] {
   height: 445px;
 }
+.h-\[230px\] {
+  height: 230px;
+}
+
 .h-\[655px\] {
   height: 655px;
 }

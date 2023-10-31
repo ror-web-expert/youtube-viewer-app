@@ -4,7 +4,7 @@
       <div class="absolute top-2 right-5 leading-none">
         <button class="text-sm font-medium text-indigo-500 hover:underline" data-action="click->jobs#clearForm">Clear</button>
       </div>
-      <%= form_with(url: jobs_path, method: "get", class: "transition-all h-[445px] overflow-hidden relative", id: "job_filter", data: {turbo_frame: "jobs", action: "input change->jobs#submitForm", remote: true} ) do |form| %>
+      <%= form_with(url: jobs_path, method: "get", class: "transition-all relative", id: "job_filter", data: {turbo_frame: "jobs", action: "input change->jobs#submitForm", remote: true} ) do |form| %>
         <div class="grid grid-cols-2 md:grid-cols-1 gap-6">
           <div class = 'relative flex justify-end items-center'>
             <%= text_field_tag :query, params[:query], class: "block text-sm font-medium mb-1 border w-full rounded-xl border-gray-200 pr-2 pl-2", autocomplete: 'off', placeholder: "Search by Title..." do %>
@@ -30,7 +30,7 @@
           <!-- Group 2 -->
           <div>
             <div class="text-sm text-gray-800 font-semibold mb-3">Job Speciality</div>
-            <ul class="space-y-2">
+            <ul class="space-y-2 h-[230px] overflow-hidden relative transition-all">
               <% @filter_job_specialities.each do |speciality, speciality_count| %>
                 <li>
                   <label class="flex items-center">
@@ -39,6 +39,7 @@
                   </label>
                 </li>
               <% end %>
+              <a href='#' class='leading-none absolute bottom-0 right-0 text-sm font-medium text-indigo-500 hover:underline'>Show More</a>
             </ul>
           </div>
           <!-- Group 3 -->
@@ -56,7 +57,6 @@
             </ul>
           </div>
         </div>
-        <a href='#' class='absolute bottom-0 right-0 text-sm font-medium text-indigo-500 hover:underline'>Show More</a>
         <input type="submit", class="hidden" id="submitform" />
       <% end %>
     </div>
