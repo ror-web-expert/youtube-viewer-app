@@ -2,7 +2,7 @@ class Post < ApplicationRecord
   include PgSearch::Model
   extend FriendlyId
   friendly_id :title, use: :slugged
-
+  after_update :check_response_data_change
   belongs_to :board
 
   enum status: { pending: 'pending', published: 'published',  expire: 'expire' },  _default: :published
@@ -18,4 +18,11 @@ class Post < ApplicationRecord
   using: {
     tsearch: { prefix: true }
   }
+
+  def check_response_data_change
+    if saved_change_to_response_data?
+      update(is_scrap: true)
+    end
+  end
+
 end
