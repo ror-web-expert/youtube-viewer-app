@@ -1,0 +1,40 @@
+<div class='container py-12 px-5'>
+  <div class="w-full mt-6">
+    <div id="<%= dom_id post %>">
+      <p class="my-5">
+        <strong class="block font-medium mb-1">Board:</strong>
+        <%= post.board&.title %>
+      </p>
+      <p class="my-5">
+        <strong class="block font-medium mb-1">Title:</strong>
+        <%= post.title %>
+      </p>
+      <p class="my-5">
+        <strong class="block font-medium mb-1">Scraped url:</strong>
+        <%= post.scraped_url %>
+      </p>
+      <p class="my-5">
+        <strong class="block font-medium mb-1">Status:</strong>
+        <%= post.status %>
+      </p>
+      <p class="my-5">
+        <strong class="block font-medium mb-1">Response data:</strong>
+        <%#= post.response_data %>
+        <% post.response_data&.each do |key, value| %>
+        <div class="mb-4">
+          <h2 class="text-lg font-semibold mb-2 font-bold"><%= key.titleize %> : </h2>
+          <p><%= value&.html_safe %></p>
+        </div>
+      <% end %>
+      </p>
+      <div class="flex justify-end space-x-2">
+        <% if action_name != "show" %>
+          <%= link_to "Show this Post", admin_post_path(post), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+          <%= link_to 'Edit this Post', edit_admin_post_path(post), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+          <%= link_to 'Scrape', scrape_jobs_admin_post_path(post), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+          <hr class="mt-6">
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
