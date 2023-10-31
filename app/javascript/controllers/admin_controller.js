@@ -1,5 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 import 'jquery'
+import 'toast'
 
 export default class extends Controller {
   
@@ -35,11 +36,14 @@ export default class extends Controller {
         contentType: 'application/json',
         data: JSON.stringify(payload),
         success: function(response) {
-          // Redirect to a new page after a successful response
-          window.location.reload()
+          $('input[type="checkbox"]:visible:checked').prop('checked', false);
+          toastr.success("Status of all Posts has been changed successfully")
+          setTimeout(function() {
+            location.reload();
+          }, 2000);
         },
         error: function(xhr, status, error) {
-          // Handle error cases
+          toastr.error("Something went Wrong. Please try again.")
         }
       });
       

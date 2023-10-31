@@ -8,6 +8,7 @@
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     
     <%= javascript_importmap_tags %>
     
@@ -18,6 +19,7 @@
         <div class="flex flex-col justify-between min-h-screen overflow-hidden supports-[overflow:clip]:overflow-clip">
           <%= render "layouts/header" %>
           <div class = 'pt-24' > <%= yield %></div>
+          <%= toastr_flash %>
           <%= render "layouts/footer" %>
         </div>
       </body>

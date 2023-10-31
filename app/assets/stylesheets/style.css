@@ -1395,6 +1395,10 @@ button[aria-selected = "true"] {
   border-width: 0;
 }
 
+.duration-500 {
+  transition-duration: 500ms;
+}
+
 /* typography starts here */
 .capitalize {
   text-transform: capitalize;
@@ -1815,6 +1819,10 @@ button[aria-selected = "true"] {
 .h-\[445px\] {
   height: 445px;
 }
+.h-\[230px\] {
+  height: 230px;
+}
+
 .h-\[655px\] {
   height: 655px;
 }
