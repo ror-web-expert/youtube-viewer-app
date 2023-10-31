@@ -18,7 +18,7 @@ module ApplicationHelper
     elsif time_difference < 7.days
       "#{(time_difference / 1.day).to_i}d"
     else
-      created_at.strftime("%Y-%m-%d")
+      created_at.strftime("%b %d, %Y")
     end
   end
 
