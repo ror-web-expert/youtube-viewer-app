@@ -25,8 +25,8 @@ class BoardScraperService
     expired_jobs
     close_browser
   rescue => e
+    puts e.message
     close_browser
-    return
   end
 
   private

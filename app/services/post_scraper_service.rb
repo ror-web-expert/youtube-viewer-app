@@ -33,8 +33,8 @@ class PostScraperService
     end
     close_browser
   rescue => e
+    puts e.message
     close_browser
-    return
   end
 
   def job_details_not_exist(page)
