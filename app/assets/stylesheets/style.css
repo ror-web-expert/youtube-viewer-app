@@ -1395,6 +1395,10 @@ button[aria-selected = "true"] {
   border-width: 0;
 }
 
+.duration-500 {
+  transition-duration: 500ms;
+}
+
 /* typography starts here */
 .capitalize {
   text-transform: capitalize;
