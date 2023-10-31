@@ -194,7 +194,7 @@ COMMON_SPIRIT = {
       "apply_now_url": ".ajd_header__job-buttons a",
       "job_refernce_id": ".job-details-info .job-id",
       "get_from_content": ".job-info",
-      "description_raw_html": "#anchor-responsibilities .collapse-ajd__wrapper"
+      "description_raw_html": ".ats-description"
     }
   },
   "logo": "common_spirit.png"
