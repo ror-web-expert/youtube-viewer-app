@@ -1740,6 +1740,23 @@ button[aria-selected = "true"] {
 
 /* width percentage end */
 
+
+/* Animation Starts here */
+
+.transition-transform {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Animation Ends here */
+
 .w-16 {
   width: 4rem;
 }
@@ -1794,6 +1811,12 @@ button[aria-selected = "true"] {
 }
 .h-\[550px\] {
   height: 550px;
+}
+.h-\[445px\] {
+  height: 445px;
+}
+.h-\[655px\] {
+  height: 655px;
 }
 .min-w-\[120px\] {
   min-width: 120px;
