@@ -81,6 +81,6 @@ class Admin::PostsController < Admin::BaseController
     end
 
     def post_params
-      params.require(:post).permit(:board_id, :title, :scraped_url, :is_scrap, :status, :response_data)
+      params.require(:post).permit(:board_id, :title, :scraped_url, :is_scrap, :status)
     end
 end
