@@ -168,8 +168,8 @@ class BoardScraperService
   def create_posts(main_data, response_data)
     scraped_url = full_url(main_data['source_url'])
     response_data["logo"] = @logo
-    response_data["job_type"] = standardise_job_type(response_data["job_type"]) if response_data["job_type"].present?
-    response_data["shift_type"] = standardise_shift_type(response_data["shift_type"]) if response_data["shift_type"].present?
+    response_data["job_type"] = standardise_job_type(response_data["job_type"]&.gsub("-"," ")&.titleize) if response_data["job_type"].present?
+    response_data["shift_type"] = standardise_shift_type(response_data["shift_type"]&.titleize) if response_data["shift_type"].present?
     @board.posts.find_or_initialize_by(scraped_url: scraped_url).tap do |post|
       post.update!(
         title: main_data['title'],
