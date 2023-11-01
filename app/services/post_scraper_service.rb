@@ -23,7 +23,7 @@ class PostScraperService
       response_data = extract_data_from_selector(post, @selectors["response_selector"])
       response_data["speciality"] = filter_by_title(@post.title.squish)
       response_data["job_type"] = standardise_job_type(response_data["job_type"]&.gsub("-"," ")&.titleize)
-      response_data["shift_type"] = standardise_shift_type(response_data["shift_type"].titleize)
+      response_data["shift_type"] = standardise_shift_type(response_data["shift_type"]&.titleize)
       response_data = @post.response_data.merge(response_data) if @post.response_data.present?
       @post.update(response_data: response_data)
       HtmlParser.new(@post).formatted_markdown
