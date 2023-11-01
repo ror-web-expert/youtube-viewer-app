@@ -195,7 +195,7 @@ class PostScraperService
       "Day"
     when *["Evenings", "Evening"]
       "Evening"
-    when *["Varies", "Varied"]
+    when *["Varies", "Varied", "Varie"]
       "Varies"
     when *["Mids", "Mid"]
       "Mid"
