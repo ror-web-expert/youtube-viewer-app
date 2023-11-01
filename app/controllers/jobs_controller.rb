@@ -14,17 +14,15 @@ class JobsController < ApplicationController
   end
 
   def filtered_job_types
-    job_type_values = published_jobs.response_data_exist.job_type_exist.group("response_data->>'job_type'").count
-    desired_job_types = ["Prn (On Call)", "Temporary Full Time", "Part Time", "Full Time", "PRN"]
-    @filtered_job_types = job_type_values.select { |job_type, job_count| desired_job_types.include?(job_type) }.uniq
+    @filtered_job_types = resource_class.sort_by_count(published_jobs.grouped_count(:job_type_exist, "job_type"))
   end
 
   def filter_job_specialities
-    @filter_job_specialities = published_jobs.response_data_exist.speciality_exist.group("response_data->>'speciality'").count
+    @filter_job_specialities = resource_class.sort_by_count(published_jobs.grouped_count(:speciality_exist, "speciality"))
   end
 
   def shift_types
-    @shift_types = published_jobs.response_data_exist.shift_type_exist.group("response_data->>'shift_type'").count
+    @shift_types = resource_class.sort_by_count(published_jobs.grouped_count(:shift_type_exist, "shift_type"))
   end
 
   def related_jobs
@@ -60,7 +58,7 @@ class JobsController < ApplicationController
   end
 
   def published_jobs
-    resource_class.scraped
+    resource_class.scraped.response_data_exist
   end
 
   def filter_params

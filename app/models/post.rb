@@ -25,4 +25,11 @@ class Post < ApplicationRecord
     end
   end
 
+  def self.grouped_count(parameter, field)
+    public_send(parameter).group("response_data->>'#{field}'").count
+  end
+
+  def self.sort_by_count(collection)
+    collection.sort_by { |_, count| -count }
+  end
 end

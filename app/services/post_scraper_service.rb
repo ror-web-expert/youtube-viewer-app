@@ -22,7 +22,8 @@ class PostScraperService
     page.css(@selectors["job-detail-container"]).each do |post|
       response_data = extract_data_from_selector(post, @selectors["response_selector"])
       response_data["speciality"] = filter_by_title(@post.title.squish)
-      response_data["job_type"] = response_data["job_type"]&.gsub("-"," ")&.titleize
+      response_data["job_type"] = standardise_job_type(response_data["job_type"]&.gsub("-"," ")&.titleize)
+      response_data["shift_type"] = standardise_shift_type(response_data["shift_type"].titleize)
       response_data = @post.response_data.merge(response_data) if @post.response_data.present?
       @post.update(response_data: response_data)
       HtmlParser.new(@post).formatted_markdown
@@ -166,13 +167,40 @@ class PostScraperService
     selected_elements.empty? ? nil : selected_elements.text.sub(':', '')
   end
 
-  private
   def url_for_apply_now(path)
     if path.start_with?('/')
       parsed_url = URI.parse(@url)
       URI.join("#{parsed_url.scheme}://#{parsed_url.host}", path).to_s
     else
       path
+    end
+  end
+
+  def standardise_job_type(job_type)
+    case job_type
+    when  *["Temporary Full Time", "Full Time", "Full-Time", "FT"]
+      "Full Time"
+    when *["Temporary Part Time", "Part Time", "Part-Time", "PT"]
+      "Part Time"
+    else
+      nil
+    end
+  end
+
+  def standardise_shift_type(shift_type)
+    case shift_type
+    when  *["Nights", "Night"]
+      "Night"
+    when *["Days", "Day"]
+      "Day"
+    when *["Evenings", "Evening"]
+      "Evening"
+    when *["Varies", "Varied"]
+      "Varies"
+    when *["Mids", "Mid"]
+      "Mid"
+    else
+      nil
     end
   end
 end
