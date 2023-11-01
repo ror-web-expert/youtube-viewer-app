@@ -175,32 +175,4 @@ class PostScraperService
       path
     end
   end
-
-  def standardise_job_type(job_type)
-    case job_type
-    when  *["Temporary Full Time", "Full Time", "Full-Time", "FT"]
-      "Full Time"
-    when *["Temporary Part Time", "Part Time", "Part-Time", "PT"]
-      "Part Time"
-    else
-      nil
-    end
-  end
-
-  def standardise_shift_type(shift_type)
-    case shift_type
-    when  *["Nights", "Night"]
-      "Night"
-    when *["Days", "Day"]
-      "Day"
-    when *["Evenings", "Evening"]
-      "Evening"
-    when *["Varies", "Varied", "Varie"]
-      "Varies"
-    when *["Mids", "Mid"]
-      "Mid"
-    else
-      nil
-    end
-  end
 end
