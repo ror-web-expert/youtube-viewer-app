@@ -30,4 +30,8 @@ export default class extends Controller {
       e.target.textContent = 'Show More'
     }
   }
+
+  selectCheckBox(e){
+    $('input[type="checkbox"][value="' + e.target.textContent + '"]').prop('checked', true);
+  }
 }

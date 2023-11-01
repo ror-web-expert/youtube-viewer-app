@@ -17,24 +17,24 @@
                 <div class="mb-2">
                   <a class="text-lg text-gray-800 font-bold" href="#"><%= job.title %></a>
                 </div>
-                <div class="-m-1">
+                <div class="-m-1" data-controller="jobs">
                   <% if @response_data["job_type"].present? %>
-                    <a class="text-xs text-gray-500 font-medium inline-flex px-2 py-0.5 bg-gray-100 hover:text-gray-600 rounded-md m-1 whitespace-nowrap transition duration-150 ease-in-out" href="#0"><%= @response_data["job_type"] %></a>
+                    <%= link_to @response_data["job_type"], jobs_path(job_type: @response_data["job_type"]), class: "text-xs text-gray-500 font-small inline-flex px-2 py-0.5 bg-gray-100 hover:text-gray-600 rounded-md m-1 whitespace-nowrap transition duration-150 ease-in-out", data: { remote: true, action: "click->jobs#selectCheckBox" } %>
                   <% end %>
                   <% if @response_data["location"].present? %>
-                    <a class="text-xs text-gray-500 font-medium inline-flex px-2 py-0.5 bg-indigo-50 hover:text-gray-600 rounded-md m-1 whitespace-nowrap transition duration-150 ease-in-out" href="#"><%= @response_data["location"].gsub(/location\s*:?/i, ' ') %></a>
+                    <a class="text-xs text-gray-500 font-normal inline-flex px-2 py-0.5 bg-indigo-50 hover:text-gray-600 rounded-md m-1 whitespace-nowrap transition duration-150 ease-in-out" href="javascript:void(0)"><%= @response_data["location"].gsub(/location\s*:?/i, ' ') %></a>
                   <% end %>
                   <% if @response_data["salary_range"].present? && @response_data["salary_range"].include?("$") %>
-                    <a class="text-xs text-gray-500 font-medium inline-flex px-2 py-0.5 bg-indigo-50 hover:text-gray-600 rounded-md m-1 whitespace-nowrap transition duration-150 ease-in-out" href="#"><%= get_salary_range(@response_data["salary_range"]) %></a>
+                    <a class="text-xs text-gray-500 font-medium inline-flex px-2 py-0.5 bg-indigo-50 hover:text-gray-600 rounded-md m-1 whitespace-nowrap transition duration-150 ease-in-out" href="javascript:void(0)"><%= get_salary_range(@response_data["salary_range"]) %></a>
                   <% end %>
                   <% if @response_data["shift_type"].present? %>
-                    <a class="text-xs text-gray-500 font-medium inline-flex px-2 py-0.5 bg-gray-100 hover:text-gray-600 rounded-md m-1 whitespace-nowrap transition duration-150 ease-in-out" href="#0"><%= @response_data["shift_type"] %></a>
+                    <%= link_to @response_data["shift_type"], jobs_path(shift_type: @response_data["shift_type"]), class: "text-xs text-gray-500 font-small inline-flex px-2 py-0.5 bg-gray-100 hover:text-gray-600 rounded-md m-1 whitespace-nowrap transition duration-150 ease-in-out", data: { remote: true, action: "click->jobs#selectCheckBox" } %>
                   <% end %>
                   <% if @response_data["speciality"].present? %>
-                    <a class="text-xs text-gray-500 font-medium inline-flex px-2 py-0.5 bg-gray-100 hover:text-gray-600 rounded-md m-1 whitespace-nowrap transition duration-150 ease-in-out" href="#0"><%= @response_data["speciality"] %></a>
+                    <%= link_to @response_data["speciality"], jobs_path(speciality: @response_data["speciality"]), class: "text-xs text-gray-500 font-small inline-flex px-2 py-0.5 bg-gray-100 hover:text-gray-600 rounded-md m-1 whitespace-nowrap transition duration-150 ease-in-out", data: { remote: true, action: "click->jobs#selectCheckBox" } %>
                   <% end %>
                   <% if @response_data["hourly_rate"].present? %>
-                    <a class="text-xs text-gray-500 font-medium inline-flex px-2 py-0.5 bg-gray-100 hover:text-gray-600 rounded-md m-1 whitespace-nowrap transition duration-150 ease-in-out" href="#0"><%= @response_data["hourly_rate"] %></a>
+                    <a class="text-xs text-gray-500 font-medium inline-flex px-2 py-0.5 bg-gray-100 hover:text-gray-600 rounded-md m-1 whitespace-nowrap transition duration-150 ease-in-out" href="javascript:void(0)"><%= @response_data["hourly_rate"] %></a>
                   <% end %>
                 </div>
               </div>
