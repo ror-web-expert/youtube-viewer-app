@@ -26,7 +26,11 @@ class JobsController < ApplicationController
   end
 
   def related_jobs
-    @related_jobs = @job.board.posts.limit(5)
+    @related_jobs = if @job.response_data["speciality"].present?
+      @job.board.posts.where("response_data ->> 'speciality' = ?", @job.response_data["speciality"]).limit(5)
+    else
+      @job.board.posts.sample(5)
+    end
   end
 
   def resource_class
