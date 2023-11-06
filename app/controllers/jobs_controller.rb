@@ -18,7 +18,13 @@ class JobsController < ApplicationController
   end
 
   def filter_job_specialities
-    @filter_job_specialities = resource_class.sort_by_count(published_jobs.grouped_count(:speciality_exist, "speciality"))
+    job_specialities = resource_class.sort_by_count(published_jobs.grouped_count(:speciality_exist, "speciality"))
+    display_name_with_total_counts = Hash.new(0)
+    job_specialities.each do |key, value|
+      matching_keys = Job_Speciality_Filter.select { |_, values| values.include?(key) }.keys
+      matching_keys.each { |matching_key| display_name_with_total_counts[matching_key] += value }
+    end
+    @filter_job_specialities = display_name_with_total_counts
   end
 
   def shift_types
@@ -52,7 +58,12 @@ class JobsController < ApplicationController
   def prepare_query
     @filter_conditions = {}
     filter_params.each do |key, value|
-      @filter_conditions["response_data ->> '#{key}' IN (?)"] = value
+      if key == "speciality"
+        value  = value.map{|val| Job_Speciality_Filter[val]}.flatten
+        @filter_conditions["response_data ->> '#{key}' IN (?)"] = value
+      else
+        @filter_conditions["response_data ->> '#{key}' IN (?)"] = value
+      end
     end
     @filter_conditions
   end
