@@ -14,6 +14,7 @@ class Post < ApplicationRecord
   scope :speciality_exist, -> { where.not("response_data->>'speciality' IS NULL") }
   scope :job_type_exist, -> { where.not(("response_data->>'job_type' IS NULL")) }
   scope :shift_type_exist, -> { where.not(("response_data->>'shift_type' IS NULL")) }
+  scope :remote_type_exist, -> { where.not(("response_data->>'remote_type' IS NULL")) }
   pg_search_scope :search, against: [:title, :response_data],
   using: {
     tsearch: { prefix: true }

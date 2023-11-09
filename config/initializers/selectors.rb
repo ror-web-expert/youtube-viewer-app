@@ -30,6 +30,7 @@ VALLEY_WISE_HEALTH = {
       "posted_date": ".job-addl-info .date span",
       "job_status": ".job-addl-info .job-status span",
       "job_refernce_id": ".job-addl-info .job-ref",
+      "get_from_content": ".job-body .job-description-content",
       "description_raw_html": {
         "get_paragraph": ".job-description-content #descHeader",
         "next_element": true,
@@ -63,7 +64,7 @@ THRIVE_SPC = {
     "response_selector": {
       "job_type": ".job-content p:contains('Full Time')",
       "description_raw_html": ".column[1]",
-      "get_from_content": ".job-content"
+      "get_from_content": ".column[1]"
     }
   },
   "logo": "thrive_spc.png"
@@ -81,6 +82,7 @@ HONOR_HEALTH = {
     },
     "response_selector": {
       "location": ".job-result__location .label-container",
+      "remote_type": ".job-result__location .label-container .telecommute .translate",
       "job_type": ".description-container .tags2",
       "working_hours": ".job-card-result-container .tags4"
     }
@@ -146,6 +148,7 @@ MAYO_CLINIC = {
       "posted_date": ".job-description .title-wrapper .job-date",
       "apply_now_url": ".button-wrapper a.job-apply",
       "description_raw_html": "#core_jd-top",
+      "get_from_content": "#jd-toggle-wrap .ats-description",
       "salary_range": {
         "next_sibling": true,
         "next_element": "true",
@@ -191,6 +194,7 @@ COMMON_SPIRIT = {
       "job_type": ".job-details-info .job-info:contains('Employment Type')",
       "schedule": ".job-details-info .job-date[5]",
       "shift_type": ".job-details-info .job-info:contains('Shift')",
+      "remote_type": ".job-details-info .job-info:contains('Remote')",
       "apply_now_url": ".ajd_header__job-buttons a",
       "job_refernce_id": ".job-details-info .job-id",
       "get_from_content": ".job-info",
@@ -219,14 +223,15 @@ USPI = {
       "not_found_container": ".max-width.misc-content p",
       "not_found_text": "We are sorry this job post no longer exists. Luckily, we have other jobs you might also be interested in: Search jobs"
     },
-    "job-detail-container": ".job-description",
+    "job-detail-container": "#anchor-job-details .job-description",
     "response_selector": {
       "facility": ".jd-job-info-wrap .job-facility",
       "location": ".jd-job-info-wrap .job-location",
       "apply_now_url": ".jd-btn-wrap .job-apply",
       "posted_date": ".jd-job-info-wrap .job-date",
       "job_refernce_id": ".jd-job-info-wrap .job-id",
-      "description_raw_html": "#jd-wrap"
+      "description_raw_html": "#jd-wrap",
+      "get_from_content": "#jd-wrap"
     }
   },
   "logo": "uspi.png"
@@ -255,7 +260,8 @@ ENVITA = {
       "location": ".job-attributes-container div[1]",
       "schedule": ".job-details #job-description p[5]",
       "salary_range": ".job-details #job-description p[3]",
-      "description_raw_html": ".job-details #job-description"
+      "description_raw_html": ".job-details #job-description",
+      "get_from_content": ".job-details #job-description"
     }
   },
   "logo": "envita.png"
@@ -288,6 +294,7 @@ FRESENIUS_MEDICAL_CARE = {
       "apply_now_url": ".jd-btn-wrap .job-apply",
       "department": "#JobDetailOverview div[7] .kowrXr",
       "job_refernce_id": "#JobDetailOverview div[8] .kowrXr",
+      "get_from_content": "#JobDetailDescription",
       "description_raw_html": "#JobDetailDescription"
     }
   },
@@ -315,6 +322,7 @@ IQVIA = {
       "job_type": ".jd-jobinfo .job-type",
       "job_refernce_id": ".jd-jobinfo .job-id",
       "apply_now_url": ".jd-jobinfo-wrap a",
+      "get_from_content": ".ats-description",
       "description_raw_html": ".ats-description"
     }
   },
@@ -343,6 +351,7 @@ LIFE_POINT_HEALTH = {
       "facility": ".job-info__wrap .job-brand",
       "category": ".job-info__wrap .job-cat",
       "apply_now_url": ".job-buttons .job-apply",
+      "get_from_content": ".read-more .ats-description",
       "description_raw_html": ".read-more .ats-description"
     }
   },
@@ -396,6 +405,7 @@ MGA_HOME_CARE = {
       "job_type": ".job-type",
       "apply_now_url": ".w-btn-wrapper a",
       "shift_type": ".company-description ul[1] li[4]",
+      "get_from_content": ".job-sections .company-description",
       "description_raw_html": ".job-sections .company-description"
     }
   },

@@ -56,6 +56,20 @@
               <% end %>
             </ul>
           </div>
+          <!-- Group 4 -->
+          <div>
+            <div class="text-sm text-gray-800 font-semibold mb-3">Remote Type</div>
+            <ul class="space-y-2">
+              <% @remote_types.map do |remote_type, remote_count| %>
+                <li>
+                  <label class="flex items-center">
+                    <%= check_box_tag "remote_type[]", remote_type, false, class: "form-checkbox" %>
+                    <span class="text-sm text-gray-600 ml-2"><%= "#{remote_type} (#{remote_count})"  %></span>
+                  </label>
+                </li>
+              <% end %>
+            </ul>
+          </div>
         </div>
         <input type="submit", class="hidden" id="submitform" />
       <% end %>

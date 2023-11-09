@@ -71,6 +71,15 @@ module GenericFunctionality
     end
   end
 
+  def standardise_remote_type(job_type)
+    case job_type
+    when  *["Remote", "remote", "Yes", "yes"]
+      "Yes"
+    else
+      "No"
+    end
+  end
+
   def standardise_shift_type(shift_type)
     case shift_type
     when  *["Nights", "Night"]

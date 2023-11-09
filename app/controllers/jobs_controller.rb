@@ -1,7 +1,7 @@
 class JobsController < ApplicationController
   before_action :set_post, :related_jobs, only: %i[show]
   before_action :prepare_query, only: %i[index], if: :any_filter_present?
-  before_action :filter_jobs, :filtered_job_types, :filter_job_specialities, :shift_types, only: %i[index]
+  before_action :filter_jobs, :filtered_job_types, :filter_job_specialities, :shift_types, :remote_types, only: %i[index]
 
   def index; end
 
@@ -29,6 +29,10 @@ class JobsController < ApplicationController
 
   def shift_types
     @shift_types = resource_class.sort_by_count(published_jobs.grouped_count(:shift_type_exist, "shift_type"))
+  end
+
+  def remote_types
+    @remote_types = resource_class.sort_by_count(published_jobs.grouped_count(:remote_type_exist, "remote_type"))
   end
 
   def related_jobs
@@ -80,7 +84,8 @@ class JobsController < ApplicationController
     {
       "job_type" => params[:job_type],
       "speciality" => params[:speciality],
-      "shift_type" => params[:shift_type]
+      "shift_type" => params[:shift_type],
+      "remote_type" => params[:remote_type]
     }.compact
   end
 end
