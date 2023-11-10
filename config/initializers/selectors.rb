@@ -471,3 +471,41 @@ ATLAS_HEALTH = {
   },
   "logo": "atlas_health.png"
 }
+
+AZ_STATE = {
+  "listing_selector": {
+    "job-container-list": ".job-search-results-table tbody tr",
+    "main_selector": {
+      "title": ".job-search-results-title a",
+      "source_url": ".job-search-results-title a"
+    },
+    "cookies_modal": {
+      "id": ".modal-content #consent_agree",
+      "button_text": "I accept"
+    },
+    "pagination": {
+      "next_button": ".pagination-container .text-right .next_page:not([class='next next_page disabled page-item'])",
+      next_button_text: "›"
+    },
+    "response_selector": {
+      "job_refernce_id": ".job-search-results-requisition-identifiers",
+      "job_type": ".job-search-results-employment-type",
+      "location": ".job-search-results-location li[1]",
+      "remote_type": ".job-search-results-location li[2]"
+    }
+  },
+  "detail_selector": {
+    "job_does_not_exist": {
+      "not_found_container": ".error404-content .entry-title",
+      "not_found_text": "PAGE NOT FOUND"
+    },
+    "job-detail-container": ".block-job-description",
+    "response_selector": {
+      "apply_now_url": ".applyjd",
+      "department": ".job-component-list-department",
+      "get_from_content": ".job-description",
+      "description_raw_html": ".job-description"
+    }
+  },
+  "logo": "atlas_health.png"
+}

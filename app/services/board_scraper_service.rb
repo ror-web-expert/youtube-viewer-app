@@ -74,10 +74,6 @@ class BoardScraperService
     next_button_text.present?
   end
 
-  def next_button_text_present?
-    next_button_text.present?
-  end
-
   def next_button_css
     @next_button_css ||= @selectors['pagination']['next_button']
   end
