@@ -507,5 +507,68 @@ AZ_STATE = {
       "description_raw_html": ".job-description"
     }
   },
-  "logo": "atlas_health.png"
+  "logo": "az_state.png"
+}
+
+ADELANTE_HEALTH_CARE = {
+  "listing_selector": {
+    "job-container-list": ".jobs-list .py-20.py-md-30.border-top",
+    "main_selector": {
+      "title": ".job-excerpt h3",
+      "source_url": ".job-excerpt"
+    },
+    "pagination": {
+      "next_button": ".wp-pagenavi .nextpostslink",
+      next_button_text: "Next"
+    },
+    "response_selector": {
+      "job_type": ".job-excerpt .font-weight-semibold"
+    }
+  },
+  "detail_selector": {
+    "job_does_not_exist": {
+      "not_found_container": "body div",
+      "not_found_text": "Job board does not exist or is unavailable at this time."
+    },
+    "job-detail-container": "#main-content .col-md-8",
+    "response_selector": {
+      "location": ".cardContainer .local_left .div[1]",
+      "job_type": ".cardContainer .local_left .div[2]",
+      "category": ".cardContainer .local_right .div[1]",
+      "apply_now_url": ".applyjd",
+      "get_from_content": ".cardContainer",
+      "description_raw_html": ".cardContainer"
+    }
+  },
+  "logo": "adelante-health.png"
+}
+
+HOSPICE_OF_THE_VALLEY = {
+  "listing_selector": {
+    "job-container-list": "#listings .job-listing.card",
+    "main_selector": {
+      "title": "a span",
+      "source_url": "a"
+    },
+    "response_selector": {
+      "job_type": ".h4.margin-top-none .field-column.col-md-6.col-xs-12",
+      "location": ".h4.margin-top-none.field-column.col-md-3.col-xs-12"
+    }
+  },
+  "detail_selector": {
+    "job_does_not_exist": {
+      "not_found_container": ".card-body",
+      "not_found_text": "This job posting is no longer available."
+    },
+    "job-detail-container": ".card-body",
+    "response_selector": {
+      "location": ".col-md-12.col-xs-12 div[2] div[1] span span",
+      "job_type": ".col-md-12.col-xs-12 div[2] div[2] span span",
+      "category": ".col-md-12.col-xs-12 div[2] div[3] span span",
+      "apply_now_url": ".applyjd",
+      "get_from_content": ".col-md-12.col-xs-12",
+      "description_raw_html": ".col-md-12.col-xs-12"
+    }
+  },
+  "logo": "HOSPICE_OF_THE_VALLEY.jpg"
 }

@@ -14,7 +14,7 @@ class PostScraperService
 
     sleep(2)
     accept_cookies if cookies_modal_present?
-    sleep(2)
+    sleep(5)
     page = Nokogiri::HTML(@session.body)
 
     not_found_text = job_details_not_exist(page)

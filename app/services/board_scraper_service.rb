@@ -17,6 +17,7 @@ class BoardScraperService
     accept_cookies if cookies_modal_present?
     execute_script_for_click_on_body if click_on_body.present?
     show_all_button_click if show_all_selector_present?
+    sleep(5)
     scrape_and_parse_page(@session.body)
     while has_next_page?
       click_next_page
