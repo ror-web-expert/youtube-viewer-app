@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_30_045701) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_14_104132) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -62,6 +62,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_30_045701) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
+  create_table "locations", force: :cascade do |t|
+    t.float "lat"
+    t.float "lng"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "posts", force: :cascade do |t|
     t.bigint "board_id", null: false
     t.string "title"
@@ -72,7 +79,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_30_045701) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
+    t.bigint "location_id"
     t.index ["board_id"], name: "index_posts_on_board_id"
+    t.index ["location_id"], name: "index_posts_on_location_id"
     t.index ["slug"], name: "index_posts_on_slug", unique: true
   end
 
@@ -109,4 +118,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_30_045701) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "posts", "boards"
+  add_foreign_key "posts", "locations"
 end

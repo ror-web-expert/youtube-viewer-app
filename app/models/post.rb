@@ -4,6 +4,8 @@ class Post < ApplicationRecord
   friendly_id :title, use: :slugged
   after_update :check_response_data_change
   belongs_to :board
+  belongs_to :location
+  after_validation :geocode_if_location_changed
 
   enum status: { pending: 'pending', published: 'published',  expire: 'expire' },  _default: :published
 
@@ -32,5 +34,28 @@ class Post < ApplicationRecord
 
   def self.sort_by_count(collection)
     collection.sort_by { |_, count| -count }
+  end
+
+  def create_or_attach_location(location)
+    return unless location.present?
+    result = geocode_address(location)
+
+    if result
+      location = Location.find_or_initialize_by(lat: result.first, lng: result.last)
+      location.save
+      self.location_id = location.id
+    end
+  end
+
+  def geocode_if_location_changed
+    # return unless saved_change_to_response_data?
+
+    location = response_data['location']
+    create_or_attach_location(location)
+  end
+
+  def geocode_address(address)
+    geocoder = OpenCage::Geocoder.new(api_key: 'fa93e7ffcb0249ffb0c49d1d387c1d89')
+    geocoder.geocode(address).first.coordinates
   end
 end
