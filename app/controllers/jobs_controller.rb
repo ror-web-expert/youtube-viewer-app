@@ -1,7 +1,10 @@
 class JobsController < ApplicationController
+  include GeoLocationHelper
+
   before_action :set_post, :related_jobs, only: %i[show]
   before_action :prepare_query, only: %i[index], if: :any_filter_present?
   before_action :filter_jobs, :filtered_job_types, :filter_job_specialities, :shift_types, :remote_types, only: %i[index]
+  before_action :select_jobs_based_on_radius, only: %i[index], if: :radius_params_present?
 
   def index; end
 
@@ -87,5 +90,27 @@ class JobsController < ApplicationController
       "shift_type" => params[:shift_type],
       "remote_type" => params[:remote_type]
     }.compact
+  end
+
+  def radius_params_present?
+    radius.present?
+  end
+
+  def select_jobs_based_on_radius
+    user_location = initialize_opencage_geocoder
+    user_lat = user_location.first
+    user_lng = user_location.last
+    @jobs = @jobs.select do |job|
+      loc = job.location
+      if loc.present?
+        haversine(user_lat, user_lng, loc&.lat, loc&.lng) <= radius.to_i
+      else
+        next
+      end
+    end
+  end
+
+  def radius
+    params[:radius]
   end
 end
