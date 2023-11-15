@@ -63,6 +63,6 @@ module ApplicationHelper
   end
 
   def logo_present?(name)
-    Rails.application.assets.find_asset(name)
+    ActionController::Base.helpers.asset_path(name)
   end
 end
