@@ -4,8 +4,8 @@ class Post < ApplicationRecord
   friendly_id :title, use: :slugged
   after_update :check_response_data_change
   belongs_to :board
-  belongs_to :location
-  after_validation :geocode_if_location_changed
+  belongs_to :location, optional: true
+  before_save :geocode_if_location_changed
 
   enum status: { pending: 'pending', published: 'published',  expire: 'expire' },  _default: :published
 

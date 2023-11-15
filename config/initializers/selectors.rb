@@ -532,7 +532,7 @@ ADELANTE_HEALTH_CARE = {
     },
     "job-detail-container": "#main-content .col-md-8",
     "response_selector": {
-      "location": ".cardContainer .local_left .div[1]",
+      "location": ".cardContainer span[aria-label='Job Location']",
       "job_type": ".cardContainer .local_left .div[2]",
       "category": ".cardContainer .local_right .div[1]",
       "apply_now_url": ".applyjd",
@@ -552,7 +552,7 @@ HOSPICE_OF_THE_VALLEY = {
     },
     "response_selector": {
       "job_type": ".h4.margin-top-none .field-column.col-md-6.col-xs-12",
-      "location": ".h4.margin-top-none.field-column.col-md-3.col-xs-12"
+      "location": ".h4.margin-top-none .field-column.col-md-3.col-xs-12"
     }
   },
   "detail_selector": {
@@ -562,12 +562,11 @@ HOSPICE_OF_THE_VALLEY = {
     },
     "job-detail-container": ".card-body",
     "response_selector": {
-      "location": ".col-md-12.col-xs-12 div[2] div[1] span span",
       "job_type": ".col-md-12.col-xs-12 div[2] div[2] span span",
       "category": ".col-md-12.col-xs-12 div[2] div[3] span span",
       "apply_now_url": ".applyjd",
       "get_from_content": ".col-md-12.col-xs-12",
-      "description_raw_html": ".col-md-12.col-xs-12"
+      "description_raw_html": "span[itemprop='description']"
     }
   },
   "logo": "HOSPICE_OF_THE_VALLEY.jpg"

@@ -62,4 +62,7 @@ module ApplicationHelper
     end.join("\n").html_safe
   end
 
+  def logo_present?(name)
+    Rails.application.assets.find_asset(name)
+  end
 end
