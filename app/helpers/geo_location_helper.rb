@@ -21,6 +21,6 @@ module GeoLocationHelper
 
   def initialize_geocoder
     result = Geocoder.search(request.ip, key: Rails.application.credentials.google.geocoding_api_key).first
-    result.coordinates
+    result&.coordinates
   end
 end

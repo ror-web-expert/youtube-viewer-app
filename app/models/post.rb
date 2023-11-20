@@ -57,6 +57,6 @@ class Post < ApplicationRecord
 
   def geocode_address(address)
     result = Geocoder.search(address, key: Rails.application.credentials.google.geocoding_api_key).first
-    result.coordinates
+    result&.coordinates
   end
 end
