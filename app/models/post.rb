@@ -48,14 +48,15 @@ class Post < ApplicationRecord
   end
 
   def geocode_if_location_changed
-    # return unless saved_change_to_response_data?
+    # return unless response_data_changed?
+    # changed_attributes["response_data"]["location"] == response_data["location"]
 
     location = response_data['location']
     create_or_attach_location(location)
   end
 
   def geocode_address(address)
-    geocoder = OpenCage::Geocoder.new(api_key: 'fa93e7ffcb0249ffb0c49d1d387c1d89')
-    geocoder.geocode(address).first.coordinates
+    result = Geocoder.search(address, key: Rails.application.credentials.google.geocoding_api_key).first
+    result.coordinates
   end
 end

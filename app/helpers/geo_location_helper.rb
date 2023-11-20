@@ -19,8 +19,11 @@ module GeoLocationHelper
     degrees * Math::PI / 180
   end
 
-  def initialize_opencage_geocoder
-    result = OpenCage::Geocoder.new(api_key: 'fa93e7ffcb0249ffb0c49d1d387c1d89').geocode(request.ip)
-    result.first.coordinates
+  def initialize_geocoder
+    puts "Request IP ======> #{request.ip}"
+    result = Geocoder.search(request.ip, key: Rails.application.credentials.google.geocoding_api_key).first
+    result.coordinates if result.present?
+
+    "Result ======> #{result.coordinates}"
   end
 end

@@ -97,7 +97,7 @@ class JobsController < ApplicationController
   end
 
   def select_jobs_based_on_radius
-    user_location = initialize_opencage_geocoder
+    user_location = initialize_geocoder
     user_lat = user_location.first
     user_lng = user_location.last
     @jobs = @jobs.select do |job|

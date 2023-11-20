@@ -30,7 +30,7 @@ gem "tailwindcss-rails"
 # Build JSON APIs with ease
 gem "jbuilder"
 # for location
-gem 'opencage-geocoder'
+gem 'geocoder'
 
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4.0"
