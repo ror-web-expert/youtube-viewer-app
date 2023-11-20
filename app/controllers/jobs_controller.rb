@@ -1,3 +1,5 @@
+
+require 'will_paginate/array'
 class JobsController < ApplicationController
   include GeoLocationHelper
 
@@ -93,7 +95,7 @@ class JobsController < ApplicationController
   end
 
   def radius_params_present?
-    radius.present?
+    radius.present? and radius != ""
   end
 
   def select_jobs_based_on_radius
@@ -108,6 +110,7 @@ class JobsController < ApplicationController
         next
       end
     end
+    @jobs =  @jobs.paginate(page: page, per_page: per_page(20))
   end
 
   def radius
