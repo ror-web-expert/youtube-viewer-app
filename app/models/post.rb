@@ -8,7 +8,7 @@ class Post < ApplicationRecord
   before_save :geocode_if_location_changed
 
   enum status: { pending: 'pending', published: 'published',  expire: 'expire' },  _default: :published
-  enum radius: { 25 => 25, 50 => 50, 100 => 100, 200 => 200 }
+  enum radius: { 25 => 25, 50 => 50, 100 => 100, 200 => 200, 250 => 250 }
   scope :order_by_id, -> { order(id: :desc) }
   scope :scraped, -> { where(is_scrap: true) }
   scope :not_scraped, -> { where(is_scrap: false) }

@@ -1,7 +1,7 @@
 module GeoLocationHelper
 
   def haversine(lat1, lon1, lat2, lon2)
-    earth_radius = 6371  # Earth radius in kilometers
+    earth_radius = 3959  # Earth radius in miles
 
     dlat = radians(lat2 - lat1)
     dlon = radians(lon2 - lon1)
