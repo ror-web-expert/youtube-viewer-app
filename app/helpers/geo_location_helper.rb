@@ -20,10 +20,7 @@ module GeoLocationHelper
   end
 
   def initialize_geocoder
-    puts "Request IP ======> #{request.ip}"
     result = Geocoder.search(request.ip, key: Rails.application.credentials.google.geocoding_api_key).first
-    result.coordinates if result.present?
-
-    "Result ======> #{result.coordinates}"
+    result.coordinates
   end
 end
