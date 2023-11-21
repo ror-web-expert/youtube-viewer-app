@@ -6,6 +6,7 @@ export default class extends Controller {
 
   clearForm(){
     $("#job_filter")[0].reset();
+    $(".radius").addClass("hidden")
     this.submitForm();
   }
 
@@ -14,9 +15,14 @@ export default class extends Controller {
   }
 
   handleRadiusRequest(e){
-    if (e.target.value != '' && $(".radius").hasClass("hidden")){
-      $(".radius").removeClass("hidden")
-      toastr.info("Select the Rdaius to see the results")
+    if (e.target.value != ''){
+      if ($(".radius").hasClass("hidden")){
+        $(".radius").removeClass("hidden")
+        toastr.info("Select the Rdaius to see the results")
+      }
+      else if(!$(".radius").hasClass("hidden")){
+        this.submitForm();
+      }
     }
     else if (e.target.value == '' && !$(".radius").hasClass("hidden")){
       $(".radius").addClass("hidden")
