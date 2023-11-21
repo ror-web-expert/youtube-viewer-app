@@ -72,7 +72,7 @@
           </div>
           <!-- Group 5 -->
           <div class = 'relative flex justify-end items-center'>
-            <%= text_field_tag :address_field, params[:address_field], class: "block text-sm font-medium mb-1 border w-full rounded-xl border-gray-200 pr-2 pl-2", autocomplete: 'off', placeholder: "Search by City,State...", data: { action: "keyup->jobs#handleRadiusRequest keydown->jobs#handleRadiusRequest"} do %>
+            <%= text_field_tag :address_field, params[:address_field], class: "block text-sm font-medium mb-1 border w-full rounded-xl border-gray-200 pr-2 pl-2", autocomplete: 'off', placeholder: "Search by City,State...", data: { action: "change->jobs#handleRadiusRequest keyup->jobs#handleRadiusRequest keydown->jobs#handleRadiusRequest"} do %>
               <svg class="absolute mr-3 w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
               </svg>

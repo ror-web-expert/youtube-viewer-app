@@ -10,7 +10,7 @@ export default class extends Controller {
     this.submitForm();
   }
 
-  submitForm(e) {
+  submitForm() {
     $("#submitform")[0].click();
   }
 
