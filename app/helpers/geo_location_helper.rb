@@ -19,8 +19,8 @@ module GeoLocationHelper
     degrees * Math::PI / 180
   end
 
-  def initialize_geocoder
-    result = Geocoder.search(request.ip, key: Rails.application.credentials.google.geocoding_api_key).first
+  def initialize_geocoder(address)
+    result = Geocoder.search(address, key: Rails.application.credentials.google.geocoding_api_key).first
     result&.coordinates
   end
 end

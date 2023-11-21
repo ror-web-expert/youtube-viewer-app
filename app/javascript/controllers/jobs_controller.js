@@ -1,5 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 import 'jquery'
+import 'toast'
 
 export default class extends Controller {
 
@@ -8,8 +9,20 @@ export default class extends Controller {
     this.submitForm();
   }
 
-  submitForm() {
+  submitForm(e) {
     $("#submitform")[0].click();
+  }
+
+  handleRadiusRequest(e){
+    if (e.target.value != '' && $(".radius").hasClass("hidden")){
+      $(".radius").removeClass("hidden")
+      toastr.info("Select the Rdaius to see the results")
+    }
+    else if (e.target.value == '' && !$(".radius").hasClass("hidden")){
+      $(".radius").addClass("hidden")
+      $("#radius").val(null)
+      this.submitForm();
+    }
   }
 
   resetUrl(){
