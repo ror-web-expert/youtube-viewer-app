@@ -8,7 +8,7 @@ class Post < ApplicationRecord
   before_save :geocode_if_location_changed
 
   enum status: { pending: 'pending', published: 'published',  expire: 'expire' },  _default: :published
-  enum radius: { 25 => 25, 50 => 50, 100 => 100, 200 => 200, 250 => 250 }
+  enum radius: { 1 => 1, 2 => 2, 5 => 5, 10 => 10, 20 => 20 }
   scope :order_by_id, -> { order(id: :desc) }
   scope :scraped, -> { where(is_scrap: true) }
   scope :not_scraped, -> { where(is_scrap: false) }
@@ -56,7 +56,7 @@ class Post < ApplicationRecord
   end
 
   def geocode_address(address)
-    result = Geocoder.search(address, key: Rails.application.credentials.google.geocoding_api_key).first
+    result = Geocoder.search(address, key: Rails.application.credentials.google.geocoding_api_key, params: {countrycodes: "us"}).first
     result&.coordinates
   end
 end
