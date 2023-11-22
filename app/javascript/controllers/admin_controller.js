@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 import 'jquery'
-import 'toast'
+import 'toastr'
 
 export default class extends Controller {
   

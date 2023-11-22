@@ -64,7 +64,9 @@
       <em class = 'text-gray-600 text-sm mb-3'>
         <p> No Job Found Agianst Your Search</p>
         <script>
-          toastr.info("Kindly readjust the Search Criteria or Clear the Filters and Try Agian")
+          document.addEventListener('turbo:load', function(event) {
+            toastr.info("Readjust the Search Criteria or Clear the Filters and Try Agian")
+          });
         </script>
       </em>
     </div>

@@ -1,17 +1,21 @@
 import { Controller } from "@hotwired/stimulus"
 import 'jquery'
-import 'toast'
+import 'toastr'
 
 export default class extends Controller {
-
+  
   clearForm(){
-    $("#job_filter")[0].reset();
+    $("#job_filter :checkbox").prop("checked", false);
+    $("#job_filter :input[type='text']").val('');
+    $("#job_filter select").val('');
     $(".radius").addClass("hidden")
     this.submitForm();
   }
 
   submitForm() {
+    this.updateUrl()
     $("#submitform")[0].click();
+
   }
 
   handleRadiusRequest(e){
@@ -31,9 +35,8 @@ export default class extends Controller {
     }
   }
 
-  resetUrl(){
-    var baseUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
-    history.pushState({}, document.title, baseUrl);
+  resetUrl(url){
+    history.pushState({}, document.title, url);
   }
 
   showFilter(e){
@@ -52,5 +55,36 @@ export default class extends Controller {
 
   selectCheckBox(e){
     $('input[type="checkbox"][value="' + e.target.textContent + '"]').prop('checked', true);
+  }
+
+  updateUrl(source){
+    var formData = $("#job_filter").serializeArray().filter(function(item) {
+      return item.value !== "" && item.value !== null;
+    });
+    if(formData.length > 0){
+      var currentUrl = window.location.origin + "?" + this.formatUrl(formData);
+      this.resetUrl(currentUrl)
+    }
+    else{
+      this.resetUrl(window.location.origin)
+    }
+  }
+
+  formatUrl(formData){
+    let formattedParams = {}
+    $.each(formData, function(index, value) {
+      var key = value.name.replace(/\[\]/g, '')
+      var val = value.value
+        if (formattedParams.hasOwnProperty(key)) {
+          formattedParams[key].push(val)
+        }
+        else if(value.name.includes("[]")){
+          formattedParams[key] = [val]
+        }
+        else {
+          formattedParams[key] = val
+        }
+    });
+    return $.param(formattedParams);
   }
 }
