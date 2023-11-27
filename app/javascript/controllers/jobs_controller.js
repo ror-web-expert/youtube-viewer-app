@@ -3,7 +3,7 @@ import 'jquery'
 import 'toastr'
 
 export default class extends Controller {
-  
+
   clearForm(){
     $("#job_filter :checkbox").prop("checked", false);
     $("#job_filter :input[type='text']").val('');
@@ -22,7 +22,7 @@ export default class extends Controller {
     if (e.target.value != ''){
       if ($(".radius").hasClass("hidden")){
         $(".radius").removeClass("hidden")
-        toastr.info("Select the Rdaius to see the results")
+        toastr.info("Select the Radius to see the results")
       }
       else if(!$(".radius").hasClass("hidden")){
         this.submitForm();

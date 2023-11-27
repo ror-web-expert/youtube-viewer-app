@@ -99,18 +99,24 @@ class JobsController < ApplicationController
   end
 
   def select_jobs_based_on_radius
-    user_location = initialize_geocoder(params[:address_field])
-    user_lat = user_location&.first
-    user_lng = user_location&.last
-    @jobs = @jobs.select do |job|
-      loc = job.location
-      if loc.present?
-        haversine(user_lat, user_lng, loc&.lat, loc&.lng) <= radius.to_i
-      else
-        next
+    location_coordinates = initialize_geocoder(params[:address_field])
+    selected_jobs = []
+
+    location_coordinates.each do |location_coordinate|
+      location_lat, location_lng = location_coordinate&.first, location_coordinate&.last
+
+      within_radius_jobs = @jobs.select do |job|
+        location = job.location
+        next unless location.present?
+
+        haversine_distance = haversine(location_lat, location_lng, location&.lat, location&.lng)
+        haversine_distance <= radius.to_i
       end
+
+      selected_jobs.concat(within_radius_jobs)
     end
-    @jobs =  @jobs.paginate(page: page, per_page: per_page(20))
+
+    @jobs = selected_jobs.uniq.paginate(page: page, per_page: per_page(20))
   end
 
   def radius

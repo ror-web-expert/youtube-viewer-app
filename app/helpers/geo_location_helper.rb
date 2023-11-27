@@ -20,7 +20,7 @@ module GeoLocationHelper
   end
 
   def initialize_geocoder(address)
-    result = Geocoder.search(address, key: Rails.application.credentials.google.geocoding_api_key, params: {countrycodes: "us"}).first
-    result&.coordinates
+    result = Geocoder.search(address, key: Rails.application.credentials.google.geocoding_api_key, params: {countrycodes: "us"})
+    result.map(&:coordinates)
   end
 end
