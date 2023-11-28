@@ -25,10 +25,15 @@ export default class extends Controller {
         toastr.info("Select the Radius to see the results")
       }
       else if(!$(".radius").hasClass("hidden")){
-        this.submitForm();
+        if ($("#radius").val() != ''){
+          this.submitForm();
+        }
       }
-    }
-    else if (e.target.value == '' && !$(".radius").hasClass("hidden")){
+    } else if (e.target.value == '' && !$(".radius").hasClass("hidden")) {
+      $(".radius").addClass("hidden")
+      $("#radius").val(null)
+      this.submitForm();
+    } else {
       $(".radius").addClass("hidden")
       $("#radius").val(null)
       this.submitForm();

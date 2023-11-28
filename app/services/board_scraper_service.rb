@@ -155,6 +155,8 @@ class BoardScraperService
         data_hash[key] = full_url(element.css(value).attr('href')&.value)
       elsif key.include?('job_type')
         data_hash[key] = element.css(value)&.text&.gsub(/Regular\s*:?/i, ' ')&.squish
+      elsif key.include?('location')
+        data_hash[key] = element.css(value)&.text&.gsub(/Location|location\s*:?/i, ' ')&.squish
       elsif key.include?('remote_type')
         data_hash[key] = standardise_remote_type(element.css(value)&.text)
       else
