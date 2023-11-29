@@ -52,7 +52,7 @@ THRIVE_SPC = {
       "scroll_count": "7"
     },
     "response_selector": {
-      "location": ".career-details .column .blue"
+      "location": ".career-details .column p.blue"
     }
   },
   "detail_selector": {

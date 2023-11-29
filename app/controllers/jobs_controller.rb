@@ -113,7 +113,7 @@ class JobsController < ApplicationController
         location_lat, location_lng = location_coordinate&.first, location_coordinate&.last
 
         haversine_distance = haversine(location_lat, location_lng, location&.lat, location&.lng)
-        selected_jobs << job if haversine_distance <= radius.to_i || haversine_distance.to_i == 0
+        selected_jobs << job if haversine_distance <= radius.to_i || haversine_distance.zero?
       end
     end
     @jobs = selected_jobs.uniq
