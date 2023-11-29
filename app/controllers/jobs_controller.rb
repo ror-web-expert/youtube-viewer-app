@@ -8,7 +8,9 @@ class JobsController < ApplicationController
   before_action :filter_jobs, :filtered_job_types, :filter_job_specialities, :shift_types, :remote_types, only: %i[index]
   before_action :select_jobs_based_on_radius, only: %i[index], if: :radius_params_present?
 
-  def index; end
+  def index
+    response_data_with_pagination
+  end
 
   def show; end
 
@@ -54,10 +56,11 @@ class JobsController < ApplicationController
 
   def filter_jobs
     @jobs = if params[:query].present?
-      published_jobs.search(params[:query]).order_by_id.paginate(page: page, per_page: per_page(20))
-    else
-      published_jobs.order_by_id.paginate(page: page, per_page: per_page(20))
-    end
+              published_jobs.search(params[:query]).order_by_id
+            else
+              published_jobs.order_by_id
+            end
+
     if @filter_conditions.present?
       where_clause = @filter_conditions.keys.join(' AND ')
       @jobs = @jobs.where(where_clause, *@filter_conditions.values)
@@ -102,24 +105,25 @@ class JobsController < ApplicationController
     location_coordinates = initialize_geocoder(params[:address_field])
     selected_jobs = []
 
-    location_coordinates.each do |location_coordinate|
-      location_lat, location_lng = location_coordinate&.first, location_coordinate&.last
+    @jobs.each do |job|
 
-      within_radius_jobs = @jobs.select do |job|
-        location = job.location
-        next unless location.present?
+      location = job.location
+      next unless location.present?
+      location_coordinates.each do |location_coordinate|
+        location_lat, location_lng = location_coordinate&.first, location_coordinate&.last
 
         haversine_distance = haversine(location_lat, location_lng, location&.lat, location&.lng)
-        haversine_distance <= radius.to_i
+        selected_jobs << job if haversine_distance <= radius.to_i || haversine_distance.to_i == 0
       end
-
-      selected_jobs.concat(within_radius_jobs)
     end
-
-    @jobs = selected_jobs.uniq.paginate(page: page, per_page: per_page(20))
+    @jobs = selected_jobs.uniq
   end
 
   def radius
     params[:radius]
+  end
+
+  def response_data_with_pagination
+    @jobs = @jobs.paginate(page: page, per_page: per_page(20))
   end
 end
