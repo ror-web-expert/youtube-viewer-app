@@ -23,4 +23,16 @@ module GeoLocationHelper
     result = Geocoder.search(address, key: Rails.application.credentials.google.geocoding_api_key, params: {countrycodes: "us"})
     result.map(&:coordinates)
   end
+
+
+  def search_coordinates_location_query(address)
+    result = Geocoder.search(address, key: Rails.application.credentials.google.geocoding_api_key, params: { countrycodes: "us" })
+
+    @search_location = result.map do |location|
+      display_address = [location.city, location.state].compact.uniq.join(", ")
+      coordinates = [location.coordinates]
+
+      { display_address: display_address, coordinates: coordinates }
+    end
+  end
 end

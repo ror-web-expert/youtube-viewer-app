@@ -11,7 +11,11 @@ Rails.application.routes.draw do
 
   root 'jobs#index'
 
-  resources :jobs, only: %i[index show]
+  resources :jobs, only: %i[index show] do
+    collection do
+      get 'search_location'
+    end
+  end
 
   namespace :admin do
     resources :dashboard, only: [:index]

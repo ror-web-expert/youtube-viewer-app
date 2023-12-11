@@ -3190,3 +3190,54 @@ button[aria-selected = "true"] {
 .\[\&\:nth-child\(-n\+12\)\]\:-order-1:nth-child(-n + 12) {
   order: -1;
 }
+
+/* Add styles as needed */
+.autocomplete-suggestions {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  position: absolute;
+  background-color: #fff;
+  z-index: 1000;
+  width: 100%;
+  top: 100%;
+
+}
+
+/* width */
+.autocomplete-suggestions::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track */
+.autocomplete-suggestions::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.autocomplete-suggestions::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+.autocomplete-suggestions::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.autocomplete-suggestions li {
+  padding: 8px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+}
+
+/*.autocomplete-suggestions li:last-child {*/
+/*  border-bottom: none;*/
+/*}*/
+
+.autocomplete-suggestions li:hover {
+  background-color: #f0f0f0;
+}

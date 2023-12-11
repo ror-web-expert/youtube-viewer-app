@@ -14,13 +14,28 @@
             <% end %>
           </div>
           <!-- Group 1 -->
-          <div class = 'relative flex justify-end items-center'>
-            <%= text_field_tag :address_field, params[:address_field], class: "block text-sm font-medium mb-1 border w-full rounded-xl border-gray-200 pr-2 pl-2", autocomplete: 'off', placeholder: "Search by City,Zip code...", data: { action: "change->jobs#handleRadiusRequest keyup->jobs#handleRadiusRequest keydown->jobs#handleRadiusRequest"} do %>
+          <div class = 'relative flex justify-end items-center hidden'>
+            <%= text_field_tag :address_field, params[:address_field], class: "block text-sm font-medium mb-1 border w-full rounded-xl border-gray-200 pr-2 pl-2", autocomplete: 'off', placeholder: "Search by City,Zip code...", data: { action: "change->jobs#handleRadiusRequest"} do %>
               <svg class="absolute mr-3 w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
               </svg>
             <% end %>
           </div>
+
+          <div data-controller="jobs">
+            <div class='relative  flex justify-end items-center'>
+              <%= text_field_tag :search_field, params[:search_field], class: "block text-sm font-medium mb-1 border w-full rounded-xl border-gray-200 pr-2 pl-2", autocomplete: 'off', placeholder: "Search by City, Zip code...", data: { action: "input->jobs#handleAddressRequest keyup->jobs#handleAddressRequest" } do %>
+                <svg class="absolute mr-3 w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                </svg>
+              <% end %>
+
+              <ul data-target="jobs.suggestions" id="job-suggestions" class="absolute autocomplete-suggestions left-0 mt-1 bg-white w-full border rounded-lg border-gray-300 z-10 hidden">
+                <!-- Suggestions will be added dynamically here -->
+              </ul>
+            </div>
+          </div>
+
           <!-- Group 2 -->
           <div class = 'radius hidden'>
             <div class="text-sm text-gray-800 font-semibold mb-3">Radius</div>

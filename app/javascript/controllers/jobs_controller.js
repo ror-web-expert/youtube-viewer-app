@@ -4,11 +4,15 @@ import 'toastr'
 
 export default class extends Controller {
 
+  static targets = ['input', 'suggestions']; // Make sure 'suggestions' is included
+
+
   clearForm(){
     $("#job_filter :checkbox").prop("checked", false);
     $("#job_filter :input[type='text']").val('');
     $("#job_filter select").val('');
     $(".radius").addClass("hidden")
+    $("#search_field").val('')
     this.submitForm();
   }
 
@@ -38,6 +42,49 @@ export default class extends Controller {
       $("#radius").val(null)
       this.submitForm();
     }
+  }
+  handleAddressRequest(e) {
+    let query = e.target.value;
+    if (query.length >= 2) {
+
+      $.ajax({
+        url: `jobs/search_location?location_query=${query}`,
+        method: 'GET',
+        dataType: 'json',
+        success: (response) => {
+          this.displaySuggestions(response.data);
+        },
+        error: (xhr, status, error) => {
+          console.error('Error fetching autocomplete data:', error);
+        }
+      },100);
+    }
+  }
+
+  displaySuggestions(data) {
+   this.suggestionsTarget.innerHTML = data.map(result => `<li class="" data-coordinates="${result.coordinates}" data-action="click->jobs#selectResult">${result.display_address}</li>`).join('');
+    $("#job-suggestions").show()
+  }
+
+  selectResult(event) {
+    let coordinates = event.target.dataset['coordinates']
+    let selectedResult = event.target.textContent;
+
+    $("#address_field").val(coordinates)
+    $("#search_field").val(selectedResult)
+    $("#job-suggestions").hide()
+
+    if ($(".radius").hasClass("hidden")){
+      $(".radius").removeClass("hidden")
+      toastr.info("Select the Radius to see the results")
+    }
+    else if(!$(".radius").hasClass("hidden")){
+      if ($("#radius").val() != ''){
+        this.submitForm();
+      }
+    }
+
+    this.suggestionsTarget.innerHTML = '';
   }
 
   resetUrl(url){
