@@ -85,7 +85,11 @@ class JobsController < ApplicationController
   end
 
   def published_jobs
-    resource_class.scraped.response_data_exist
+    @published_jobs ||= scraped_jobs.published.response_data_exist
+  end
+
+  def scraped_jobs
+    @scraped_jobs ||= resource_class.scraped
   end
 
   def filter_params
