@@ -43,8 +43,14 @@ export default class extends Controller {
       this.submitForm();
     }
   }
+
+
   handleAddressRequest(e) {
     let query = e.target.value;
+    clearTimeout(this.searchTimeout);
+
+    // Set a new timeout for 2000 milliseconds (2 seconds)
+    this.searchTimeout = setTimeout(() => {
     if (query.length >= 2) {
 
       $.ajax({
@@ -57,8 +63,10 @@ export default class extends Controller {
         error: (xhr, status, error) => {
           console.error('Error fetching autocomplete data:', error);
         }
-      },100);
-    }
+      });
+    }else{
+      $(".radius").addClass("hidden")
+    }}, 500);
   }
 
   displaySuggestions(data) {
