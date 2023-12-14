@@ -571,3 +571,32 @@ HOSPICE_OF_THE_VALLEY = {
   },
   "logo": "HOSPICE_OF_THE_VALLEY.jpg"
 }
+
+BANNER_HEALTH = {
+  "listing_selector": {
+    "job-container-list": ".css-8j5iuw ul li.css-1q2dra3",
+    "main_selector": {
+      "title": "h3",
+      "source_url": "a"
+    },
+    "pagination": {
+      "next_button": ".css-3z7fsk .css-19yi5fs button[data-uxi-element-id='next']"
+    },
+    "response_selector": {
+      "location": ".css-248241 .css-k008qs dl dd.css-129m7dg"
+    }
+  },
+  "detail_selector": {
+    "job_does_not_exist": {
+      "not_found_container": "body div",
+      "not_found_text": "Job board does not exist or is unavailable at this time."
+    },
+    "job-detail-container": ".css-e23il0",
+    "response_selector": {
+      "job_type": ".css-ey7qxc .css-k008qs dl .css-129m7dg",
+      "get_from_content": ".css-11p01j8",
+      "description_raw_html": ".css-ey7qxc"
+    }
+  },
+  "logo": "banner-health.png"
+}
