@@ -600,3 +600,40 @@ BANNER_HEALTH = {
   },
   "logo": "banner-health.png"
 }
+
+TENET_HEALTH = {
+  "listing_selector": {
+    "job-container-list": "#search-results-list>ul li",
+    "main_selector": {
+      "title": "a h2",
+      "source_url": "a"
+    },
+    "cookies_modal": {
+      "id": "#gdpr-alert #gdpr-button",
+      "button_text": "Accept"
+    },
+    "pagination": {
+      "next_button": ".pagination-paging a.next:not([class='next disabled'])"
+    },
+    "response_selector": {
+      "location": "a span.job-location"
+    }
+  },
+  "detail_selector": {
+    "cookies_modal": {
+      "id": "#gdpr-alert #gdpr-button",
+      "button_text": "Accept"
+    },
+    "job_does_not_exist": {
+      "not_found_container": ".content h1",
+      "not_found_text": "Job Error"
+    },
+    "job-detail-container": ".ajd-content .ajd",
+    "response_selector": {
+      "apply_now_url": ".ajd_btn__apply.ajd-button.job-apply.top",
+      "get_from_content": "#anchor-responsibilties",
+      "description_raw_html": "#anchor-responsibilties"
+    }
+  },
+  "logo": "tenet-health.png"
+}
