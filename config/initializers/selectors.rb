@@ -628,11 +628,11 @@ TENET_HEALTH = {
       "not_found_container": ".content h1",
       "not_found_text": "Job Error"
     },
-    "job-detail-container": ".ajd-content .ajd",
+    "job-detail-container": ".content",
     "response_selector": {
-      "apply_now_url": ".ajd_btn__apply.ajd-button.job-apply.top",
-      "get_from_content": "#anchor-responsibilties",
-      "description_raw_html": "#anchor-responsibilties"
+      "apply_now_url": ".job-apply.top",
+      "get_from_content": "section.job-description",
+      "description_raw_html": "section.job-description"
     }
   },
   "logo": "tenet-health.png"
