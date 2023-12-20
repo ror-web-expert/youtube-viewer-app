@@ -63,6 +63,6 @@ module ApplicationHelper
   end
 
   def logo_present?(name)
-    ActionController::Base.helpers.asset_path(name)
+    ActionController::Base.helpers.asset_path(name) rescue false
   end
 end
