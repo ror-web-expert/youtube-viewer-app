@@ -23,7 +23,7 @@ class Post < ApplicationRecord
   }
 
   def check_response_data_change
-    if saved_change_to_response_data?
+    if saved_change_to_response_data? && response_data.present? && response_data['description_raw_html'].present?
       update(is_scrap: true)
     end
   end
