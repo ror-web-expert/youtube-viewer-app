@@ -156,7 +156,7 @@ class BoardScraperService
       elsif key.include?('job_type')
         data_hash[key] = element.css(value)&.text&.gsub(/Regular\s*:?/i, ' ')&.squish
       elsif key.include?('location')
-        data_hash[key] = element.css(value)&.text&.gsub(/Location|Location:|location|location:|home|remote\s*:?/i, ' ')&.gsub(":"," ")&.titleize&.squish
+        data_hash[key] = element.css(value)&.text&.gsub(/Location|Location:|location|location:|home|remote\s*:?/i, ' ')&.gsub(":"," ")&.squish
       elsif key.include?('remote_type')
         data_hash[key] = standardise_remote_type(element.css(value)&.text)
       else

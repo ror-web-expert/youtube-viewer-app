@@ -62,7 +62,7 @@ class PostScraperService
         elsif index.include?("department")
           data_hash[index] = extract_data_without_hash(element, value)&.gsub(/Department\s*:?/i, ' ')&.squish
         elsif index.include?("location")
-          data_hash[index] = extract_data_without_hash(element, value)&.gsub(/Location|Location:|location|location:|home|remote\s*:?/i, ' ')&.gsub(":"," ")&.titleize&.squish
+          data_hash[index] = extract_data_without_hash(element, value)&.gsub(/Location|Location:|location|location:|home|remote\s*:?/i, ' ')&.gsub(":"," ")&.squish
         elsif index.include?("shift_type")
           data_hash[index] = extract_data_without_hash(element, value)&.gsub(/\d+\s*-\s*([a-zA-Z]+)/) { $1 }&.squish&.gsub(/Shifts|shift|#\s*:?/i, ' ')&.squish
         elsif index.include?("remote_type")
