@@ -583,7 +583,7 @@ BANNER_HEALTH = {
       "next_button": ".css-3z7fsk .css-19yi5fs button[data-uxi-element-id='next']"
     },
     "response_selector": {
-      "location": ".css-248241 .css-k008qs dl dd.css-129m7dg"
+      "location": ".css-14a0imc li[3]"
     }
   },
   "detail_selector": {
