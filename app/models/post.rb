@@ -52,7 +52,7 @@ class Post < ApplicationRecord
     # changed_attributes["response_data"]["location"] == response_data["location"]
 
     location = response_data['location']
-    create_or_attach_location(location)
+    create_or_attach_location(location) unless self.location_id.present?
   end
 
   def geocode_address(address)
