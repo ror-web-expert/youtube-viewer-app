@@ -33,7 +33,7 @@ class PostScraperService
     end
     close_browser
   rescue => e
-    puts "URL: #{ admin_post_path(@post) } Error: #{e.message}"
+    puts "URL: #{Rails.application.credentials.base_url}/admin/posts/#{@post.id} Error: #{e.message}"
     close_browser
   end
 
