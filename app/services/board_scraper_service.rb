@@ -26,7 +26,7 @@ class BoardScraperService
     expired_jobs
     close_browser
   rescue => e
-    puts "URL: #{Rails.application.credentials.base_url}/admin/board/#{@board.id} Error: #{e.message}"
+    puts "URL: #{Rails.application.credentials.base_url}/admin/boards/#{@board.id} Error: #{e.message}"
     close_browser
   end
 
