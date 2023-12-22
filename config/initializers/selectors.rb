@@ -251,7 +251,7 @@ ENVITA = {
   "detail_selector": {
     "job_does_not_exist": {
       "not_found_container": ".job-header .container",
-      "not_found_text": "Hiring for this position has been put on hold at this time.\nClick here to view more opportunities at Envita Medical Center."
+      "not_found_text": "This position is no longer available.\nClick here to view more opportunities at Envita Medical Center."
     },
 
     "job-detail-container": "main",
