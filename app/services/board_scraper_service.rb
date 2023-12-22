@@ -26,7 +26,7 @@ class BoardScraperService
     expired_jobs
     close_browser
   rescue => e
-    puts e.message
+    puts "URL: #{ admin_board_path(@board) } Error: #{e.message}"
     close_browser
   end
 

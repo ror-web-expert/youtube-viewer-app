@@ -33,7 +33,7 @@ class PostScraperService
     end
     close_browser
   rescue => e
-    puts e.message
+    puts "URL: #{ admin_post_path(@post) } Error: #{e.message}"
     close_browser
   end
 
