@@ -33,6 +33,6 @@ module GeoLocationHelper
       coordinates = [location.coordinates]
 
       { display_address: display_address, coordinates: coordinates }
-    end
+    end.uniq { |existing_location| existing_location[:display_address] }
   end
 end
