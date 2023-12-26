@@ -44,60 +44,70 @@
           </div>
           <!-- Group 3 -->
           <div>
-            <div class="text-sm text-gray-800 font-semibold mb-3">Job Type</div>
-            <ul class="space-y-2">
-              <% @filtered_job_types.map do |job_type, job_count| %>
-                <li>
-                  <label class="flex items-center">
-                    <%= check_box_tag "job_type[]", job_type, params[:job_type].present? && params[:job_type].include?(job_type) ? true : false, class: "form-checkbox", data: { action: "change->jobs#submitForm" } %>
-                    <span class="text-sm text-gray-600 ml-2"><%= "#{job_type} (#{job_count})" %></span>
-                  </label>
-                </li>
-              <% end %>
-            </ul>
+            <% if @filtered_job_types.present? %>
+              <div class="text-sm text-gray-800 font-semibold mb-3">Job Type</div>
+              <ul class="space-y-2">
+                <% @filtered_job_types.map do |job_type, job_count| %>
+                  <li>
+                    <label class="flex items-center">
+                      <%= check_box_tag "job_type[]", job_type, params[:job_type].present? && params[:job_type].include?(job_type) ? true : false, class: "form-checkbox", data: { action: "change->jobs#submitForm" } %>
+                      <span class="text-sm text-gray-600 ml-2"><%= "#{job_type} (#{job_count})" %></span>
+                    </label>
+                  </li>
+                <% end %>
+              </ul>
+            <% end %>
           </div>
           <!-- Group 4 -->
           <div>
-            <div class="text-sm text-gray-800 font-semibold mb-3">Job Speciality</div>
-            <ul style='transition: .5s all' class="space-y-2 h-[230px] overflow-hidden relative duration-500" id="speciality">
-              <% @filter_job_specialities.each do |speciality, speciality_count| %>
-                <li>
-                  <label class="flex items-center">
-                    <%= check_box_tag "speciality[]", speciality, params[:speciality].present? && params[:speciality].include?(speciality) ? true : false, class: "form-checkbox", data: { action: "change->jobs#submitForm" } %>
-                    <span class="text-sm text-gray-600 ml-2"><%= "#{speciality} (#{speciality_count})" %></span>
-                  </label>
-                </li>
-              <% end %>
-              <button class='leading-none absolute bottom-0 right-0 text-sm font-medium text-indigo-500 hover:underline' data-action='click->jobs#showFilter'>Show More</button>
-            </ul>
+            <% if @filter_job_specialities.present? %>
+              <div class="text-sm text-gray-800 font-semibold mb-3">Job Speciality</div>
+              <ul style='transition: .5s all' class="space-y-2 h-[230px] overflow-hidden relative duration-500" id="speciality">
+                <% @filter_job_specialities.each do |speciality, speciality_count| %>
+                  <li>
+                    <label class="flex items-center">
+                      <%= check_box_tag "speciality[]", speciality, params[:speciality].present? && params[:speciality].include?(speciality) ? true : false, class: "form-checkbox", data: { action: "change->jobs#submitForm" } %>
+                      <span class="text-sm text-gray-600 ml-2"><%= "#{speciality} (#{speciality_count})" %></span>
+                    </label>
+                  </li>
+                <% end %>
+                <button class='leading-none absolute bottom-0 right-0 text-sm font-medium text-indigo-500 hover:underline' data-action='click->jobs#showFilter'>Show
+                  More
+                </button>
+              </ul>
+            <% end %>
           </div>
           <!-- Group 5 -->
           <div>
-            <div class="text-sm text-gray-800 font-semibold mb-3">Shift Type</div>
-            <ul class="space-y-2">
-              <% @shift_types.map do |shift_type, shift_count| %>
-                <li>
-                  <label class="flex items-center">
-                    <%= check_box_tag "shift_type[]", shift_type, params[:shift_type].present? && params[:shift_type].include?(shift_type) ? true : false, class: "form-checkbox", data: { action: "change->jobs#submitForm" } %>
-                    <span class="text-sm text-gray-600 ml-2"><%= "#{shift_type} (#{shift_count})"  %></span>
-                  </label>
-                </li>
-              <% end %>
-            </ul>
+            <% if @shift_types.present? %>
+              <div class="text-sm text-gray-800 font-semibold mb-3">Shift Type</div>
+              <ul class="space-y-2">
+                <% @shift_types.map do |shift_type, shift_count| %>
+                  <li>
+                    <label class="flex items-center">
+                      <%= check_box_tag "shift_type[]", shift_type, params[:shift_type].present? && params[:shift_type].include?(shift_type) ? true : false, class: "form-checkbox", data: { action: "change->jobs#submitForm" } %>
+                      <span class="text-sm text-gray-600 ml-2"><%= "#{shift_type} (#{shift_count})" %></span>
+                    </label>
+                  </li>
+                <% end %>
+              </ul>
+            <% end %>
           </div>
           <!-- Group 6 -->
           <div>
-            <div class="text-sm text-gray-800 font-semibold mb-3">Remote Type</div>
-            <ul class="space-y-2">
-              <% @remote_types.map do |remote_type, remote_count| %>
-                <li>
-                  <label class="flex items-center">
-                    <%= check_box_tag "remote_type[]", remote_type, params[:remote_type].present? && params[:remote_type].include?(remote_type) ? true : false, class: "form-checkbox", data: { action: "change->jobs#submitForm"} %>
-                    <span class="text-sm text-gray-600 ml-2"><%= "#{remote_type} (#{remote_count})"  %></span>
-                  </label>
-                </li>
-              <% end %>
-            </ul>
+            <% if @remote_types.present? %>
+              <div class="text-sm text-gray-800 font-semibold mb-3">Remote Type</div>
+              <ul class="space-y-2">
+                <% @remote_types.map do |remote_type, remote_count| %>
+                  <li>
+                    <label class="flex items-center">
+                      <%= check_box_tag "remote_type[]", remote_type, params[:remote_type].present? && params[:remote_type].include?(remote_type) ? true : false, class: "form-checkbox", data: { action: "change->jobs#submitForm" } %>
+                      <span class="text-sm text-gray-600 ml-2"><%= "#{remote_type} (#{remote_count})" %></span>
+                    </label>
+                  </li>
+                <% end %>
+              </ul>
+            <% end %>
           </div>
         </div>
         <input type="submit", class="hidden" id="submitform" />
