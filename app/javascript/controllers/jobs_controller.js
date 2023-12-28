@@ -101,12 +101,13 @@ export default class extends Controller {
 
   showFilter(e){
     e.preventDefault();
-    if (e.target.textContent == "Show More"){
+    let filterContent = e.target.textContent.replace(/\s+/g, " ").trim()
+    if (filterContent == "Show More"){
         $("#speciality").removeClass("h-[230px]")
         $("#speciality").addClass("h-full")
         e.target.textContent = 'Show Less'
     }
-    else if (e.target.textContent == "Show Less"){
+    else if (filterContent == "Show Less"){
       $("#speciality").removeClass("h-full")
       $("#speciality").addClass("h-[230px]")
       e.target.textContent = 'Show More'
