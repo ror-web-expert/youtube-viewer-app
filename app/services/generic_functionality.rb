@@ -66,6 +66,8 @@ module GenericFunctionality
       "Full Time"
     when *["Temporary Part Time", "Part Time", "Part-Time", "PT"]
       "Part Time"
+    when *["PRN", "Prn", "prn"]
+      "PRN"
     else
       nil
     end

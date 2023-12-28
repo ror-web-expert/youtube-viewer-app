@@ -67,12 +67,22 @@ class PostScraperService
           data_hash[index] = extract_data_without_hash(element, value)&.gsub(/\d+\s*-\s*([a-zA-Z]+)/) { $1 }&.squish&.gsub(/Shifts|shift|#\s*:?/i, ' ')&.squish
         elsif index.include?("remote_type")
           data_hash[index] = standardise_remote_type(extract_data_without_hash(element, value))
-        elsif index.include?("job_type") || index.include?("schedule")
+        elsif index.include?("job_type")
+          data_hash[index] = if @post.title.include?("PRN")
+                               "PRN"
+                             else
+                               extract_data_without_hash(element, value)&.gsub(/\d+\s*-\s*([a-zA-Z]+)/) { $1 }&.squish&.gsub(/Weekly|Schedule|Type|Employment|Shifts|Pay|Posted|#\s*:?/i, ' ')&.squish
+                             end
+        elsif index.include?("schedule")
           data_hash[index] = extract_data_without_hash(element, value)&.gsub(/\d+\s*-\s*([a-zA-Z]+)/) { $1 }&.squish&.gsub(/Weekly|Schedule|Type|Employment|Shifts|Pay|Posted|#\s*:?/i, ' ')&.squish
         elsif index.include?("get_from_content")
           job_description           = extract_data_without_hash(element, value)&.squish
           return unless job_description.present?
-          data_hash["job_type"]     = get_job_type_from_description(job_description) if @post.response_data["job_type"].blank?
+          data_hash["job_type"]     = if @post.title.include?("PRN")
+                                        "PRN"
+                                      else
+                                        get_job_type_from_description(job_description) if @post.response_data["job_type"].blank?
+                                      end
           data_hash["remote_type"]  = standardise_remote_type(get_remote_type_from_description(job_description)) if @post.response_data["remote_type"].blank?
           data_hash["salary_range"] = get_salary_range_from_description(job_description)  if @post.response_data["salary_range"].blank?
         else
