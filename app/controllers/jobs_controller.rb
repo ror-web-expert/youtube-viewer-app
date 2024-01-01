@@ -2,6 +2,7 @@
 require 'will_paginate/array'
 class JobsController < ApplicationController
   include GeoLocationHelper
+  include JobsHelper
 
   before_action :set_post, :related_jobs, only: %i[show]
   before_action :prepare_query, only: %i[index], if: :any_filter_present?
@@ -36,7 +37,7 @@ class JobsController < ApplicationController
       matching_keys = Job_Speciality_Filter.select { |_, values| values.include?(key) }.keys
       matching_keys.each { |matching_key| display_name_with_total_counts[matching_key] += value }
     end
-    @filter_job_specialities = display_name_with_total_counts
+    @filter_job_specialities = custom_sort_hash_with_alphabetically(display_name_with_total_counts)
   end
 
   def shift_types

@@ -9,7 +9,7 @@ Job_Speciality_Filter = {
   "Progressive Care" => ["PCU"],
   "Telemetry" => ["Telemetry"],
   "Cardiology" => ["Cardiac"],
-  "Transplan Surgery" => ["Transplant"],
+  "Transplant Surgery" => ["Transplant"],
   "Gatroenterology" => ["Gastro"],
   "Psychiatry" => ["Psych"],
   "Geriatrics" => ["BICU"],
@@ -26,6 +26,7 @@ Job_Speciality_Filter = {
   "TCU" => ["TCU"],
   "ORC" => ["ORC"],
   "LPN" => ["LPN"],
-  "Dialysis" => ["Dialysis"]
+  "Dialysis" => ["Dialysis"],
+  "Surgical" => ["Surg Ortho", "Surg Neurol", "Surg Oncol", "Surgical Tech"]
 }
 
