@@ -7,9 +7,8 @@ class JobsController < ApplicationController
   before_action :set_post, :related_jobs, only: %i[show]
   before_action :prepare_query, only: %i[index], if: :any_filter_present?
   before_action :filter_jobs, :filtered_job_types, :filter_job_specialities, :shift_types, :remote_types, only: %i[index]
-  before_action :select_jobs_based_on_radius, only: %i[index], if: :radius_params_present?
   before_action :search_location_with_coordinates, only: %i[search_location], if: :location_query_params_present?
-
+  before_action :select_jobs_based_on_radius, only: %i[index], if: :radius_params_present?
   def index
     response_data_with_pagination
   end
@@ -108,7 +107,7 @@ class JobsController < ApplicationController
   end
 
   def radius_params_present?
-    radius.present? and radius != ""
+    radius.present? and address_field_present? and radius != ""
   end
 
   def location_query_params_present?
@@ -116,7 +115,7 @@ class JobsController < ApplicationController
   end
 
   def select_jobs_based_on_radius
-    location_coordinate = address_field.split(",") if address_field.present?
+    location_coordinate = address_field.split(",") if address_field_present?
     selected_jobs = []
 
     @jobs.each do |job|
@@ -142,6 +141,10 @@ class JobsController < ApplicationController
 
   def address_field
     params[:address_field]
+  end
+
+  def address_field_present?
+    params[:address_field].present?
   end
 
   def location_query
