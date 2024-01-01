@@ -40,7 +40,7 @@
           <div class = 'radius hidden'>
             <div class="text-sm text-gray-800 font-semibold mb-3">Radius</div>
             <label class="sr-only">Radius</label>
-            <%= select_tag 'radius', options_for_select(Post.radius),{ prompt: "Select Radius", class: 'form-select w-full', data: { action: "change->jobs#submitForm"} } %>
+            <%= select_tag 'radius', options_for_select(Post.radius, 0),{ prompt: "Select Radius", class: 'form-select w-full', data: { action: "change->jobs#submitForm"} } %>
           </div>
           <!-- Group 3 -->
           <div>

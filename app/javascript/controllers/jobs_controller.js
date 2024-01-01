@@ -27,6 +27,7 @@ export default class extends Controller {
       if ($(".radius").hasClass("hidden")){
         $(".radius").removeClass("hidden")
         toastr.info("Select the Radius to see the results")
+        this.submitForm();
       }
       else if(!$(".radius").hasClass("hidden")){
         if ($("#radius").val() != ''){
@@ -85,6 +86,7 @@ export default class extends Controller {
     if ($(".radius").hasClass("hidden")){
       $(".radius").removeClass("hidden")
       toastr.info("Select the Radius to see the results")
+      this.submitForm();
     }
     else if(!$(".radius").hasClass("hidden")){
       if ($("#radius").val() != ''){

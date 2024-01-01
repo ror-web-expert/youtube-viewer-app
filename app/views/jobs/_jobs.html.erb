@@ -15,7 +15,7 @@
                   <div class="text-sm text-gray-800 font-semibold mb-1"><%= job.board.title %></div>
                 </div>
                 <div class="mb-2">
-                  <a class="text-lg text-gray-800 font-bold" target="_blank" href="<%= job_path(job) %>"><%= job.title %></a>
+                  <a class="text-lg text-gray-800 font-bold" href="<%= job_path(job) %>"><%= job.title %></a>
                 </div>
                 <div class="-m-1" data-controller="jobs">
                   <% if @response_data["job_type"].present? %>
