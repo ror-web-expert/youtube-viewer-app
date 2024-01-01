@@ -10,15 +10,19 @@ class PostScraperService
   end
 
   def scrape_and_parse
+    @session.driver.set_proxy("gate.smartproxy.com", 10000, "sptdsdd9tz", "cx9IJ3ufIgsk3Nsw3u")
     @session.visit @url
 
+    @session.driver.clear_cookies
     sleep(2)
     accept_cookies if cookies_modal_present?
     sleep(5)
+
     page = Nokogiri::HTML(@session.body)
 
     not_found_text = job_details_not_exist(page)
     unless not_found_text
+
     page.css(@selectors["job-detail-container"]).each do |post|
       response_data = extract_data_from_selector(post, @selectors["response_selector"])
       response_data["speciality"] = filter_by_title(@post.title.squish)

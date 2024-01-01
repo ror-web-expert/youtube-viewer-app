@@ -63,6 +63,9 @@ gem 'kramdown'
 gem "rolify"
 gem 'pg_search'
 
+gem "cuprite"
+
+
 group :development, :test do
   gem "byebug"
   gem "pry-rails"

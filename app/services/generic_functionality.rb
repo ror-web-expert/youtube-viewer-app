@@ -14,7 +14,7 @@ module GenericFunctionality
   end
 
   def start_chrome_headless_session
-    Capybara::Session.new(:selenium)
+    Capybara::Session.new(:cuprite)
   end
 
   def filter_by_title(title)
