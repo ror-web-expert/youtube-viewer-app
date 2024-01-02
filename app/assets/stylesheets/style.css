@@ -3021,6 +3021,10 @@ button[aria-selected = "true"] {
     margin-left: 3rem;
   }
 
+  .md\:mr-12 {
+    margin-right: 3rem;
+  }
+
   .md\:ml-4 {
     margin-left: 1rem;
   }
@@ -3115,6 +3119,10 @@ button[aria-selected = "true"] {
 @media (min-width: 1024px) {
   .lg\:ml-20 {
     margin-left: 5rem;
+  }
+
+  .lg\:mr-20 {
+    margin-right: 5rem;
   }
 
   .lg\:block {
