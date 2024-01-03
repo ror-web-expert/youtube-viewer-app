@@ -15,7 +15,7 @@
 
           <% if current_user.present? && current_user.has_role?(:admin) %>
             <li class="ml-3">
-              <a class="btn-sm text-white bg-indigo-500 hover:bg-indigo-600 w-full shadow-sm" href="<%= admin_job_analytics_path %>">Indeed Analytics</a>
+              <a class="btn-sm text-white bg-indigo-500 hover:bg-indigo-600 w-full shadow-sm" href="<%= admin_job_analytics_path %>">Analytics</a>
             </li>
             <li class="ml-3">
               <a class="btn-sm text-white bg-indigo-500 hover:bg-indigo-600 w-full shadow-sm" href="<%= admin_boards_path %>">Boards</a>

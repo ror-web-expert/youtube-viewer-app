@@ -2,7 +2,8 @@
   <div class="w-full">
     <div class="flex justify-between items-center mb-3">
       <h2 class="font-bold text-4xl">Analytics</h2>
-      <%= link_to 'Indeed Analytic', scrape_jobs_admin_job_analytics_path, class: "btn text-white bg-indigo-500 hover:bg-indigo-600 group shadow-sm" %>
+      <%= button_to 'Create Analytics' , scrape_jobs_admin_job_analytics_path , class: "btn-sm text-white bg-indigo-500 hover:bg-indigo-600 w-full shadow-sm", method: :post %>
+
     </div>
 
     <div class="md:w-full overflow-auto mx-auto">
