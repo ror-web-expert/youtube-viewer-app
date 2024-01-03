@@ -6,6 +6,7 @@ class PostScraperService
     @url = @post.scraped_url
     @board = @post.board
     @selectors = hash_selector(get_detail_selector(@board.title)) if @board.title.present?
+    Rails.application.config.capybara_headless = true
     @session = start_chrome_headless_session
   end
 

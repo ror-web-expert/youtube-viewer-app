@@ -5,6 +5,7 @@ class BoardScraperService
     @board = board
     @url = board.source_url
     @selectors = hash_selector(get_listing_selector(board.title)) if board.title.present?
+    Rails.application.config.capybara_headless = true
     @session = start_chrome_headless_session
     @logo = get_logo(board.title)
     @total_urls = []
