@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    post 'job_analytics/scrape_jobs'
     resources :dashboard, only: [:index]
     resources :boards do
       member do

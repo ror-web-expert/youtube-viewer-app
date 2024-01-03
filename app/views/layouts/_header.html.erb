@@ -13,6 +13,9 @@
       <nav class="flex grow">
         <ul class="flex grow justify-end flex-wrap items-center">
           <li>
+            <%= button_to 'Jobs Analytics' , admin_job_analytics_scrape_jobs_path , class: "btn-sm text-white bg-indigo-500 hover:bg-indigo-600 w-full shadow-sm", method: :post %>
+          </li>
+          <li>
             <a class="text-sm font-medium text-indigo-500 hover:underline px-3 lg:px-5 py-2 flex items-center" href="#">Sign in</a>
           </li>
           <li class="ml-3">
