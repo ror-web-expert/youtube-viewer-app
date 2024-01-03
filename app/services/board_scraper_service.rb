@@ -26,7 +26,7 @@ class BoardScraperService
     expired_jobs
     close_browser
   rescue => e
-    puts "URL: #{Rails.application.credentials.base_url}/admin/boards/#{@board.id} Error: #{e.message}"
+    puts "URL: #{Rails.application.credentials.base_url}/admin/boards/#{@board.slug} Error: #{e.message}"
     close_browser
   end
 
@@ -180,6 +180,7 @@ class BoardScraperService
     @board.posts.find_or_initialize_by(scraped_url: scraped_url).tap do |post|
       post.update!(
         title: main_data['title'],
+        is_scrap: false,
         response_data: response_data
       )
     rescue ActiveRecord::RecordNotUnique => e

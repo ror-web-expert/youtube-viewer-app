@@ -18,7 +18,6 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    post 'job_analytics/scrape_jobs'
     resources :dashboard, only: [:index]
     resources :boards do
       member do
@@ -32,6 +31,10 @@ Rails.application.routes.draw do
       member do
         get 'scrape_jobs'
       end
+    end
+    resources :job_analytics, only: [:index] do
+      post 'scrape_jobs', on: :collection
+      get 'download', on: :collection
     end
   end
 end

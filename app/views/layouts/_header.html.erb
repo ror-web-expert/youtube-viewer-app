@@ -5,22 +5,38 @@
       <div class="shrink-0 mr-4">
         <a class="block group" href="/" aria-label="Cruip">
           <svg width="32" height="32" xmlns="http://www.w3.org/2000/svg">
-            <path class="fill-indigo-500" d="M13.853 18.14 1 10.643 31 1l-.019.058z" />
-            <path class="fill-indigo-300" d="M13.853 18.14 30.981 1.058 21.357 31l-7.5-12.857z" />
+            <path class="fill-indigo-500" d="M13.853 18.14 1 10.643 31 1l-.019.058z"/>
+            <path class="fill-indigo-300" d="M13.853 18.14 30.981 1.058 21.357 31l-7.5-12.857z"/>
           </svg>
         </a>
       </div>
       <nav class="flex grow">
         <ul class="flex grow justify-end flex-wrap items-center">
-          <li>
-            <%= button_to 'Jobs Analytics' , admin_job_analytics_scrape_jobs_path , class: "btn-sm text-white bg-indigo-500 hover:bg-indigo-600 w-full shadow-sm", method: :post %>
-          </li>
-          <li>
-            <a class="text-sm font-medium text-indigo-500 hover:underline px-3 lg:px-5 py-2 flex items-center" href="#">Sign in</a>
-          </li>
-          <li class="ml-3">
-            <a class="btn-sm text-white bg-indigo-500 hover:bg-indigo-600 w-full shadow-sm" href="#">Post a job - $299</a>
-          </li>
+
+          <% if current_user.present? && current_user.has_role?(:admin) %>
+            <li class="ml-3">
+              <a class="btn-sm text-white bg-indigo-500 hover:bg-indigo-600 w-full shadow-sm" href="<%= admin_job_analytics_path %>">Indeed Analytics</a>
+            </li>
+            <li class="ml-3">
+              <a class="btn-sm text-white bg-indigo-500 hover:bg-indigo-600 w-full shadow-sm" href="<%= admin_boards_path %>">Boards</a>
+            </li>
+            <li class="ml-3">
+              <a class="btn-sm text-white bg-indigo-500 hover:bg-indigo-600 w-full shadow-sm" href="<%= admin_posts_path %>">Posts</a>
+            </li>
+            <li>
+              <%= link_to "Sign Out", destroy_user_session_path,
+                          class: "text-sm font-medium text-indigo-500 hover:underline px-3 lg:px-5 py-2 flex items-center",
+                          "data-turbo-action": "replace", "data-turbo-frame": "_top",  data: { turbo_method: "delete", turbo_confirm: "Are you sure?" } %>
+            </li>
+          <% else %>
+            <li>
+              <a class="text-sm font-medium text-indigo-500 hover:underline px-3 lg:px-5 py-2 flex items-center" href="<%= new_user_session_path %>">Sign in</a>
+            </li>
+            <li class="ml-3">
+              <a class="btn-sm text-white bg-indigo-500 hover:bg-indigo-600 w-full shadow-sm" href="#">Post a job -
+                $299</a>
+            </li>
+          <% end %>
         </ul>
       </nav>
     </div>

@@ -1,0 +1,40 @@
+<div class='max-w-6xl mx-auto px-4 sm:px-6'>
+  <div class="w-full">
+    <div class="flex justify-between items-center mb-3">
+      <h2 class="font-bold text-4xl">Analytics</h2>
+      <%= link_to 'Indeed Analytic', scrape_jobs_admin_job_analytics_path, class: "btn text-white bg-indigo-500 hover:bg-indigo-600 group shadow-sm" %>
+    </div>
+
+    <div class="md:w-full overflow-auto mx-auto">
+      <table class="w-full text-sm text-left text-gray-500 shadow-md sm:rounded-lg">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+          <th scope="col" class="px-6 py-3 w-28">
+            Date
+          </th>
+          <th scope="col" class="px-6 py-3 text-center">
+            Download Action
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="bg-white border-b my-3">
+          <td class=" px-6 py-4 break-words">
+            <h5 class='w-[655px]'>
+              <%= Date.current.strftime("%d-%m-%y") %>
+            </h5>
+          </td>
+          <td class="px-6 py-4 text-center">
+            <div class='flex justify-center space-x-2'>
+              <a href="<%= download_admin_job_analytics_path %>" title='show' class='text-white w-10 h-10 bg-slate-400 hover:bg-slate-800 font-medium rounded-lg text-sm flex items-center justify-center'>
+                <i class="fa fa-download !text-black-800" aria-hidden="true"></i>
+              </a>
+            </div>
+          </td>
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

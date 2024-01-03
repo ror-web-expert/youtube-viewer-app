@@ -10,6 +10,7 @@ class AnalyticScraperService
 
   def initialize
     @url = "https://www.indeed.com/jobs?q=registered+nurse&l=Arizona"
+    Rails.application.config.capybara_headless = false
     @session = start_chrome_headless_session
   end
 
@@ -29,6 +30,7 @@ class AnalyticScraperService
     @companies = {}
     while true
       html_full = Nokogiri::HTML(@session.body)
+
       soup = html_full.css('div#jobsearch-Main')
 
       table_cells = soup.css('td.resultContent')
@@ -42,7 +44,7 @@ class AnalyticScraperService
 
       begin
         @session.find("a[data-testid='pagination-page-next']").click
-        sleep(1.2)
+        sleep(2)
 
       rescue StandardError
         puts 'No more pages left'
@@ -52,7 +54,7 @@ class AnalyticScraperService
   end
 
   def write_to_csv
-    filename = "public/companies_analytic_#{Time.now.strftime('%A')}.csv"
+    filename = "public/job_analytics.csv"
     CSV.open(filename, 'w', write_headers: true, headers: ['Company', 'Count']) do |csv|
       @companies.each do |company, count|
         csv << [company, count]
