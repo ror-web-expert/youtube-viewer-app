@@ -36,7 +36,7 @@ class JobsController < ApplicationController
       matching_keys = Job_Speciality_Filter.select { |_, values| values.include?(key) }.keys
       matching_keys.each { |matching_key| display_name_with_total_counts[matching_key] += value }
     end
-    @filter_job_specialities = custom_sort_hash_with_alphabetically(display_name_with_total_counts)
+    @filter_job_specialities_custom, @filter_job_specialities = custom_sort_hash_with_alphabetically(display_name_with_total_counts)
   end
 
   def shift_types

@@ -8,6 +8,6 @@ module JobsHelper
     sorted_special_categories_hash = Hash[special_categories_hash.sort_by { |key, value| [-value, key.downcase] }]
     sorted_other_categories_hash = Hash[other_categories_hash.sort_by { |key, _| key.downcase }]
 
-    sorted_special_categories_hash.merge(sorted_other_categories_hash)
+    [sorted_special_categories_hash, sorted_other_categories_hash]
   end
 end

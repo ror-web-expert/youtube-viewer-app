@@ -60,9 +60,18 @@
           </div>
           <!-- Group 4 -->
           <div>
-            <% if @filter_job_specialities.present? %>
+            <% if @filter_job_specialities.present? || @filter_job_specialities_custom.present? %>
               <div class="text-sm text-gray-800 font-semibold mb-3">Job Speciality</div>
               <ul style='transition: .5s all' class="space-y-2 h-[230px] overflow-hidden relative duration-500" id="speciality">
+                <% @filter_job_specialities_custom.each do |speciality, speciality_count| %>
+                  <li>
+                    <label class="flex items-center">
+                      <%= check_box_tag "speciality[]", speciality, params[:speciality].present? && params[:speciality].include?(speciality) ? true : false, class: "form-checkbox", data: { action: "change->jobs#submitForm" } %>
+                      <span class="text-sm text-gray-600 ml-2"><%= "#{speciality} (#{speciality_count})" %></span>
+                    </label>
+                  </li>
+                <% end %>
+                <hr>
                 <% @filter_job_specialities.each do |speciality, speciality_count| %>
                   <li>
                     <label class="flex items-center">
