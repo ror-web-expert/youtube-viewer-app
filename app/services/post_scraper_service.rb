@@ -12,6 +12,7 @@ class PostScraperService
 
   def scrape_and_parse
     # @session.driver.set_proxy("gate.smartproxy.com", 10000, Rails.application.credentials.smartproxy_username, Rails.application.credentials.smartproxy_password)
+
     @session.visit @url
 
     @session.driver.clear_cookies
@@ -24,15 +25,10 @@ class PostScraperService
     not_found_text = job_details_not_exist(page)
     unless not_found_text
 
-    page.css(@selectors["job-detail-container"]).each do |post|
-      response_data = extract_data_from_selector(post, @selectors["response_selector"])
-      response_data["speciality"] = filter_by_title(@post.title.squish)
-      response_data["job_type"] = standardise_job_type(response_data["job_type"]&.gsub("-"," ")&.titleize)
-      response_data["shift_type"] = standardise_shift_type(response_data["shift_type"]&.titleize)
-      response_data = @post.response_data.merge(response_data) if @post.response_data.present?
-      @post.update(response_data: response_data)
-      HtmlParser.new(@post).formatted_markdown
-    end
+      page.css(@selectors["job-detail-container"]).each do |job_post|
+        process_job_details(job_post)
+      end
+
     else
       @post.update(status: 'expire')
     end
@@ -41,6 +37,39 @@ class PostScraperService
     puts "URL: #{Rails.application.credentials.base_url}/admin/posts/#{@post.id} Error: #{e.message}"
     close_browser
   end
+
+  def process_job_details(job_post)
+    response_data = extract_data_from_selector(job_post, @selectors["response_selector"])
+    response_data["speciality"] = filter_by_title(@post.title.squish)
+    response_data["job_type"] = standardise_job_type(response_data["job_type"]&.gsub("-", " ")&.titleize)
+    binding.pry
+    process_gpt_data(response_data)
+    response_data["shift_type"] = standardise_shift_type(response_data["shift_type"]&.titleize)
+    merge_response_data(response_data)
+    generate_formatted_markdown
+  end
+
+  def process_gpt_data(response_data)
+    return unless response_data["job_type"].blank?
+    query = "I request the job description analysis; no code needed—just return the json hash with key, as shown in the example, without any explanations.\n
+              If the working hours are less than 40 and greater than 20, categorize the job type as part-time.\n
+              If the working hours are less than 20, categorize the job type as PRN.\n
+              If the working hours are greater than 40, categorize the job type as full-time, FT.\n
+              Determine the job type based on the presence of keywords such as PRN, FT, PT, part-time, or full-time..\n\n
+              Example: {'job_type':  'FT' or 'PT' or 'PRN' }\n \n
+              job description:  #{Nokogiri::HTML(response_data["description_raw_html"]).text}"
+    job_type_from_gpt = OpenaiService.new(query).call
+    response_data["job_type"] = standardise_job_type(JSON.parse(job_type_from_gpt)["job_type"]) if job_type_from_gpt.present?
+  end
+
+  def merge_response_data(response_data)
+    @post.update(response_data: @post.response_data.to_h.merge(response_data))
+  end
+
+  def generate_formatted_markdown
+    HtmlParser.new(@post).formatted_markdown
+  end
+
 
   def job_details_not_exist(page)
 
