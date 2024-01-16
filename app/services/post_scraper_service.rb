@@ -44,22 +44,32 @@ class PostScraperService
     response_data["job_type"] = standardise_job_type(response_data["job_type"]&.gsub("-", " ")&.titleize)
 
     process_gpt_data(response_data)
+
     response_data["shift_type"] = standardise_shift_type(response_data["shift_type"]&.titleize)
     merge_response_data(response_data)
     generate_formatted_markdown
   end
 
   def process_gpt_data(response_data)
-    return unless response_data["job_type"].blank?
-    query = "I request the job description analysis; no code needed—just return the json hash with key, as shown in the example, without any explanations.\n
+    return response_data unless response_data["job_type"].blank?
+    begin
+    query = "I request the job description analysis; no code needed—just return the JSON hash with key, as shown in the example, without any explanations.\n
               If the working hours are less than 40 and greater than 20, categorize the job type as part-time.\n
               If the working hours are less than 20, categorize the job type as PRN.\n
               If the working hours are greater than 40, categorize the job type as full-time, FT.\n
               Determine the job type based on the presence of keywords such as PRN, FT, PT, part-time, or full-time..\n\n
-              Example: {'job_type':  'FT' or 'PT' or 'PRN' }\n \n
+              Why you choose this job_type please give the reason in same JSON with key job_type_reason.
+              Example: {'job_type':  'FT' or 'PT' or 'PRN', 'job_type_reason': ''  }\n \n
               job description:  #{Nokogiri::HTML(response_data["description_raw_html"]).text}"
     job_type_from_gpt = OpenaiService.new(query).call
-    response_data["job_type"] = standardise_job_type(JSON.parse(job_type_from_gpt)["job_type"]) if job_type_from_gpt.present?
+    sleep(2)
+    return response_data unless job_type_from_gpt.present?
+    job_type_with_reason = JSON.parse(job_type_from_gpt)
+    response_data["job_type"] = standardise_job_type(job_type_with_reason["job_type"])
+    response_data["job_type_reason"] = job_type_with_reason["job_type_reason"]
+    rescue => e
+      response_data
+    end
   end
 
   def merge_response_data(response_data)
