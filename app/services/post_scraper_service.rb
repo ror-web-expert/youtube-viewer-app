@@ -42,7 +42,7 @@ class PostScraperService
     response_data = extract_data_from_selector(job_post, @selectors["response_selector"])
     response_data["speciality"] = filter_by_title(@post.title.squish)
     response_data["job_type"] = standardise_job_type(response_data["job_type"]&.gsub("-", " ")&.titleize)
-    binding.pry
+
     process_gpt_data(response_data)
     response_data["shift_type"] = standardise_shift_type(response_data["shift_type"]&.titleize)
     merge_response_data(response_data)
