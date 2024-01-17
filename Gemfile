@@ -65,13 +65,9 @@ gem 'pg_search'
 
 gem "cuprite"
 
-# Gemfile
-# gem 'ruby-openai'
-
+#For ChatGPt 
 gem 'openai'
 gem 'httparty'
-
-# gem "httparty"
 
 group :development, :test do
   gem "byebug"
