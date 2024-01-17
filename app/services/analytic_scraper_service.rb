@@ -15,9 +15,9 @@ class AnalyticScraperService
   end
 
   def scrape_jobs
-    @session.driver.set_proxy("gate.smartproxy.com", 10000, Rails.application.credentials.smartproxy_username, Rails.application.credentials.smartproxy_password)
     @session.visit(@url)
 
+    retry_with_proxy_if_blocked
     collect_companies
 
     write_to_csv
@@ -30,7 +30,6 @@ class AnalyticScraperService
     @companies = {}
     while true
       html_full = Nokogiri::HTML(@session.body)
-
       soup = html_full.css('div#jobsearch-Main')
 
       table_cells = soup.css('td.resultContent')

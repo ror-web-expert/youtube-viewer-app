@@ -98,4 +98,13 @@ module GenericFunctionality
       nil
     end
   end
+
+  def retry_with_proxy_if_blocked
+    if @session.has_text?("Sorry, you have been blocked")
+      close_browser
+      @session = start_chrome_headless_session
+      @session.driver.set_proxy("gate.smartproxy.com", 10000, Rails.application.credentials.smartproxy_username, Rails.application.credentials.smartproxy_password)
+      @session.visit(@url)
+    end
+  end
 end

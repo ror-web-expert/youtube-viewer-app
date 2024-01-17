@@ -11,9 +11,9 @@ class PostScraperService
   end
 
   def scrape_and_parse
-    # @session.driver.set_proxy("gate.smartproxy.com", 10000, Rails.application.credentials.smartproxy_username, Rails.application.credentials.smartproxy_password)
-
     @session.visit @url
+    
+    retry_with_proxy_if_blocked
 
     @session.driver.clear_cookies
     sleep(2)

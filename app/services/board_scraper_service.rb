@@ -127,8 +127,9 @@ class BoardScraperService
   end
 
   def visit_and_apply_filters
-    # @session.driver.set_proxy("gate.smartproxy.com", 10000, Rails.application.credentials.smartproxy_username, Rails.application.credentials.smartproxy_password)
     @session.visit(@url)
+
+    retry_with_proxy_if_blocked
 
     apply_search_filters if @selectors['search'].present?
   end
