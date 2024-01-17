@@ -24,7 +24,7 @@
                   <% if @response_data["location"].present? %>
                     <a class="text-xs text-gray-500 font-normal inline-flex px-2 py-0.5 bg-indigo-50 hover:text-gray-600 rounded-md m-1 whitespace-nowrap transition duration-150 ease-in-out" href="javascript:void(0)"><%= @response_data["location"].gsub(/location\s*:?/i, ' ') %></a>
                   <% end %>
-                  <% if @response_data["salary_range"].present? && @response_data["salary_range"].include?("$") %>
+                  <% if @response_data["salary_range"].present? && @response_data["salary_range"].include?("$") && @response_data["salary_range"].length < 40 %>
                     <a class="text-xs text-gray-500 font-medium inline-flex px-2 py-0.5 bg-indigo-50 hover:text-gray-600 rounded-md m-1 whitespace-nowrap transition duration-150 ease-in-out" href="javascript:void(0)"><%= get_salary_range(@response_data["salary_range"]) %></a>
                   <% end %>
                   <% if @response_data["shift_type"].present? %>

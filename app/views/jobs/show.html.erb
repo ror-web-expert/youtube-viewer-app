@@ -36,7 +36,7 @@
                             <span class="text-sm text-gray-600"><%= @response_data["location"].gsub(/location\s*:?/i, ' ') %></span>
                           </li>
                         <% end %>
-                        <% if @response_data["salary_range"].present? && @response_data["salary_range"].include?("$") %>
+                        <% if @response_data["salary_range"].present? && @response_data["salary_range"].include?("$") && @response_data["salary_range"].length < 40 %>
                           <li class="flex items-center">
                             <svg class="shrink-0 fill-gray-400 mr-3" width="16" height="12" xmlns="http://www.w3.org/2000/svg">
                               <path d="M15 0H1C.4 0 0 .4 0 1v10c0 .6.4 1 1 1h14c.6 0 1-.4 1-1V1c0-.6-.4-1-1-1Zm-1 10H2V2h12v8Z"/>
@@ -149,7 +149,7 @@
                                     <% if @response_data["location"].present? %>
                                       <a class="text-xs text-gray-500 font-medium inline-flex px-2 py-0.5 bg-indigo-50 hover:text-gray-600 rounded-md m-1 whitespace-nowrap transition duration-150 ease-in-out" href="#"><%= @response_data["location"].gsub(/location\s*:?/i, ' ') %></a>
                                     <% end %>
-                                    <% if @response_data["salary_range"].present? && @response_data["salary_range"].include?("$") %>
+                                    <% if @response_data["salary_range"].present? && @response_data["salary_range"].include?("$") && @response_data["salary_range"].length < 40 %>
                                       <a class="text-xs text-gray-500 font-medium inline-flex px-2 py-0.5 bg-indigo-50 hover:text-gray-600 rounded-md m-1 whitespace-nowrap transition duration-150 ease-in-out" href="#"><%= get_salary_range(@response_data["salary_range"]) %></a>
                                     <% end %>
                                     <% if @response_data["shift_type"].present? %>
