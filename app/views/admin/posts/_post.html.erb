@@ -17,6 +17,18 @@
         <strong class="block font-medium mb-1">Status:</strong>
         <%= post.status %>
       </p>
+      <% if post.response_data["job_type"].present? %>
+        <p class="my-5">
+          <strong class="block font-medium mb-1">Job Type:</strong>
+          <%= post.response_data["job_type"] %>
+        </p>
+      <% end %>
+      <% if post.response_data["job_type_reason"].present? %>
+        <p class="my-5">
+          <strong class="block font-medium mb-1">Job Type Reason: </strong>
+          <%= post.response_data["job_type_reason"] %>
+        </p>
+      <% end %>
       <div class="flex justify-end space-x-2">
         <% if action_name != "show" %>
           <%= link_to "Show this Post", admin_post_path(post), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
