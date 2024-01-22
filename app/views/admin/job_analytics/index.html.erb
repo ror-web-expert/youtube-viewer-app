@@ -19,7 +19,7 @@
         </tr>
         </thead>
         <tbody>
-        <% if File.exist?(Rails.root.join('public', 'job_analytics.csv')) %>
+        <% if File.exist?(Rails.configuration.temp_file_storage('job_analytics.csv')) %>
           <tr class="bg-white border-b my-3">
             <td class=" px-6 py-4 break-words">
               <h5 class='w-[655px]'>

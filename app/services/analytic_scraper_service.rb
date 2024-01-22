@@ -36,7 +36,7 @@ class AnalyticScraperService
       table_cells = soup.css('td.resultContent')
 
       table_cells.each do |tc|
-        company = tc.css('span.css-1x7z1ps.eu4oa1w0').text
+        company = tc.css("span[data-testid='company-name']").text
 
         @companies[company] ||= 0
         @companies[company] += 1
@@ -54,12 +54,12 @@ class AnalyticScraperService
   end
 
   def write_to_csv
-    file_path = Rails.root.join('public', 'job_analytics.csv')
+    file_path = Rails.configuration.temp_file_storage('job_analytics.csv')
+
     CSV.open(file_path, 'w', write_headers: true, headers: ['Company', 'Count']) do |csv|
       @companies.each do |company, count|
         csv << [company, count]
       end
     end
-    
   end
 end
