@@ -54,7 +54,7 @@ class AnalyticScraperService
   end
 
   def write_to_csv
-    filename = "public/job_analytics.csv"
+    filename = "/public/job_analytics.csv"
     CSV.open(filename, 'w', write_headers: true, headers: ['Company', 'Count']) do |csv|
       @companies.each do |company, count|
         csv << [company, count]
