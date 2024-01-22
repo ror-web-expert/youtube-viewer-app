@@ -54,11 +54,12 @@ class AnalyticScraperService
   end
 
   def write_to_csv
-    filename = "/public/job_analytics.csv"
-    CSV.open(filename, 'w', write_headers: true, headers: ['Company', 'Count']) do |csv|
+    file_path = Rails.root.join('public', 'job_analytics.csv')
+    CSV.open(file_path, 'w', write_headers: true, headers: ['Company', 'Count']) do |csv|
       @companies.each do |company, count|
         csv << [company, count]
       end
     end
+    
   end
 end
