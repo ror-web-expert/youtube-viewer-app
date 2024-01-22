@@ -6,7 +6,6 @@ class CreatePosts < ActiveRecord::Migration[7.0]
       t.string :scraped_url
       t.boolean :is_scrap, default: 0
       t.string :status, default: "pending"
-      t.jsonb :response_data, default: {}
 
       t.timestamps
     end

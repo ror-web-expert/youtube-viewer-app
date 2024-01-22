@@ -11,9 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_11_14_104132) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -70,16 +67,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_14_104132) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.bigint "board_id", null: false
+    t.integer "board_id", null: false
     t.string "title"
     t.string "scraped_url"
     t.boolean "is_scrap", default: false
     t.string "status", default: "published"
-    t.jsonb "response_data", default: {}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
-    t.bigint "location_id"
+    t.integer "location_id"
     t.index ["board_id"], name: "index_posts_on_board_id"
     t.index ["location_id"], name: "index_posts_on_location_id"
     t.index ["slug"], name: "index_posts_on_slug", unique: true
@@ -88,7 +84,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_14_104132) do
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "resource_type"
-    t.bigint "resource_id"
+    t.integer "resource_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
@@ -108,8 +104,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_14_104132) do
   end
 
   create_table "users_roles", id: false, force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "role_id"
+    t.integer "user_id"
+    t.integer "role_id"
     t.index ["role_id"], name: "index_users_roles_on_role_id"
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
     t.index ["user_id"], name: "index_users_roles_on_user_id"
