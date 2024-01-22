@@ -1,6 +1,6 @@
 class IndeedAnalyticJob
   include Sidekiq::Job
-  sidekiq_options retry: 4
+  sidekiq_options queue: 'default', retry: 3
 
   def perform
     AnalyticScraperService.new.scrape_jobs

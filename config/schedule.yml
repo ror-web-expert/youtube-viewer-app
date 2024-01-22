@@ -1,8 +1,12 @@
 daily_boards_scraper_job:
   cron: '0 0 * * *'
   class: "DailyBoardsScraperJob"
-  queue: default    
+  queue: default
 daily_posts_scraper_job:
   cron: '0 */2 * * *'
   class: "DailyPostsScraperJob"
+  queue: default
+analytic_scraper_job:
+  cron: '0 1 * * *'
+  class: "IndeedAnalyticJob"
   queue: default

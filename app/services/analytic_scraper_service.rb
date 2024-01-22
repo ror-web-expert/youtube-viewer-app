@@ -10,11 +10,12 @@ class AnalyticScraperService
 
   def initialize
     @url = "https://www.indeed.com/jobs?q=registered+nurse&l=Arizona"
-    Rails.application.config.capybara_headless = false
+    Rails.application.config.capybara_headless = true
     @session = start_chrome_headless_session
   end
 
   def scrape_jobs
+    @session.driver.headers = { "User-Agent" => "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36" }
     @session.visit(@url)
 
     retry_with_proxy_if_blocked
